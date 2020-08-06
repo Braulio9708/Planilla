@@ -1,0 +1,27 @@
+C:\Users\Braulio\Documents\Visual Studio 2015\Projects\Planilla\Acceso\bin\Debug\Acceso.dll
+C:\Users\Braulio\Documents\Visual Studio 2015\Projects\Planilla\Acceso\bin\Debug\Acceso.pdb
+C:\Users\Braulio\Documents\Visual Studio 2015\Projects\Planilla\Acceso\bin\Debug\Entidad.dll
+C:\Users\Braulio\Documents\Visual Studio 2015\Projects\Planilla\Acceso\bin\Debug\MySql.Data.dll
+C:\Users\Braulio\Documents\Visual Studio 2015\Projects\Planilla\Acceso\bin\Debug\Entidad.pdb
+C:\Users\Braulio\Documents\Visual Studio 2015\Projects\Planilla\Acceso\bin\Debug\MySql.Data.xml
+C:\Users\Braulio\Documents\Visual Studio 2015\Projects\Planilla\Acceso\obj\Debug\Acceso.csprojResolveAssemblyReference.cache
+C:\Users\Braulio\Documents\Visual Studio 2015\Projects\Planilla\Acceso\obj\Debug\Acceso.dll
+C:\Users\Braulio\Documents\Visual Studio 2015\Projects\Planilla\Acceso\obj\Debug\Acceso.pdb
+C:\Users\JUSET TORREZ\Documents\Visual Studio 2015\Projects\Planilla\Acceso\bin\Debug\Acceso.dll
+C:\Users\JUSET TORREZ\Documents\Visual Studio 2015\Projects\Planilla\Acceso\bin\Debug\Acceso.pdb
+C:\Users\JUSET TORREZ\Documents\Visual Studio 2015\Projects\Planilla\Acceso\bin\Debug\Entidad.dll
+C:\Users\JUSET TORREZ\Documents\Visual Studio 2015\Projects\Planilla\Acceso\bin\Debug\Entidad.pdb
+C:\Users\JUSET TORREZ\Documents\Visual Studio 2015\Projects\Planilla\Acceso\bin\Debug\MySql.Data.xml
+C:\Users\JUSET TORREZ\Documents\Visual Studio 2015\Projects\Planilla\Acceso\obj\Debug\Acceso.dll
+C:\Users\JUSET TORREZ\Documents\Visual Studio 2015\Projects\Planilla\Acceso\obj\Debug\Acceso.pdb
+C:\Users\Darvin R. Sarantes\Documents\Visual Studio 2015\Projects\Planilla\Acceso\bin\Debug\Acceso.dll
+C:\Users\Darvin R. Sarantes\Documents\Visual Studio 2015\Projects\Planilla\Acceso\bin\Debug\Acceso.pdb
+C:\Users\Darvin R. Sarantes\Documents\Visual Studio 2015\Projects\Planilla\Acceso\bin\Debug\Entidad.dll
+C:\Users\Darvin R. Sarantes\Documents\Visual Studio 2015\Projects\Planilla\Acceso\bin\Debug\MySql.Data.dll
+C:\Users\Darvin R. Sarantes\Documents\Visual Studio 2015\Projects\Planilla\Acceso\bin\Debug\Entidad.pdb
+C:\Users\Darvin R. Sarantes\Documents\Visual Studio 2015\Projects\Planilla\Acceso\bin\Debug\MySql.Data.xml
+C:\Users\Darvin R. Sarantes\Documents\Visual Studio 2015\Projects\Planilla\Acceso\obj\Debug\Acceso.csprojResolveAssemblyReference.cache
+C:\Users\Darvin R. Sarantes\Documents\Visual Studio 2015\Projects\Planilla\Acceso\obj\Debug\Acceso.dll
+C:\Users\Darvin R. Sarantes\Documents\Visual Studio 2015\Projects\Planilla\Acceso\obj\Debug\Acceso.pdb
+C:\Users\JUSET TORREZ\Documents\Visual Studio 2015\Projects\Planilla\Acceso\bin\Debug\MySql.Data.dll
+C:\Users\JUSET TORREZ\Documents\Visual Studio 2015\Projects\Planilla\Acceso\obj\Debug\Acceso.csprojResolveAssemblyReference.cache

@@ -1,0 +1,63 @@
+C:\Users\Braulio\Documents\Visual Studio 2015\Projects\Planilla\Planilla\bin\Debug\Planilla.exe.config
+C:\Users\Braulio\Documents\Visual Studio 2015\Projects\Planilla\Planilla\bin\Debug\Planilla.exe
+C:\Users\Braulio\Documents\Visual Studio 2015\Projects\Planilla\Planilla\bin\Debug\Planilla.pdb
+C:\Users\Braulio\Documents\Visual Studio 2015\Projects\Planilla\Planilla\bin\Debug\Entidad.dll
+C:\Users\Braulio\Documents\Visual Studio 2015\Projects\Planilla\Planilla\bin\Debug\Funciones.dll
+C:\Users\Braulio\Documents\Visual Studio 2015\Projects\Planilla\Planilla\bin\Debug\Logica.dll
+C:\Users\Braulio\Documents\Visual Studio 2015\Projects\Planilla\Planilla\bin\Debug\MySql.Data.dll
+C:\Users\Braulio\Documents\Visual Studio 2015\Projects\Planilla\Planilla\bin\Debug\Acceso.dll
+C:\Users\Braulio\Documents\Visual Studio 2015\Projects\Planilla\Planilla\bin\Debug\Entidad.pdb
+C:\Users\Braulio\Documents\Visual Studio 2015\Projects\Planilla\Planilla\bin\Debug\Logica.pdb
+C:\Users\Braulio\Documents\Visual Studio 2015\Projects\Planilla\Planilla\bin\Debug\MySql.Data.xml
+C:\Users\Braulio\Documents\Visual Studio 2015\Projects\Planilla\Planilla\bin\Debug\Acceso.pdb
+C:\Users\Braulio\Documents\Visual Studio 2015\Projects\Planilla\Planilla\obj\Debug\Planilla.csprojResolveAssemblyReference.cache
+C:\Users\Braulio\Documents\Visual Studio 2015\Projects\Planilla\Planilla\obj\Debug\Planilla.frmLoginMySql.resources
+C:\Users\Braulio\Documents\Visual Studio 2015\Projects\Planilla\Planilla\obj\Debug\Planilla.frmLogin.resources
+C:\Users\Braulio\Documents\Visual Studio 2015\Projects\Planilla\Planilla\obj\Debug\Planilla.MDIPrincipal.resources
+C:\Users\Braulio\Documents\Visual Studio 2015\Projects\Planilla\Planilla\obj\Debug\Planilla.Properties.Resources.resources
+C:\Users\Braulio\Documents\Visual Studio 2015\Projects\Planilla\Planilla\obj\Debug\Planilla.csproj.GenerateResource.Cache
+C:\Users\Braulio\Documents\Visual Studio 2015\Projects\Planilla\Planilla\obj\Debug\Planilla.exe
+C:\Users\Braulio\Documents\Visual Studio 2015\Projects\Planilla\Planilla\obj\Debug\Planilla.pdb
+C:\Users\JUSET TORREZ\Documents\Visual Studio 2015\Projects\Planilla\Planilla\bin\Debug\Planilla.exe.config
+C:\Users\JUSET TORREZ\Documents\Visual Studio 2015\Projects\Planilla\Planilla\bin\Debug\Planilla.exe
+C:\Users\JUSET TORREZ\Documents\Visual Studio 2015\Projects\Planilla\Planilla\bin\Debug\Planilla.pdb
+C:\Users\JUSET TORREZ\Documents\Visual Studio 2015\Projects\Planilla\Planilla\bin\Debug\Entidad.dll
+C:\Users\JUSET TORREZ\Documents\Visual Studio 2015\Projects\Planilla\Planilla\bin\Debug\Funciones.dll
+C:\Users\JUSET TORREZ\Documents\Visual Studio 2015\Projects\Planilla\Planilla\bin\Debug\Logica.dll
+C:\Users\JUSET TORREZ\Documents\Visual Studio 2015\Projects\Planilla\Planilla\bin\Debug\Acceso.dll
+C:\Users\JUSET TORREZ\Documents\Visual Studio 2015\Projects\Planilla\Planilla\bin\Debug\Entidad.pdb
+C:\Users\JUSET TORREZ\Documents\Visual Studio 2015\Projects\Planilla\Planilla\bin\Debug\Logica.pdb
+C:\Users\JUSET TORREZ\Documents\Visual Studio 2015\Projects\Planilla\Planilla\bin\Debug\MySql.Data.xml
+C:\Users\JUSET TORREZ\Documents\Visual Studio 2015\Projects\Planilla\Planilla\bin\Debug\Acceso.pdb
+C:\Users\JUSET TORREZ\Documents\Visual Studio 2015\Projects\Planilla\Planilla\obj\Debug\Planilla.frmLoginMySql.resources
+C:\Users\JUSET TORREZ\Documents\Visual Studio 2015\Projects\Planilla\Planilla\obj\Debug\Planilla.frmLogin.resources
+C:\Users\JUSET TORREZ\Documents\Visual Studio 2015\Projects\Planilla\Planilla\obj\Debug\Planilla.Properties.Resources.resources
+C:\Users\JUSET TORREZ\Documents\Visual Studio 2015\Projects\Planilla\Planilla\obj\Debug\Planilla.csproj.GenerateResource.Cache
+C:\Users\JUSET TORREZ\Documents\Visual Studio 2015\Projects\Planilla\Planilla\obj\Debug\Planilla.exe
+C:\Users\JUSET TORREZ\Documents\Visual Studio 2015\Projects\Planilla\Planilla\obj\Debug\Planilla.pdb
+C:\Users\Darvin R. Sarantes\Documents\Visual Studio 2015\Projects\Planilla\Planilla\bin\Debug\Planilla.exe.config
+C:\Users\Darvin R. Sarantes\Documents\Visual Studio 2015\Projects\Planilla\Planilla\obj\Debug\Planilla.exe
+C:\Users\Darvin R. Sarantes\Documents\Visual Studio 2015\Projects\Planilla\Planilla\obj\Debug\Planilla.pdb
+C:\Users\Darvin R. Sarantes\Documents\Visual Studio 2015\Projects\Planilla\Planilla\bin\Debug\Planilla.exe
+C:\Users\Darvin R. Sarantes\Documents\Visual Studio 2015\Projects\Planilla\Planilla\bin\Debug\Planilla.pdb
+C:\Users\Darvin R. Sarantes\Documents\Visual Studio 2015\Projects\Planilla\Planilla\bin\Debug\Entidad.dll
+C:\Users\Darvin R. Sarantes\Documents\Visual Studio 2015\Projects\Planilla\Planilla\bin\Debug\Logica.dll
+C:\Users\Darvin R. Sarantes\Documents\Visual Studio 2015\Projects\Planilla\Planilla\bin\Debug\MySql.Data.dll
+C:\Users\Darvin R. Sarantes\Documents\Visual Studio 2015\Projects\Planilla\Planilla\bin\Debug\Acceso.dll
+C:\Users\Darvin R. Sarantes\Documents\Visual Studio 2015\Projects\Planilla\Planilla\bin\Debug\Entidad.pdb
+C:\Users\Darvin R. Sarantes\Documents\Visual Studio 2015\Projects\Planilla\Planilla\bin\Debug\Logica.pdb
+C:\Users\Darvin R. Sarantes\Documents\Visual Studio 2015\Projects\Planilla\Planilla\bin\Debug\MySql.Data.xml
+C:\Users\Darvin R. Sarantes\Documents\Visual Studio 2015\Projects\Planilla\Planilla\bin\Debug\Acceso.pdb
+C:\Users\Darvin R. Sarantes\Documents\Visual Studio 2015\Projects\Planilla\Planilla\obj\Debug\Planilla.csprojResolveAssemblyReference.cache
+C:\Users\Darvin R. Sarantes\Documents\Visual Studio 2015\Projects\Planilla\Planilla\obj\Debug\Planilla.Formularios.frmConfiguracion.resources
+C:\Users\Darvin R. Sarantes\Documents\Visual Studio 2015\Projects\Planilla\Planilla\obj\Debug\Planilla.frmLoginMySql.resources
+C:\Users\Darvin R. Sarantes\Documents\Visual Studio 2015\Projects\Planilla\Planilla\obj\Debug\Planilla.frmLogin.resources
+C:\Users\Darvin R. Sarantes\Documents\Visual Studio 2015\Projects\Planilla\Planilla\obj\Debug\Planilla.Formularios.Principal.resources
+C:\Users\Darvin R. Sarantes\Documents\Visual Studio 2015\Projects\Planilla\Planilla\obj\Debug\Planilla.MDIPrincipal.resources
+C:\Users\Darvin R. Sarantes\Documents\Visual Studio 2015\Projects\Planilla\Planilla\obj\Debug\Planilla.Properties.Resources.resources
+C:\Users\Darvin R. Sarantes\Documents\Visual Studio 2015\Projects\Planilla\Planilla\obj\Debug\Planilla.csproj.GenerateResource.Cache
+C:\Users\JUSET TORREZ\Documents\Visual Studio 2015\Projects\Planilla\Planilla\bin\Debug\MySql.Data.dll
+C:\Users\JUSET TORREZ\Documents\Visual Studio 2015\Projects\Planilla\Planilla\obj\Debug\Planilla.Formularios.frmUsuario.resources
+C:\Users\JUSET TORREZ\Documents\Visual Studio 2015\Projects\Planilla\Planilla\obj\Debug\Planilla.Formularios.frmConfiguracion.resources
+C:\Users\JUSET TORREZ\Documents\Visual Studio 2015\Projects\Planilla\Planilla\obj\Debug\Planilla.Formularios.Principal.resources
+C:\Users\JUSET TORREZ\Documents\Visual Studio 2015\Projects\Planilla\Planilla\obj\Debug\Planilla.csprojResolveAssemblyReference.cache

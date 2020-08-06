@@ -1,0 +1,21 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="Planilla.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="Servidor" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Servidor</Value>
+    </Setting>
+    <Setting Name="Usuario" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Usuario</Value>
+    </Setting>
+    <Setting Name="Contrasena" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Contraseña</Value>
+    </Setting>
+    <Setting Name="BaseDeDatos" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Base De Datos</Value>
+    </Setting>
+    <Setting Name="PuertoDeConexion" Type="System.String" Scope="User">
+      <Value Profile="(Default)">3306</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>

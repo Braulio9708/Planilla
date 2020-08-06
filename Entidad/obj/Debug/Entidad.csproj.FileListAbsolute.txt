@@ -1,0 +1,14 @@
+C:\Users\Braulio\Documents\Visual Studio 2015\Projects\Planilla\Entidad\bin\Debug\Entidad.dll
+C:\Users\Braulio\Documents\Visual Studio 2015\Projects\Planilla\Entidad\bin\Debug\Entidad.pdb
+C:\Users\Braulio\Documents\Visual Studio 2015\Projects\Planilla\Entidad\obj\Debug\Entidad.dll
+C:\Users\Braulio\Documents\Visual Studio 2015\Projects\Planilla\Entidad\obj\Debug\Entidad.pdb
+C:\Users\JUSET TORREZ\Documents\Visual Studio 2015\Projects\Planilla\Entidad\bin\Debug\Entidad.dll
+C:\Users\JUSET TORREZ\Documents\Visual Studio 2015\Projects\Planilla\Entidad\bin\Debug\Entidad.pdb
+C:\Users\JUSET TORREZ\Documents\Visual Studio 2015\Projects\Planilla\Entidad\obj\Debug\Entidad.dll
+C:\Users\JUSET TORREZ\Documents\Visual Studio 2015\Projects\Planilla\Entidad\obj\Debug\Entidad.pdb
+C:\Users\Darvin R. Sarantes\Documents\Visual Studio 2015\Projects\Planilla\Entidad\bin\Debug\Entidad.dll
+C:\Users\Darvin R. Sarantes\Documents\Visual Studio 2015\Projects\Planilla\Entidad\bin\Debug\Entidad.pdb
+C:\Users\Darvin R. Sarantes\Documents\Visual Studio 2015\Projects\Planilla\Entidad\obj\Debug\Entidad.csprojResolveAssemblyReference.cache
+C:\Users\Darvin R. Sarantes\Documents\Visual Studio 2015\Projects\Planilla\Entidad\obj\Debug\Entidad.dll
+C:\Users\Darvin R. Sarantes\Documents\Visual Studio 2015\Projects\Planilla\Entidad\obj\Debug\Entidad.pdb
+C:\Users\JUSET TORREZ\Documents\Visual Studio 2015\Projects\Planilla\Entidad\obj\Debug\Entidad.csprojResolveAssemblyReference.cache
