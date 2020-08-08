@@ -12,3 +12,7 @@ C:\Users\Darvin R. Sarantes\Documents\Visual Studio 2015\Projects\Planilla\Entid
 C:\Users\Darvin R. Sarantes\Documents\Visual Studio 2015\Projects\Planilla\Entidad\obj\Debug\Entidad.dll
 C:\Users\Darvin R. Sarantes\Documents\Visual Studio 2015\Projects\Planilla\Entidad\obj\Debug\Entidad.pdb
 C:\Users\JUSET TORREZ\Documents\Visual Studio 2015\Projects\Planilla\Entidad\obj\Debug\Entidad.csprojResolveAssemblyReference.cache
+C:\Users\JUSET TORREZ\Source\Repos\Braulio9708\Planilla\Entidad\bin\Debug\Entidad.dll
+C:\Users\JUSET TORREZ\Source\Repos\Braulio9708\Planilla\Entidad\bin\Debug\Entidad.pdb
+C:\Users\JUSET TORREZ\Source\Repos\Braulio9708\Planilla\Entidad\obj\Debug\Entidad.dll
+C:\Users\JUSET TORREZ\Source\Repos\Braulio9708\Planilla\Entidad\obj\Debug\Entidad.pdb

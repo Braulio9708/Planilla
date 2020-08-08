@@ -40,7 +40,7 @@ namespace Acceso
             try
             {
 
-                IniciarLaConexion(oDatos);
+                IniciarVariablesGlovales(oDatos);
 
                 Consultas = @"insert into modulointerfazusuario 
 				                (IdPrivilegio, IdUsuario, Acceso, IdUsuarioDeCreacion, 
@@ -97,7 +97,7 @@ namespace Acceso
             try
             {
 
-                IniciarLaConexion(oDatos);
+                IniciarVariablesGlovales(oDatos);
 
                 Consultas = @"UPDATE modulo set
 	                            IdPrivilegio = @IdPrivilegio,
@@ -150,7 +150,7 @@ namespace Acceso
             try
             {
 
-                IniciarLaConexion(oDatos);
+                IniciarVariablesGlovales(oDatos);
 
                 Consultas = @"delete from modulointerfazusuario where IdModuloInterfazUsuario = @IdModuloInterfazUsuario;";
                 Comando.CommandText = Consultas;
@@ -190,7 +190,7 @@ namespace Acceso
             try
             {
 
-                IniciarLaConexion(oDatos);
+                IniciarVariablesGlovales(oDatos);
 
                 Consultas = string.Format(@"SELECT miu.IdModuloInterfazUsuario,p.IdPrivilegio, p.idModuloInterfaz, mi.idInterfaz, mi.idModulo,
                 miu.Acceso, p.Nombre as 'Privilegio', i.NombreAMostrar,i.Nombre as 'Interfaz', m.Nombre as 'Modulo' 
@@ -232,7 +232,7 @@ namespace Acceso
             try
             {
 
-                IniciarLaConexion(oDatos);
+                IniciarVariablesGlovales(oDatos);
 
                 Consultas = string.Format(@"SELECT miu.IdModuloInterfazUsuario,p.IdPrivilegio, 
                 miu.Acceso, p.Nombre as 'Privilegio', i.NombreAMostrar,i.Nombre as 'Interfaz', m.Nombre as 'Modulo' 
@@ -278,20 +278,20 @@ namespace Acceso
 
         public bool ListadoPrivilegiosDelUsuariosPorIntefaz(ModuloInterfazUsuarioEN oRegistroEN, DatosDeConexionEN oDatos)
         {
-
+            
             try
             {
 
-                IniciarLaConexion(oDatos);
+                IniciarVariablesGlovales(oDatos);
 
                 Consultas = string.Format(@"SELECT miu.IdModuloInterfazUsuario,p.IdPrivilegio, p.idModuloInterfaz, mi.idInterfaz, mi.idModulo,
-                miu.Acceso, p.Nombre as 'Privilegio', i.NombreAMostrar,i.Nombre as 'Interfaz', m.Nombre as 'Modulo' 
-                FROM modulointerfazusuario as miu
-                inner join privilegio as p on p.IdPrivilegio = miu.IdPrivilegio
-                inner join modulointerfaz as mi on mi.idModuloInterfaz = p.idModuloInterfaz
-                inner join interfaz as i on i.idInterfaz = mi.idInterfaz
-                inner join modulo as m on m.idModulo = mi.idModulo
-                where miu.IdModuloInterfazUsuario > 0 and miu.IdUsuario = {0} and upper(trim( i.Nombre)) = upper('{1}') ", oRegistroEN.oUsuarioEN.IdUsuario, oRegistroEN.oPrivilegioEN.oModuloInterfazEN.oInterfazEN.Nombre.Trim());
+                                            miu.Acceso, p.Nombre as 'Privilegio', i.NombreAMostrar,i.Nombre as 'Interfaz', m.Nombre as 'Modulo' 
+                                            FROM modulointerfazusuario as miu
+                                            inner join privilegio as p on p.IdPrivilegio = miu.IdPrivilegio
+                                            inner join modulointerfaz as mi on mi.idModuloInterfaz = p.idModuloInterfaz
+                                            inner join interfaz as i on i.idInterfaz = mi.idInterfaz
+                                            inner join modulo as m on m.idModulo = mi.idModulo
+                                            where miu.IdModuloInterfazUsuario > 0 and miu.IdUsuario = {0} and upper(trim( i.Nombre)) = upper('{1}') ", oRegistroEN.oUsuarioEN.IdUsuario, oRegistroEN.oPrivilegioEN.oModuloInterfazEN.oInterfazEN.Nombre.Trim());
 
                 Comando.CommandText = Consultas;
 
@@ -326,7 +326,7 @@ namespace Acceso
             try
             {
 
-                IniciarLaConexion(oDatos);
+                IniciarVariablesGlovales(oDatos);
 
                 Consultas = string.Format(@"SELECT miu.IdModuloInterfazUsuario,p.IdPrivilegio, p.idModuloInterfaz, mi.idInterfaz, mi.idModulo,
                 miu.Acceso, p.Nombre as 'Privilegio', i.NombreAMostrar,i.Nombre as 'Interfaz', m.Nombre as 'Modulo' 
@@ -369,7 +369,7 @@ namespace Acceso
             try
             {
 
-                IniciarLaConexion(oDatos);
+                IniciarVariablesGlovales(oDatos);
 
                 Consultas = string.Format(@"SELECT miu.IdModuloInterfazUsuario,p.IdPrivilegio, p.idModuloInterfaz, mi.idInterfaz, mi.idModulo,
                 miu.Acceso, p.Nombre as 'Privilegio', i.NombreAMostrar,i.Nombre as 'Interfaz', m.Nombre as 'Modulo' 
@@ -411,7 +411,7 @@ namespace Acceso
             try
             {
 
-                IniciarLaConexion(oDatos);
+                IniciarVariablesGlovales(oDatos);
 
                 Consultas = string.Format(@"SELECT miu.IdModuloInterfazUsuario,p.IdPrivilegio, p.idModuloInterfaz, mi.idInterfaz, mi.idModulo,
                 miu.Acceso, p.Nombre as 'Privilegio', i.NombreAMostrar,i.Nombre as 'Interfaz', m.Nombre as 'Modulo' 
@@ -453,7 +453,7 @@ namespace Acceso
             try
             {
 
-                IniciarLaConexion(oDatos);
+                IniciarVariablesGlovales(oDatos);
 
                 Consultas = string.Format(@"SELECT miu.IdModuloInterfazUsuario,p.IdPrivilegio, p.idModuloInterfaz, mi.idInterfaz, mi.idModulo,
                 miu.Acceso, p.Nombre as 'Privilegio', i.NombreAMostrar,i.Nombre as 'Interfaz', m.Nombre as 'Modulo' 
@@ -495,7 +495,7 @@ namespace Acceso
             try
             {
 
-                IniciarLaConexion(oDatos);
+                IniciarVariablesGlovales(oDatos);
 
                 Consultas = string.Format(@"SELECT miu.IdModuloInterfazUsuario,p.IdPrivilegio, p.idModuloInterfaz, mi.idInterfaz, mi.idModulo,
                 miu.Acceso, p.Nombre as 'Privilegio', i.NombreAMostrar,i.Nombre as 'Interfaz', m.Nombre as 'Modulo' 
@@ -541,7 +541,7 @@ namespace Acceso
             try
             {
 
-                IniciarLaConexion(oDatos);
+                IniciarVariablesGlovales(oDatos);
 
                 switch (TipoDeOperacion.Trim().ToUpper())
                 {
@@ -610,7 +610,7 @@ namespace Acceso
 
         #region "Funciones que retornan información"
 
-        private void IniciarLaConexion(DatosDeConexionEN oDatos)
+        private void IniciarVariablesGlovales(DatosDeConexionEN oDatos)
         {
             Cnn = new MySqlConnection(TraerCadenaDeConexion(oDatos));
             Cnn.Open();

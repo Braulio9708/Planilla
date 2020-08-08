@@ -28,3 +28,13 @@ C:\Users\Darvin R. Sarantes\Documents\Visual Studio 2015\Projects\Planilla\Logic
 C:\Users\Darvin R. Sarantes\Documents\Visual Studio 2015\Projects\Planilla\Logica\obj\Debug\Logica.dll
 C:\Users\Darvin R. Sarantes\Documents\Visual Studio 2015\Projects\Planilla\Logica\obj\Debug\Logica.pdb
 C:\Users\JUSET TORREZ\Documents\Visual Studio 2015\Projects\Planilla\Logica\obj\Debug\Logica.csprojResolveAssemblyReference.cache
+C:\Users\JUSET TORREZ\Source\Repos\Braulio9708\Planilla\Logica\bin\Debug\Logica.pdb
+C:\Users\JUSET TORREZ\Source\Repos\Braulio9708\Planilla\Logica\bin\Debug\Acceso.dll
+C:\Users\JUSET TORREZ\Source\Repos\Braulio9708\Planilla\Logica\bin\Debug\Entidad.dll
+C:\Users\JUSET TORREZ\Source\Repos\Braulio9708\Planilla\Logica\bin\Debug\MySql.Data.dll
+C:\Users\JUSET TORREZ\Source\Repos\Braulio9708\Planilla\Logica\bin\Debug\Acceso.pdb
+C:\Users\JUSET TORREZ\Source\Repos\Braulio9708\Planilla\Logica\bin\Debug\Entidad.pdb
+C:\Users\JUSET TORREZ\Source\Repos\Braulio9708\Planilla\Logica\bin\Debug\MySql.Data.xml
+C:\Users\JUSET TORREZ\Source\Repos\Braulio9708\Planilla\Logica\obj\Debug\Logica.csprojResolveAssemblyReference.cache
+C:\Users\JUSET TORREZ\Source\Repos\Braulio9708\Planilla\Logica\obj\Debug\Logica.dll
+C:\Users\JUSET TORREZ\Source\Repos\Braulio9708\Planilla\Logica\obj\Debug\Logica.pdb
