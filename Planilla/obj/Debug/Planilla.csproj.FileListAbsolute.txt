@@ -61,3 +61,6 @@ C:\Users\JUSET TORREZ\Documents\Visual Studio 2015\Projects\Planilla\Planilla\ob
 C:\Users\JUSET TORREZ\Documents\Visual Studio 2015\Projects\Planilla\Planilla\obj\Debug\Planilla.Formularios.frmConfiguracion.resources
 C:\Users\JUSET TORREZ\Documents\Visual Studio 2015\Projects\Planilla\Planilla\obj\Debug\Planilla.Formularios.Principal.resources
 C:\Users\JUSET TORREZ\Documents\Visual Studio 2015\Projects\Planilla\Planilla\obj\Debug\Planilla.csprojResolveAssemblyReference.cache
+C:\Users\JUSET TORREZ\Source\Repos\Braulio9708\Planilla\Planilla\bin\Debug\Planilla.exe.config
+C:\Users\JUSET TORREZ\Source\Repos\Braulio9708\Planilla\Planilla\obj\Debug\Planilla.exe
+C:\Users\JUSET TORREZ\Source\Repos\Braulio9708\Planilla\Planilla\obj\Debug\Planilla.pdb
