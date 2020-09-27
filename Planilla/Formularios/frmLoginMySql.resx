@@ -117,4 +117,19 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="BaseDeDatos" xml:space="preserve">
+    <value>String</value>
+  </data>
+  <data name="Contrasena" xml:space="preserve">
+    <value>String</value>
+  </data>
+  <data name="PuertoDeConeccion" xml:space="preserve">
+    <value>Int</value>
+  </data>
+  <data name="Servidor" xml:space="preserve">
+    <value>String</value>
+  </data>
+  <data name="Usuario" xml:space="preserve">
+    <value>String</value>
+  </data>
 </root>

@@ -138,23 +138,23 @@ namespace Planilla.Formularios
 
             try
             {
-                this.Cursor = Cursors.WaitCursor;
+                this.Cursor = Cursors.WaitCursor; 
 
                 RolEN oRegistroEN = new RolEN();
                 RolLN oRegistroLN = new RolLN();
                 oRegistroEN.Where = "";
                 oRegistroEN.OrderBy = "";
-
+                
                 if (oRegistroLN.ListadoParaCombos(oRegistroEN, Program.oDatosDeConexion))
-                {
+                {                    
                     cmbTipoDeCuenta.DataSource = oRegistroLN.TraerDatos();
                     cmbTipoDeCuenta.DisplayMember = "Nombre";
                     cmbTipoDeCuenta.ValueMember = "IdRol";
-                    cmbTipoDeCuenta.SelectedIndex = -1;
-
+                    cmbTipoDeCuenta.SelectedIndex = -1;                 
                 }
+                
                 else { throw new ArgumentException(oRegistroLN.Error); }
-
+                MessageBox.Show("Mensage");
             }
             catch (Exception ex)
             {
@@ -376,7 +376,7 @@ namespace Planilla.Formularios
                 UsuarioLN oRegistrosLN = new UsuarioLN();
 
                 oRegistrosEN.Where = WhereDinamico();
-
+                
                 if (oRegistrosLN.Listado(oRegistrosEN, Program.oDatosDeConexion))
                 {
 
@@ -599,7 +599,7 @@ namespace Planilla.Formularios
         }
 
         private void tsbFiltrar_Click(object sender, EventArgs e)
-        {
+        {            
             LLenarListado();
         }
 
@@ -927,7 +927,6 @@ namespace Planilla.Formularios
                 LLenarListado();
             }
         }
-
         
     }
     

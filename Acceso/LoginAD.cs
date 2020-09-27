@@ -22,7 +22,7 @@ namespace Acceso
 
         private string TraerCadenaDeConexion(DatosDeConexionEN oDatos)
         {
-            string Cadena = string.Format(@"Data Source= '{0}'; Initial Catalog = '{1}';Persist Security Info=True;User ID='{2}';Password='{3}';", oDatos.Servidor, oDatos.BaseDeDatos, oDatos.Usuario, oDatos.Contrasena);
+            string Cadena = string.Format("Data Source= '{0}'; Initial Catalog = '{1}';Persist Security Info=True;User ID='{2}';Password='{3}';", oDatos.Servidor, oDatos.BaseDeDatos, oDatos.Usuario, oDatos.Contrasena);
             return Cadena;
         }
         private void InicializarVariablesGlobales(DatosDeConexionEN oDatos)

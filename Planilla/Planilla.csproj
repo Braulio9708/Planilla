@@ -52,6 +52,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Formularios\FormatoDGV.cs" />
+    <Compile Include="Formularios\frmLoginMySql1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>frmLoginMySql.resx</DependentUpon>
+    </Compile>
     <Compile Include="Formularios\frmUsuario.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -92,6 +97,8 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios\frmLoginMySql.resx">
       <DependentUpon>frmLoginMySql.cs</DependentUpon>
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>frmLoginMySql1.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios\frmLogin.resx">
       <DependentUpon>frmLogin.cs</DependentUpon>

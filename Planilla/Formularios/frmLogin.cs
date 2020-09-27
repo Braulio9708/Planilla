@@ -64,7 +64,7 @@ namespace Planilla
         {
             try
             {
-                txtServidor.Text = Program.oDatosDeConexioEN.Servidor;
+                txtServidor.Text = Program.oDatosDeConexioEN.Servidor;                
                 txtServidor.ReadOnly = true;
             }
             catch (Exception ex)

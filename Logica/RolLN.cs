@@ -112,14 +112,14 @@ namespace Logica
 
         public bool ListadoParaCombos(RolEN oREgistroEN, DatosDeConexionEN oDatos)
         {
-
+              
             if (oRolAD.ListadoParaCombos(oREgistroEN, oDatos))
-            {
+            {                
                 Error = string.Empty;
                 return true;
             }
             else
-            {
+            {                
                 Error = oRolAD.Error;
                 return false;
             }

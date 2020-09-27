@@ -19,11 +19,11 @@ namespace Planilla
         public static bool Inicializar = false;
         public static bool Iniciar = false;
         public static string NombreSistema = " ";//"Sistema Contable";
-        public static string NombreEmpresa = "Braulio y asociados";
+        public static string NombreEmpresa = "Deleit's Pizza";
         public static string EntidadIngSistemas = "Servicios tecnicos S.A";
         public static string VersionSistema = Version();
         public static string NombreVersionSistema = NombreSistema + VersionSistema;
-        public static DatosDeConexionEN oDatosDeConexion = null;
+        public static DatosDeConexionEN oDatosDeConexion = null;        
         public static LoginEN oLoginEN = null;
         public static string Errores;
         public static ConfiguracionEN oConfiguracionEN = new ConfiguracionEN();
@@ -56,11 +56,13 @@ namespace Planilla
         {
             try
             {
+                Program.oDatosDeConexion = new DatosDeConexionEN();
                 Program.oDatosDeConexioEN.Servidor = Properties.Settings.Default.Servidor;
                 Program.oDatosDeConexioEN.Usuario = Properties.Settings.Default.Usuario;
                 Program.oDatosDeConexioEN.Contrasena = Properties.Settings.Default.Contrasena;
                 Program.oDatosDeConexioEN.BaseDeDatos = Properties.Settings.Default.BaseDeDatos;
                 Program.oDatosDeConexioEN.PuertoDeConeccion = Properties.Settings.Default.PuertoDeConexion;
+                
             }
             catch (Exception ex)
             {

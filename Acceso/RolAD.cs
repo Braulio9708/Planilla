@@ -22,7 +22,7 @@ namespace Acceso
 
         private DataTable DT { set; get; }
 
-        public RolAD()
+        /*public RolAD()
         {
             oTransaccionesAD = new TransaccionesAD();
             oTransaccionesAD.Modulo = "General";
@@ -30,7 +30,7 @@ namespace Acceso
             oTransaccionesAD.NombreDelEquipo = Environment.MachineName;
             oTransaccionesAD.FechaDeCreacion = System.DateTime.Now;
             oTransaccionesAD.Tabla = "Rol";
-        }
+        }*/
 
         #region "Funcion De Datos dll"
 
@@ -226,19 +226,15 @@ namespace Acceso
 
             try
             {
-
+                
                 InicialisarVariablesGlovales(oDatos);
-
+                
                 Consultas = string.Format(@"SELECT IdRol, Nombre, Descripcion, Estado, IdUsuarioDeCreacion,
                                             FechaDeCreacion, IdUsuarioDeModificacion, FechaDeModificacion 
                                             FROM rol where IdRol > 0 {0} {1}; ", oRegistroEN.Where, oRegistroEN.OrderBy);
                 Comando.CommandText = Consultas;
-
-                Adaptador = new MySqlDataAdapter();
-                DT = new DataTable();
-
-                Adaptador.SelectCommand = Comando;
-                Adaptador.Fill(DT);
+                Console.WriteLine(Consultas);
+                InicialisarAdaptador();
 
                 return true;
 
@@ -313,11 +309,12 @@ namespace Acceso
         }
         private string TraerCadenaDeConexion(DatosDeConexionEN oDatos)
         {
-            string Cadena = string.Format(@"Data Source = '{0}'; Initial Catalog = '{1}'; Persist Security Info = True; User ID = '{2}'; Password = '{3}'", oDatos.Servidor, oDatos.BaseDeDatos, oDatos.Usuario, oDatos.Contrasena);
-            return Cadena;
+            string cadena = string.Format("Data Source='{0}';Initial Catalog='{1}';Persist Security Info=True;User ID='{2}';Password='{3}'", oDatos.Servidor, oDatos.BaseDeDatos, oDatos.Usuario, oDatos.Contrasena);
+            return cadena;
         }
         private void InicialisarVariablesGlovales(DatosDeConexionEN oDatos)
         {
+            
             Cnn = new MySqlConnection(TraerCadenaDeConexion(oDatos));
             Cnn.Open();
 
@@ -325,6 +322,7 @@ namespace Acceso
             Comando.Connection = Cnn;
             Comando.CommandType = CommandType.Text;
         }
+
         private void InicialisarVariablesGlobalesProcedure(DatosDeConexionEN oDatos)
         {
 

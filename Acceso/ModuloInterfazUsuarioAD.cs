@@ -281,9 +281,9 @@ namespace Acceso
             
             try
             {
-
+                
                 IniciarVariablesGlovales(oDatos);
-
+                
                 Consultas = string.Format(@"SELECT miu.IdModuloInterfazUsuario,p.IdPrivilegio, p.idModuloInterfaz, mi.idInterfaz, mi.idModulo,
                                             miu.Acceso, p.Nombre as 'Privilegio', i.NombreAMostrar,i.Nombre as 'Interfaz', m.Nombre as 'Modulo' 
                                             FROM modulointerfazusuario as miu
@@ -612,8 +612,9 @@ namespace Acceso
 
         private void IniciarVariablesGlovales(DatosDeConexionEN oDatos)
         {
-            Cnn = new MySqlConnection(TraerCadenaDeConexion(oDatos));
-            Cnn.Open();
+            
+            Cnn = new MySqlConnection(TraerCadenaDeConexion(oDatos));            
+            Cnn.Open();            
 
             Comando = new MySqlCommand();
             Comando.Connection = Cnn;
@@ -662,8 +663,9 @@ namespace Acceso
 
         private string TraerCadenaDeConexion(DatosDeConexionEN oDatos)
         {
-            string cadena = string.Format("Data Source='{0}';Initial Catalog='{1}';Persist Security Info=True;User ID='{2}';Password='{3}'", oDatos.Servidor, oDatos.BaseDeDatos, oDatos.Usuario, oDatos.Contrasena);
-            return cadena;
+            
+            string cadena = string.Format("Data Source='{0}';Initial Catalog='{1}';Persist Security Info=True;User ID='{2}';Password='{3}'", oDatos.Servidor, oDatos.BaseDeDatos, oDatos.Usuario, oDatos.Contrasena);            
+            return cadena;            
         }
 
         public DataTable TraerDatos()

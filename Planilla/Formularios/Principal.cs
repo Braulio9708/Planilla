@@ -15,7 +15,7 @@ namespace Planilla.Formularios
 {
     public partial class Principal : Form
     {
-        private int childFormNumber = 0;
+        
         //creamos el objeto pero no lo inicializamos.
         frmConfiguracion ofrmConfiguracion = null;
         frmUsuario ofrmUsuario = null;

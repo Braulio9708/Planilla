@@ -184,13 +184,15 @@ namespace Acceso
         {
             try
             {
+                
                 InicialisarVariablesGlovales(oDatos);
-
+                
                 Consultas = string.Format(@"SELECT u.IdUsuario, u.IdRol, u.Nombre as 'Usuario', u.Login, u.Contrasena, u.Email, r.Nombre as 'TipoDeCuenta', u.Estado  FROM usuario as u
                                             inner join rol as r on r.idRol = u.idRol
                                             where u.idUsuario > 0 {0} {1} ", oRegistroEN.Where, oRegistroEN.OrderBy);
                 Comando.CommandText = Consultas;
 
+             
                 Adaptador = new MySqlDataAdapter();
                 DT = new DataTable();
 
@@ -321,13 +323,14 @@ namespace Acceso
             return oRegistroEN;
         }
         private string TraerCadenaDeConexion(DatosDeConexionEN oDatos)
-        {
-            string Cadena = string.Format(@"Data Source = '{0}'; Initial Catalog = '{1}'; Persist Security Info = True; User ID = '{2}'; Password = '{3}'", oDatos.Servidor, oDatos.BaseDeDatos, oDatos.Usuario, oDatos.Contrasena);
-            return Cadena;
+        {            
+            ///Error en la cadena de conexion
+            string cadena = string.Format("Data Source='{0}';Initial Catalog='{1}';Persist Security Info=True;User ID='{2}';Password='{3}'", oDatos.Servidor, oDatos.BaseDeDatos, oDatos.Usuario, oDatos.Contrasena);            
+            return cadena;
         }
         private void InicialisarVariablesGlovales(DatosDeConexionEN oDatos)
-        {
-            Cnn = new MySqlConnection(TraerCadenaDeConexion(oDatos));
+        {            
+            Cnn = new MySqlConnection(TraerCadenaDeConexion(oDatos));            
             Cnn.Open();
 
             Comando = new MySqlCommand();
