@@ -145,7 +145,7 @@ namespace Planilla.Formularios
                 oRegistroEN.Where = "";
                 oRegistroEN.OrderBy = "";
                 
-                if (oRegistroLN.ListadoParaCombos(oRegistroEN, Program.oDatosDeConexion))
+                if (oRegistroLN.ListadoParaCombos(oRegistroEN, Program.oDatosDeConexioEN))
                 {                    
                     cmbTipoDeCuenta.DataSource = oRegistroLN.TraerDatos();
                     cmbTipoDeCuenta.DisplayMember = "Nombre";
@@ -154,7 +154,7 @@ namespace Planilla.Formularios
                 }
                 
                 else { throw new ArgumentException(oRegistroLN.Error); }
-                MessageBox.Show("Mensage");
+                
             }
             catch (Exception ex)
             {
@@ -377,12 +377,12 @@ namespace Planilla.Formularios
 
                 oRegistrosEN.Where = WhereDinamico();
                 
-                if (oRegistrosLN.Listado(oRegistrosEN, Program.oDatosDeConexion))
-                {
-
+                
+                if (oRegistrosLN.Listado(oRegistrosEN, Program.oDatosDeConexioEN))
+                {                    
                     dgvListar.Columns.Clear();
                     System.Diagnostics.Debug.Print(oRegistrosLN.TraerDatos().Rows.Count.ToString());
-
+                    //MessageBox.Show(Program.oDatosDeConexioEN.Servidor, "PRUEVA DE SERVIDOR");
                     if (ActivarFiltros == true)
                     {
                         dgvListar.DataSource = AgregarColumnaSeleccionar(oRegistrosLN.TraerDatos());
@@ -526,7 +526,7 @@ namespace Planilla.Formularios
                 oRegistroEN.oUsuarioEN.IdUsuario = Program.oLoginEN.IdUsuario;
                 oRegistroEN.oPrivilegioEN.oModuloInterfazEN.oInterfazEN.Nombre = Nombre_Entidad_Privilegio;
 
-                if (oRegistroLN.ListadoPrivilegiosDelUsuariosPorIntefaz(oRegistroEN, Program.oDatosDeConexion))
+                if (oRegistroLN.ListadoPrivilegiosDelUsuariosPorIntefaz(oRegistroEN, Program.oDatosDeConexioEN))
                 {
 
                     foreach (ToolStripItem item in cmMenu.Items)

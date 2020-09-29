@@ -620,17 +620,7 @@ namespace Acceso
             Comando.Connection = Cnn;
             Comando.CommandType = CommandType.Text;
         }
-
-        private void IniciarLaConexionpProcedimiento(DatosDeConexionEN oDatos)
-        {
-            Cnn = new MySqlConnection(TraerCadenaDeConexion(oDatos));
-            Cnn.Open();
-
-            Comando = new MySqlCommand();
-            Comando.Connection = Cnn;
-            Comando.CommandType = CommandType.StoredProcedure;
-        }
-
+        
         private void FinalizarLaConexion()
         {
             if (Cnn != null)
@@ -662,9 +652,8 @@ namespace Acceso
         }
 
         private string TraerCadenaDeConexion(DatosDeConexionEN oDatos)
-        {
-            
-            string cadena = string.Format("Data Source='{0}';Initial Catalog='{1}';Persist Security Info=True;User ID='{2}';Password='{3}'", oDatos.Servidor, oDatos.BaseDeDatos, oDatos.Usuario, oDatos.Contrasena);            
+        {            
+            string cadena = string.Format("Data Source='{0}';Initial Catalog='{1}';Persist Security Info=True;User ID='{2}';Password='{3}'", oDatos.Servidor, oDatos.BaseDeDatos, oDatos.Usuario, oDatos.Contrasena);
             return cadena;            
         }
 

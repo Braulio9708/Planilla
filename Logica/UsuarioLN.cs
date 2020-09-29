@@ -16,6 +16,7 @@ namespace Logica
             public string Error { set; get; }
 
             private UsuarioAD oUsuarioAD = new UsuarioAD();
+            
 
             public bool Agregar(UsuarioEN oREgistroEN, DatosDeConexionEN oDatos)
             {
@@ -81,8 +82,8 @@ namespace Logica
 
             public bool Listado(UsuarioEN oREgistroEN, DatosDeConexionEN oDatos)
             {
-
-                if (oUsuarioAD.Listado(oREgistroEN, oDatos))
+            
+            if (oUsuarioAD.Listado(oREgistroEN, oDatos))
                 {
                     Error = string.Empty;
                     return true;

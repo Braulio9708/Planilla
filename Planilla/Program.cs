@@ -23,7 +23,7 @@ namespace Planilla
         public static string EntidadIngSistemas = "Servicios tecnicos S.A";
         public static string VersionSistema = Version();
         public static string NombreVersionSistema = NombreSistema + VersionSistema;
-        public static DatosDeConexionEN oDatosDeConexion = null;        
+        public static DatosDeConexionEN  oDatosDeConexion= null;        
         public static LoginEN oLoginEN = null;
         public static string Errores;
         public static ConfiguracionEN oConfiguracionEN = new ConfiguracionEN();

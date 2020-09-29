@@ -7,6 +7,7 @@ using MySql.Data.MySqlClient;
 using System.Data;
 using Entidad;
 
+
 namespace Acceso
 {
     public class UsuarioAD
@@ -287,6 +288,7 @@ namespace Acceso
             }
             catch (Exception ex)
             {
+                
                 this.Error = ex.Message;
 
                 return false;
@@ -323,15 +325,21 @@ namespace Acceso
             return oRegistroEN;
         }
         private string TraerCadenaDeConexion(DatosDeConexionEN oDatos)
-        {            
+        {                     
             ///Error en la cadena de conexion
-            string cadena = string.Format("Data Source='{0}';Initial Catalog='{1}';Persist Security Info=True;User ID='{2}';Password='{3}'", oDatos.Servidor, oDatos.BaseDeDatos, oDatos.Usuario, oDatos.Contrasena);            
-            return cadena;
+            string cadena = string.Format("Data Source='{0}';Initial Catalog='{1}';Persist Security Info=True;User ID='{2}';Password='{3}'", oDatos.Servidor, oDatos.BaseDeDatos, oDatos.Usuario, oDatos.Contrasena);
+            Console.WriteLine(oDatos);
+            Console.WriteLine(oDatos.Servidor);
+            
+            Console.WriteLine(cadena, "PRUEVA DE CADENA Y SERVIDOR");
+
+            return cadena;            
         }
         private void InicialisarVariablesGlovales(DatosDeConexionEN oDatos)
-        {            
+        {
+            
             Cnn = new MySqlConnection(TraerCadenaDeConexion(oDatos));            
-            Cnn.Open();
+            Cnn.Open();            
 
             Comando = new MySqlCommand();
             Comando.Connection = Cnn;
