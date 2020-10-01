@@ -38,3 +38,13 @@ C:\Users\JUSET TORREZ\Source\Repos\Braulio9708\Planilla\Logica\bin\Debug\MySql.D
 C:\Users\JUSET TORREZ\Source\Repos\Braulio9708\Planilla\Logica\obj\Debug\Logica.csprojResolveAssemblyReference.cache
 C:\Users\JUSET TORREZ\Source\Repos\Braulio9708\Planilla\Logica\obj\Debug\Logica.dll
 C:\Users\JUSET TORREZ\Source\Repos\Braulio9708\Planilla\Logica\obj\Debug\Logica.pdb
+C:\Users\Inspiron i5\Source\Repos\Planilla\Logica\bin\Debug\Logica.pdb
+C:\Users\Inspiron i5\Source\Repos\Planilla\Logica\bin\Debug\Acceso.dll
+C:\Users\Inspiron i5\Source\Repos\Planilla\Logica\bin\Debug\Entidad.dll
+C:\Users\Inspiron i5\Source\Repos\Planilla\Logica\bin\Debug\MySql.Data.dll
+C:\Users\Inspiron i5\Source\Repos\Planilla\Logica\bin\Debug\Acceso.pdb
+C:\Users\Inspiron i5\Source\Repos\Planilla\Logica\bin\Debug\Entidad.pdb
+C:\Users\Inspiron i5\Source\Repos\Planilla\Logica\bin\Debug\MySql.Data.xml
+C:\Users\Inspiron i5\Source\Repos\Planilla\Logica\obj\Debug\Logica.csprojResolveAssemblyReference.cache
+C:\Users\Inspiron i5\Source\Repos\Planilla\Logica\obj\Debug\Logica.dll
+C:\Users\Inspiron i5\Source\Repos\Planilla\Logica\obj\Debug\Logica.pdb
