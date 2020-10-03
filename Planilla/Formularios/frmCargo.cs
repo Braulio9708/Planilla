@@ -43,7 +43,7 @@ namespace Planilla.Formularios
         public bool Activar_btn_Nuevo { set; get; }
         public bool Activar_MenuContextual { set; get; }
         public bool Activar_MenuContextual_Nuevo { set; get; }
-        public bool Activar_MenuContextual_NuevoApartirDe { set; get; }
+        public bool Activar_MenuContextual_NuevoApartiDe { set; get; }
         public bool Activar_MenuContextual_Modificar { set; get; }
         public bool Activar_MenuContextual_Eliminar { set; get; }
         public bool Activar_MenuContextual_Consultar { set; get; }
@@ -52,13 +52,12 @@ namespace Planilla.Formularios
         public bool Activar_Exportacion { set; get; }
 
 
-        private void ActivarFiltrosDelaBusqueda()
+        private void ActivarFiltrosDeBusqueda()
         {
             if (ActivarFiltros == false)
             {
-
                 tsbFiltrar.DisplayStyle = ToolStripItemDisplayStyle.ImageAndText;
-                tsbNuevo.DisplayStyle = ToolStripItemDisplayStyle.ImageAndText;
+                tsbImprimir.DisplayStyle = ToolStripItemDisplayStyle.ImageAndText;
                 tsbImprimir.DisplayStyle = ToolStripItemDisplayStyle.ImageAndText;
                 tsbMarcarTodos.DisplayStyle = ToolStripItemDisplayStyle.ImageAndText;
                 tsbSeleccionarTodos.DisplayStyle = ToolStripItemDisplayStyle.ImageAndText;
@@ -72,26 +71,24 @@ namespace Planilla.Formularios
 
                 Activar_MenuContextual_Consultar = true;
                 Activar_MenuContextual_Nuevo = true;
-                Activar_MenuContextual_NuevoApartirDe = true;
+                Activar_MenuContextual_NuevoApartiDe = true;
                 Activar_MenuContextual_Eliminar = true;
                 Activar_MenuContextual_Modificar = true;
-
 
             }
             else
             {
                 if (ActivarFiltros == true)
                 {
-
                     tsbFiltrar.DisplayStyle = ToolStripItemDisplayStyle.ImageAndText;
-                    tsbNuevo.DisplayStyle = ToolStripItemDisplayStyle.ImageAndText;
+                    tsbImprimir.DisplayStyle = ToolStripItemDisplayStyle.ImageAndText;
                     tsbImprimir.DisplayStyle = ToolStripItemDisplayStyle.ImageAndText;
                     tsbMarcarTodos.DisplayStyle = ToolStripItemDisplayStyle.ImageAndText;
                     tsbSeleccionarTodos.DisplayStyle = ToolStripItemDisplayStyle.ImageAndText;
 
                     tsbSeleccionarTodos.Visible = true;
 
-                    if (VariosRegistros == false)
+                    if (VariosRegistros == true)
                     {
                         tsbMarcarTodos.Visible = true;
                     }
@@ -99,19 +96,19 @@ namespace Planilla.Formularios
                     {
                         tsbMarcarTodos.Visible = true;
                     }
-
                     this.Text = TituloDeLaVentana;
 
-                    if (tsbNuevo.Enabled == true)
+                    if (tsbImprimir.Enabled == true)
                     {
-                        tsbNuevo.Visible = Activar_btn_Nuevo;
+                        tsbImprimir.Visible = Activar_btn_Nuevo;
                     }
                     if (tsbImprimir.Visible == true)
+                    {
                         tsbImprimir.Visible = Activar_btn_Imprimir;
+                    }
 
                     mcsMenu.Enabled = Activar_MenuContextual;
                     AgregarColumnasAlDTRegistro();
-
                 }
             }
         }
@@ -392,7 +389,7 @@ namespace Planilla.Formularios
                 oRegistroEN.oPrivilegioEN.oModuloInterfazEN.oInterfazEN.Nombre = Nombre_Entidad_Privilegio;
 
                 if(oRegistroLN.ListadoPrivilegiosDelUsuariosPorIntefaz(oRegistroEN, Program.oDatosDeConexioEN))
-                {                   
+                {
                     foreach(ToolStripItem item in mcsMenu.Items)
                     {
                         if(item.Tag != null)
@@ -431,14 +428,14 @@ namespace Planilla.Formularios
 
         private void MostrarFormularioParaOperacion(string OperacionARealizar)
         {
-             frmCargoOperacion ofrmCargoOperacion = new frmCargoOperacion();
-            ofrmCargoOperacion.OperacionARealizar = OperacionARealizar;
+           /*frmCargoOperacion ofrmCargoOperacion = new frmCargoOperacion();
+             ofrmCargoOperacion.OperacionARealizar = OperacionARealizar();
              ofrmCargoOperacion.Nombre_Entidad_Privilegio = Nombre_Entidad_Privilegio;
-             ofrmCargoOperacion.Nombre_Entidad = Nombre_Entidad;
+             ofrmCargoOperacion.Nombre_Entidad;
              ofrmCargoOperacion.ValorLlavePrimariaEntidad = this.ValorLlavePrimariaEntidad;
              ofrmCargoOperacion.MdiParent = this.ParentForm;
              ofrmCargoOperacion.Show();
-             
+             */
         }
 
         private void AsignarLalvePrimaria()
@@ -455,7 +452,7 @@ namespace Planilla.Formularios
             dgvLista.ContextMenuStrip = mcsMenu;
             CargarPrivilegiosUsuario();
 
-            ActivarFiltrosDelaBusqueda();
+            ActivarFiltrosDeBusqueda();
             tsbFiltroAutomatico_Click(null, null);
         }
 

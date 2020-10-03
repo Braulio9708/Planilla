@@ -572,13 +572,13 @@ namespace Planilla.Formularios
         private void MostrarFormularioParaOperacion(string OperacionesARealizar)
         {
 
-            frmUsuarioOperacion ofrmUsuarioOperacion = new frmUsuarioOperacion();
+            /*frmUsuarioOperacion ofrmUsuarioOperacion = new frmUsuarioOperacion();
             ofrmUsuarioOperacion.OperacionARealizar = OperacionesARealizar;
             ofrmUsuarioOperacion.Nombre_Entidad_Privilegio = Nombre_Entidad_Privilegio;
-            ofrmUsuarioOperacion.Nombre_Entidad = Nombre_Entidad;
-            ofrmUsuarioOperacion.ValorLlavePrimariaEntidad = this.ValorDeLaLlavePrimariaEntidad;
+            ofrmUsuarioOperacion.NombreEntidad = Nombre_Entidad;
+            ofrmUsuarioOperacion.ValorLlavePrimariaEntidad = this.ValorLlavePrimariaEntidad;
             ofrmUsuarioOperacion.MdiParent = this.ParentForm;
-            ofrmUsuarioOperacion.Show();
+            ofrmUsuarioOperacion.Show();*/
 
         }
 

@@ -250,7 +250,7 @@ namespace Planilla.Formularios
                         if (item.GetType() == typeof(System.Windows.Forms.Button))
                         {
                             Button btn = (Button)item;
-                            if (SControles.Contains(btn.Name.Trim()))
+                            if (SControles.Contains(btn.Name.Trim()) && btn.Enabled == true)
                             {
                                 btn.Visible = true;
                             }
@@ -373,7 +373,6 @@ namespace Planilla.Formularios
 
         private void btnEmpleado_Click(object sender, EventArgs e)
         {
-            btnCargo.Enabled = true;
             OcultarControlesDentroDelPanel();
             string MostrarControles = "btnCargo";
             VisualizarControlesDentroDelPanel(MostrarControles);
@@ -387,8 +386,8 @@ namespace Planilla.Formularios
             {
                 ofrmCargo = new frmCargo();
                 ofrmCargo.MdiParent = this;
-                ofrmCargo.StartPosition = FormStartPosition.CenterScreen;
-                //ofrmCargo.WindowState = FormWindowState.Maximized;
+                ofrmConfiguracion.StartPosition = FormStartPosition.CenterScreen;
+                ofrmConfiguracion.WindowState = FormWindowState.Maximized;
                 ofrmCargo.Show();
             }
             else
@@ -397,5 +396,7 @@ namespace Planilla.Formularios
             }
             this.Cursor = Cursors.Default;
         }
+
+        
     }
 }

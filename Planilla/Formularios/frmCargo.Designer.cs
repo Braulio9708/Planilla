@@ -29,9 +29,9 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle28 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle29 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle30 = new System.Windows.Forms.DataGridViewCellStyle();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.txtCargo = new System.Windows.Forms.TextBox();
@@ -41,6 +41,7 @@
             this.tsMenu = new System.Windows.Forms.ToolStrip();
             this.tsbFiltroAutomatico = new System.Windows.Forms.ToolStripButton();
             this.tsbFiltrar = new System.Windows.Forms.ToolStripButton();
+            this.tsbNuevo = new System.Windows.Forms.ToolStripButton();
             this.tsbImprimir = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.tsbMarcarTodos = new System.Windows.Forms.ToolStripButton();
@@ -54,8 +55,6 @@
             this.cmEliminar = new System.Windows.Forms.ToolStripMenuItem();
             this.cmVisualizar = new System.Windows.Forms.ToolStripMenuItem();
             this.cmImprimir = new System.Windows.Forms.ToolStripMenuItem();
-            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
-            this.tsbNuevo = new System.Windows.Forms.ToolStripButton();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -65,7 +64,6 @@
             this.statusStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvLista)).BeginInit();
             this.mcsMenu.SuspendLayout();
-            this.flowLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // splitContainer1
@@ -77,15 +75,15 @@
             // 
             // splitContainer1.Panel1
             // 
-            this.splitContainer1.Panel1.Controls.Add(this.flowLayoutPanel1);
+            this.splitContainer1.Panel1.Controls.Add(this.groupBox1);
             // 
             // splitContainer1.Panel2
             // 
             this.splitContainer1.Panel2.Controls.Add(this.tsMenu);
             this.splitContainer1.Panel2.Controls.Add(this.statusStrip1);
             this.splitContainer1.Panel2.Controls.Add(this.dgvLista);
-            this.splitContainer1.Size = new System.Drawing.Size(963, 545);
-            this.splitContainer1.SplitterDistance = 177;
+            this.splitContainer1.Size = new System.Drawing.Size(613, 378);
+            this.splitContainer1.SplitterDistance = 123;
             this.splitContainer1.TabIndex = 0;
             // 
             // groupBox1
@@ -94,9 +92,9 @@
             this.groupBox1.Controls.Add(this.txtIdentificador);
             this.groupBox1.Controls.Add(this.chkCargo);
             this.groupBox1.Controls.Add(this.chkIdentificador);
-            this.groupBox1.Location = new System.Drawing.Point(3, 3);
+            this.groupBox1.Location = new System.Drawing.Point(12, 12);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(960, 171);
+            this.groupBox1.Size = new System.Drawing.Size(589, 100);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Informacion de cargos del empleado";
@@ -152,7 +150,7 @@
             this.tsMenu.Location = new System.Drawing.Point(0, 0);
             this.tsMenu.Name = "tsMenu";
             this.tsMenu.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
-            this.tsMenu.Size = new System.Drawing.Size(963, 25);
+            this.tsMenu.Size = new System.Drawing.Size(613, 25);
             this.tsMenu.TabIndex = 3;
             this.tsMenu.Text = "toolStrip1";
             // 
@@ -176,6 +174,16 @@
             this.tsbFiltrar.Text = "Filtrar";
             this.tsbFiltrar.ToolTipText = "Filtrar (F5)";
             this.tsbFiltrar.Click += new System.EventHandler(this.tsbFiltrar_Click);
+            // 
+            // tsbNuevo
+            // 
+            this.tsbNuevo.Image = global::Planilla.Properties.Resources.new24x24;
+            this.tsbNuevo.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbNuevo.Name = "tsbNuevo";
+            this.tsbNuevo.Size = new System.Drawing.Size(62, 22);
+            this.tsbNuevo.Text = "Nuevo";
+            this.tsbNuevo.ToolTipText = "Nuevo (F2)";
+            this.tsbNuevo.Click += new System.EventHandler(this.tsbNuevo_Click);
             // 
             // tsbImprimir
             // 
@@ -215,9 +223,9 @@
             // 
             this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tsbNoRegistros});
-            this.statusStrip1.Location = new System.Drawing.Point(0, 338);
+            this.statusStrip1.Location = new System.Drawing.Point(0, 225);
             this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(963, 26);
+            this.statusStrip1.Size = new System.Drawing.Size(613, 26);
             this.statusStrip1.TabIndex = 2;
             this.statusStrip1.Text = "statusStrip1";
             // 
@@ -231,34 +239,34 @@
             // dgvLista
             // 
             this.dgvLista.BackgroundColor = System.Drawing.Color.Azure;
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle7.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvLista.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle28.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle28.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle28.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle28.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle28.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle28.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle28.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvLista.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle28;
             this.dgvLista.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle8.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvLista.DefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle29.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle29.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle29.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle29.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle29.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle29.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle29.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvLista.DefaultCellStyle = dataGridViewCellStyle29;
             this.dgvLista.Location = new System.Drawing.Point(0, 28);
             this.dgvLista.Name = "dgvLista";
-            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle9.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle9.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle9.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvLista.RowHeadersDefaultCellStyle = dataGridViewCellStyle9;
-            this.dgvLista.Size = new System.Drawing.Size(963, 307);
+            dataGridViewCellStyle30.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle30.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle30.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle30.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle30.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle30.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle30.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvLista.RowHeadersDefaultCellStyle = dataGridViewCellStyle30;
+            this.dgvLista.Size = new System.Drawing.Size(613, 202);
             this.dgvLista.TabIndex = 0;
             this.dgvLista.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvLista_CellContentClick);
             this.dgvLista.CellContextMenuStripNeeded += new System.Windows.Forms.DataGridViewCellContextMenuStripNeededEventHandler(this.dgvLista_CellContextMenuStripNeeded);
@@ -282,7 +290,7 @@
             // 
             this.cmNuevo.Image = global::Planilla.Properties.Resources.New16x16;
             this.cmNuevo.Name = "cmNuevo";
-            this.cmNuevo.Size = new System.Drawing.Size(126, 22);
+            this.cmNuevo.Size = new System.Drawing.Size(152, 22);
             this.cmNuevo.Text = "Nuevo";
             this.cmNuevo.Click += new System.EventHandler(this.cmNuevo_Click);
             // 
@@ -290,7 +298,7 @@
             // 
             this.cmActualizar.Image = global::Planilla.Properties.Resources.Edit16x16;
             this.cmActualizar.Name = "cmActualizar";
-            this.cmActualizar.Size = new System.Drawing.Size(126, 22);
+            this.cmActualizar.Size = new System.Drawing.Size(152, 22);
             this.cmActualizar.Text = "Actualizar";
             this.cmActualizar.Click += new System.EventHandler(this.cmActualizar_Click);
             // 
@@ -298,7 +306,7 @@
             // 
             this.cmEliminar.Image = global::Planilla.Properties.Resources.Eliminar16x16;
             this.cmEliminar.Name = "cmEliminar";
-            this.cmEliminar.Size = new System.Drawing.Size(126, 22);
+            this.cmEliminar.Size = new System.Drawing.Size(152, 22);
             this.cmEliminar.Text = "Eliminar";
             this.cmEliminar.Click += new System.EventHandler(this.cmEliminar_Click);
             // 
@@ -306,7 +314,7 @@
             // 
             this.cmVisualizar.Image = global::Planilla.Properties.Resources.if_old_edit_find_23490__1_;
             this.cmVisualizar.Name = "cmVisualizar";
-            this.cmVisualizar.Size = new System.Drawing.Size(126, 22);
+            this.cmVisualizar.Size = new System.Drawing.Size(152, 22);
             this.cmVisualizar.Text = "Visualizar";
             this.cmVisualizar.Click += new System.EventHandler(this.cmVisualizar_Click);
             // 
@@ -314,35 +322,14 @@
             // 
             this.cmImprimir.Image = global::Planilla.Properties.Resources.iconfinder_preferences_desktop_printer_8803;
             this.cmImprimir.Name = "cmImprimir";
-            this.cmImprimir.Size = new System.Drawing.Size(126, 22);
+            this.cmImprimir.Size = new System.Drawing.Size(152, 22);
             this.cmImprimir.Text = "Imprimir";
-            // 
-            // flowLayoutPanel1
-            // 
-            this.flowLayoutPanel1.Controls.Add(this.groupBox1);
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(0, 0);
-            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(963, 174);
-            this.flowLayoutPanel1.TabIndex = 1;
-            // 
-            // tsbNuevo
-            // 
-            this.tsbNuevo.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.tsbNuevo.Image = global::Planilla.Properties.Resources.New32;
-            this.tsbNuevo.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tsbNuevo.Name = "tsbNuevo";
-            this.tsbNuevo.Size = new System.Drawing.Size(62, 22);
-            this.tsbNuevo.Tag = "Nuevo";
-            this.tsbNuevo.Text = "Nuevo";
-            this.tsbNuevo.ToolTipText = "Nuevo (F2)";
-            this.tsbNuevo.Click += new System.EventHandler(this.tsbNuevo_Click);
-            this.tsbNuevo.Enabled = true;
             // 
             // frmCargo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(963, 545);
+            this.ClientSize = new System.Drawing.Size(613, 378);
             this.Controls.Add(this.splitContainer1);
             this.Name = "frmCargo";
             this.Text = "frmCargo";
@@ -362,7 +349,6 @@
             this.statusStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvLista)).EndInit();
             this.mcsMenu.ResumeLayout(false);
-            this.flowLayoutPanel1.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -391,7 +377,6 @@
         private System.Windows.Forms.ToolStripMenuItem cmEliminar;
         private System.Windows.Forms.ToolStripMenuItem cmVisualizar;
         private System.Windows.Forms.ToolStripMenuItem cmImprimir;
-        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
         private System.Windows.Forms.ToolStripButton tsbNuevo;
     }
 }
