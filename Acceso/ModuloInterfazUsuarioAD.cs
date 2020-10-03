@@ -291,7 +291,7 @@ namespace Acceso
                                             inner join modulointerfaz as mi on mi.idModuloInterfaz = p.idModuloInterfaz
                                             inner join interfaz as i on i.idInterfaz = mi.idInterfaz
                                             inner join modulo as m on m.idModulo = mi.idModulo
-                                            where miu.IdModuloInterfazUsuario > 0 and miu.IdUsuario = {0} and upper(trim( i.Nombre)) = upper({1}) ", oRegistroEN.oUsuarioEN.IdUsuario, oRegistroEN.oPrivilegioEN.oModuloInterfazEN.oInterfazEN.Nombre.Trim());
+                                            where miu.IdModuloInterfazUsuario > 0 and miu.IdUsuario = {0} and upper(trim( i.Nombre)) = upper('{1}') ", oRegistroEN.oUsuarioEN.IdUsuario, oRegistroEN.oPrivilegioEN.oModuloInterfazEN.oInterfazEN.Nombre.Trim());
 
                 Comando.CommandText = Consultas;
 
