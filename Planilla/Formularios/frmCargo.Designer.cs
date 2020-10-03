@@ -28,32 +28,42 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmCargo));
+            this.components = new System.ComponentModel.Container();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle28 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle29 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle30 = new System.Windows.Forms.DataGridViewCellStyle();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txtCargo = new System.Windows.Forms.TextBox();
+            this.txtIdentificador = new System.Windows.Forms.TextBox();
             this.chkCargo = new System.Windows.Forms.CheckBox();
             this.chkIdentificador = new System.Windows.Forms.CheckBox();
-            this.toolStrip1 = new System.Windows.Forms.ToolStrip();
+            this.tsMenu = new System.Windows.Forms.ToolStrip();
+            this.tsbFiltroAutomatico = new System.Windows.Forms.ToolStripButton();
             this.tsbFiltrar = new System.Windows.Forms.ToolStripButton();
             this.tsbNuevo = new System.Windows.Forms.ToolStripButton();
+            this.tsbImprimir = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
-            this.statusStrip1 = new System.Windows.Forms.StatusStrip();
-            this.dgvLista = new System.Windows.Forms.DataGridView();
-            this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
-            this.tsbFiltroAutomatico = new System.Windows.Forms.ToolStripButton();
-            this.tsbSeleccionarTodos = new System.Windows.Forms.ToolStripButton();
             this.tsbMarcarTodos = new System.Windows.Forms.ToolStripButton();
+            this.tsbSeleccionarTodos = new System.Windows.Forms.ToolStripButton();
+            this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.tsbNoRegistros = new System.Windows.Forms.ToolStripStatusLabel();
+            this.dgvLista = new System.Windows.Forms.DataGridView();
+            this.mcsMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.cmNuevo = new System.Windows.Forms.ToolStripMenuItem();
+            this.cmActualizar = new System.Windows.Forms.ToolStripMenuItem();
+            this.cmEliminar = new System.Windows.Forms.ToolStripMenuItem();
+            this.cmVisualizar = new System.Windows.Forms.ToolStripMenuItem();
+            this.cmImprimir = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
             this.groupBox1.SuspendLayout();
-            this.toolStrip1.SuspendLayout();
+            this.tsMenu.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvLista)).BeginInit();
+            this.mcsMenu.SuspendLayout();
             this.SuspendLayout();
             // 
             // splitContainer1
@@ -66,122 +76,83 @@
             // splitContainer1.Panel1
             // 
             this.splitContainer1.Panel1.Controls.Add(this.groupBox1);
-            this.splitContainer1.Panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.splitContainer1_Panel1_Paint);
             // 
             // splitContainer1.Panel2
             // 
-            this.splitContainer1.Panel2.Controls.Add(this.toolStrip1);
+            this.splitContainer1.Panel2.Controls.Add(this.tsMenu);
             this.splitContainer1.Panel2.Controls.Add(this.statusStrip1);
             this.splitContainer1.Panel2.Controls.Add(this.dgvLista);
-            this.splitContainer1.Size = new System.Drawing.Size(499, 378);
-            this.splitContainer1.SplitterDistance = 115;
+            this.splitContainer1.Size = new System.Drawing.Size(613, 378);
+            this.splitContainer1.SplitterDistance = 123;
             this.splitContainer1.TabIndex = 0;
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.textBox2);
-            this.groupBox1.Controls.Add(this.textBox1);
+            this.groupBox1.Controls.Add(this.txtCargo);
+            this.groupBox1.Controls.Add(this.txtIdentificador);
             this.groupBox1.Controls.Add(this.chkCargo);
             this.groupBox1.Controls.Add(this.chkIdentificador);
             this.groupBox1.Location = new System.Drawing.Point(12, 12);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(477, 100);
+            this.groupBox1.Size = new System.Drawing.Size(589, 100);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Informacion de cargos del empleado";
-            this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
             // 
-            // textBox2
+            // txtCargo
             // 
-            this.textBox2.Location = new System.Drawing.Point(160, 69);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(277, 20);
-            this.textBox2.TabIndex = 3;
+            this.txtCargo.Location = new System.Drawing.Point(233, 71);
+            this.txtCargo.Name = "txtCargo";
+            this.txtCargo.Size = new System.Drawing.Size(323, 20);
+            this.txtCargo.TabIndex = 3;
+            this.txtCargo.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCargo_KeyPress);
             // 
-            // textBox1
+            // txtIdentificador
             // 
-            this.textBox1.Location = new System.Drawing.Point(160, 30);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(277, 20);
-            this.textBox1.TabIndex = 2;
+            this.txtIdentificador.Location = new System.Drawing.Point(233, 29);
+            this.txtIdentificador.Name = "txtIdentificador";
+            this.txtIdentificador.Size = new System.Drawing.Size(323, 20);
+            this.txtIdentificador.TabIndex = 2;
+            this.txtIdentificador.KeyUp += new System.Windows.Forms.KeyEventHandler(this.txtIdentificador_KeyUp);
             // 
             // chkCargo
             // 
             this.chkCargo.AutoSize = true;
-            this.chkCargo.Location = new System.Drawing.Point(67, 71);
+            this.chkCargo.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chkCargo.Location = new System.Drawing.Point(21, 71);
             this.chkCargo.Name = "chkCargo";
-            this.chkCargo.Size = new System.Drawing.Size(57, 17);
+            this.chkCargo.Size = new System.Drawing.Size(154, 20);
             this.chkCargo.TabIndex = 1;
-            this.chkCargo.Text = "Cargo:";
+            this.chkCargo.Text = "Cargo del empleado:";
             this.chkCargo.UseVisualStyleBackColor = true;
-            this.chkCargo.CheckedChanged += new System.EventHandler(this.chkCargo_CheckedChanged);
             // 
             // chkIdentificador
             // 
             this.chkIdentificador.AutoSize = true;
-            this.chkIdentificador.Location = new System.Drawing.Point(67, 32);
+            this.chkIdentificador.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chkIdentificador.Location = new System.Drawing.Point(21, 29);
             this.chkIdentificador.Name = "chkIdentificador";
-            this.chkIdentificador.Size = new System.Drawing.Size(87, 17);
+            this.chkIdentificador.Size = new System.Drawing.Size(103, 20);
             this.chkIdentificador.TabIndex = 0;
             this.chkIdentificador.Text = "Identificador:";
             this.chkIdentificador.UseVisualStyleBackColor = true;
             // 
-            // toolStrip1
+            // tsMenu
             // 
-            this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tsMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tsbFiltroAutomatico,
             this.tsbFiltrar,
             this.tsbNuevo,
+            this.tsbImprimir,
             this.toolStripSeparator1,
             this.tsbMarcarTodos,
             this.tsbSeleccionarTodos});
-            this.toolStrip1.Location = new System.Drawing.Point(0, 0);
-            this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
-            this.toolStrip1.Size = new System.Drawing.Size(499, 25);
-            this.toolStrip1.TabIndex = 3;
-            this.toolStrip1.Text = "toolStrip1";
-            // 
-            // tsbFiltrar
-            // 
-            this.tsbFiltrar.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.tsbFiltrar.Image = ((System.Drawing.Image)(resources.GetObject("tsbFiltrar.Image")));
-            this.tsbFiltrar.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tsbFiltrar.Name = "tsbFiltrar";
-            this.tsbFiltrar.Size = new System.Drawing.Size(23, 22);
-            this.tsbFiltrar.Text = "toolStripButton1";
-            // 
-            // tsbNuevo
-            // 
-            this.tsbNuevo.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.tsbNuevo.Image = ((System.Drawing.Image)(resources.GetObject("tsbNuevo.Image")));
-            this.tsbNuevo.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tsbNuevo.Name = "tsbNuevo";
-            this.tsbNuevo.Size = new System.Drawing.Size(23, 22);
-            this.tsbNuevo.Text = "toolStripButton1";
-            // 
-            // toolStripSeparator1
-            // 
-            this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 25);
-            // 
-            // statusStrip1
-            // 
-            this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.tsbNoRegistros});
-            this.statusStrip1.Location = new System.Drawing.Point(0, 233);
-            this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(499, 26);
-            this.statusStrip1.TabIndex = 2;
-            this.statusStrip1.Text = "statusStrip1";
-            // 
-            // dgvLista
-            // 
-            this.dgvLista.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvLista.Location = new System.Drawing.Point(12, 38);
-            this.dgvLista.Name = "dgvLista";
-            this.dgvLista.Size = new System.Drawing.Size(471, 192);
-            this.dgvLista.TabIndex = 0;
+            this.tsMenu.Location = new System.Drawing.Point(0, 0);
+            this.tsMenu.Name = "tsMenu";
+            this.tsMenu.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
+            this.tsMenu.Size = new System.Drawing.Size(613, 25);
+            this.tsMenu.TabIndex = 3;
+            this.tsMenu.Text = "toolStrip1";
             // 
             // tsbFiltroAutomatico
             // 
@@ -192,15 +163,41 @@
             this.tsbFiltroAutomatico.Name = "tsbFiltroAutomatico";
             this.tsbFiltroAutomatico.Size = new System.Drawing.Size(120, 22);
             this.tsbFiltroAutomatico.Text = "Filtro Automatico";
+            this.tsbFiltroAutomatico.Click += new System.EventHandler(this.tsbFiltroAutomatico_Click);
             // 
-            // tsbSeleccionarTodos
+            // tsbFiltrar
             // 
-            this.tsbSeleccionarTodos.Image = global::Planilla.Properties.Resources.checked16x16;
-            this.tsbSeleccionarTodos.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.tsbSeleccionarTodos.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tsbSeleccionarTodos.Name = "tsbSeleccionarTodos";
-            this.tsbSeleccionarTodos.Size = new System.Drawing.Size(87, 22);
-            this.tsbSeleccionarTodos.Text = "Seleccionar";
+            this.tsbFiltrar.Image = global::Planilla.Properties.Resources.new24x24;
+            this.tsbFiltrar.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbFiltrar.Name = "tsbFiltrar";
+            this.tsbFiltrar.Size = new System.Drawing.Size(57, 22);
+            this.tsbFiltrar.Text = "Filtrar";
+            this.tsbFiltrar.ToolTipText = "Filtrar (F5)";
+            this.tsbFiltrar.Click += new System.EventHandler(this.tsbFiltrar_Click);
+            // 
+            // tsbNuevo
+            // 
+            this.tsbNuevo.Image = global::Planilla.Properties.Resources.new24x24;
+            this.tsbNuevo.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbNuevo.Name = "tsbNuevo";
+            this.tsbNuevo.Size = new System.Drawing.Size(62, 22);
+            this.tsbNuevo.Text = "Nuevo";
+            this.tsbNuevo.ToolTipText = "Nuevo (F2)";
+            this.tsbNuevo.Click += new System.EventHandler(this.tsbNuevo_Click);
+            // 
+            // tsbImprimir
+            // 
+            this.tsbImprimir.Image = global::Planilla.Properties.Resources.iconfinder_preferences_desktop_printer_8803__1_;
+            this.tsbImprimir.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbImprimir.Name = "tsbImprimir";
+            this.tsbImprimir.Size = new System.Drawing.Size(73, 22);
+            this.tsbImprimir.Text = "Imprimir";
+            this.tsbImprimir.ToolTipText = "Imprimir (F4)";
+            // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 25);
             // 
             // tsbMarcarTodos
             // 
@@ -210,6 +207,27 @@
             this.tsbMarcarTodos.Name = "tsbMarcarTodos";
             this.tsbMarcarTodos.Size = new System.Drawing.Size(93, 22);
             this.tsbMarcarTodos.Text = "Marca todos";
+            this.tsbMarcarTodos.Click += new System.EventHandler(this.tsbMarcarTodos_Click);
+            // 
+            // tsbSeleccionarTodos
+            // 
+            this.tsbSeleccionarTodos.Image = global::Planilla.Properties.Resources.checked16x16;
+            this.tsbSeleccionarTodos.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.tsbSeleccionarTodos.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbSeleccionarTodos.Name = "tsbSeleccionarTodos";
+            this.tsbSeleccionarTodos.Size = new System.Drawing.Size(116, 22);
+            this.tsbSeleccionarTodos.Text = "Seleccionar Todo";
+            this.tsbSeleccionarTodos.Click += new System.EventHandler(this.tsbSeleccionarTodos_Click);
+            // 
+            // statusStrip1
+            // 
+            this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tsbNoRegistros});
+            this.statusStrip1.Location = new System.Drawing.Point(0, 225);
+            this.statusStrip1.Name = "statusStrip1";
+            this.statusStrip1.Size = new System.Drawing.Size(613, 26);
+            this.statusStrip1.TabIndex = 2;
+            this.statusStrip1.Text = "statusStrip1";
             // 
             // tsbNoRegistros
             // 
@@ -218,14 +236,106 @@
             this.tsbNoRegistros.Size = new System.Drawing.Size(136, 21);
             this.tsbNoRegistros.Text = "No. de registros: 0";
             // 
+            // dgvLista
+            // 
+            this.dgvLista.BackgroundColor = System.Drawing.Color.Azure;
+            dataGridViewCellStyle28.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle28.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle28.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle28.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle28.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle28.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle28.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvLista.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle28;
+            this.dgvLista.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewCellStyle29.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle29.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle29.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle29.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle29.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle29.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle29.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvLista.DefaultCellStyle = dataGridViewCellStyle29;
+            this.dgvLista.Location = new System.Drawing.Point(0, 28);
+            this.dgvLista.Name = "dgvLista";
+            dataGridViewCellStyle30.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle30.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle30.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle30.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle30.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle30.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle30.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvLista.RowHeadersDefaultCellStyle = dataGridViewCellStyle30;
+            this.dgvLista.Size = new System.Drawing.Size(613, 202);
+            this.dgvLista.TabIndex = 0;
+            this.dgvLista.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvLista_CellContentClick);
+            this.dgvLista.CellContextMenuStripNeeded += new System.Windows.Forms.DataGridViewCellContextMenuStripNeededEventHandler(this.dgvLista_CellContextMenuStripNeeded);
+            this.dgvLista.CurrentCellDirtyStateChanged += new System.EventHandler(this.dgvLista_CurrentCellDirtyStateChanged);
+            this.dgvLista.DoubleClick += new System.EventHandler(this.dgvLista_DoubleClick);
+            this.dgvLista.MouseDown += new System.Windows.Forms.MouseEventHandler(this.dgvLista_MouseDown);
+            // 
+            // mcsMenu
+            // 
+            this.mcsMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.cmNuevo,
+            this.cmActualizar,
+            this.cmEliminar,
+            this.cmVisualizar,
+            this.cmImprimir});
+            this.mcsMenu.Name = "mcsMenu";
+            this.mcsMenu.Size = new System.Drawing.Size(127, 114);
+            this.mcsMenu.Opened += new System.EventHandler(this.mcsMenu_Opened);
+            // 
+            // cmNuevo
+            // 
+            this.cmNuevo.Image = global::Planilla.Properties.Resources.New16x16;
+            this.cmNuevo.Name = "cmNuevo";
+            this.cmNuevo.Size = new System.Drawing.Size(152, 22);
+            this.cmNuevo.Text = "Nuevo";
+            this.cmNuevo.Click += new System.EventHandler(this.cmNuevo_Click);
+            // 
+            // cmActualizar
+            // 
+            this.cmActualizar.Image = global::Planilla.Properties.Resources.Edit16x16;
+            this.cmActualizar.Name = "cmActualizar";
+            this.cmActualizar.Size = new System.Drawing.Size(152, 22);
+            this.cmActualizar.Text = "Actualizar";
+            this.cmActualizar.Click += new System.EventHandler(this.cmActualizar_Click);
+            // 
+            // cmEliminar
+            // 
+            this.cmEliminar.Image = global::Planilla.Properties.Resources.Eliminar16x16;
+            this.cmEliminar.Name = "cmEliminar";
+            this.cmEliminar.Size = new System.Drawing.Size(152, 22);
+            this.cmEliminar.Text = "Eliminar";
+            this.cmEliminar.Click += new System.EventHandler(this.cmEliminar_Click);
+            // 
+            // cmVisualizar
+            // 
+            this.cmVisualizar.Image = global::Planilla.Properties.Resources.if_old_edit_find_23490__1_;
+            this.cmVisualizar.Name = "cmVisualizar";
+            this.cmVisualizar.Size = new System.Drawing.Size(152, 22);
+            this.cmVisualizar.Text = "Visualizar";
+            this.cmVisualizar.Click += new System.EventHandler(this.cmVisualizar_Click);
+            // 
+            // cmImprimir
+            // 
+            this.cmImprimir.Image = global::Planilla.Properties.Resources.iconfinder_preferences_desktop_printer_8803;
+            this.cmImprimir.Name = "cmImprimir";
+            this.cmImprimir.Size = new System.Drawing.Size(152, 22);
+            this.cmImprimir.Text = "Imprimir";
+            // 
             // frmCargo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(499, 378);
+            this.ClientSize = new System.Drawing.Size(613, 378);
             this.Controls.Add(this.splitContainer1);
             this.Name = "frmCargo";
-            this.Text = "Form1";
+            this.Text = "frmCargo";
+            this.Load += new System.EventHandler(this.frmCargo_Load);
+            this.Shown += new System.EventHandler(this.frmCargo_Shown);
+            this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.frmCargo_KeyUp);
             this.splitContainer1.Panel1.ResumeLayout(false);
             this.splitContainer1.Panel2.ResumeLayout(false);
             this.splitContainer1.Panel2.PerformLayout();
@@ -233,11 +343,12 @@
             this.splitContainer1.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
-            this.toolStrip1.ResumeLayout(false);
-            this.toolStrip1.PerformLayout();
+            this.tsMenu.ResumeLayout(false);
+            this.tsMenu.PerformLayout();
             this.statusStrip1.ResumeLayout(false);
             this.statusStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvLista)).EndInit();
+            this.mcsMenu.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -246,20 +357,26 @@
 
         private System.Windows.Forms.SplitContainer splitContainer1;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txtCargo;
+        private System.Windows.Forms.TextBox txtIdentificador;
         private System.Windows.Forms.CheckBox chkCargo;
         private System.Windows.Forms.CheckBox chkIdentificador;
         private System.Windows.Forms.DataGridView dgvLista;
-        private System.ComponentModel.BackgroundWorker backgroundWorker1;
         private System.Windows.Forms.StatusStrip statusStrip1;
-        private System.Windows.Forms.ToolStrip toolStrip1;
-        private System.Windows.Forms.ToolStripButton tsbFiltrar;
-        private System.Windows.Forms.ToolStripButton tsbNuevo;
+        private System.Windows.Forms.ToolStrip tsMenu;
+        private System.Windows.Forms.ToolStripButton tsbImprimir;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         private System.Windows.Forms.ToolStripButton tsbFiltroAutomatico;
         private System.Windows.Forms.ToolStripButton tsbSeleccionarTodos;
         private System.Windows.Forms.ToolStripButton tsbMarcarTodos;
         private System.Windows.Forms.ToolStripStatusLabel tsbNoRegistros;
+        private System.Windows.Forms.ContextMenuStrip mcsMenu;
+        private System.Windows.Forms.ToolStripButton tsbFiltrar;
+        private System.Windows.Forms.ToolStripMenuItem cmNuevo;
+        private System.Windows.Forms.ToolStripMenuItem cmActualizar;
+        private System.Windows.Forms.ToolStripMenuItem cmEliminar;
+        private System.Windows.Forms.ToolStripMenuItem cmVisualizar;
+        private System.Windows.Forms.ToolStripMenuItem cmImprimir;
+        private System.Windows.Forms.ToolStripButton tsbNuevo;
     }
 }

@@ -257,7 +257,7 @@ namespace Planilla.Formularios
             }
         }
 
-        private DataTable ConvertirClassADT()
+        /*private DataTable ConvertirClassADT()
         {
             DataTable DTClass = new DataTable();
 
@@ -272,7 +272,7 @@ namespace Planilla.Formularios
             DTClass = ds.Tables[0];
             return DTClass;
 
-        }
+        }*/
 
         private DataTable TraerInformacionDDGV()
         {
@@ -328,7 +328,7 @@ namespace Planilla.Formularios
 
         }
 
-        private string TituloDinamico()
+        /*private string TituloDinamico()
         {
 
             string Titulo = "";
@@ -362,7 +362,7 @@ namespace Planilla.Formularios
             return Titulo;
 
 
-        }
+        }*/
 
         private void LLenarListado()
         {
@@ -382,7 +382,7 @@ namespace Planilla.Formularios
                 {                    
                     dgvListar.Columns.Clear();
                     System.Diagnostics.Debug.Print(oRegistrosLN.TraerDatos().Rows.Count.ToString());
-                    //MessageBox.Show(Program.oDatosDeConexioEN.Servidor, "PRUEVA DE SERVIDOR");
+                    
                     if (ActivarFiltros == true)
                     {
                         dgvListar.DataSource = AgregarColumnaSeleccionar(oRegistrosLN.TraerDatos());
@@ -574,8 +574,8 @@ namespace Planilla.Formularios
 
             /*frmUsuarioOperacion ofrmUsuarioOperacion = new frmUsuarioOperacion();
             ofrmUsuarioOperacion.OperacionARealizar = OperacionesARealizar;
-            ofrmUsuarioOperacion.NOMBRE_ENTIDAD_PRIVILEGIO = NOMBRE_ENTIDAD_PRIVILEGIO;
-            ofrmUsuarioOperacion.NombreEntidad = NOMBRE_ENTIDAD;
+            ofrmUsuarioOperacion.Nombre_Entidad_Privilegio = Nombre_Entidad_Privilegio;
+            ofrmUsuarioOperacion.NombreEntidad = Nombre_Entidad;
             ofrmUsuarioOperacion.ValorLlavePrimariaEntidad = this.ValorLlavePrimariaEntidad;
             ofrmUsuarioOperacion.MdiParent = this.ParentForm;
             ofrmUsuarioOperacion.Show();*/
@@ -775,12 +775,12 @@ namespace Planilla.Formularios
 
         private void frmUsuario_KeyUp(object sender, KeyEventArgs e)
         {
-            if (Convert.ToInt32(e.KeyData) == Convert.ToInt32(Keys.F2) && nuevoToolStripMenuItem.Enabled == true)
+            if (Convert.ToInt32(e.KeyData) == Convert.ToInt32(Keys.F2) && cmNuevo.Enabled == true)
             {
                 nuevoToolStripMenuItem_Click(null, null);
             }
 
-            if (Convert.ToInt32(e.KeyData) == Convert.ToInt32(Keys.F3) && actualizarToolStripMenuItem.Enabled == true)
+            if (Convert.ToInt32(e.KeyData) == Convert.ToInt32(Keys.F3) && cmActualizar.Enabled == true)
             {
                 if (dgvListar.SelectedRows.Count > 0)
                 {
@@ -794,7 +794,7 @@ namespace Planilla.Formularios
 
             }
 
-            if (Convert.ToInt32(e.KeyData) == Convert.ToInt32(Keys.F4) && eliminarToolStripMenuItem.Enabled == true)
+            if (Convert.ToInt32(e.KeyData) == Convert.ToInt32(Keys.F4) && cmEliminar.Enabled == true)
             {
                 if (dgvListar.SelectedRows.Count > 0)
                 {
@@ -813,7 +813,7 @@ namespace Planilla.Formularios
                 tsbFiltrar_Click(null, null);
             }
 
-            if (Convert.ToInt32(e.KeyData) == Convert.ToInt32(Keys.F6) && visualizarToolStripMenuItem.Enabled == true && dgvListar.SelectedRows.Count > 0)
+            if (Convert.ToInt32(e.KeyData) == Convert.ToInt32(Keys.F6) && cmVisualizar.Enabled == true && dgvListar.SelectedRows.Count > 0)
             {
                 if (dgvListar.SelectedRows.Count > 0)
                 {
@@ -856,10 +856,10 @@ namespace Planilla.Formularios
         {
             if (dgvListar.DataSource == null || dgvListar.Rows.Count <= 0 || dgvListar.SelectedRows.Count <= 0)
             {
-                eliminarToolStripMenuItem.Enabled = false;
-                actualizarToolStripMenuItem.Enabled = false;
-                visualizarToolStripMenuItem.Enabled = false;
-                imprimirToolStripMenuItem.Enabled = false;
+                cmEliminar.Enabled = false;
+                cmActualizar.Enabled = false;
+                cmVisualizar.Enabled = false;
+                cmImprimir.Enabled = false;
             }
             else
             {

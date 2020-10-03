@@ -42,21 +42,21 @@
             this.cmbEstado = new System.Windows.Forms.ComboBox();
             this.chkEstado = new System.Windows.Forms.CheckBox();
             this.tsMenu = new System.Windows.Forms.ToolStrip();
+            this.dgvListar = new System.Windows.Forms.DataGridView();
+            this.statusStrip1 = new System.Windows.Forms.StatusStrip();
+            this.tsbNoRegistros = new System.Windows.Forms.ToolStripStatusLabel();
+            this.cmMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.cmImprimir = new System.Windows.Forms.ToolStripMenuItem();
             this.tsbFiltrar = new System.Windows.Forms.ToolStripButton();
             this.tsbNuevo = new System.Windows.Forms.ToolStripButton();
             this.tsbImprimir = new System.Windows.Forms.ToolStripButton();
             this.tsbMarcarTodos = new System.Windows.Forms.ToolStripButton();
             this.tsbSeleccionarTodos = new System.Windows.Forms.ToolStripButton();
             this.tsbFiltroAutomatico = new System.Windows.Forms.ToolStripButton();
-            this.dgvListar = new System.Windows.Forms.DataGridView();
-            this.statusStrip1 = new System.Windows.Forms.StatusStrip();
-            this.tsbNoRegistros = new System.Windows.Forms.ToolStripStatusLabel();
-            this.cmMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.nuevoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.actualizarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.eliminarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.visualizarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.imprimirToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.cmNuevo = new System.Windows.Forms.ToolStripMenuItem();
+            this.cmActualizar = new System.Windows.Forms.ToolStripMenuItem();
+            this.cmEliminar = new System.Windows.Forms.ToolStripMenuItem();
+            this.cmVisualizar = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -228,6 +228,61 @@
             this.tsMenu.TabIndex = 0;
             this.tsMenu.Text = "Filtrar";
             // 
+            // dgvListar
+            // 
+            this.dgvListar.BackgroundColor = System.Drawing.Color.Azure;
+            this.dgvListar.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvListar.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgvListar.Location = new System.Drawing.Point(0, 0);
+            this.dgvListar.Margin = new System.Windows.Forms.Padding(4);
+            this.dgvListar.Name = "dgvListar";
+            this.dgvListar.Size = new System.Drawing.Size(1112, 219);
+            this.dgvListar.TabIndex = 1;
+            this.dgvListar.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvListar_CellContentClick);
+            this.dgvListar.CellContextMenuStripNeeded += new System.Windows.Forms.DataGridViewCellContextMenuStripNeededEventHandler(this.dgvListar_CellContextMenuStripNeeded);
+            this.dgvListar.CurrentCellDirtyStateChanged += new System.EventHandler(this.dgvListar_CurrentCellDirtyStateChanged_1);
+            this.dgvListar.DoubleClick += new System.EventHandler(this.dgvListar_DoubleClick_1);
+            this.dgvListar.MouseDown += new System.Windows.Forms.MouseEventHandler(this.dgvListar_MouseDown);
+            // 
+            // statusStrip1
+            // 
+            this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tsbNoRegistros});
+            this.statusStrip1.Location = new System.Drawing.Point(0, 219);
+            this.statusStrip1.Name = "statusStrip1";
+            this.statusStrip1.Padding = new System.Windows.Forms.Padding(1, 0, 19, 0);
+            this.statusStrip1.Size = new System.Drawing.Size(1112, 26);
+            this.statusStrip1.TabIndex = 0;
+            this.statusStrip1.Text = "statusStrip1";
+            // 
+            // tsbNoRegistros
+            // 
+            this.tsbNoRegistros.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tsbNoRegistros.Name = "tsbNoRegistros";
+            this.tsbNoRegistros.Size = new System.Drawing.Size(136, 21);
+            this.tsbNoRegistros.Text = "No. de registros: 0";
+            // 
+            // cmMenu
+            // 
+            this.cmMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.cmNuevo,
+            this.cmActualizar,
+            this.cmEliminar,
+            this.cmVisualizar,
+            this.cmImprimir});
+            this.cmMenu.Name = "cmMenu";
+            this.cmMenu.Size = new System.Drawing.Size(127, 114);
+            this.cmMenu.Opening += new System.ComponentModel.CancelEventHandler(this.cmMenu_Opened);
+            // 
+            // cmImprimir
+            // 
+            this.cmImprimir.Image = global::Planilla.Properties.Resources.iconfinder_preferences_desktop_printer_8803;
+            this.cmImprimir.Name = "cmImprimir";
+            this.cmImprimir.Size = new System.Drawing.Size(126, 22);
+            this.cmImprimir.Tag = "Imprimir";
+            this.cmImprimir.Text = "Imprimir";
+            this.cmImprimir.ToolTipText = "Imprimir información del registro";
+            // 
             // tsbFiltrar
             // 
             this.tsbFiltrar.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
@@ -293,95 +348,45 @@
             this.tsbFiltroAutomatico.Text = "Filtro Automatico";
             this.tsbFiltroAutomatico.Click += new System.EventHandler(this.tsbFiltroAutomatico_Click);
             // 
-            // dgvListar
+            // cmNuevo
             // 
-            this.dgvListar.BackgroundColor = System.Drawing.Color.Azure;
-            this.dgvListar.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvListar.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgvListar.Location = new System.Drawing.Point(0, 0);
-            this.dgvListar.Margin = new System.Windows.Forms.Padding(4);
-            this.dgvListar.Name = "dgvListar";
-            this.dgvListar.Size = new System.Drawing.Size(1112, 219);
-            this.dgvListar.TabIndex = 1;
-            this.dgvListar.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvListar_CellContentClick);
-            this.dgvListar.CellContextMenuStripNeeded += new System.Windows.Forms.DataGridViewCellContextMenuStripNeededEventHandler(this.dgvListar_CellContextMenuStripNeeded);
-            this.dgvListar.CurrentCellDirtyStateChanged += new System.EventHandler(this.dgvListar_CurrentCellDirtyStateChanged_1);
-            this.dgvListar.DoubleClick += new System.EventHandler(this.dgvListar_DoubleClick_1);
-            this.dgvListar.MouseDown += new System.Windows.Forms.MouseEventHandler(this.dgvListar_MouseDown);
+            this.cmNuevo.Image = global::Planilla.Properties.Resources.New16x16;
+            this.cmNuevo.Name = "cmNuevo";
+            this.cmNuevo.Size = new System.Drawing.Size(126, 22);
+            this.cmNuevo.Tag = "Nuevo";
+            this.cmNuevo.Text = "Nuevo";
+            this.cmNuevo.ToolTipText = "Nuevo registro";
+            this.cmNuevo.Click += new System.EventHandler(this.nuevoToolStripMenuItem_Click);
             // 
-            // statusStrip1
+            // cmActualizar
             // 
-            this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.tsbNoRegistros});
-            this.statusStrip1.Location = new System.Drawing.Point(0, 219);
-            this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Padding = new System.Windows.Forms.Padding(1, 0, 19, 0);
-            this.statusStrip1.Size = new System.Drawing.Size(1112, 26);
-            this.statusStrip1.TabIndex = 0;
-            this.statusStrip1.Text = "statusStrip1";
+            this.cmActualizar.Image = global::Planilla.Properties.Resources.Edit16x16;
+            this.cmActualizar.Name = "cmActualizar";
+            this.cmActualizar.Size = new System.Drawing.Size(126, 22);
+            this.cmActualizar.Tag = "Actualizar";
+            this.cmActualizar.Text = "Actualizar";
+            this.cmActualizar.ToolTipText = "Actualizar la información del registro seleccionado";
+            this.cmActualizar.Click += new System.EventHandler(this.actualizarToolStripMenuItem_Click);
             // 
-            // tsbNoRegistros
+            // cmEliminar
             // 
-            this.tsbNoRegistros.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tsbNoRegistros.Name = "tsbNoRegistros";
-            this.tsbNoRegistros.Size = new System.Drawing.Size(136, 21);
-            this.tsbNoRegistros.Text = "No. de registros: 0";
+            this.cmEliminar.Image = global::Planilla.Properties.Resources.Eliminar16x16;
+            this.cmEliminar.Name = "cmEliminar";
+            this.cmEliminar.Size = new System.Drawing.Size(126, 22);
+            this.cmEliminar.Tag = "Eliminar";
+            this.cmEliminar.Text = "Eliminar";
+            this.cmEliminar.ToolTipText = "Eliminar registro seleccionado";
+            this.cmEliminar.Click += new System.EventHandler(this.eliminarToolStripMenuItem_Click);
             // 
-            // cmMenu
+            // cmVisualizar
             // 
-            this.cmMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.nuevoToolStripMenuItem,
-            this.actualizarToolStripMenuItem,
-            this.eliminarToolStripMenuItem,
-            this.visualizarToolStripMenuItem,
-            this.imprimirToolStripMenuItem});
-            this.cmMenu.Name = "cmMenu";
-            this.cmMenu.Size = new System.Drawing.Size(127, 114);
-            this.cmMenu.Opening += new System.ComponentModel.CancelEventHandler(this.cmMenu_Opened);
-            // 
-            // nuevoToolStripMenuItem
-            // 
-            this.nuevoToolStripMenuItem.Name = "nuevoToolStripMenuItem";
-            this.nuevoToolStripMenuItem.Size = new System.Drawing.Size(126, 22);
-            this.nuevoToolStripMenuItem.Tag = "Nuevo";
-            this.nuevoToolStripMenuItem.Text = "Nuevo";
-            this.nuevoToolStripMenuItem.ToolTipText = "Nuevo registro";
-            this.nuevoToolStripMenuItem.Click += new System.EventHandler(this.nuevoToolStripMenuItem_Click);
-            // 
-            // actualizarToolStripMenuItem
-            // 
-            this.actualizarToolStripMenuItem.Name = "actualizarToolStripMenuItem";
-            this.actualizarToolStripMenuItem.Size = new System.Drawing.Size(126, 22);
-            this.actualizarToolStripMenuItem.Tag = "Actualizar";
-            this.actualizarToolStripMenuItem.Text = "Actualizar";
-            this.actualizarToolStripMenuItem.ToolTipText = "Actualizar la información del registro seleccionado";
-            this.actualizarToolStripMenuItem.Click += new System.EventHandler(this.actualizarToolStripMenuItem_Click);
-            // 
-            // eliminarToolStripMenuItem
-            // 
-            this.eliminarToolStripMenuItem.Name = "eliminarToolStripMenuItem";
-            this.eliminarToolStripMenuItem.Size = new System.Drawing.Size(126, 22);
-            this.eliminarToolStripMenuItem.Tag = "Eliminar";
-            this.eliminarToolStripMenuItem.Text = "Eliminar";
-            this.eliminarToolStripMenuItem.ToolTipText = "Eliminar registro seleccionado";
-            this.eliminarToolStripMenuItem.Click += new System.EventHandler(this.eliminarToolStripMenuItem_Click);
-            // 
-            // visualizarToolStripMenuItem
-            // 
-            this.visualizarToolStripMenuItem.Name = "visualizarToolStripMenuItem";
-            this.visualizarToolStripMenuItem.Size = new System.Drawing.Size(126, 22);
-            this.visualizarToolStripMenuItem.Tag = "Visaulizar";
-            this.visualizarToolStripMenuItem.Text = "Visualizar";
-            this.visualizarToolStripMenuItem.ToolTipText = "Visualizar información del registro seleccionado";
-            this.visualizarToolStripMenuItem.Click += new System.EventHandler(this.visualizarToolStripMenuItem_Click);
-            // 
-            // imprimirToolStripMenuItem
-            // 
-            this.imprimirToolStripMenuItem.Name = "imprimirToolStripMenuItem";
-            this.imprimirToolStripMenuItem.Size = new System.Drawing.Size(126, 22);
-            this.imprimirToolStripMenuItem.Tag = "Imprimir";
-            this.imprimirToolStripMenuItem.Text = "Imprimir";
-            this.imprimirToolStripMenuItem.ToolTipText = "Imprimir información del registro";
+            this.cmVisualizar.Image = global::Planilla.Properties.Resources.if_old_edit_find_23490__1_;
+            this.cmVisualizar.Name = "cmVisualizar";
+            this.cmVisualizar.Size = new System.Drawing.Size(126, 22);
+            this.cmVisualizar.Tag = "Visaulizar";
+            this.cmVisualizar.Text = "Visualizar";
+            this.cmVisualizar.ToolTipText = "Visualizar información del registro seleccionado";
+            this.cmVisualizar.Click += new System.EventHandler(this.visualizarToolStripMenuItem_Click);
             // 
             // frmUsuario
             // 
@@ -440,11 +445,11 @@
         private System.Windows.Forms.CheckBox chkTipoDeCuenta;
         private System.Windows.Forms.ComboBox cmbEstado;
         private System.Windows.Forms.CheckBox chkEstado;
-        private System.Windows.Forms.ToolStripMenuItem nuevoToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem actualizarToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem eliminarToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem visualizarToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem imprimirToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem cmNuevo;
+        private System.Windows.Forms.ToolStripMenuItem cmActualizar;
+        private System.Windows.Forms.ToolStripMenuItem cmEliminar;
+        private System.Windows.Forms.ToolStripMenuItem cmVisualizar;
+        private System.Windows.Forms.ToolStripMenuItem cmImprimir;
         private System.Windows.Forms.ToolStripButton tsbFiltroAutomatico;
     }
 }

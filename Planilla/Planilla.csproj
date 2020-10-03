@@ -265,6 +265,42 @@
   <ItemGroup>
     <Folder Include="Documentacion\" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Edit16x16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Edit20x20.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Edit24x24.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Eliminar16x16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Eliminar24x24.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\if_edit-delete_118920.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\if_edit-delete_118920 %281%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\if_edit-delete_118920 %282%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\if_old-edit-find_23490 %281%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\if_old-edit-find_23490 %282%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\if_old-edit-find_23490 %283%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\if_old-edit-find_23490 %284%29.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

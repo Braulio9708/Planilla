@@ -19,6 +19,7 @@ namespace Planilla.Formularios
         //creamos el objeto pero no lo inicializamos.
         frmConfiguracion ofrmConfiguracion = null;
         frmUsuario ofrmUsuario = null;
+        frmCargo ofrmCargo = null;
 
         public Principal()
         {
@@ -369,5 +370,33 @@ namespace Planilla.Formularios
 
             this.Cursor = Cursors.Default;
         }
+
+        private void btnEmpleado_Click(object sender, EventArgs e)
+        {
+            OcultarControlesDentroDelPanel();
+            string MostrarControles = "btnCargo";
+            VisualizarControlesDentroDelPanel(MostrarControles);
+        }
+
+        private void btnCargo_Click(object sender, EventArgs e)
+        {
+            this.Cursor = Cursors.WaitCursor;
+
+            if(ofrmCargo == null || ofrmCargo.IsDisposed)
+            {
+                ofrmCargo = new frmCargo();
+                ofrmCargo.MdiParent = this;
+                ofrmConfiguracion.StartPosition = FormStartPosition.CenterScreen;
+                ofrmConfiguracion.WindowState = FormWindowState.Maximized;
+                ofrmCargo.Show();
+            }
+            else
+            {
+                ofrmCargo.BringToFront();
+            }
+            this.Cursor = Cursors.Default;
+        }
+
+        
     }
 }

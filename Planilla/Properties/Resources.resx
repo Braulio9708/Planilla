@@ -124,6 +124,15 @@
   <data name="checked20x20" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\checked20x20.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="unchecked16x16" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\unchecked16x16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Eliminar16x16" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Eliminar16x16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Edit16x16" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Edit16x16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="iconfinder_70-Menu_2123897 (3)" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\iconfinder_70-Menu_2123897 (3).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -133,11 +142,17 @@
   <data name="iconfinder_Database-Upload_49582 (1)" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\iconfinder_Database-Upload_49582 (1).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="unchecked20x20" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\unchecked20x20.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="iconfinder_db_update_3213 (2)" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\iconfinder_db_update_3213 (2).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="generador1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\generador1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="if_edit-delete_118920 (1)" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\if_edit-delete_118920 (1).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="generador" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\generador.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -160,17 +175,35 @@
   <data name="New16x16" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\New16x16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="if_edit-delete_118920 (2)" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\if_edit-delete_118920 (2).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="SearchFile32" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\SearchFile32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="view16x16" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\view16x16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="Edit20x20" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Edit20x20.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="iconfinder_db_update_3213" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\iconfinder_db_update_3213.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="iconfinder_db_update_3213 (3)" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\iconfinder_db_update_3213 (3).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Edit24x24" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Edit24x24.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="unchecked24x24" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\unchecked24x24.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="SearchFile24" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\SearchFile24.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="New48" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\New48.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="if_edit-delete_118920" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\if_edit-delete_118920.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="generador3" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\generador3.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -205,8 +238,8 @@
   <data name="generador4" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\generador4.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="New48" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\New48.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="Eliminar24x24" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Eliminar24x24.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="iconfinder_Database-Upload_49582 (3)" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\iconfinder_Database-Upload_49582 (3).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -214,8 +247,8 @@
   <data name="nuevoregistro" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\nuevoregistro.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="SearchFile24" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\SearchFile24.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="view16x16" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\view16x16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="SearchFile48" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\SearchFile48.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -223,13 +256,16 @@
   <data name="iconfinder_preferences-desktop-printer_8803 (1)" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\iconfinder_preferences-desktop-printer_8803 (1).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="unchecked16x16" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\unchecked16x16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="if_old-edit-find_23490 (1)" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\if_old-edit-find_23490 (1).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="unchecked20x20" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\unchecked20x20.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="if_old-edit-find_23490 (2)" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\if_old-edit-find_23490 (2).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="unchecked24x24" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\unchecked24x24.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="if_old-edit-find_23490 (3)" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\if_old-edit-find_23490 (3).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="if_old-edit-find_23490 (4)" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\if_old-edit-find_23490 (4).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>
