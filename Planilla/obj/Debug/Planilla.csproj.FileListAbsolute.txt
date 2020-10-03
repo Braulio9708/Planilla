@@ -127,3 +127,6 @@ C:\Users\JUSET\Source\Repos\Braulio9708\Planilla\Planilla\obj\Debug\Planilla.frm
 C:\Users\JUSET\Source\Repos\Braulio9708\Planilla\Planilla\obj\Debug\Planilla.Formularios.Principal.resources
 C:\Users\JUSET\Source\Repos\Braulio9708\Planilla\Planilla\obj\Debug\Planilla.Properties.Resources.resources
 C:\Users\JUSET\Source\Repos\Braulio9708\Planilla\Planilla\obj\Debug\Planilla.csproj.GenerateResource.Cache
+C:\Users\JUSET\Source\Repos\Braulio9708\Planilla\Planilla\Planilla\bin\Debug\Planilla.exe.config
+C:\Users\JUSET\Source\Repos\Braulio9708\Planilla\Planilla\Planilla\obj\Debug\Planilla.exe
+C:\Users\JUSET\Source\Repos\Braulio9708\Planilla\Planilla\Planilla\obj\Debug\Planilla.pdb

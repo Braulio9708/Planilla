@@ -232,7 +232,7 @@ namespace Planilla.Formularios
             }
             if(Controles.IsNullOEmptyElControl(chkCargo)==false && Controles.IsNullOEmptyElControl(txtCargo) == false)
             {
-                Where += string.Format(" and Nombre like '%0%' ", txtCargo.Text.Trim());
+                Where += string.Format(" and Cargo like '%0%' ", txtCargo.Text.Trim());
             }
 
             return Where;
