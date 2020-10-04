@@ -221,15 +221,15 @@ namespace Planilla.Formularios
 
         private string WhereDinamico()
         {
-            string Where = "";
+            string Where = " ";
 
             if(Controles.IsNullOEmptyElControl(chkIdentificador) == false && Controles.IsNullOEmptyElControl(txtIdentificador) == false)
             {
-                Where += string.Format(" and IdCargo like '%0%' ", txtIdentificador.Text.Trim());
+                Where += string.Format(" and IdCargo like '%{0}%' ", txtIdentificador.Text.Trim());                
             }
-            if(Controles.IsNullOEmptyElControl(chkCargo)==false && Controles.IsNullOEmptyElControl(txtCargo) == false)
+            if(Controles.IsNullOEmptyElControl(chkCargo) == false && Controles.IsNullOEmptyElControl(txtCargo) == false)
             {
-                Where += string.Format(" and Cargo like '%0%' ", txtCargo.Text.Trim());
+                Where += string.Format(" and Cargo like '%{0}%' ", txtCargo.Text.Trim());
             }
 
             return Where;
@@ -246,7 +246,7 @@ namespace Planilla.Formularios
                 CargoLN oRegistroLN = new CargoLN();
 
                 oRegistroEN.Where = WhereDinamico();
-
+                
                 if(oRegistroLN.Listado(oRegistroEN, Program.oDatosDeConexioEN))
                 {
                     dgvLista.Columns.Clear();
@@ -307,7 +307,7 @@ namespace Planilla.Formularios
                 this.dgvLista.BackgroundColor = System.Drawing.SystemColors.Window;
                 this.dgvLista.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
 
-                string OcultarColumnas = "idCargo";
+                string OcultarColumnas = "";
                 OcultarColumnasEnElDGV(OcultarColumnas);
 
                 FormatearColumnasDelDGV();
@@ -401,8 +401,8 @@ namespace Planilla.Formularios
                         }
                     }
 
-                    tsbImprimir.Enabled = oRegistroLN.VerificarSiTengoAcceso("Imprimir");
-                    tsbNuevo.Enabled = oRegistroLN.VerificarSiTengoAcceso("Nuevo");
+                    tsbImprimir.Enabled = true;
+                    tsbNuevo.Enabled = true;
                 }
                 else
                 {
@@ -428,14 +428,13 @@ namespace Planilla.Formularios
 
         private void MostrarFormularioParaOperacion(string OperacionARealizar)
         {
-           /*frmCargoOperacion ofrmCargoOperacion = new frmCargoOperacion();
+             /*frmCargoOperacion ofrmCargoOperacion = new frmCargoOperacion();
              ofrmCargoOperacion.OperacionARealizar = OperacionARealizar();
              ofrmCargoOperacion.Nombre_Entidad_Privilegio = Nombre_Entidad_Privilegio;
              ofrmCargoOperacion.Nombre_Entidad;
              ofrmCargoOperacion.ValorLlavePrimariaEntidad = this.ValorLlavePrimariaEntidad;
              ofrmCargoOperacion.MdiParent = this.ParentForm;
-             ofrmCargoOperacion.Show();
-             */
+             ofrmCargoOperacion.Show();*/             
         }
 
         private void AsignarLalvePrimaria()
@@ -488,7 +487,7 @@ namespace Planilla.Formularios
                             Array.Resize(ref oCargo, a);
 
                             oCargo[a - 1] = new CargoEN();
-                            oCargo[a - 1].IdCargo = Convert.ToInt32(Fila.Cells["IdCargo"].Value);
+                            oCargo[a - 1].IdCargo = Convert.ToInt32(Fila.Cells["ID"].Value);
                             oCargo[a - 1].Cargo = Fila.Cells["Cargo"].Value.ToString();
                         }
                     }
@@ -704,6 +703,26 @@ namespace Planilla.Formularios
 
             }
         }
+       
+        private void tsbFiltroAutomatico_Click(object sender, EventArgs e)
+        {
+            tsbFiltroAutomatico.Checked = !tsbFiltroAutomatico.Checked;
+
+            if (tsbFiltroAutomatico.Checked == true)
+            {
+                tsbFiltroAutomatico.Image = Properties.Resources.unchecked16x16;
+            }
+            else
+            {
+                tsbFiltroAutomatico.Image = Properties.Resources.checked16x16;
+            }
+            
+        }
+
+        private void tsbNuevo_Click(object sender, EventArgs e)
+        {
+            MostrarFormularioParaOperacion("Nuevo");
+        }
 
         private void txtIdentificador_KeyUp(object sender, KeyEventArgs e)
         {
@@ -719,45 +738,18 @@ namespace Planilla.Formularios
             }
         }
 
-        private void tsbFiltroAutomatico_Click(object sender, EventArgs e)
-        {
-            tsbFiltroAutomatico.Checked = !tsbFiltroAutomatico.Checked;
-
-            if (tsbFiltroAutomatico.Checked == true)
-            {
-                tsbFiltroAutomatico.Image = Properties.Resources.unchecked16x16;
-            }
-            else
-            {
-                tsbFiltroAutomatico.Image = Properties.Resources.checked16x16;
-            }
-        }
-
-        private void tsbNuevo_Click(object sender, EventArgs e)
-        {
-            MostrarFormularioParaOperacion("Nuevo");
-        }
-
-        private void txtCargo_KeyPress(object sender, KeyPressEventArgs e)
+        private void txtCargo_KeyUp(object sender, KeyEventArgs e)
         {
             if (Controles.IsNullOEmptyElControl(txtCargo))
             {
                 chkCargo.CheckState = CheckState.Unchecked;
             }
-            else
-            {
-                chkCargo.CheckState = CheckState.Checked;
-            }
+            else { chkCargo.CheckState = CheckState.Checked; }
 
             if (chkCargo.CheckState == CheckState.Checked && tsbFiltroAutomatico.CheckState == CheckState.Checked)
             {
                 LlenarListado();
             }
-        }
-
-        private void frmCargo_Load(object sender, EventArgs e)
-        {
-
         }
     }
 }
