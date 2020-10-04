@@ -87,6 +87,12 @@
     <Compile Include="Formularios\frmLogin.Designer.cs">
       <DependentUpon>frmLogin.cs</DependentUpon>
     </Compile>
+    <Compile Include="Formularios\frmUsuarioOperacion.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\frmUsuarioOperacion.Designer.cs">
+      <DependentUpon>frmUsuarioOperacion.cs</DependentUpon>
+    </Compile>
     <Compile Include="Formularios\Principal.cs">
       <SubType>Form</SubType>
     </Compile>
