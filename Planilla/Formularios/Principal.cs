@@ -373,6 +373,7 @@ namespace Planilla.Formularios
 
         private void btnEmpleado_Click(object sender, EventArgs e)
         {
+            btnCargo.Enabled = true;
             OcultarControlesDentroDelPanel();
             string MostrarControles = "btnCargo";
             VisualizarControlesDentroDelPanel(MostrarControles);
@@ -386,8 +387,8 @@ namespace Planilla.Formularios
             {
                 ofrmCargo = new frmCargo();
                 ofrmCargo.MdiParent = this;
-                ofrmConfiguracion.StartPosition = FormStartPosition.CenterScreen;
-                ofrmConfiguracion.WindowState = FormWindowState.Maximized;
+                ofrmCargo.StartPosition = FormStartPosition.CenterScreen;
+                //ofrmCargo.WindowState = FormWindowState.Maximized;
                 ofrmCargo.Show();
             }
             else

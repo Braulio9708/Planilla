@@ -927,7 +927,20 @@ namespace Planilla.Formularios
                 LLenarListado();
             }
         }
-        
+
+        private void txtUsuario_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (Controles.IsNullOEmptyElControl(txtUsuario))
+            {
+                chkUsuario.CheckState = CheckState.Unchecked;
+            }
+            else { chkUsuario.CheckState = CheckState.Checked; }
+
+            if (chkUsuario.CheckState == CheckState.Checked && tsbFiltroAutomatico.CheckState == CheckState.Checked)
+            {
+                LLenarListado();
+            }
+        }
     }
     
 }
