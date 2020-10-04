@@ -34,6 +34,15 @@ C:\Users\JUSET TORREZ\Source\Repos\Braulio9708\Planilla\Acceso\bin\Debug\MySql.D
 C:\Users\JUSET TORREZ\Source\Repos\Braulio9708\Planilla\Acceso\obj\Debug\Acceso.csprojResolveAssemblyReference.cache
 C:\Users\JUSET TORREZ\Source\Repos\Braulio9708\Planilla\Acceso\obj\Debug\Acceso.dll
 C:\Users\JUSET TORREZ\Source\Repos\Braulio9708\Planilla\Acceso\obj\Debug\Acceso.pdb
+C:\Users\Inspiron i5\Source\Repos\Planilla\Acceso\bin\Debug\Acceso.dll
+C:\Users\Inspiron i5\Source\Repos\Planilla\Acceso\bin\Debug\Acceso.pdb
+C:\Users\Inspiron i5\Source\Repos\Planilla\Acceso\bin\Debug\Entidad.dll
+C:\Users\Inspiron i5\Source\Repos\Planilla\Acceso\bin\Debug\MySql.Data.dll
+C:\Users\Inspiron i5\Source\Repos\Planilla\Acceso\bin\Debug\Entidad.pdb
+C:\Users\Inspiron i5\Source\Repos\Planilla\Acceso\bin\Debug\MySql.Data.xml
+C:\Users\Inspiron i5\Source\Repos\Planilla\Acceso\obj\Debug\Acceso.csprojResolveAssemblyReference.cache
+C:\Users\Inspiron i5\Source\Repos\Planilla\Acceso\obj\Debug\Acceso.dll
+C:\Users\Inspiron i5\Source\Repos\Planilla\Acceso\obj\Debug\Acceso.pdb
 C:\Users\JUSET\Source\Repos\Braulio9708\Planilla\Acceso\bin\Debug\Acceso.dll
 C:\Users\JUSET\Source\Repos\Braulio9708\Planilla\Acceso\bin\Debug\Acceso.pdb
 C:\Users\JUSET\Source\Repos\Braulio9708\Planilla\Acceso\bin\Debug\Entidad.dll

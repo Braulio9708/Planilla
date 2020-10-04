@@ -37,9 +37,17 @@
             this.smRestaurar = new System.Windows.Forms.Button();
             this.btmGenerales = new System.Windows.Forms.Button();
             this.btnUsuario = new System.Windows.Forms.Button();
+            this.btnCargo = new System.Windows.Forms.Button();
+            this.MenuHerramientas = new System.Windows.Forms.Button();
+            this.msMenu = new System.Windows.Forms.Button();
+            this.btnEmpleado = new System.Windows.Forms.Button();
             this.toolsMenu = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsRespaldar = new System.Windows.Forms.ToolStripMenuItem();
+            this.restaurarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.helpMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.contentsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.indexToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.searchToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator8 = new System.Windows.Forms.ToolStripSeparator();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip = new System.Windows.Forms.MenuStrip();
@@ -50,14 +58,9 @@
             this.toolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.statusStrip = new System.Windows.Forms.StatusStrip();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
-            this.btnCargo = new System.Windows.Forms.Button();
-            this.MenuHerramientas = new System.Windows.Forms.Button();
-            this.msMenu = new System.Windows.Forms.Button();
-            this.tsRespaldar = new System.Windows.Forms.ToolStripMenuItem();
-            this.restaurarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.indexToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.searchToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.btnEmpleado = new System.Windows.Forms.Button();
+            this.btnContrato = new System.Windows.Forms.Button();
+            this.btnAreaLaboral = new System.Windows.Forms.Button();
+            this.btnPrestaciones = new System.Windows.Forms.Button();
             this.menuStrip.SuspendLayout();
             this.statusStrip.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
@@ -71,7 +74,7 @@
             this.smRespaldar.Dock = System.Windows.Forms.DockStyle.Top;
             this.smRespaldar.Location = new System.Drawing.Point(0, 0);
             this.smRespaldar.Name = "smRespaldar";
-            this.smRespaldar.Size = new System.Drawing.Size(174, 35);
+            this.smRespaldar.Size = new System.Drawing.Size(157, 35);
             this.smRespaldar.TabIndex = 2;
             this.smRespaldar.Tag = "Respaldar";
             this.smRespaldar.Text = "Respaldar";
@@ -84,7 +87,7 @@
             this.smConfiguracion.Dock = System.Windows.Forms.DockStyle.Top;
             this.smConfiguracion.Location = new System.Drawing.Point(0, 70);
             this.smConfiguracion.Name = "smConfiguracion";
-            this.smConfiguracion.Size = new System.Drawing.Size(174, 35);
+            this.smConfiguracion.Size = new System.Drawing.Size(157, 35);
             this.smConfiguracion.TabIndex = 4;
             this.smConfiguracion.Tag = "Configuracion";
             this.smConfiguracion.Text = "Configuracion";
@@ -109,7 +112,7 @@
             this.smRestaurar.Dock = System.Windows.Forms.DockStyle.Top;
             this.smRestaurar.Location = new System.Drawing.Point(0, 35);
             this.smRestaurar.Name = "smRestaurar";
-            this.smRestaurar.Size = new System.Drawing.Size(174, 35);
+            this.smRestaurar.Size = new System.Drawing.Size(157, 35);
             this.smRestaurar.TabIndex = 3;
             this.smRestaurar.Tag = "Restaurar";
             this.smRestaurar.Text = "Restaurar";
@@ -134,13 +137,74 @@
             this.btnUsuario.Dock = System.Windows.Forms.DockStyle.Top;
             this.btnUsuario.Location = new System.Drawing.Point(0, 105);
             this.btnUsuario.Name = "btnUsuario";
-            this.btnUsuario.Size = new System.Drawing.Size(174, 35);
+            this.btnUsuario.Size = new System.Drawing.Size(157, 35);
             this.btnUsuario.TabIndex = 5;
             this.btnUsuario.Tag = "Usuario";
             this.btnUsuario.Text = "Usuario";
             this.toolTip.SetToolTip(this.btnUsuario, "Información del usuario");
             this.btnUsuario.UseVisualStyleBackColor = true;
             this.btnUsuario.Click += new System.EventHandler(this.btnUsuario_Click_1);
+            // 
+            // btnCargo
+            // 
+            this.btnCargo.BackColor = System.Drawing.Color.Transparent;
+            this.btnCargo.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnCargo.Location = new System.Drawing.Point(0, 140);
+            this.btnCargo.Name = "btnCargo";
+            this.btnCargo.Size = new System.Drawing.Size(157, 35);
+            this.btnCargo.TabIndex = 6;
+            this.btnCargo.Tag = "Cargo";
+            this.btnCargo.Text = "Cargo";
+            this.toolTip.SetToolTip(this.btnCargo, "\r\n");
+            this.btnCargo.UseVisualStyleBackColor = false;
+            this.btnCargo.Click += new System.EventHandler(this.btnCargo_Click);
+            // 
+            // MenuHerramientas
+            // 
+            this.MenuHerramientas.Dock = System.Windows.Forms.DockStyle.Top;
+            this.MenuHerramientas.Image = global::Planilla.Properties.Resources.generador2;
+            this.MenuHerramientas.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.MenuHerramientas.Location = new System.Drawing.Point(0, 38);
+            this.MenuHerramientas.Name = "MenuHerramientas";
+            this.MenuHerramientas.Size = new System.Drawing.Size(174, 45);
+            this.MenuHerramientas.TabIndex = 1;
+            this.MenuHerramientas.Tag = "Herramientas";
+            this.MenuHerramientas.Text = "Herramientas";
+            this.MenuHerramientas.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.toolTip.SetToolTip(this.MenuHerramientas, "Herramientas");
+            this.MenuHerramientas.UseVisualStyleBackColor = true;
+            this.MenuHerramientas.Click += new System.EventHandler(this.MenuHerramientas_Click);
+            // 
+            // msMenu
+            // 
+            this.msMenu.Dock = System.Windows.Forms.DockStyle.Top;
+            this.msMenu.Image = global::Planilla.Properties.Resources.iconfinder_70_Menu_2123897__2_;
+            this.msMenu.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.msMenu.Location = new System.Drawing.Point(0, 0);
+            this.msMenu.Name = "msMenu";
+            this.msMenu.Size = new System.Drawing.Size(174, 38);
+            this.msMenu.TabIndex = 0;
+            this.msMenu.Tag = "Mostrar";
+            this.msMenu.Text = "Menus";
+            this.msMenu.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.msMenu.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.toolTip.SetToolTip(this.msMenu, "Herramienas para guardar y respalda la información");
+            this.msMenu.UseVisualStyleBackColor = true;
+            this.msMenu.Click += new System.EventHandler(this.msMenu_Click);
+            // 
+            // btnEmpleado
+            // 
+            this.btnEmpleado.BackColor = System.Drawing.Color.Transparent;
+            this.btnEmpleado.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnEmpleado.Location = new System.Drawing.Point(0, 153);
+            this.btnEmpleado.Name = "btnEmpleado";
+            this.btnEmpleado.Size = new System.Drawing.Size(174, 35);
+            this.btnEmpleado.TabIndex = 4;
+            this.btnEmpleado.Tag = "Empleado";
+            this.btnEmpleado.Text = "Empleado";
+            this.toolTip.SetToolTip(this.btnEmpleado, "Informacion del empleado");
+            this.btnEmpleado.UseVisualStyleBackColor = false;
+            this.btnEmpleado.Click += new System.EventHandler(this.btnEmpleado_Click);
             // 
             // toolsMenu
             // 
@@ -150,6 +214,22 @@
             this.toolsMenu.Name = "toolsMenu";
             this.toolsMenu.Size = new System.Drawing.Size(90, 20);
             this.toolsMenu.Text = "&Herramientas";
+            // 
+            // tsRespaldar
+            // 
+            this.tsRespaldar.Image = global::Planilla.Properties.Resources.iconfinder_db_update_3213;
+            this.tsRespaldar.Name = "tsRespaldar";
+            this.tsRespaldar.Size = new System.Drawing.Size(125, 22);
+            this.tsRespaldar.Tag = "Respaldar";
+            this.tsRespaldar.Text = "Respaldar";
+            this.tsRespaldar.ToolTipText = "Respaldar información de la base de datos";
+            // 
+            // restaurarToolStripMenuItem
+            // 
+            this.restaurarToolStripMenuItem.Image = global::Planilla.Properties.Resources.iconfinder_Database_Upload_49582;
+            this.restaurarToolStripMenuItem.Name = "restaurarToolStripMenuItem";
+            this.restaurarToolStripMenuItem.Size = new System.Drawing.Size(125, 22);
+            this.restaurarToolStripMenuItem.Text = "Restaurar";
             // 
             // helpMenu
             // 
@@ -169,6 +249,22 @@
             this.contentsToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.F1)));
             this.contentsToolStripMenuItem.Size = new System.Drawing.Size(176, 22);
             this.contentsToolStripMenuItem.Text = "&Contenido";
+            // 
+            // indexToolStripMenuItem
+            // 
+            this.indexToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("indexToolStripMenuItem.Image")));
+            this.indexToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.Black;
+            this.indexToolStripMenuItem.Name = "indexToolStripMenuItem";
+            this.indexToolStripMenuItem.Size = new System.Drawing.Size(176, 22);
+            this.indexToolStripMenuItem.Text = "&Índice";
+            // 
+            // searchToolStripMenuItem
+            // 
+            this.searchToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("searchToolStripMenuItem.Image")));
+            this.searchToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.Black;
+            this.searchToolStripMenuItem.Name = "searchToolStripMenuItem";
+            this.searchToolStripMenuItem.Size = new System.Drawing.Size(176, 22);
+            this.searchToolStripMenuItem.Text = "&Buscar";
             // 
             // toolStripSeparator8
             // 
@@ -190,7 +286,7 @@
             this.helpMenu});
             this.menuStrip.Location = new System.Drawing.Point(0, 0);
             this.menuStrip.Name = "menuStrip";
-            this.menuStrip.Size = new System.Drawing.Size(975, 24);
+            this.menuStrip.Size = new System.Drawing.Size(1249, 24);
             this.menuStrip.TabIndex = 0;
             this.menuStrip.Text = "MenuStrip";
             // 
@@ -233,9 +329,9 @@
             // 
             this.statusStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripStatusLabel});
-            this.statusStrip.Location = new System.Drawing.Point(0, 431);
+            this.statusStrip.Location = new System.Drawing.Point(0, 515);
             this.statusStrip.Name = "statusStrip";
-            this.statusStrip.Size = new System.Drawing.Size(975, 22);
+            this.statusStrip.Size = new System.Drawing.Size(1249, 22);
             this.statusStrip.TabIndex = 2;
             this.statusStrip.Text = "StatusStrip";
             // 
@@ -261,113 +357,62 @@
             // splitContainer1.Panel2
             // 
             this.splitContainer1.Panel2.AutoScroll = true;
+            this.splitContainer1.Panel2.Controls.Add(this.btnPrestaciones);
+            this.splitContainer1.Panel2.Controls.Add(this.btnAreaLaboral);
+            this.splitContainer1.Panel2.Controls.Add(this.btnContrato);
             this.splitContainer1.Panel2.Controls.Add(this.btnCargo);
             this.splitContainer1.Panel2.Controls.Add(this.btnUsuario);
             this.splitContainer1.Panel2.Controls.Add(this.smConfiguracion);
             this.splitContainer1.Panel2.Controls.Add(this.smRestaurar);
             this.splitContainer1.Panel2.Controls.Add(this.smRespaldar);
-            this.splitContainer1.Size = new System.Drawing.Size(178, 407);
+            this.splitContainer1.Size = new System.Drawing.Size(178, 491);
             this.splitContainer1.SplitterDistance = 211;
             this.splitContainer1.TabIndex = 4;
             // 
-            // btnCargo
+            // btnContrato
             // 
-            this.btnCargo.BackColor = System.Drawing.Color.Transparent;
-            this.btnCargo.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnCargo.Location = new System.Drawing.Point(0, 140);
-            this.btnCargo.Name = "btnCargo";
-            this.btnCargo.Size = new System.Drawing.Size(174, 35);
-            this.btnCargo.TabIndex = 6;
-            this.btnCargo.Tag = "Cargo";
-            this.btnCargo.Text = "Cargo";
-            this.toolTip.SetToolTip(this.btnCargo, "\r\n");
-            this.btnCargo.UseVisualStyleBackColor = false;
-            this.btnCargo.Click += new System.EventHandler(this.btnCargo_Click);
+            this.btnContrato.BackColor = System.Drawing.Color.Transparent;
+            this.btnContrato.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnContrato.Location = new System.Drawing.Point(0, 175);
+            this.btnContrato.Name = "btnContrato";
+            this.btnContrato.Size = new System.Drawing.Size(157, 35);
+            this.btnContrato.TabIndex = 7;
+            this.btnContrato.Tag = "Contrato";
+            this.btnContrato.Text = "Contrato";
+            this.toolTip.SetToolTip(this.btnContrato, "\r\n");
+            this.btnContrato.UseVisualStyleBackColor = false;
             // 
-            // MenuHerramientas
+            // btnAreaLaboral
             // 
-            this.MenuHerramientas.Dock = System.Windows.Forms.DockStyle.Top;
-            this.MenuHerramientas.Image = global::Planilla.Properties.Resources.generador2;
-            this.MenuHerramientas.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.MenuHerramientas.Location = new System.Drawing.Point(0, 38);
-            this.MenuHerramientas.Name = "MenuHerramientas";
-            this.MenuHerramientas.Size = new System.Drawing.Size(174, 45);
-            this.MenuHerramientas.TabIndex = 1;
-            this.MenuHerramientas.Tag = "Herramientas";
-            this.MenuHerramientas.Text = "Herramientas";
-            this.MenuHerramientas.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.toolTip.SetToolTip(this.MenuHerramientas, "Herramientas");
-            this.MenuHerramientas.UseVisualStyleBackColor = true;
-            this.MenuHerramientas.Click += new System.EventHandler(this.MenuHerramientas_Click);
+            this.btnAreaLaboral.BackColor = System.Drawing.Color.Transparent;
+            this.btnAreaLaboral.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnAreaLaboral.Location = new System.Drawing.Point(0, 210);
+            this.btnAreaLaboral.Name = "btnAreaLaboral";
+            this.btnAreaLaboral.Size = new System.Drawing.Size(157, 35);
+            this.btnAreaLaboral.TabIndex = 8;
+            this.btnAreaLaboral.Tag = "Area";
+            this.btnAreaLaboral.Text = "Area Laboral";
+            this.toolTip.SetToolTip(this.btnAreaLaboral, "\r\n");
+            this.btnAreaLaboral.UseVisualStyleBackColor = false;
             // 
-            // msMenu
+            // btnPrestaciones
             // 
-            this.msMenu.Dock = System.Windows.Forms.DockStyle.Top;
-            this.msMenu.Image = global::Planilla.Properties.Resources.iconfinder_70_Menu_2123897__2_;
-            this.msMenu.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.msMenu.Location = new System.Drawing.Point(0, 0);
-            this.msMenu.Name = "msMenu";
-            this.msMenu.Size = new System.Drawing.Size(174, 38);
-            this.msMenu.TabIndex = 0;
-            this.msMenu.Tag = "Mostrar";
-            this.msMenu.Text = "Menus";
-            this.msMenu.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.msMenu.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.toolTip.SetToolTip(this.msMenu, "Herramienas para guardar y respalda la información");
-            this.msMenu.UseVisualStyleBackColor = true;
-            this.msMenu.Click += new System.EventHandler(this.msMenu_Click);
-            // 
-            // tsRespaldar
-            // 
-            this.tsRespaldar.Image = global::Planilla.Properties.Resources.iconfinder_db_update_3213;
-            this.tsRespaldar.Name = "tsRespaldar";
-            this.tsRespaldar.Size = new System.Drawing.Size(125, 22);
-            this.tsRespaldar.Tag = "Respaldar";
-            this.tsRespaldar.Text = "Respaldar";
-            this.tsRespaldar.ToolTipText = "Respaldar información de la base de datos";
-            // 
-            // restaurarToolStripMenuItem
-            // 
-            this.restaurarToolStripMenuItem.Image = global::Planilla.Properties.Resources.iconfinder_Database_Upload_49582;
-            this.restaurarToolStripMenuItem.Name = "restaurarToolStripMenuItem";
-            this.restaurarToolStripMenuItem.Size = new System.Drawing.Size(125, 22);
-            this.restaurarToolStripMenuItem.Text = "Restaurar";
-            // 
-            // indexToolStripMenuItem
-            // 
-            this.indexToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("indexToolStripMenuItem.Image")));
-            this.indexToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.Black;
-            this.indexToolStripMenuItem.Name = "indexToolStripMenuItem";
-            this.indexToolStripMenuItem.Size = new System.Drawing.Size(176, 22);
-            this.indexToolStripMenuItem.Text = "&Índice";
-            // 
-            // searchToolStripMenuItem
-            // 
-            this.searchToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("searchToolStripMenuItem.Image")));
-            this.searchToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.Black;
-            this.searchToolStripMenuItem.Name = "searchToolStripMenuItem";
-            this.searchToolStripMenuItem.Size = new System.Drawing.Size(176, 22);
-            this.searchToolStripMenuItem.Text = "&Buscar";
-            // 
-            // btnEmpleado
-            // 
-            this.btnEmpleado.BackColor = System.Drawing.Color.Transparent;
-            this.btnEmpleado.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnEmpleado.Location = new System.Drawing.Point(0, 153);
-            this.btnEmpleado.Name = "btnEmpleado";
-            this.btnEmpleado.Size = new System.Drawing.Size(174, 35);
-            this.btnEmpleado.TabIndex = 4;
-            this.btnEmpleado.Tag = "Empleado";
-            this.btnEmpleado.Text = "Empleado";
-            this.toolTip.SetToolTip(this.btnEmpleado, "Informacion del empleado");
-            this.btnEmpleado.UseVisualStyleBackColor = false;
-            this.btnEmpleado.Click += new System.EventHandler(this.btnEmpleado_Click);
+            this.btnPrestaciones.BackColor = System.Drawing.Color.Transparent;
+            this.btnPrestaciones.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnPrestaciones.Location = new System.Drawing.Point(0, 245);
+            this.btnPrestaciones.Name = "btnPrestaciones";
+            this.btnPrestaciones.Size = new System.Drawing.Size(157, 35);
+            this.btnPrestaciones.TabIndex = 9;
+            this.btnPrestaciones.Tag = "Prestacion";
+            this.btnPrestaciones.Text = "Prestaciones";
+            this.toolTip.SetToolTip(this.btnPrestaciones, "\r\n");
+            this.btnPrestaciones.UseVisualStyleBackColor = false;
             // 
             // Principal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(975, 453);
+            this.ClientSize = new System.Drawing.Size(1249, 537);
             this.Controls.Add(this.splitContainer1);
             this.Controls.Add(this.statusStrip);
             this.Controls.Add(this.menuStrip);
@@ -418,6 +463,9 @@
         private System.Windows.Forms.ToolStripMenuItem usuarioToolStripMenuItem;
         private System.Windows.Forms.Button btnCargo;
         private System.Windows.Forms.Button btnEmpleado;
+        private System.Windows.Forms.Button btnPrestaciones;
+        private System.Windows.Forms.Button btnAreaLaboral;
+        private System.Windows.Forms.Button btnContrato;
     }
 }
 
