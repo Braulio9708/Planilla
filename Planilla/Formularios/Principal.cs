@@ -388,7 +388,7 @@ namespace Planilla.Formularios
                 ofrmCargo = new frmCargo();
                 ofrmCargo.MdiParent = this;
                 ofrmCargo.StartPosition = FormStartPosition.CenterScreen;
-                //ofrmCargo.WindowState = FormWindowState.Maximized;
+                ofrmCargo.WindowState = FormWindowState.Maximized;
                 ofrmCargo.Show();
             }
             else

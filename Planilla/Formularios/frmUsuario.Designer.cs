@@ -231,22 +231,20 @@
             // 
             // tsbFiltrar
             // 
-            this.tsbFiltrar.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
             this.tsbFiltrar.Image = global::Planilla.Properties.Resources.SearchFile32;
             this.tsbFiltrar.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsbFiltrar.Name = "tsbFiltrar";
-            this.tsbFiltrar.Size = new System.Drawing.Size(36, 36);
+            this.tsbFiltrar.Size = new System.Drawing.Size(73, 36);
             this.tsbFiltrar.Text = "Filtrar";
             this.tsbFiltrar.ToolTipText = "Filtrar información (F5)";
             this.tsbFiltrar.Click += new System.EventHandler(this.tsbFiltrar_Click);
             // 
             // tsbNuevo
             // 
-            this.tsbNuevo.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
             this.tsbNuevo.Image = global::Planilla.Properties.Resources.New32;
             this.tsbNuevo.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsbNuevo.Name = "tsbNuevo";
-            this.tsbNuevo.Size = new System.Drawing.Size(36, 36);
+            this.tsbNuevo.Size = new System.Drawing.Size(78, 36);
             this.tsbNuevo.Tag = "Nuevo";
             this.tsbNuevo.Text = "Nuevo";
             this.tsbNuevo.ToolTipText = "Agregar nuevo registro (F2)";
@@ -254,11 +252,10 @@
             // 
             // tsbImprimir
             // 
-            this.tsbImprimir.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
             this.tsbImprimir.Image = global::Planilla.Properties.Resources.iconfinder_preferences_desktop_printer_8803__1_;
             this.tsbImprimir.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsbImprimir.Name = "tsbImprimir";
-            this.tsbImprimir.Size = new System.Drawing.Size(36, 36);
+            this.tsbImprimir.Size = new System.Drawing.Size(89, 36);
             this.tsbImprimir.Tag = "Imprimir";
             this.tsbImprimir.Text = "Imprimir";
             this.tsbImprimir.ToolTipText = "Imprimir documentos";

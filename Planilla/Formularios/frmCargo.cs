@@ -455,11 +455,6 @@ namespace Planilla.Formularios
             tsbFiltroAutomatico_Click(null, null);
         }
 
-        private void tsbFiltrar_Click(object sender, EventArgs e)
-        {
-            LlenarListado();
-        }
-
         private void tsbSeleccionarTodos_Click(object sender, EventArgs e)
         {
             try
@@ -703,21 +698,6 @@ namespace Planilla.Formularios
 
             }
         }
-       
-        private void tsbFiltroAutomatico_Click(object sender, EventArgs e)
-        {
-            tsbFiltroAutomatico.Checked = !tsbFiltroAutomatico.Checked;
-
-            if (tsbFiltroAutomatico.Checked == true)
-            {
-                tsbFiltroAutomatico.Image = Properties.Resources.unchecked16x16;
-            }
-            else
-            {
-                tsbFiltroAutomatico.Image = Properties.Resources.checked16x16;
-            }
-            
-        }
 
         private void tsbNuevo_Click(object sender, EventArgs e)
         {
@@ -749,6 +729,25 @@ namespace Planilla.Formularios
             if (chkCargo.CheckState == CheckState.Checked && tsbFiltroAutomatico.CheckState == CheckState.Checked)
             {
                 LlenarListado();
+            }
+        }
+
+        private void tsbFiltrar_Click(object sender, EventArgs e)
+        {
+            LlenarListado();
+        }
+
+        private void tsbFiltroAutomatico_Click(object sender, EventArgs e)
+        {
+            tsbFiltroAutomatico.Checked = !tsbFiltroAutomatico.Checked;
+
+            if (tsbFiltroAutomatico.Checked == true)
+            {
+                tsbFiltroAutomatico.Image = Properties.Resources.unchecked16x16;
+            }
+            else
+            {
+                tsbFiltroAutomatico.Image = Properties.Resources.checked16x16;
             }
         }
     }
