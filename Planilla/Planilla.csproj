@@ -58,6 +58,12 @@
     <Compile Include="Formularios\frmCargo.Designer.cs">
       <DependentUpon>frmCargo.cs</DependentUpon>
     </Compile>
+    <Compile Include="Formularios\frmCargoOperacion.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\frmCargoOperacion.Designer.cs">
+      <DependentUpon>frmCargoOperacion.cs</DependentUpon>
+    </Compile>
     <Compile Include="Formularios\frmLoginMySql1.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -97,6 +103,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Formularios\frmCargo.resx">
       <DependentUpon>frmCargo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\frmCargoOperacion.resx">
+      <DependentUpon>frmCargoOperacion.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios\frmUsuario.resx">
       <DependentUpon>frmUsuario.cs</DependentUpon>
@@ -300,6 +309,57 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\if_old-edit-find_23490 %284%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Save32x321.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Save24x24.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Save32x32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Save16x16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Save20x20.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\if_edit_173002 %282%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\if_edit_173002 %281%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\if_edit_173002.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\if_Plus_1891033.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\if_Plus_1891033 %281%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\if_printer_39263 %283%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\if_printer_39263 %281%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\if_printer_39263 %282%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\if_floppy_285657.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\if_Synchronize_27883 %281%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\if_Synchronize_27883.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\if_Log Out_27856.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

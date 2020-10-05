@@ -428,13 +428,13 @@ namespace Planilla.Formularios
 
         private void MostrarFormularioParaOperacion(string OperacionARealizar)
         {
-             /*frmCargoOperacion ofrmCargoOperacion = new frmCargoOperacion();
-             ofrmCargoOperacion.OperacionARealizar = OperacionARealizar();
+             frmCargoOperacion ofrmCargoOperacion = new frmCargoOperacion();
+             ofrmCargoOperacion.OperacionARealizar = OperacionARealizar;
              ofrmCargoOperacion.Nombre_Entidad_Privilegio = Nombre_Entidad_Privilegio;
-             ofrmCargoOperacion.Nombre_Entidad;
+             ofrmCargoOperacion.Nombre_Entidad= Nombre_Entidad;
              ofrmCargoOperacion.ValorLlavePrimariaEntidad = this.ValorLlavePrimariaEntidad;
              ofrmCargoOperacion.MdiParent = this.ParentForm;
-             ofrmCargoOperacion.Show();*/             
+             ofrmCargoOperacion.Show();       
         }
 
         private void AsignarLalvePrimaria()
@@ -699,11 +699,6 @@ namespace Planilla.Formularios
             }
         }
 
-        private void tsbNuevo_Click(object sender, EventArgs e)
-        {
-            MostrarFormularioParaOperacion("Nuevo");
-        }
-
         private void txtIdentificador_KeyUp(object sender, KeyEventArgs e)
         {
             if (Controles.IsNullOEmptyElControl(txtIdentificador))
@@ -749,6 +744,11 @@ namespace Planilla.Formularios
             {
                 tsbFiltroAutomatico.Image = Properties.Resources.checked16x16;
             }
+        }
+
+        private void tsbNuevo_Click(object sender, EventArgs e)
+        {
+            MostrarFormularioParaOperacion("Nuevo");
         }
     }
 }

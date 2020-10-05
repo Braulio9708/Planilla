@@ -343,6 +343,36 @@ namespace Planilla.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap if_edit_173002 {
+            get {
+                object obj = ResourceManager.GetObject("if_edit_173002", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap if_edit_173002__1_ {
+            get {
+                object obj = ResourceManager.GetObject("if_edit_173002 (1)", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap if_edit_173002__2_ {
+            get {
+                object obj = ResourceManager.GetObject("if_edit_173002 (2)", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap if_edit_delete_118920 {
             get {
                 object obj = ResourceManager.GetObject("if_edit-delete_118920", resourceCulture);
@@ -363,9 +393,59 @@ namespace Planilla.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap if_edit_delete_118920__1_1 {
+            get {
+                object obj = ResourceManager.GetObject("if_edit-delete_118920 (1)1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap if_edit_delete_118920__2_ {
             get {
                 object obj = ResourceManager.GetObject("if_edit-delete_118920 (2)", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap if_edit_delete_118920__2_1 {
+            get {
+                object obj = ResourceManager.GetObject("if_edit-delete_118920 (2)1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap if_edit_delete_1189201 {
+            get {
+                object obj = ResourceManager.GetObject("if_edit-delete_1189201", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap if_floppy_285657 {
+            get {
+                object obj = ResourceManager.GetObject("if_floppy_285657", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap if_Log_Out_27856 {
+            get {
+                object obj = ResourceManager.GetObject("if_Log Out_27856", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -406,6 +486,76 @@ namespace Planilla.Properties {
         internal static System.Drawing.Bitmap if_old_edit_find_23490__4_ {
             get {
                 object obj = ResourceManager.GetObject("if_old-edit-find_23490 (4)", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap if_Plus_1891033 {
+            get {
+                object obj = ResourceManager.GetObject("if_Plus_1891033", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap if_Plus_1891033__1_ {
+            get {
+                object obj = ResourceManager.GetObject("if_Plus_1891033 (1)", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap if_printer_39263__1_ {
+            get {
+                object obj = ResourceManager.GetObject("if_printer_39263 (1)", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap if_printer_39263__2_ {
+            get {
+                object obj = ResourceManager.GetObject("if_printer_39263 (2)", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap if_printer_39263__3_ {
+            get {
+                object obj = ResourceManager.GetObject("if_printer_39263 (3)", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap if_Synchronize_27883 {
+            get {
+                object obj = ResourceManager.GetObject("if_Synchronize_27883", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap if_Synchronize_27883__1_ {
+            get {
+                object obj = ResourceManager.GetObject("if_Synchronize_27883 (1)", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -466,6 +616,56 @@ namespace Planilla.Properties {
         internal static System.Drawing.Bitmap nuevoregistro {
             get {
                 object obj = ResourceManager.GetObject("nuevoregistro", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Save16x16 {
+            get {
+                object obj = ResourceManager.GetObject("Save16x16", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Save20x20 {
+            get {
+                object obj = ResourceManager.GetObject("Save20x20", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Save24x24 {
+            get {
+                object obj = ResourceManager.GetObject("Save24x24", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Save32x32 {
+            get {
+                object obj = ResourceManager.GetObject("Save32x32", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Save32x321 {
+            get {
+                object obj = ResourceManager.GetObject("Save32x321", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

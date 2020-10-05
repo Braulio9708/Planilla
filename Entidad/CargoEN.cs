@@ -12,6 +12,11 @@ namespace Entidad
         public int IdCargo { set; get; }
         public string Cargo { set; get; }
 
+        public int IdUsuarioDeCreacion { set; get; }
+        public DateTime FechaDeCreacion { set; get; }
+        public int IdUsuarioDeModificacion { set; get; }
+        public DateTime FechaDeModificacion { set; get; }
+
         public LoginEN oLoginEN = new LoginEN();
 
         public string Where { set; get; }
