@@ -104,7 +104,7 @@
             this.flowLayoutPanel1.Controls.Add(this.groupBox2);
             this.flowLayoutPanel1.Location = new System.Drawing.Point(19, 36);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(1107, 450);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(1138, 450);
             this.flowLayoutPanel1.TabIndex = 1;
             // 
             // groupBox1
@@ -127,7 +127,7 @@
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Location = new System.Drawing.Point(3, 3);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(548, 230);
+            this.groupBox1.Size = new System.Drawing.Size(569, 230);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             // 
@@ -143,6 +143,9 @@
             // cmbEstado
             // 
             this.cmbEstado.FormattingEnabled = true;
+            this.cmbEstado.Items.AddRange(new object[] {
+            "Activo",
+            "Inactivo"});
             this.cmbEstado.Location = new System.Drawing.Point(370, 196);
             this.cmbEstado.Name = "cmbEstado";
             this.cmbEstado.Size = new System.Drawing.Size(163, 21);
@@ -151,6 +154,9 @@
             // cmbTipoDeCuenta
             // 
             this.cmbTipoDeCuenta.FormattingEnabled = true;
+            this.cmbTipoDeCuenta.Items.AddRange(new object[] {
+            "Administrador",
+            "Usuario"});
             this.cmbTipoDeCuenta.Location = new System.Drawing.Point(136, 196);
             this.cmbTipoDeCuenta.Name = "cmbTipoDeCuenta";
             this.cmbTipoDeCuenta.Size = new System.Drawing.Size(168, 21);
@@ -266,9 +272,9 @@
             // 
             this.groupBox2.Controls.Add(this.groupBox4);
             this.groupBox2.Controls.Add(this.groupBox3);
-            this.groupBox2.Location = new System.Drawing.Point(557, 3);
+            this.groupBox2.Location = new System.Drawing.Point(578, 3);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(540, 435);
+            this.groupBox2.Size = new System.Drawing.Size(544, 435);
             this.groupBox2.TabIndex = 1;
             this.groupBox2.TabStop = false;
             // 
@@ -452,6 +458,8 @@
             // cmbModulo
             // 
             this.cmbModulo.FormattingEnabled = true;
+            this.cmbModulo.Items.AddRange(new object[] {
+            "General"});
             this.cmbModulo.Location = new System.Drawing.Point(74, 53);
             this.cmbModulo.Name = "cmbModulo";
             this.cmbModulo.Size = new System.Drawing.Size(258, 21);
@@ -510,7 +518,7 @@
             this.panel1.Controls.Add(this.flowLayoutPanel1);
             this.panel1.Location = new System.Drawing.Point(12, 47);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1151, 513);
+            this.panel1.Size = new System.Drawing.Size(1173, 513);
             this.panel1.TabIndex = 3;
             // 
             // toolStrip1
@@ -525,7 +533,7 @@
             this.tsbRecargar});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(1151, 31);
+            this.toolStrip1.Size = new System.Drawing.Size(1173, 31);
             this.toolStrip1.TabIndex = 2;
             this.toolStrip1.Text = "toolStrip1";
             // 
@@ -617,7 +625,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1184, 607);
+            this.ClientSize = new System.Drawing.Size(1201, 607);
             this.Controls.Add(this.InformacionDeLaEntidadOeracion);
             this.Controls.Add(this.InformacionEntidadOperacion);
             this.Controls.Add(this.panel1);

@@ -581,13 +581,13 @@ namespace Planilla.Formularios
 
             oRegistrosEN.IdUsuario = ValorLlavePrimariaEntidad;
 
-            if (oRegistrosLN.ListadoPorIdentificador(oRegistrosEN, Program.oDatosDeConexion))
+            if (oRegistrosLN.ListadoPorIdentificador(oRegistrosEN, Program.oDatosDeConexioEN))
             {
                 if (oRegistrosLN.TraerDatos().Rows.Count > 0)
                 {
 
                     DataRow Fila = oRegistrosLN.TraerDatos().Rows[0];
-                    txtNombreUsuario.Text = Fila["Usuario"].ToString();
+                    txtNombreUsuario.Text = Fila["Nombre"].ToString();
                     cmbTipoDeCuenta.SelectedValue = Convert.ToInt32(Fila["IdRol"].ToString());
                     txtNombreSecion.Text = Fila["Login"].ToString();
                     txtConfirmar.Text = CifrarCadenas.DesencriptarCadena(Fila["Contrasena"].ToString());
@@ -644,14 +644,6 @@ namespace Planilla.Formularios
             txtConfirmar.Text = string.Empty;
             txtCorreoElectronico.Text = string.Empty;
             cmbTipoDeCuenta.SelectedIndex = -1;
-            cmbEstado.SelectedIndex = -1;
-
-            //Limpiar campo de los filtros
-            cmbModulo.SelectedIndex = -1;
-            cmbInterfaz.SelectedIndex = -1;
-            txtPrivilegio.Text = string.Empty;
-            txtBuscarPrivilegio.Text = string.Empty;
-
         }
 
         private void GuardarValoresDeConfiguracion()
@@ -937,7 +929,7 @@ namespace Planilla.Formularios
                         //OPERACIONES
                         if (Operacion == "AGREGAR")
                         {
-                            if (oRegistrosLN.Agregar(oRegistrosEN, Program.oDatosDeConexion))
+                            if (oRegistrosLN.Agregar(oRegistrosEN, Program.oDatosDeConexioEN))
                             {
                                 Fila.Cells[NombreLavePrimariaDetalle].Value = oRegistrosEN.IdModuloInterfazUsuario;
                                 Fila.Cells["Actualizar"].Value = false;
@@ -1035,17 +1027,17 @@ namespace Planilla.Formularios
 
             if (chkModulo.CheckState == CheckState.Checked && Controles.IsNullOEmptyElControl(cmbModulo) == false)
             {
-                Where += string.Format(" and m.IdModulo = {0}", cmbModulo.SelectedValue);
+                Where += string.Format(" and Nombre = {0}", cmbModulo.SelectedValue);
             }
 
             if (chkInterfaz.CheckState == CheckState.Checked && Controles.IsNullOEmptyElControl(cmbInterfaz) == false)
             {
-                Where += string.Format(" and i.IdInterfaz = {0}", cmbInterfaz.SelectedValue);
+                Where += string.Format(" and Nombre = {0}", cmbInterfaz.SelectedValue);
             }
 
             if (chkPrivilegio.CheckState == CheckState.Checked && Controles.IsNullOEmptyElControl(txtPrivilegio) == false)
             {
-                Where += string.Format(" and p.Nombre like '%{0}%'", txtPrivilegio.Text.Trim());
+                Where += string.Format(" and Nombre like '%{0}%'", txtPrivilegio.Text.Trim());
             }
 
             return Where;

@@ -52,7 +52,7 @@ namespace Acceso
 
                 Comando.CommandText = Consultas;
 
-                Comando.Parameters.Add(new MySqlParameter("@IdPrivilegio", MySqlDbType.Int32)).Value = oRegistroEN.oPrivilegioEN;
+                Comando.Parameters.Add(new MySqlParameter("@IdPrivilegio", MySqlDbType.Int32)).Value = oRegistroEN.oPrivilegioEN.IdPrivilegio;
                 Comando.Parameters.Add(new MySqlParameter("@IdUsuario", MySqlDbType.Int32)).Value = oRegistroEN.oUsuarioEN.IdUsuario;
                 Comando.Parameters.Add(new MySqlParameter("@Acceso", MySqlDbType.Int32)).Value = oRegistroEN.Acceso;
                 Comando.Parameters.Add(new MySqlParameter("@IdUsuarioDeCreacion", MySqlDbType.Int32)).Value = oRegistroEN.oLoginEN.IdUsuario;
@@ -242,7 +242,7 @@ namespace Acceso
                 inner join interfaz as i on i.IdInterfaz = mi.IdInterfaz
                 inner join modulo as m on m.IdModulo = mi.IdModulo
                 where miu.IdModuloInterfazUsuario > 0 and miu.IdUsuario = {0} {1}
-                union
+                union all
                 Select 0 as 'IdModuloInterfazUsuario', p.IdPrivilegio, 0 as 'Acceso', 
                 p.Nombre as 'Privilegio', i.NombreAMostrar,i.Nombre as 'Interfaz', m.Nombre as 'Modulo' 
                  from privilegio as p
