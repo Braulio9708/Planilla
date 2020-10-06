@@ -9,7 +9,7 @@ using System.Data;
 
 namespace Acceso
 {
-    class InterfazAD
+    public class InterfazAD
     {
 
         public string Error { set; get; }
@@ -295,6 +295,70 @@ namespace Acceso
 
         #endregion
 
+        #region "Funcion de validacion"
+        public bool ValidarRegistroDuplicado(InterfazEN oRegistroEN, DatosDeConexionEN oDatos, string TipoDeOperacion)
+        {
+            try
+            {
+                InicialisarVariablesGlovales(oDatos);
+
+                switch (TipoDeOperacion.Trim().ToUpper())
+                {
+
+                    case "AGREGAR":
+
+                        Consultas = @"SELECT CASE WHEN EXISTS(SELECT IdInterfaz FROM Interfaz WHERE upper(trim(Nombre)) = upper(@Nombre)) THEN 1 ELSE 0 END AS 'RES'";
+                        Comando.Parameters.Add(new MySqlParameter("@Nombre", MySqlDbType.VarChar, oRegistroEN.Nombre.Trim().Length)).Value = oRegistroEN.Nombre.Trim();
+
+                        break;
+
+                    case "ACTUALIZAR":
+
+                        Consultas = @"SELECT CASE WHEN EXISTS(SELECT IdInterfaz FROM Interfaz WHERE upper(trim(Nombre)) = upper(@Nombre) and IdInterfaz <> @idInterfaz) THEN 1 ELSE 0 END AS 'RES'";
+                        Comando.Parameters.Add(new MySqlParameter("@Nombre", MySqlDbType.VarChar, oRegistroEN.Nombre.Trim().Length)).Value = oRegistroEN.Nombre.Trim();
+                        Comando.Parameters.Add(new MySqlParameter("@IdInterfaz", MySqlDbType.Int32)).Value = oRegistroEN.IdInterfaz;
+
+                        break;
+
+                    default:
+                        throw new ArgumentException("La operación solicitada no esta disponible");
+
+                }
+
+                Comando.CommandText = Consultas;
+
+                InicialisarAdaptador();
+
+                if (Convert.ToInt32(DT.Rows[0]["RES"].ToString()) > 0)
+                {
+
+                    DescripcionDeLaOperacion = string.Format("Ya existe información del Registro dentro de nuestro sistema: {0} {1}", Environment.NewLine, InformacionDelRegistro(oRegistroEN));
+                    this.Error = DescripcionDeLaOperacion;
+                    return true;
+
+                }
+
+                return false;
+
+            }
+            catch (Exception ex)
+            {
+                this.Error = ex.Message;
+
+                DescripcionDeLaOperacion = string.Format("Se produjo el seguiente error: '{2}' al validar el registro. {0} {1} ", Environment.NewLine, InformacionDelRegistro(oRegistroEN), ex.Message);
+                oTransaccionesAD.Agregar(oRegistroEN.oLoginEN.IdUsuario, oRegistroEN.oLoginEN.NumeroIP, oRegistroEN.IdInterfaz, "VALIDAR", "ERROR AL VALIDAR LA INFORMACIÓN DE LA INTERFAZ", "ERROR", DescripcionDeLaOperacion, oRegistroEN.oLoginEN.IdUsuario, oDatos);
+
+                return false;
+            }
+            finally
+            {
+                FinalizarConexion();
+                oTransaccionesAD = null;
+
+            }
+        }
+        #endregion
+
         #region "Funciones Para Retornar Informacion Y Llamados"
         private TransaccionesEN InformacionDelaTransaccion(InterfazEN oInterfaz, String TipoDeOperacion, String Descripcion, String Estado)
         {
@@ -302,7 +366,7 @@ namespace Acceso
 
             oRegistroEN.IdRegistro = oInterfaz.IdInterfaz;
             oRegistroEN.Modelo = "InterfazAD";
-            //oRegistroEN.Modulo = "Clientes";
+            oRegistroEN.Modulo = "General";
             oRegistroEN.Tabla = "Interfaz";
             oRegistroEN.TipoDeOperacion = TipoDeOperacion;
             oRegistroEN.Estado = Estado;

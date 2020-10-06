@@ -175,6 +175,7 @@ namespace Logica
         {
             return oModuloInterfazRolAD.TraerDatos().Rows.Count;
         }
+
         public DataTable PrivilegiosDelRolParaUsuarioDT()
         {
             DataTable DataDT = null;

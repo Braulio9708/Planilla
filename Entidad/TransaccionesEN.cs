@@ -21,7 +21,7 @@ namespace Entidad
         public string DescripcionInterna { set; get; }
         public string Estado { set; get; }
         public string Modelo { set; get; }
-        //public string Modulo { set; get; }
+        public string Modulo { set; get; }
         public string Tabla { set; get; }
         public string DescripcionDelUsuario { set; get; }
         public int IdUsuarioAPrueva { set; get; }

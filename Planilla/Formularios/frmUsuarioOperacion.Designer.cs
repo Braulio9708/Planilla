@@ -28,14 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmUsuarioOperacion));
-            this.toolStrip1 = new System.Windows.Forms.ToolStrip();
-            this.tsGuardar = new System.Windows.Forms.ToolStripButton();
-            this.tsActualizar = new System.Windows.Forms.ToolStripButton();
-            this.tsEliminar = new System.Windows.Forms.ToolStripButton();
-            this.tsNuevo = new System.Windows.Forms.ToolStripButton();
-            this.tsSalir = new System.Windows.Forms.ToolStripButton();
-            this.tsRecargar = new System.Windows.Forms.ToolStripButton();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.label8 = new System.Windows.Forms.Label();
@@ -58,17 +52,20 @@
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.tstNumeroDeRegistro = new System.Windows.Forms.ToolStripStatusLabel();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
+            this.lbaBarraDePrograso = new System.Windows.Forms.ToolStripStatusLabel();
+            this.BarraDeProgreso = new System.Windows.Forms.ToolStripProgressBar();
+            this.dgvLista = new System.Windows.Forms.DataGridView();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.toolStrip3 = new System.Windows.Forms.ToolStrip();
-            this.tsAplicarFiltroAutomatio = new System.Windows.Forms.ToolStripButton();
+            this.tsbAplicarFiltroAutomatio = new System.Windows.Forms.ToolStripButton();
             this.toolStrip2 = new System.Windows.Forms.ToolStrip();
-            this.tsFiltarPrivilegios = new System.Windows.Forms.ToolStripButton();
+            this.tsbFiltarPrivilegios = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
-            this.tsSeleccionar = new System.Windows.Forms.ToolStripButton();
+            this.tsbSeleccionar = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.tsBuscarPrivilegio = new System.Windows.Forms.ToolStripButton();
-            this.tsbBuscarPrivilegio = new System.Windows.Forms.ToolStripTextBox();
+            this.txtBuscarPrivilegio = new System.Windows.Forms.ToolStripTextBox();
             this.txtPrivilegio = new System.Windows.Forms.TextBox();
             this.cmbInterfaz = new System.Windows.Forms.ComboBox();
             this.cmbModulo = new System.Windows.Forms.ComboBox();
@@ -76,100 +73,38 @@
             this.chkInterfaz = new System.Windows.Forms.CheckBox();
             this.chkModulo = new System.Windows.Forms.CheckBox();
             this.chkCerrarVentana = new System.Windows.Forms.CheckBox();
-            this.tstBarraDePrograso = new System.Windows.Forms.ToolStripStatusLabel();
-            this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
-            this.BarraDeProgreso = new System.Windows.Forms.ToolStripProgressBar();
-            this.toolStrip1.SuspendLayout();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.toolStrip1 = new System.Windows.Forms.ToolStrip();
+            this.tsbGuardar = new System.Windows.Forms.ToolStripButton();
+            this.tsbActualizar = new System.Windows.Forms.ToolStripButton();
+            this.tsbEliminar = new System.Windows.Forms.ToolStripButton();
+            this.tsbNuevo = new System.Windows.Forms.ToolStripButton();
+            this.tsbSalir = new System.Windows.Forms.ToolStripButton();
+            this.tsbRecargar = new System.Windows.Forms.ToolStripButton();
+            this.InformacionEntidadOperacion = new System.Windows.Forms.Label();
+            this.InformacionDeLaEntidadOeracion = new System.Windows.Forms.Label();
+            this.EP = new System.Windows.Forms.ErrorProvider(this.components);
             this.flowLayoutPanel1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox4.SuspendLayout();
             this.statusStrip1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvLista)).BeginInit();
             this.groupBox3.SuspendLayout();
             this.toolStrip3.SuspendLayout();
             this.toolStrip2.SuspendLayout();
+            this.panel1.SuspendLayout();
+            this.toolStrip1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.EP)).BeginInit();
             this.SuspendLayout();
-            // 
-            // toolStrip1
-            // 
-            this.toolStrip1.ImageScalingSize = new System.Drawing.Size(24, 24);
-            this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.tsGuardar,
-            this.tsActualizar,
-            this.tsEliminar,
-            this.tsNuevo,
-            this.tsSalir,
-            this.tsRecargar});
-            this.toolStrip1.Location = new System.Drawing.Point(0, 0);
-            this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(1109, 31);
-            this.toolStrip1.TabIndex = 0;
-            this.toolStrip1.Text = "toolStrip1";
-            // 
-            // tsGuardar
-            // 
-            this.tsGuardar.Image = global::Planilla.Properties.Resources.Save32x32;
-            this.tsGuardar.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tsGuardar.Name = "tsGuardar";
-            this.tsGuardar.Size = new System.Drawing.Size(77, 28);
-            this.tsGuardar.Tag = "Guardar";
-            this.tsGuardar.Text = "Guardar";
-            // 
-            // tsActualizar
-            // 
-            this.tsActualizar.Image = global::Planilla.Properties.Resources.Edit24x241;
-            this.tsActualizar.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tsActualizar.Name = "tsActualizar";
-            this.tsActualizar.Size = new System.Drawing.Size(87, 28);
-            this.tsActualizar.Tag = "Actualizar";
-            this.tsActualizar.Text = "Actualizar";
-            // 
-            // tsEliminar
-            // 
-            this.tsEliminar.Image = global::Planilla.Properties.Resources.Eliminar24x241;
-            this.tsEliminar.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tsEliminar.Name = "tsEliminar";
-            this.tsEliminar.Size = new System.Drawing.Size(78, 28);
-            this.tsEliminar.Tag = "Eliminar";
-            this.tsEliminar.Text = "Eliminar";
-            // 
-            // tsNuevo
-            // 
-            this.tsNuevo.Image = global::Planilla.Properties.Resources.New32;
-            this.tsNuevo.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tsNuevo.Name = "tsNuevo";
-            this.tsNuevo.Size = new System.Drawing.Size(70, 28);
-            this.tsNuevo.Tag = "Nuevo";
-            this.tsNuevo.Text = "Nuevo";
-            // 
-            // tsSalir
-            // 
-            this.tsSalir.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
-            this.tsSalir.Image = global::Planilla.Properties.Resources.iconfinder_Close_1891023__3_;
-            this.tsSalir.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tsSalir.Name = "tsSalir";
-            this.tsSalir.Size = new System.Drawing.Size(56, 28);
-            this.tsSalir.Tag = "salir";
-            this.tsSalir.Text = "salir";
-            // 
-            // tsRecargar
-            // 
-            this.tsRecargar.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
-            this.tsRecargar.Image = global::Planilla.Properties.Resources.Refresh132x32;
-            this.tsRecargar.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tsRecargar.Name = "tsRecargar";
-            this.tsRecargar.Size = new System.Drawing.Size(81, 28);
-            this.tsRecargar.Tag = "Recargar";
-            this.tsRecargar.Text = "Recargar";
             // 
             // flowLayoutPanel1
             // 
             this.flowLayoutPanel1.Controls.Add(this.groupBox1);
             this.flowLayoutPanel1.Controls.Add(this.groupBox2);
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(0, 34);
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(19, 36);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(1109, 448);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(1107, 450);
             this.flowLayoutPanel1.TabIndex = 1;
             // 
             // groupBox1
@@ -220,6 +155,7 @@
             this.cmbTipoDeCuenta.Name = "cmbTipoDeCuenta";
             this.cmbTipoDeCuenta.Size = new System.Drawing.Size(168, 21);
             this.cmbTipoDeCuenta.TabIndex = 13;
+            this.cmbTipoDeCuenta.SelectionChangeCommitted += new System.EventHandler(this.cmbTipoDeCuenta_SelectionChangeCommitted);
             // 
             // txtCorreoElectronico
             // 
@@ -339,7 +275,7 @@
             // groupBox4
             // 
             this.groupBox4.Controls.Add(this.statusStrip1);
-            this.groupBox4.Controls.Add(this.dataGridView1);
+            this.groupBox4.Controls.Add(this.dgvLista);
             this.groupBox4.Location = new System.Drawing.Point(13, 237);
             this.groupBox4.Name = "groupBox4";
             this.groupBox4.Size = new System.Drawing.Size(521, 192);
@@ -352,7 +288,7 @@
             this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tstNumeroDeRegistro,
             this.toolStripStatusLabel1,
-            this.tstBarraDePrograso,
+            this.lbaBarraDePrograso,
             this.BarraDeProgreso});
             this.statusStrip1.Location = new System.Drawing.Point(3, 167);
             this.statusStrip1.Name = "statusStrip1";
@@ -366,14 +302,34 @@
             this.tstNumeroDeRegistro.Size = new System.Drawing.Size(100, 17);
             this.tstNumeroDeRegistro.Text = "No. de Registro: 0";
             // 
-            // dataGridView1
+            // toolStripStatusLabel1
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dataGridView1.Location = new System.Drawing.Point(3, 16);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(515, 173);
-            this.dataGridView1.TabIndex = 0;
+            this.toolStripStatusLabel1.Name = "toolStripStatusLabel1";
+            this.toolStripStatusLabel1.Size = new System.Drawing.Size(244, 17);
+            this.toolStripStatusLabel1.Tag = "";
+            this.toolStripStatusLabel1.Text = "...............................................................................";
+            // 
+            // lbaBarraDePrograso
+            // 
+            this.lbaBarraDePrograso.Name = "lbaBarraDePrograso";
+            this.lbaBarraDePrograso.Size = new System.Drawing.Size(38, 17);
+            this.lbaBarraDePrograso.Text = "0 de 0";
+            // 
+            // BarraDeProgreso
+            // 
+            this.BarraDeProgreso.Name = "BarraDeProgreso";
+            this.BarraDeProgreso.Size = new System.Drawing.Size(100, 16);
+            // 
+            // dgvLista
+            // 
+            this.dgvLista.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.dgvLista.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvLista.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgvLista.Location = new System.Drawing.Point(3, 16);
+            this.dgvLista.Name = "dgvLista";
+            this.dgvLista.Size = new System.Drawing.Size(515, 173);
+            this.dgvLista.TabIndex = 0;
+            this.dgvLista.CurrentCellDirtyStateChanged += new System.EventHandler(this.dgvLista_CurrentCellDirtyStateChanged);
             // 
             // groupBox3
             // 
@@ -396,7 +352,7 @@
             // 
             this.toolStrip3.Dock = System.Windows.Forms.DockStyle.None;
             this.toolStrip3.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.tsAplicarFiltroAutomatio});
+            this.tsbAplicarFiltroAutomatio});
             this.toolStrip3.Location = new System.Drawing.Point(343, 115);
             this.toolStrip3.Name = "toolStrip3";
             this.toolStrip3.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
@@ -404,53 +360,56 @@
             this.toolStrip3.TabIndex = 7;
             this.toolStrip3.Text = "toolStrip3";
             // 
-            // tsAplicarFiltroAutomatio
+            // tsbAplicarFiltroAutomatio
             // 
-            this.tsAplicarFiltroAutomatio.Image = global::Planilla.Properties.Resources.checked20x20;
-            this.tsAplicarFiltroAutomatio.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tsAplicarFiltroAutomatio.Name = "tsAplicarFiltroAutomatio";
-            this.tsAplicarFiltroAutomatio.Size = new System.Drawing.Size(160, 22);
-            this.tsAplicarFiltroAutomatio.Tag = "AplicarFiltoAutomatico";
-            this.tsAplicarFiltroAutomatio.Text = "Aplicar Filtro Automatico";
+            this.tsbAplicarFiltroAutomatio.Image = global::Planilla.Properties.Resources.checked20x20;
+            this.tsbAplicarFiltroAutomatio.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbAplicarFiltroAutomatio.Name = "tsbAplicarFiltroAutomatio";
+            this.tsbAplicarFiltroAutomatio.Size = new System.Drawing.Size(160, 22);
+            this.tsbAplicarFiltroAutomatio.Tag = "AplicarFiltoAutomatico";
+            this.tsbAplicarFiltroAutomatio.Text = "Aplicar Filtro Automatico";
+            this.tsbAplicarFiltroAutomatio.Click += new System.EventHandler(this.tsbAplicarFiltroAutomatio_Click);
             // 
             // toolStrip2
             // 
             this.toolStrip2.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.toolStrip2.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.tsFiltarPrivilegios,
+            this.tsbFiltarPrivilegios,
             this.toolStripSeparator1,
-            this.tsSeleccionar,
+            this.tsbSeleccionar,
             this.toolStripSeparator2,
             this.tsBuscarPrivilegio,
-            this.tsbBuscarPrivilegio});
+            this.txtBuscarPrivilegio});
             this.toolStrip2.Location = new System.Drawing.Point(3, 183);
             this.toolStrip2.Name = "toolStrip2";
             this.toolStrip2.Size = new System.Drawing.Size(522, 25);
             this.toolStrip2.TabIndex = 6;
             this.toolStrip2.Text = "toolStrip2";
             // 
-            // tsFiltarPrivilegios
+            // tsbFiltarPrivilegios
             // 
-            this.tsFiltarPrivilegios.Image = global::Planilla.Properties.Resources.filtrar24x24;
-            this.tsFiltarPrivilegios.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tsFiltarPrivilegios.Name = "tsFiltarPrivilegios";
-            this.tsFiltarPrivilegios.Size = new System.Drawing.Size(114, 22);
-            this.tsFiltarPrivilegios.Tag = "Filtrar Privilrgios";
-            this.tsFiltarPrivilegios.Text = "Filtrar Privilegios";
+            this.tsbFiltarPrivilegios.Image = global::Planilla.Properties.Resources.filtrar24x24;
+            this.tsbFiltarPrivilegios.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbFiltarPrivilegios.Name = "tsbFiltarPrivilegios";
+            this.tsbFiltarPrivilegios.Size = new System.Drawing.Size(114, 22);
+            this.tsbFiltarPrivilegios.Tag = "Filtrar Privilrgios";
+            this.tsbFiltarPrivilegios.Text = "Filtrar Privilegios";
+            this.tsbFiltarPrivilegios.Click += new System.EventHandler(this.tsbFiltarPrivilegios_Click);
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
             this.toolStripSeparator1.Size = new System.Drawing.Size(6, 25);
             // 
-            // tsSeleccionar
+            // tsbSeleccionar
             // 
-            this.tsSeleccionar.Image = global::Planilla.Properties.Resources.checked16x16;
-            this.tsSeleccionar.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tsSeleccionar.Name = "tsSeleccionar";
-            this.tsSeleccionar.Size = new System.Drawing.Size(87, 22);
-            this.tsSeleccionar.Tag = "Seleccionar";
-            this.tsSeleccionar.Text = "Seleccionar";
+            this.tsbSeleccionar.Image = global::Planilla.Properties.Resources.checked16x16;
+            this.tsbSeleccionar.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbSeleccionar.Name = "tsbSeleccionar";
+            this.tsbSeleccionar.Size = new System.Drawing.Size(87, 22);
+            this.tsbSeleccionar.Tag = "Seleccionar";
+            this.tsbSeleccionar.Text = "Seleccionar";
+            this.tsbSeleccionar.Click += new System.EventHandler(this.tsbSeleccionar_Click);
             // 
             // toolStripSeparator2
             // 
@@ -467,10 +426,11 @@
             this.tsBuscarPrivilegio.Tag = "BuscarPrivilegio";
             this.tsBuscarPrivilegio.Text = "Buscar Privilegio:";
             // 
-            // tsbBuscarPrivilegio
+            // txtBuscarPrivilegio
             // 
-            this.tsbBuscarPrivilegio.Name = "tsbBuscarPrivilegio";
-            this.tsbBuscarPrivilegio.Size = new System.Drawing.Size(150, 25);
+            this.txtBuscarPrivilegio.Name = "txtBuscarPrivilegio";
+            this.txtBuscarPrivilegio.Size = new System.Drawing.Size(150, 25);
+            this.txtBuscarPrivilegio.KeyUp += new System.Windows.Forms.KeyEventHandler(this.txtBuscarPrivilegio_KeyUp);
             // 
             // txtPrivilegio
             // 
@@ -478,6 +438,7 @@
             this.txtPrivilegio.Name = "txtPrivilegio";
             this.txtPrivilegio.Size = new System.Drawing.Size(258, 20);
             this.txtPrivilegio.TabIndex = 5;
+            this.txtPrivilegio.KeyUp += new System.Windows.Forms.KeyEventHandler(this.txtPrivilegio_KeyUp);
             // 
             // cmbInterfaz
             // 
@@ -486,6 +447,7 @@
             this.cmbInterfaz.Name = "cmbInterfaz";
             this.cmbInterfaz.Size = new System.Drawing.Size(258, 21);
             this.cmbInterfaz.TabIndex = 4;
+            this.cmbInterfaz.SelectionChangeCommitted += new System.EventHandler(this.cmbInterfaz_SelectionChangeCommitted);
             // 
             // cmbModulo
             // 
@@ -494,6 +456,7 @@
             this.cmbModulo.Name = "cmbModulo";
             this.cmbModulo.Size = new System.Drawing.Size(258, 21);
             this.cmbModulo.TabIndex = 3;
+            this.cmbModulo.SelectionChangeCommitted += new System.EventHandler(this.cmbModulo_SelectionChangeCommitted);
             // 
             // chkPrivilegio
             // 
@@ -531,44 +494,137 @@
             // chkCerrarVentana
             // 
             this.chkCerrarVentana.AutoSize = true;
-            this.chkCerrarVentana.Location = new System.Drawing.Point(12, 488);
+            this.chkCerrarVentana.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chkCerrarVentana.Location = new System.Drawing.Point(60, 579);
             this.chkCerrarVentana.Name = "chkCerrarVentana";
-            this.chkCerrarVentana.Size = new System.Drawing.Size(195, 17);
+            this.chkCerrarVentana.Size = new System.Drawing.Size(240, 20);
             this.chkCerrarVentana.TabIndex = 2;
             this.chkCerrarVentana.Tag = "Cerrar Ventana";
             this.chkCerrarVentana.Text = "Cerrar ventana de forma automatica";
             this.chkCerrarVentana.UseVisualStyleBackColor = true;
+            this.chkCerrarVentana.CheckedChanged += new System.EventHandler(this.chkCerrarVentana_CheckedChanged);
             // 
-            // tstBarraDePrograso
+            // panel1
             // 
-            this.tstBarraDePrograso.Name = "tstBarraDePrograso";
-            this.tstBarraDePrograso.Size = new System.Drawing.Size(38, 17);
-            this.tstBarraDePrograso.Text = "0 de 0";
+            this.panel1.Controls.Add(this.toolStrip1);
+            this.panel1.Controls.Add(this.flowLayoutPanel1);
+            this.panel1.Location = new System.Drawing.Point(12, 47);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(1151, 513);
+            this.panel1.TabIndex = 3;
             // 
-            // toolStripStatusLabel1
+            // toolStrip1
             // 
-            this.toolStripStatusLabel1.Name = "toolStripStatusLabel1";
-            this.toolStripStatusLabel1.Size = new System.Drawing.Size(244, 17);
-            this.toolStripStatusLabel1.Tag = "";
-            this.toolStripStatusLabel1.Text = "...............................................................................";
+            this.toolStrip1.ImageScalingSize = new System.Drawing.Size(24, 24);
+            this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tsbGuardar,
+            this.tsbActualizar,
+            this.tsbEliminar,
+            this.tsbNuevo,
+            this.tsbSalir,
+            this.tsbRecargar});
+            this.toolStrip1.Location = new System.Drawing.Point(0, 0);
+            this.toolStrip1.Name = "toolStrip1";
+            this.toolStrip1.Size = new System.Drawing.Size(1151, 31);
+            this.toolStrip1.TabIndex = 2;
+            this.toolStrip1.Text = "toolStrip1";
             // 
-            // BarraDeProgreso
+            // tsbGuardar
             // 
-            this.BarraDeProgreso.Name = "BarraDeProgreso";
-            this.BarraDeProgreso.Size = new System.Drawing.Size(100, 16);
+            this.tsbGuardar.Image = global::Planilla.Properties.Resources.Save32x32;
+            this.tsbGuardar.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbGuardar.Name = "tsbGuardar";
+            this.tsbGuardar.Size = new System.Drawing.Size(77, 28);
+            this.tsbGuardar.Tag = "Guardar";
+            this.tsbGuardar.Text = "Guardar";
+            this.tsbGuardar.Click += new System.EventHandler(this.tsbGuardar_Click);
+            // 
+            // tsbActualizar
+            // 
+            this.tsbActualizar.Image = global::Planilla.Properties.Resources.Edit24x241;
+            this.tsbActualizar.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbActualizar.Name = "tsbActualizar";
+            this.tsbActualizar.Size = new System.Drawing.Size(87, 28);
+            this.tsbActualizar.Tag = "Actualizar";
+            this.tsbActualizar.Text = "Actualizar";
+            this.tsbActualizar.Click += new System.EventHandler(this.tsbActualizar_Click);
+            // 
+            // tsbEliminar
+            // 
+            this.tsbEliminar.Image = global::Planilla.Properties.Resources.Eliminar24x241;
+            this.tsbEliminar.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbEliminar.Name = "tsbEliminar";
+            this.tsbEliminar.Size = new System.Drawing.Size(78, 28);
+            this.tsbEliminar.Tag = "Eliminar";
+            this.tsbEliminar.Text = "Eliminar";
+            this.tsbEliminar.Click += new System.EventHandler(this.tsbEliminar_Click);
+            // 
+            // tsbNuevo
+            // 
+            this.tsbNuevo.Image = global::Planilla.Properties.Resources.if_Plus_1891033__1_1;
+            this.tsbNuevo.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbNuevo.Name = "tsbNuevo";
+            this.tsbNuevo.Size = new System.Drawing.Size(70, 28);
+            this.tsbNuevo.Tag = "Nuevo";
+            this.tsbNuevo.Text = "Nuevo";
+            this.tsbNuevo.Click += new System.EventHandler(this.tsbNuevo_Click);
+            // 
+            // tsbSalir
+            // 
+            this.tsbSalir.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.tsbSalir.Image = global::Planilla.Properties.Resources.Salir24x24;
+            this.tsbSalir.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbSalir.Name = "tsbSalir";
+            this.tsbSalir.Size = new System.Drawing.Size(56, 28);
+            this.tsbSalir.Tag = "salir";
+            this.tsbSalir.Text = "salir";
+            this.tsbSalir.Click += new System.EventHandler(this.tsbSalir_Click);
+            // 
+            // tsbRecargar
+            // 
+            this.tsbRecargar.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.tsbRecargar.Image = global::Planilla.Properties.Resources.Refresh132x32;
+            this.tsbRecargar.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbRecargar.Name = "tsbRecargar";
+            this.tsbRecargar.Size = new System.Drawing.Size(81, 28);
+            this.tsbRecargar.Tag = "Recargar";
+            this.tsbRecargar.Text = "Recargar";
+            this.tsbRecargar.Click += new System.EventHandler(this.tsbRecargar_Click);
+            // 
+            // InformacionEntidadOperacion
+            // 
+            this.InformacionEntidadOperacion.AutoSize = true;
+            this.InformacionEntidadOperacion.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.InformacionEntidadOperacion.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
+            this.InformacionEntidadOperacion.Location = new System.Drawing.Point(592, 366);
+            this.InformacionEntidadOperacion.Name = "InformacionEntidadOperacion";
+            this.InformacionEntidadOperacion.Size = new System.Drawing.Size(0, 16);
+            this.InformacionEntidadOperacion.TabIndex = 4;
+            // 
+            // InformacionDeLaEntidadOeracion
+            // 
+            this.InformacionDeLaEntidadOeracion.AutoSize = true;
+            this.InformacionDeLaEntidadOeracion.Location = new System.Drawing.Point(22, 13);
+            this.InformacionDeLaEntidadOeracion.Name = "InformacionDeLaEntidadOeracion";
+            this.InformacionDeLaEntidadOeracion.Size = new System.Drawing.Size(0, 13);
+            this.InformacionDeLaEntidadOeracion.TabIndex = 3;
+            // 
+            // EP
+            // 
+            this.EP.ContainerControl = this;
             // 
             // frmUsuarioOperacion
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1109, 511);
+            this.ClientSize = new System.Drawing.Size(1184, 607);
+            this.Controls.Add(this.InformacionDeLaEntidadOeracion);
+            this.Controls.Add(this.InformacionEntidadOperacion);
+            this.Controls.Add(this.panel1);
             this.Controls.Add(this.chkCerrarVentana);
-            this.Controls.Add(this.flowLayoutPanel1);
-            this.Controls.Add(this.toolStrip1);
             this.Name = "frmUsuarioOperacion";
             this.Text = "frmUsuarioOperacion";
-            this.toolStrip1.ResumeLayout(false);
-            this.toolStrip1.PerformLayout();
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmUsuarioOperacion_FormClosing);
             this.flowLayoutPanel1.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
@@ -577,28 +633,25 @@
             this.groupBox4.PerformLayout();
             this.statusStrip1.ResumeLayout(false);
             this.statusStrip1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvLista)).EndInit();
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
             this.toolStrip3.ResumeLayout(false);
             this.toolStrip3.PerformLayout();
             this.toolStrip2.ResumeLayout(false);
             this.toolStrip2.PerformLayout();
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
+            this.toolStrip1.ResumeLayout(false);
+            this.toolStrip1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.EP)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
 
         #endregion
-
-        private System.Windows.Forms.ToolStrip toolStrip1;
-        private System.Windows.Forms.ToolStripButton tsGuardar;
-        private System.Windows.Forms.ToolStripButton tsActualizar;
-        private System.Windows.Forms.ToolStripButton tsEliminar;
-        private System.Windows.Forms.ToolStripButton tsNuevo;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
-        private System.Windows.Forms.ToolStripButton tsSalir;
-        private System.Windows.Forms.ToolStripButton tsRecargar;
         private System.Windows.Forms.CheckBox chkCerrarVentana;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.GroupBox groupBox2;
@@ -623,23 +676,34 @@
         private System.Windows.Forms.CheckBox chkPrivilegio;
         private System.Windows.Forms.CheckBox chkInterfaz;
         private System.Windows.Forms.ToolStrip toolStrip2;
-        private System.Windows.Forms.ToolStripButton tsFiltarPrivilegios;
+        private System.Windows.Forms.ToolStripButton tsbFiltarPrivilegios;
         private System.Windows.Forms.TextBox txtPrivilegio;
         private System.Windows.Forms.ComboBox cmbInterfaz;
         private System.Windows.Forms.ComboBox cmbModulo;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
-        private System.Windows.Forms.ToolStripButton tsSeleccionar;
+        private System.Windows.Forms.ToolStripButton tsbSeleccionar;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
         private System.Windows.Forms.ToolStripButton tsBuscarPrivilegio;
-        private System.Windows.Forms.ToolStripTextBox tsbBuscarPrivilegio;
+        private System.Windows.Forms.ToolStripTextBox txtBuscarPrivilegio;
         private System.Windows.Forms.ToolStrip toolStrip3;
-        private System.Windows.Forms.ToolStripButton tsAplicarFiltroAutomatio;
+        private System.Windows.Forms.ToolStripButton tsbAplicarFiltroAutomatio;
         private System.Windows.Forms.GroupBox groupBox4;
         private System.Windows.Forms.StatusStrip statusStrip1;
         private System.Windows.Forms.ToolStripStatusLabel tstNumeroDeRegistro;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView dgvLista;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel1;
-        private System.Windows.Forms.ToolStripStatusLabel tstBarraDePrograso;
+        private System.Windows.Forms.ToolStripStatusLabel lbaBarraDePrograso;
         private System.Windows.Forms.ToolStripProgressBar BarraDeProgreso;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.ToolStrip toolStrip1;
+        private System.Windows.Forms.ToolStripButton tsbGuardar;
+        private System.Windows.Forms.ToolStripButton tsbActualizar;
+        private System.Windows.Forms.ToolStripButton tsbEliminar;
+        private System.Windows.Forms.ToolStripButton tsbNuevo;
+        private System.Windows.Forms.ToolStripButton tsbSalir;
+        private System.Windows.Forms.ToolStripButton tsbRecargar;
+        private System.Windows.Forms.Label InformacionEntidadOperacion;
+        private System.Windows.Forms.Label InformacionDeLaEntidadOeracion;
+        private System.Windows.Forms.ErrorProvider EP;
     }
 }

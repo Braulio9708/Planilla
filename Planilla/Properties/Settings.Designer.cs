@@ -94,5 +94,17 @@ namespace Planilla.Properties {
                 this["CargoVentanaDespuesDeOperacion"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool UsuarioVentanaDespuesDeOperacion {
+            get {
+                return ((bool)(this["UsuarioVentanaDespuesDeOperacion"]));
+            }
+            set {
+                this["UsuarioVentanaDespuesDeOperacion"] = value;
+            }
+        }
     }
 }

@@ -238,17 +238,17 @@ namespace Acceso
                 miu.Acceso, p.Nombre as 'Privilegio', i.NombreAMostrar,i.Nombre as 'Interfaz', m.Nombre as 'Modulo' 
                 FROM modulointerfazusuario as miu
                 inner join privilegio as p on p.IdPrivilegio = miu.IdPrivilegio
-                inner join modulointerfaz as mi on mi.idModuloInterfaz = p.idModuloInterfaz
-                inner join interfaz as i on i.idInterfaz = mi.idInterfaz
-                inner join modulo as m on m.idModulo = mi.idModulo
+                inner join modulointerfaz as mi on mi.IdModuloInterfaz = p.IdModuloInterfaz
+                inner join interfaz as i on i.IdInterfaz = mi.IdInterfaz
+                inner join modulo as m on m.IdModulo = mi.IdModulo
                 where miu.IdModuloInterfazUsuario > 0 and miu.IdUsuario = {0} {1}
                 union
                 Select 0 as 'IdModuloInterfazUsuario', p.IdPrivilegio, 0 as 'Acceso', 
                 p.Nombre as 'Privilegio', i.NombreAMostrar,i.Nombre as 'Interfaz', m.Nombre as 'Modulo' 
                  from privilegio as p
-                inner join modulointerfaz as mi on mi.idModuloInterfaz = p.idModuloInterfaz
-                inner join interfaz as i on i.idInterfaz = mi.idInterfaz
-                inner join modulo as m on m.idModulo = mi.idModulo
+                inner join modulointerfaz as mi on mi.IdModuloInterfaz = p.IdModuloInterfaz
+                inner join interfaz as i on i.IdInterfaz = mi.IdInterfaz
+                inner join modulo as m on m.IdModulo = mi.IdModulo
                 where p.IdPrivilegio not in (Select IdPrivilegio from modulointerfazusuario where IdUsuario = {0}) {1} {2} ", oRegistroEN.oUsuarioEN.IdUsuario, oRegistroEN.Where, oRegistroEN.OrderBy);
                 Comando.CommandText = Consultas;
 

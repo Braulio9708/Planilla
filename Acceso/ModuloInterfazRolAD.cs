@@ -9,7 +9,7 @@ using Entidad;
 
 namespace Acceso
 {
-    class ModuloInterfazRolAD
+    public class ModuloInterfazRolAD
     {
 
         public string Error { set; get; }
