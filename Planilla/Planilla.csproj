@@ -93,6 +93,12 @@
     <Compile Include="Formularios\frmLogin.Designer.cs">
       <DependentUpon>frmLogin.cs</DependentUpon>
     </Compile>
+    <Compile Include="Formularios\frmUsuarioOperacion.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\frmUsuarioOperacion.Designer.cs">
+      <DependentUpon>frmUsuarioOperacion.cs</DependentUpon>
+    </Compile>
     <Compile Include="Formularios\Principal.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -120,6 +126,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios\frmLogin.resx">
       <DependentUpon>frmLogin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\frmUsuarioOperacion.resx">
+      <DependentUpon>frmUsuarioOperacion.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios\Principal.resx">
       <DependentUpon>Principal.cs</DependentUpon>
@@ -360,6 +369,876 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\if_Log Out_27856.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\checked16x162.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\checked20x202.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\checked24x242.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Edit16x162.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Edit20x202.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Edit24x242.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Egresos202.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Egresos242.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Egresos322.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Eliminar16x162.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Eliminar24x242.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ExcelExport322.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\filtrar16x162.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\filtrar22x222.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\filtrar24x242.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\folder %281%292.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\folder %282%292.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\folder2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\generador6.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\generador12.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\generador22.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\generador32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\generador42.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\group2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\iconfinder_70-Menu_2123897 %281%292.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\iconfinder_70-Menu_2123897 %282%292.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\iconfinder_70-Menu_2123897 %283%292.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\iconfinder_70-Menu_21238972.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\iconfinder_add_blue_19272072.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\iconfinder_advancedsettings_17814 %281%292.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\iconfinder_advancedsettings_17814 %282%292.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\iconfinder_advancedsettings_17814 %283%292.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\iconfinder_advancedsettings_17814 %284%292.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\iconfinder_advancedsettings_178142.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\iconfinder_advantage_sale_10343652.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\iconfinder_box_49364 %281%292.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\iconfinder_box_49364 %282%292.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\iconfinder_box_49364 %283%292.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\iconfinder_box_493642.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\iconfinder_business_economic_finance_interprise_company_transfer_2570294 %281%292.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\iconfinder_business_economic_finance_interprise_company_transfer_2570294 %282%292.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\iconfinder_business_economic_finance_interprise_company_transfer_2570294 %283%292.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\iconfinder_business_economic_finance_interprise_company_transfer_2570294 %284%292.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\iconfinder_business_economic_finance_interprise_company_transfer_25702942.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\iconfinder_business-work_11_2377636 %281%292.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\iconfinder_business-work_11_2377636 %282%292.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\iconfinder_business-work_11_2377636 %283%292.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\iconfinder_business-work_11_2377636 %284%292.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\iconfinder_business-work_11_23776362.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\iconfinder_calendar_1287530 %281%292.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\iconfinder_calendar_1287530 %282%292.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\iconfinder_calendar_1287530 %283%292.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\iconfinder_calendar_12875302.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\iconfinder_Close_1891023 %281%292.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\iconfinder_Close_1891023 %282%292.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\iconfinder_Close_1891023 %283%292.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\iconfinder_Close_18910232.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\iconfinder_Close_1891023_122.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\iconfinder_coins_17220 %281%292.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\iconfinder_coins_17220 %282%292.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\iconfinder_coins_17220 %283%292.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\iconfinder_coins_172202.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\iconfinder_Database-Upload_49582 %281%292.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\iconfinder_Database-Upload_49582 %282%292.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\iconfinder_Database-Upload_49582 %283%292.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\iconfinder_Database-Upload_495822.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\iconfinder_db_update_3213 %281%292.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\iconfinder_db_update_3213 %282%292.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\iconfinder_db_update_3213 %283%292.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\iconfinder_db_update_32132.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\iconfinder_document_text_information_103515 %281%292.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\iconfinder_document_text_information_103515 %282%292.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\iconfinder_document_text_information_103515 %283%292.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\iconfinder_document_text_information_1035152.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\iconfinder_document-save_118916 %281%292.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\iconfinder_document-save_118916 %282%292.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\iconfinder_document-save_118916 %283%292.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\iconfinder_document-save_118916 %284%292.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\iconfinder_document-save_1189162.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\iconfinder_empty-delete-remove-shopping-cart_532806 %281%292.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\iconfinder_empty-delete-remove-shopping-cart_532806 %282%292.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\iconfinder_empty-delete-remove-shopping-cart_532806 %283%292.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\iconfinder_empty-delete-remove-shopping-cart_532806 %284%292.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\iconfinder_empty-delete-remove-shopping-cart_5328062.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\iconfinder_f-optimization_256_282464 %281%292.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\iconfinder_f-optimization_256_282464 %282%292.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\iconfinder_f-optimization_256_282464 %283%292.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\iconfinder_f-optimization_256_282464 %284%292.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\iconfinder_f-optimization_256_2824642.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\iconfinder_free-24_4630052.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\iconfinder_icontexto-aurora-folders-searches_276482.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\iconfinder_kthememgr_7240 %281%292.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\iconfinder_kthememgr_7240 %282%292.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\iconfinder_kthememgr_72402.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\iconfinder_library_49592 %281%292.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\iconfinder_library_49592 %282%292.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\iconfinder_library_49592 %283%292.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\iconfinder_library_495922.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\iconfinder_location_1055034 %281%292.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\iconfinder_location_1055034 %282%292.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\iconfinder_location_1055034 %283%292.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\iconfinder_location_10550342.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\iconfinder_Package-Add_49599 %281%292.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\iconfinder_Package-Add_49599 %282%292.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\iconfinder_Package-Add_49599 %283%292.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\iconfinder_Package-Add_495992.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\iconfinder_Package-Download_49600 %281%292.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\iconfinder_Package-Download_49600 %282%292.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\iconfinder_Package-Download_496002.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\iconfinder_preferences-desktop-printer_8803 %281%292.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\iconfinder_preferences-desktop-printer_8803 %282%292.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\iconfinder_preferences-desktop-printer_88032.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\iconfinder_preferences-desktop-user-password_24269 %281%292.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\iconfinder_preferences-desktop-user-password_24269 %282%292.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\iconfinder_preferences-desktop-user-password_24269 %283%292.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\iconfinder_preferences-desktop-user-password_24269 %284%292.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\iconfinder_preferences-desktop-user-password_242692.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\iconfinder_price_874542.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\iconfinder_Printer_433482.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\iconfinder_product_496082.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\iconfinder_Product-documentation_70650 %281%292.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\iconfinder_Product-documentation_70650 %282%292.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\iconfinder_Product-documentation_70650 %283%292.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\iconfinder_Product-documentation_706502.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\iconfinder_Product-documentation_85540 %281%292.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\iconfinder_Product-documentation_85540 %282%292.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\iconfinder_Product-documentation_85540 %283%292.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\iconfinder_Product-documentation_855402.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\iconfinder_product-sales-report_49607 %281%292.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\iconfinder_product-sales-report_49607 %282%292.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\iconfinder_product-sales-report_49607 %283%292.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\iconfinder_product-sales-report_496072.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\iconfinder_provider_45069 %281%292.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\iconfinder_provider_45069 %282%292.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\iconfinder_provider_45069 %283%292.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\iconfinder_provider_450692.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\iconfinder_section_group_settings_3516594 %281%292.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\iconfinder_section_group_settings_3516594 %282%292.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\iconfinder_section_group_settings_3516594 %283%292.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\iconfinder_section_group_settings_35165942.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\iconfinder_Settings-2_379429 %281%292.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\iconfinder_Settings-2_379429 %282%292.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\iconfinder_Settings-2_379429 %283%292.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\iconfinder_Settings-2_379429 %284%292.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\iconfinder_Settings-2_3794292.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\iconfinder_shop-08_792241 %281%292.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\iconfinder_shop-08_792241 %282%292.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\iconfinder_shop-08_792241 %283%292.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\iconfinder_shop-08_792241 %284%292.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\iconfinder_shop-08_7922412.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\iconfinder_System_105256 %281%292.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\iconfinder_System_105256 %282%292.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\iconfinder_System_1052562.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\iconfinder_Untitled-1-42_3775418 %281%292.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\iconfinder_Untitled-1-42_3775418 %282%292.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\iconfinder_Untitled-1-42_3775418 %283%292.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\iconfinder_Untitled-1-42_37754182.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\iconfinder_Warehouse_3992927 %281%292.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\iconfinder_Warehouse_3992927 %282%292.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\iconfinder_Warehouse_3992927 %283%292.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\iconfinder_Warehouse_39929272.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\if_chart_512543 %281%292.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\if_chart_512543 %282%292.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\if_chart_512543 %283%292.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\if_chart_512543 %284%292.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\if_chart_5125432.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\if_contact-01_374629 %281%292.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\if_contact-01_374629 %282%292.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\if_contact-01_374629 %283%292.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\if_contact-01_3746292.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\if_edit_173002 %281%292.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\if_edit_173002 %282%292.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\if_edit_1730022.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\if_edit-delete_118920 %281%292.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\if_edit-delete_118920 %282%292.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\if_edit-delete_1189202.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\if_floppy_2856572.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\if_help-browser_118806 %281%292.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\if_help-browser_118806 %282%292.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\if_help-browser_118806 %283%292.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\if_help-browser_118806 %284%292.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\if_help-browser_1188062.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\if_icon-33_667338 %281%292.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\if_icon-33_667338 %282%292.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\if_icon-33_667338 %283%292.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\if_icon-33_667338 %284%292.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\if_icon-33_6673382.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\if_icon-74-document-search_3151982.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\if_image_delete_48_103202.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\if_Information_27854 %281%292.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\if_Information_27854 %282%292.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\if_Information_27854 %283%292.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\if_Information_278542.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\if_keys_60186 %281%292.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\if_keys_60186 %282%292.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\if_keys_60186 %283%292.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\if_keys_601862.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\if_laboratory_44676 %281%292.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\if_laboratory_44676 %282%292.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\if_laboratory_446761.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\if_Log Out_278561.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\if_logo_brand_brands_logos_excel_2993694 %281%292.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\if_logo_brand_brands_logos_excel_2993694 %281%2911.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\if_logo_brand_brands_logos_excel_2993694 %282%292.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\if_logo_brand_brands_logos_excel_2993694 %282%2911.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\if_logo_brand_brands_logos_excel_2993694 %283%292.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\if_logo_brand_brands_logos_excel_2993694 %283%2911.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\if_logo_brand_brands_logos_excel_2993694 %284%292.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\if_logo_brand_brands_logos_excel_2993694 %284%2911.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\if_logo_brand_brands_logos_excel_29936942.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\if_logo_brand_brands_logos_excel_299369411.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\if_old-edit-find_23490 %281%291.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\if_old-edit-find_23490 %282%291.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\if_old-edit-find_23490 %283%291.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\if_old-edit-find_23490 %284%291.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\if_old-edit-find_234901.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\if_Plus_1891033 %281%291.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\if_Plus_18910331.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\if_printer_39263 %281%291.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\if_printer_39263 %282%291.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\if_printer_39263 %283%291.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\if_SEO_content_management_969251 %281%291.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\if_SEO_content_management_969251 %282%291.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\if_SEO_content_management_9692511.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\if_Synchronize_27883 %281%291.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\if_Synchronize_278831.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\if_tools_1287509 %281%291.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\if_tools_1287509 %282%291.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\if_tools_1287509 %283%291.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\if_tools_1287509 %284%291.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\if_tools_12875091.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\leftarrow20x201.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\leftarrow24x241.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\leftarrow32x321.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\leftarrows16x161.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\loginSisContador1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\LogoRedondoInventario1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\New16x161.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\new22x221.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\new24x241.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\New321.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\New481.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Nuevo16x161.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Nuevo20x201.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Nuevo24x241.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\nuevoregistro1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\printer16x161.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\printer22x221.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\printer24x241.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Proveedores black1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Proveedores1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Proveedores48x481.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\reanudar %281%291.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\reanudar1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Refresh16x161.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Refresh132x321.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\report %281%291.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\report %282%291.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\report %283%291.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\report1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Resources.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\rigtharrow16x161.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\rigtharrow20x201.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\rigtharrow24x241.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\rigtharrow32x321.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Salir16x161.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Salir24x241.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Salir32x321.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Save16x161.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Save20x201.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Save24x241.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Save32x322.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Save32x3211.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\SearchFile201.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\SearchFile241.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\SearchFile321.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\SearchFile481.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\server base de datos1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\serverbasedatos16x161.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\serverbasededatos32x321.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\server-connection %281%291.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\server-connection %282%291.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\server-connection1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Splash1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\unchecked16x161.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\unchecked20x201.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\unchecked24x241.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\view16x161.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\view22x221.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\viw20x201.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
