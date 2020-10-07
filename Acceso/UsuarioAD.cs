@@ -47,6 +47,9 @@ namespace Acceso
                                 (@Nombre, @Login, Contrasena, @Email, @Estado, @IdUsuarioDeCreacion, current_timestamp(), @IdUsuarioDeModificacion, current_timestamp(), @IdRol);
                             Select  last_insert_ID() as 'ID';";
 
+                Comando.CommandText = Consultas;
+
+                Comando.Parameters.Add(new MySqlParameter("IdRol", MySqlDbType.Int32)).Value = oRegistroEN.oRolEN.IdRol;
                 Comando.Parameters.Add(new MySqlParameter("@Nombre", MySqlDbType.VarChar, oRegistroEN.Nombre.Trim().Length)).Value = oRegistroEN.Nombre.Trim();
                 Comando.Parameters.Add(new MySqlParameter("@Login", MySqlDbType.VarChar, oRegistroEN.Login.Trim().Length)).Value = oRegistroEN.Login.Trim();
                 Comando.Parameters.Add(new MySqlParameter("@Contrasena", MySqlDbType.VarChar, oRegistroEN.Contrasena.Trim().Length)).Value = oRegistroEN.Contrasena.Trim();
@@ -311,7 +314,7 @@ namespace Acceso
 
             oRegistroEN.IdRegistro = oUsuario.IdUsuario;
             oRegistroEN.Modelo = "UsuarioAD";
-            //oRegistroEN.Modulo = "#";
+            oRegistroEN.Modulo = "General";
             oRegistroEN.Tabla = "Usuario";
             oRegistroEN.TipoDeOperacion = TipoDeOperacion;
             oRegistroEN.Estado = Estado;
@@ -328,11 +331,6 @@ namespace Acceso
         {                     
             ///Error en la cadena de conexion
             string cadena = string.Format("Data Source='{0}';Initial Catalog='{1}';Persist Security Info=True;User ID='{2}';Password='{3}'", oDatos.Servidor, oDatos.BaseDeDatos, oDatos.Usuario, oDatos.Contrasena);
-            Console.WriteLine(oDatos);
-            Console.WriteLine(oDatos.Servidor);
-            
-            Console.WriteLine(cadena, "PRUEVA DE CADENA Y SERVIDOR");
-
             return cadena;            
         }
         private void InicialisarVariablesGlovales(DatosDeConexionEN oDatos)

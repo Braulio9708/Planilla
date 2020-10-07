@@ -149,7 +149,7 @@
             this.cmbEstado.Location = new System.Drawing.Point(370, 196);
             this.cmbEstado.Name = "cmbEstado";
             this.cmbEstado.Size = new System.Drawing.Size(163, 21);
-            this.cmbEstado.TabIndex = 14;
+            this.cmbEstado.TabIndex = 8;
             // 
             // cmbTipoDeCuenta
             // 
@@ -160,7 +160,7 @@
             this.cmbTipoDeCuenta.Location = new System.Drawing.Point(136, 196);
             this.cmbTipoDeCuenta.Name = "cmbTipoDeCuenta";
             this.cmbTipoDeCuenta.Size = new System.Drawing.Size(168, 21);
-            this.cmbTipoDeCuenta.TabIndex = 13;
+            this.cmbTipoDeCuenta.TabIndex = 7;
             this.cmbTipoDeCuenta.SelectionChangeCommitted += new System.EventHandler(this.cmbTipoDeCuenta_SelectionChangeCommitted);
             // 
             // txtCorreoElectronico
@@ -168,14 +168,14 @@
             this.txtCorreoElectronico.Location = new System.Drawing.Point(136, 165);
             this.txtCorreoElectronico.Name = "txtCorreoElectronico";
             this.txtCorreoElectronico.Size = new System.Drawing.Size(397, 20);
-            this.txtCorreoElectronico.TabIndex = 12;
+            this.txtCorreoElectronico.TabIndex = 6;
             // 
             // txtConfirmar
             // 
             this.txtConfirmar.Location = new System.Drawing.Point(370, 134);
             this.txtConfirmar.Name = "txtConfirmar";
             this.txtConfirmar.Size = new System.Drawing.Size(163, 20);
-            this.txtConfirmar.TabIndex = 11;
+            this.txtConfirmar.TabIndex = 5;
             // 
             // label7
             // 
@@ -191,28 +191,28 @@
             this.txtContrasena.Location = new System.Drawing.Point(136, 134);
             this.txtContrasena.Name = "txtContrasena";
             this.txtContrasena.Size = new System.Drawing.Size(168, 20);
-            this.txtContrasena.TabIndex = 9;
+            this.txtContrasena.TabIndex = 4;
             // 
             // txtNombreSecion
             // 
             this.txtNombreSecion.Location = new System.Drawing.Point(136, 104);
             this.txtNombreSecion.Name = "txtNombreSecion";
             this.txtNombreSecion.Size = new System.Drawing.Size(397, 20);
-            this.txtNombreSecion.TabIndex = 8;
+            this.txtNombreSecion.TabIndex = 3;
             // 
             // txtNombreUsuario
             // 
             this.txtNombreUsuario.Location = new System.Drawing.Point(136, 76);
             this.txtNombreUsuario.Name = "txtNombreUsuario";
             this.txtNombreUsuario.Size = new System.Drawing.Size(397, 20);
-            this.txtNombreUsuario.TabIndex = 7;
+            this.txtNombreUsuario.TabIndex = 2;
             // 
             // txtIdentificador
             // 
             this.txtIdentificador.Location = new System.Drawing.Point(136, 47);
             this.txtIdentificador.Name = "txtIdentificador";
             this.txtIdentificador.Size = new System.Drawing.Size(168, 20);
-            this.txtIdentificador.TabIndex = 6;
+            this.txtIdentificador.TabIndex = 1;
             // 
             // label6
             // 
@@ -545,7 +545,7 @@
             this.tsbGuardar.Size = new System.Drawing.Size(77, 28);
             this.tsbGuardar.Tag = "Guardar";
             this.tsbGuardar.Text = "Guardar";
-            this.tsbGuardar.Click += new System.EventHandler(this.tsbGuardar_Click);
+            this.tsbGuardar.Click += new System.EventHandler(this.tsbGuardar_Click_1);
             // 
             // tsbActualizar
             // 

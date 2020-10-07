@@ -63,7 +63,7 @@ namespace Acceso
                 Comando.Parameters.Add(new MySqlParameter("@DescripcionInterna", MySqlDbType.VarChar, DescripcionInterna.Trim().Length)).Value = DescripcionInterna.Trim();
                 Comando.Parameters.Add(new MySqlParameter("@Estado", MySqlDbType.VarChar, Estado.Trim().Length)).Value = Estado.Trim();
                 Comando.Parameters.Add(new MySqlParameter("@Modelo", MySqlDbType.VarChar, Modelo.Trim().Length)).Value = Modelo.Trim();
-                //Comando.Parameters.Add(new MySqlParameter("@Modulo", MySqlDbType.VarChar, Modulo.Trim().Length)).Value = Modulo.Trim();
+                Comando.Parameters.Add(new MySqlParameter("@Modulo", MySqlDbType.VarChar, Modulo.Trim().Length)).Value = Modulo.Trim();
                 Comando.Parameters.Add(new MySqlParameter("@Tabla", MySqlDbType.VarChar, Tabla.Trim().Length)).Value = Tabla.Trim();
                 Comando.Parameters.Add(new MySqlParameter("@DescripcionDelUsuario", MySqlDbType.VarChar, DescripcionDelUsuario.Trim().Length)).Value = DescripcionDelUsuario.Trim();
                 Comando.Parameters.Add(new MySqlParameter("@IdUsuarioAPrueva", MySqlDbType.Int32)).Value = IdUsuarioAPrueva;
@@ -125,8 +125,8 @@ namespace Acceso
                 Comando.Parameters.Add(new MySqlParameter("@DescripcionInterna", MySqlDbType.VarChar, oRegistroEN.DescripcionInterna.Trim().Length)).Value = oRegistroEN.DescripcionInterna.Trim();
                 Comando.Parameters.Add(new MySqlParameter("@Estado", MySqlDbType.VarChar, oRegistroEN.Estado.Trim().Length)).Value = oRegistroEN.Estado.Trim();
                 Comando.Parameters.Add(new MySqlParameter("@Modelo", MySqlDbType.VarChar, oRegistroEN.Modelo.Trim().Length)).Value = oRegistroEN.Modelo.Trim();
-                //Comando.Parameters.Add(new MySqlParameter("@Modulo", MySqlDbType.VarChar, oRegistroEN.Modulo.Trim().Length)).Value = oRegistroEN.Modulo.Trim();
-                Comando.Parameters.Add(new MySqlParameter("@tabla", MySqlDbType.VarChar, oRegistroEN.Tabla.Trim().Length)).Value = oRegistroEN.Tabla.Trim();
+                Comando.Parameters.Add(new MySqlParameter("@Modulo", MySqlDbType.VarChar, oRegistroEN.Modulo.Trim().Length)).Value = oRegistroEN.Modulo.Trim();
+                Comando.Parameters.Add(new MySqlParameter("@Tabla", MySqlDbType.VarChar, oRegistroEN.Tabla.Trim().Length)).Value = oRegistroEN.Tabla.Trim();
                 Comando.Parameters.Add(new MySqlParameter("@DescripcionDelUsuario", MySqlDbType.VarChar, oRegistroEN.DescripcionDelUsuario.Trim().Length)).Value = oRegistroEN.DescripcionDelUsuario.Trim();
                 Comando.Parameters.Add(new MySqlParameter("@IdUsuarioAPrueva", MySqlDbType.Int32)).Value = oRegistroEN.IdUsuarioAPrueva;
 

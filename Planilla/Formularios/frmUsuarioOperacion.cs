@@ -93,7 +93,7 @@ namespace Planilla.Formularios
                 if (oRegistroLN.ListadoDePrivilegiosParaElUsuario(oRegistroEN, Program.oDatosDeConexioEN))
                 {
 
-                    dgvLista.DataSource = oRegistroLN.PrivilegiosDelRolParaUsuarioDT();
+                    dgvLista.DataSource = oRegistroLN.PrivilegiosDelRolDT();
                     FormatearDGV();
                     tstNumeroDeRegistro.Text = string.Format("No de registros: {0} ", oRegistroLN.TotalRegistros());
 
@@ -870,7 +870,7 @@ namespace Planilla.Formularios
                         oRegistrosEN.oPrivilegioEN.Nombre = Fila.Cells["Privilegio"].Value.ToString();
                         oRegistrosEN.oPrivilegioEN.oModuloInterfazEN.oInterfazEN.Nombre = Fila.Cells["Interfaz"].Value.ToString();
                         oRegistrosEN.oPrivilegioEN.oModuloInterfazEN.oInterfazEN.NombreAMostrar = Fila.Cells["NombreAMostrar"].Value.ToString();
-                        oRegistrosEN.oPrivilegioEN.oModuloInterfazEN.oModuloEN.Nombre = Fila.Cells["Modulo"].Value.ToString();
+                        oRegistrosEN.oPrivilegioEN.oModuloInterfazEN.oModuloEN.Nombre = Fila.Cells["Nombre"].Value.ToString();
 
                         oRegistrosEN.Acceso = Convert.ToBoolean(Fila.Cells["Marcar"].Value.ToString()) == true ? 1 : 0;
 
@@ -1109,86 +1109,7 @@ namespace Planilla.Formularios
 
         private void tsbGuardar_Click(object sender, EventArgs e)
         {
-            try
-            {
-                this.Cursor = Cursors.WaitCursor;
-
-                if (LosDatosIngresadosSonCorrectos())
-                {
-
-                    UsuarioEN oRegistroEN = InformacionDelRegistro();
-                    UsuarioLN oRegistroLN = new UsuarioLN();
-
-                    if (oRegistroLN.ValidarRegistroDuplicadoPorNombre(oRegistroEN, Program.oDatosDeConexioEN, "AGREGAR"))
-                    {
-
-                        MessageBox.Show(oRegistroLN.Error, "Guardar información", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        return;
-
-                    }
-
-                    if (oRegistroLN.ValidarRegistroDuplicadoPorContrasena(oRegistroEN, Program.oDatosDeConexioEN, "AGREGAR"))
-                    {
-
-                        MessageBox.Show(oRegistroLN.Error, "Guardar información", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        return;
-
-                    }
-
-                    if (oRegistroLN.ValidarRegistroDuplicadoPorNombreDeSecion(oRegistroEN, Program.oDatosDeConexioEN, "AGREGAR"))
-                    {
-
-                        MessageBox.Show(oRegistroLN.Error, "Guardar información", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        return;
-
-                    }
-
-                    if (oRegistroLN.Agregar(oRegistroEN, Program.oDatosDeConexioEN))
-                    {
-
-                        txtIdentificador.Text = oRegistroEN.IdUsuario.ToString();
-                        ValorLlavePrimariaEntidad = oRegistroEN.IdUsuario;
-
-                        oRegistroEN = null;
-                        oRegistroLN = null;
-
-                        if (InsertarActualizarOEliminarPrivilegiosDelUusuario())
-                        {
-                            EvaluarErrorParaMensajeAPantalla(oRegistroLN.Error, "Guardar");
-
-                            if (CerrarVentana == true)
-                            {
-
-                                this.Close();
-                            }
-                            else
-                            {
-                                OperacionARealizar = "Modificar";
-                                ObtenerValoresDeConfiguracion();
-                                LlamarMetodoSegunOperacion();
-                                EstablecerTituloDeVentana();
-                                DeshabilitarControlesSegunOperacionesARealizar();
-                            }
-
-                        }
-
-                    }
-                    else
-                    {
-                        throw new ArgumentException(oRegistroLN.Error);
-                    }
-
-                }
-
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Guardar la información del registro", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            finally
-            {
-                this.Cursor = Cursors.Default;
-            }
+            
         }
 
         private void tsbActualizar_Click(object sender, EventArgs e)
@@ -1503,6 +1424,90 @@ namespace Planilla.Formularios
         private void cmbTipoDeCuenta_SelectionChangeCommitted(object sender, EventArgs e)
         {
             TraerPrivilegiosParaElUsuarioApartirDelRol();
+        }
+
+        private void tsbGuardar_Click_1(object sender, EventArgs e)
+        {
+            try
+            {
+                this.Cursor = Cursors.WaitCursor;
+
+                if (LosDatosIngresadosSonCorrectos())
+                {
+
+                    UsuarioEN oRegistroEN = InformacionDelRegistro();
+                    UsuarioLN oRegistroLN = new UsuarioLN();
+
+                    if (oRegistroLN.ValidarRegistroDuplicadoPorNombre(oRegistroEN, Program.oDatosDeConexioEN, "AGREGAR"))
+                    {
+
+                        MessageBox.Show(oRegistroLN.Error, "Guardar información", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+
+                    }
+
+                    if (oRegistroLN.ValidarRegistroDuplicadoPorContrasena(oRegistroEN, Program.oDatosDeConexioEN, "AGREGAR"))
+                    {
+
+                        MessageBox.Show(oRegistroLN.Error, "Guardar información", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+
+                    }
+
+                    if (oRegistroLN.ValidarRegistroDuplicadoPorNombreDeSecion(oRegistroEN, Program.oDatosDeConexioEN, "AGREGAR"))
+                    {
+
+                        MessageBox.Show(oRegistroLN.Error, "Guardar información", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+
+                    }
+
+                    if (oRegistroLN.Agregar(oRegistroEN, Program.oDatosDeConexioEN))
+                    {
+
+                        txtIdentificador.Text = oRegistroEN.IdUsuario.ToString();
+                        ValorLlavePrimariaEntidad = oRegistroEN.IdUsuario;
+
+                        oRegistroEN = null;
+                        oRegistroLN = null;
+
+                        if (InsertarActualizarOEliminarPrivilegiosDelUusuario())
+                        {
+                            EvaluarErrorParaMensajeAPantalla(oRegistroLN.Error, "Guardar");
+
+                            if (CerrarVentana == true)
+                            {
+
+                                this.Close();
+                            }
+                            else
+                            {
+                                OperacionARealizar = "Guardar";
+                                ObtenerValoresDeConfiguracion();
+                                LlamarMetodoSegunOperacion();
+                                EstablecerTituloDeVentana();
+                                DeshabilitarControlesSegunOperacionesARealizar();
+                            }
+
+                        }
+
+                    }
+                    else
+                    {
+                        throw new ArgumentException(oRegistroLN.Error);
+                    }
+
+                }
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Guardar la información del registro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                this.Cursor = Cursors.Default;
+            }
         }
     }
 }
