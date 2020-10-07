@@ -242,7 +242,7 @@ namespace Acceso
                 inner join interfaz as i on i.IdInterfaz = mi.IdInterfaz
                 inner join modulo as m on m.IdModulo = mi.IdModulo
                 where miu.IdModuloInterfazUsuario > 0 and miu.IdUsuario = {0} {1}
-                union all
+                union
                 Select 0 as 'IdModuloInterfazUsuario', p.IdPrivilegio, 0 as 'Acceso', 
                 p.Nombre as 'Privilegio', i.NombreAMostrar,i.Nombre as 'Interfaz', m.Nombre as 'Modulo' 
                  from privilegio as p

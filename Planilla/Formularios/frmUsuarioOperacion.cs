@@ -1025,14 +1025,14 @@ namespace Planilla.Formularios
         {
             string Where = "";
 
-            if (chkModulo.CheckState == CheckState.Checked && Controles.IsNullOEmptyElControl(cmbModulo) == false)
+            if (chkModulo.CheckState == CheckState.Checked && Controles.IsNullOEmptyElControl(cmbModulo) == true)
             {
-                Where += string.Format(" and Nombre = {0}", cmbModulo.SelectedValue);
+                Where += string.Format(" and m.IdModulo = '{0}'", cmbModulo.SelectedValue);
             }
 
-            if (chkInterfaz.CheckState == CheckState.Checked && Controles.IsNullOEmptyElControl(cmbInterfaz) == false)
+            if (chkInterfaz.CheckState == CheckState.Checked && Controles.IsNullOEmptyElControl(cmbInterfaz) == true)
             {
-                Where += string.Format(" and Nombre = {0}", cmbInterfaz.SelectedValue);
+                Where += string.Format(" and i.IdPrivilegio = '{0}'", cmbInterfaz.SelectedValue);
             }
 
             if (chkPrivilegio.CheckState == CheckState.Checked && Controles.IsNullOEmptyElControl(txtPrivilegio) == false)
@@ -1057,6 +1057,8 @@ namespace Planilla.Formularios
                 oRegistroEN.oUsuarioEN.IdUsuario = ValorLlavePrimariaEntidad;
                 oRegistroEN.Where = WhereDinamico();
                 oRegistroEN.OrderBy = "";
+
+                //MessageBox.Show("Prueva de usuario", oRegistroEN.oLoginEN.NombreUsuario);
 
                 if (oRegistroLN.ListadoPrivilegiosDelUsuario(oRegistroEN, Program.oDatosDeConexioEN))
                 {
@@ -1106,12 +1108,7 @@ namespace Planilla.Formularios
         {
             GuardarValoresDeConfiguracion();
         }
-
-        private void tsbGuardar_Click(object sender, EventArgs e)
-        {
-            
-        }
-
+        
         private void tsbActualizar_Click(object sender, EventArgs e)
         {
             try
@@ -1482,7 +1479,7 @@ namespace Planilla.Formularios
                             }
                             else
                             {
-                                OperacionARealizar = "Guardar";
+                                OperacionARealizar = "MODIFICAR";
                                 ObtenerValoresDeConfiguracion();
                                 LlamarMetodoSegunOperacion();
                                 EstablecerTituloDeVentana();
