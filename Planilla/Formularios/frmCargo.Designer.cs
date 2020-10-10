@@ -263,7 +263,7 @@
             // 
             // tsbFiltrar
             // 
-            this.tsbFiltrar.Image = global::Planilla.Properties.Resources.new24x24;
+            this.tsbFiltrar.Image = global::Planilla.Properties.Resources.filtrar24x24;
             this.tsbFiltrar.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsbFiltrar.Name = "tsbFiltrar";
             this.tsbFiltrar.Size = new System.Drawing.Size(73, 36);
