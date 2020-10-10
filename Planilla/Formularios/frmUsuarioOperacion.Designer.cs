@@ -82,7 +82,6 @@
             this.tsbSalir = new System.Windows.Forms.ToolStripButton();
             this.tsbRecargar = new System.Windows.Forms.ToolStripButton();
             this.InformacionEntidadOperacion = new System.Windows.Forms.Label();
-            this.InformacionDeLaEntidadOeracion = new System.Windows.Forms.Label();
             this.EP = new System.Windows.Forms.ErrorProvider(this.components);
             this.flowLayoutPanel1.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -102,9 +101,10 @@
             // 
             this.flowLayoutPanel1.Controls.Add(this.groupBox1);
             this.flowLayoutPanel1.Controls.Add(this.groupBox2);
+            this.flowLayoutPanel1.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
             this.flowLayoutPanel1.Location = new System.Drawing.Point(19, 36);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(1138, 450);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(1138, 474);
             this.flowLayoutPanel1.TabIndex = 1;
             // 
             // groupBox1
@@ -127,7 +127,7 @@
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Location = new System.Drawing.Point(3, 3);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(569, 230);
+            this.groupBox1.Size = new System.Drawing.Size(552, 230);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             // 
@@ -154,9 +154,6 @@
             // cmbTipoDeCuenta
             // 
             this.cmbTipoDeCuenta.FormattingEnabled = true;
-            this.cmbTipoDeCuenta.Items.AddRange(new object[] {
-            "Administrador",
-            "Usuario"});
             this.cmbTipoDeCuenta.Location = new System.Drawing.Point(136, 196);
             this.cmbTipoDeCuenta.Name = "cmbTipoDeCuenta";
             this.cmbTipoDeCuenta.Size = new System.Drawing.Size(168, 21);
@@ -272,9 +269,9 @@
             // 
             this.groupBox2.Controls.Add(this.groupBox4);
             this.groupBox2.Controls.Add(this.groupBox3);
-            this.groupBox2.Location = new System.Drawing.Point(578, 3);
+            this.groupBox2.Location = new System.Drawing.Point(561, 3);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(544, 435);
+            this.groupBox2.Size = new System.Drawing.Size(561, 460);
             this.groupBox2.TabIndex = 1;
             this.groupBox2.TabStop = false;
             // 
@@ -282,9 +279,9 @@
             // 
             this.groupBox4.Controls.Add(this.statusStrip1);
             this.groupBox4.Controls.Add(this.dgvLista);
-            this.groupBox4.Location = new System.Drawing.Point(13, 237);
+            this.groupBox4.Location = new System.Drawing.Point(20, 247);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(521, 192);
+            this.groupBox4.Size = new System.Drawing.Size(522, 200);
             this.groupBox4.TabIndex = 1;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Privilegios del Usuario";
@@ -296,9 +293,9 @@
             this.toolStripStatusLabel1,
             this.lbaBarraDePrograso,
             this.BarraDeProgreso});
-            this.statusStrip1.Location = new System.Drawing.Point(3, 167);
+            this.statusStrip1.Location = new System.Drawing.Point(3, 175);
             this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(515, 22);
+            this.statusStrip1.Size = new System.Drawing.Size(516, 22);
             this.statusStrip1.TabIndex = 1;
             this.statusStrip1.Text = "statusStrip1";
             // 
@@ -333,7 +330,7 @@
             this.dgvLista.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvLista.Location = new System.Drawing.Point(3, 16);
             this.dgvLista.Name = "dgvLista";
-            this.dgvLista.Size = new System.Drawing.Size(515, 173);
+            this.dgvLista.Size = new System.Drawing.Size(516, 181);
             this.dgvLista.TabIndex = 0;
             this.dgvLista.CurrentCellDirtyStateChanged += new System.EventHandler(this.dgvLista_CurrentCellDirtyStateChanged);
             // 
@@ -347,9 +344,9 @@
             this.groupBox3.Controls.Add(this.chkPrivilegio);
             this.groupBox3.Controls.Add(this.chkInterfaz);
             this.groupBox3.Controls.Add(this.chkModulo);
-            this.groupBox3.Location = new System.Drawing.Point(6, 19);
+            this.groupBox3.Location = new System.Drawing.Point(13, 36);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(528, 211);
+            this.groupBox3.Size = new System.Drawing.Size(529, 211);
             this.groupBox3.TabIndex = 0;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Filtrar Privilegios del Usuario";
@@ -388,7 +385,7 @@
             this.txtBuscarPrivilegio});
             this.toolStrip2.Location = new System.Drawing.Point(3, 183);
             this.toolStrip2.Name = "toolStrip2";
-            this.toolStrip2.Size = new System.Drawing.Size(522, 25);
+            this.toolStrip2.Size = new System.Drawing.Size(523, 25);
             this.toolStrip2.TabIndex = 6;
             this.toolStrip2.Text = "toolStrip2";
             // 
@@ -458,8 +455,6 @@
             // cmbModulo
             // 
             this.cmbModulo.FormattingEnabled = true;
-            this.cmbModulo.Items.AddRange(new object[] {
-            "General"});
             this.cmbModulo.Location = new System.Drawing.Point(74, 53);
             this.cmbModulo.Name = "cmbModulo";
             this.cmbModulo.Size = new System.Drawing.Size(258, 21);
@@ -518,7 +513,7 @@
             this.panel1.Controls.Add(this.flowLayoutPanel1);
             this.panel1.Location = new System.Drawing.Point(12, 47);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1173, 513);
+            this.panel1.Size = new System.Drawing.Size(1172, 526);
             this.panel1.TabIndex = 3;
             // 
             // toolStrip1
@@ -533,7 +528,7 @@
             this.tsbRecargar});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(1173, 31);
+            this.toolStrip1.Size = new System.Drawing.Size(1172, 31);
             this.toolStrip1.TabIndex = 2;
             this.toolStrip1.Text = "toolStrip1";
             // 
@@ -604,18 +599,10 @@
             this.InformacionEntidadOperacion.AutoSize = true;
             this.InformacionEntidadOperacion.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.InformacionEntidadOperacion.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
-            this.InformacionEntidadOperacion.Location = new System.Drawing.Point(592, 366);
+            this.InformacionEntidadOperacion.Location = new System.Drawing.Point(28, 9);
             this.InformacionEntidadOperacion.Name = "InformacionEntidadOperacion";
             this.InformacionEntidadOperacion.Size = new System.Drawing.Size(0, 16);
             this.InformacionEntidadOperacion.TabIndex = 4;
-            // 
-            // InformacionDeLaEntidadOeracion
-            // 
-            this.InformacionDeLaEntidadOeracion.AutoSize = true;
-            this.InformacionDeLaEntidadOeracion.Location = new System.Drawing.Point(22, 13);
-            this.InformacionDeLaEntidadOeracion.Name = "InformacionDeLaEntidadOeracion";
-            this.InformacionDeLaEntidadOeracion.Size = new System.Drawing.Size(0, 13);
-            this.InformacionDeLaEntidadOeracion.TabIndex = 3;
             // 
             // EP
             // 
@@ -625,14 +612,14 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1201, 607);
-            this.Controls.Add(this.InformacionDeLaEntidadOeracion);
+            this.ClientSize = new System.Drawing.Size(1197, 607);
             this.Controls.Add(this.InformacionEntidadOperacion);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.chkCerrarVentana);
             this.Name = "frmUsuarioOperacion";
             this.Text = "frmUsuarioOperacion";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmUsuarioOperacion_FormClosing);
+            this.Shown += new System.EventHandler(this.frmUsuarioOperacion_Shown);
             this.flowLayoutPanel1.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
@@ -711,7 +698,6 @@
         private System.Windows.Forms.ToolStripButton tsbSalir;
         private System.Windows.Forms.ToolStripButton tsbRecargar;
         private System.Windows.Forms.Label InformacionEntidadOperacion;
-        private System.Windows.Forms.Label InformacionDeLaEntidadOeracion;
         private System.Windows.Forms.ErrorProvider EP;
     }
 }

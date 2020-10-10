@@ -49,7 +49,7 @@ namespace Acceso
 
                 Comando.CommandText = Consultas;
 
-                Comando.Parameters.Add(new MySqlParameter("IdRol", MySqlDbType.Int32)).Value = oRegistroEN.oRolEN.IdRol;
+                Comando.Parameters.Add(new MySqlParameter("@IdRol", MySqlDbType.Int32)).Value = oRegistroEN.oRolEN.IdRol;
                 Comando.Parameters.Add(new MySqlParameter("@Nombre", MySqlDbType.VarChar, oRegistroEN.Nombre.Trim().Length)).Value = oRegistroEN.Nombre.Trim();
                 Comando.Parameters.Add(new MySqlParameter("@Login", MySqlDbType.VarChar, oRegistroEN.Login.Trim().Length)).Value = oRegistroEN.Login.Trim();
                 Comando.Parameters.Add(new MySqlParameter("@Contrasena", MySqlDbType.VarChar, oRegistroEN.Contrasena.Trim().Length)).Value = oRegistroEN.Contrasena.Trim();

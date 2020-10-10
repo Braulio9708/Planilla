@@ -302,7 +302,7 @@ namespace Planilla.Formularios
                 {
                     cmbInterfaz.DataSource = oRegistroLN.TraerDatos();
                     cmbInterfaz.DisplayMember = "Nombre";
-                    cmbInterfaz.ValueMember = "IdInterfaz";
+                    cmbInterfaz.ValueMember = "IdInterfaz";                    
                     cmbInterfaz.SelectedIndex = -1;
 
                 }
@@ -842,7 +842,7 @@ namespace Planilla.Formularios
                         {
                             if (indice < dgvLista.Rows.Count - 1)
                             {
-                                if (MessageBox.Show("¿Desea continuar con los restantes registros a procesar?", "Confirmación", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == System.Windows.Forms.DialogResult.No)
+                                if (MessageBox.Show("¿Desea continuar con los registros restantes a procesar?", "Confirmación", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == System.Windows.Forms.DialogResult.No)
                                 {
                                     OcultarBarraDeProgreso();
                                     return false;
@@ -870,12 +870,17 @@ namespace Planilla.Formularios
                         oRegistrosEN.oPrivilegioEN.Nombre = Fila.Cells["Privilegio"].Value.ToString();
                         oRegistrosEN.oPrivilegioEN.oModuloInterfazEN.oInterfazEN.Nombre = Fila.Cells["Interfaz"].Value.ToString();
                         oRegistrosEN.oPrivilegioEN.oModuloInterfazEN.oInterfazEN.NombreAMostrar = Fila.Cells["NombreAMostrar"].Value.ToString();
+                        //
+                        MessageBox.Show(oRegistrosEN.oPrivilegioEN.oModuloInterfazEN.oModuloEN.Nombre.ToString());
                         oRegistrosEN.oPrivilegioEN.oModuloInterfazEN.oModuloEN.Nombre = Fila.Cells["Nombre"].Value.ToString();
+                        
+
 
                         oRegistrosEN.Acceso = Convert.ToBoolean(Fila.Cells["Marcar"].Value.ToString()) == true ? 1 : 0;
 
                         oRegistrosEN.oUsuarioEN = oUsuariosEN;
 
+                        
                         oRegistrosEN.IdUsuarioDeCreacion = Program.oLoginEN.IdUsuario;
                         oRegistrosEN.IdUsuarioDeModificacion = Program.oLoginEN.IdUsuario;
                         oRegistrosEN.FechaDeCreacion = System.DateTime.Now;
@@ -914,18 +919,7 @@ namespace Planilla.Formularios
                             IndiceProgreso++;
                             continue;
                         }
-                        if (Operacion == "AGREGAR")
-                        {
-                            //pendiente
-                        }
-                        if (Operacion == "ACTUALIZAR")
-                        {
-                            //pendiente
-                        }
-                        if (Operacion == "ELIMINAR")
-                        {
-                            //Pendiente
-                        }
+                        
                         //OPERACIONES
                         if (Operacion == "AGREGAR")
                         {
@@ -934,6 +928,7 @@ namespace Planilla.Formularios
                                 Fila.Cells[NombreLavePrimariaDetalle].Value = oRegistrosEN.IdModuloInterfazUsuario;
                                 Fila.Cells["Actualizar"].Value = false;
                                 oRegistrosEN = null;
+                                MessageBox.Show(oRegistrosEN.oUsuarioEN.Nombre.ToString());
                                 oRegistrosLN = null;
                                 indice++;
                                 IndiceProgreso++;
@@ -979,6 +974,7 @@ namespace Planilla.Formularios
                         if (Operacion == "ELIMINAR")
                         {
                             oRegistrosEN.IdModuloInterfazUsuario = Convert.ToInt32(Fila.Cells[NombreLavePrimariaDetalle].Value);
+                            
                             if (oRegistrosLN.Eliminar(oRegistrosEN, Program.oDatosDeConexioEN))
                             {
                                 dgvLista.Rows.Remove(Fila);
@@ -995,6 +991,8 @@ namespace Planilla.Formularios
                             }
                             else
                             {
+
+                                MessageBox.Show(oRegistrosEN.oPrivilegioEN.oModuloInterfazEN.oModuloEN.Nombre.ToString());
                                 OcultarBarraDeProgreso();
                                 this.Cursor = Cursors.Default;
                                 MessageBox.Show(oRegistrosLN.Error, OperacionARealizar, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
@@ -1025,19 +1023,19 @@ namespace Planilla.Formularios
         {
             string Where = "";
 
-            if (chkModulo.CheckState == CheckState.Checked && Controles.IsNullOEmptyElControl(cmbModulo) == true)
+            if (chkModulo.CheckState == CheckState.Checked && Controles.IsNullOEmptyElControl(cmbModulo) == false)
             {
-                Where += string.Format(" and m.IdModulo = '{0}'", cmbModulo.SelectedValue);
+                Where += string.Format(" and m.IdModulo = {0}", cmbModulo.SelectedValue);
             }
 
-            if (chkInterfaz.CheckState == CheckState.Checked && Controles.IsNullOEmptyElControl(cmbInterfaz) == true)
+            if (chkInterfaz.CheckState == CheckState.Checked && Controles.IsNullOEmptyElControl(cmbInterfaz) == false)
             {
-                Where += string.Format(" and i.IdPrivilegio = '{0}'", cmbInterfaz.SelectedValue);
+                Where += string.Format(" and i.IdInterfaz = {0}", cmbInterfaz.SelectedValue);
             }
 
             if (chkPrivilegio.CheckState == CheckState.Checked && Controles.IsNullOEmptyElControl(txtPrivilegio) == false)
             {
-                Where += string.Format(" and Nombre like '%{0}%'", txtPrivilegio.Text.Trim());
+                Where += string.Format(" and p.Nombre like '%{0}%'", txtPrivilegio.Text.Trim());
             }
 
             return Where;
@@ -1054,11 +1052,11 @@ namespace Planilla.Formularios
                 ModuloInterfazUsuarioEN oRegistroEN = new ModuloInterfazUsuarioEN();
                 ModuloInterfazUsuarioLN oRegistroLN = new ModuloInterfazUsuarioLN();
 
-                oRegistroEN.oUsuarioEN.IdUsuario = ValorLlavePrimariaEntidad;
+                oRegistroEN.oUsuarioEN.IdUsuario = ValorLlavePrimariaEntidad;                
                 oRegistroEN.Where = WhereDinamico();
                 oRegistroEN.OrderBy = "";
 
-                //MessageBox.Show("Prueva de usuario", oRegistroEN.oLoginEN.NombreUsuario);
+                
 
                 if (oRegistroLN.ListadoPrivilegiosDelUsuario(oRegistroEN, Program.oDatosDeConexioEN))
                 {
@@ -1463,6 +1461,7 @@ namespace Planilla.Formularios
                     {
 
                         txtIdentificador.Text = oRegistroEN.IdUsuario.ToString();
+                        txtNombreUsuario.Text = oRegistroEN.Nombre.ToString();
                         ValorLlavePrimariaEntidad = oRegistroEN.IdUsuario;
 
                         oRegistroEN = null;

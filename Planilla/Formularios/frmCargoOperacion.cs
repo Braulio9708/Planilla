@@ -36,6 +36,7 @@ namespace Planilla.Formularios
             LlamarMetodoSegunOperacion();
             EstablecerTituloDeVentana();
             DeshabilitarControlesSegunOperacionesARealizar();
+            CargarPrivilegiosDelUsuario();
 
             tsbGuardar.DisplayStyle = ToolStripItemDisplayStyle.ImageAndText;
             tsbEliminar.DisplayStyle = ToolStripItemDisplayStyle.ImageAndText;
@@ -132,7 +133,7 @@ namespace Planilla.Formularios
                 oRegistroEN.oUsuarioEN.IdUsuario = Program.oLoginEN.IdUsuario;
                 oRegistroEN.oPrivilegioEN.oModuloInterfazEN.oInterfazEN.Nombre = Nombre_Entidad_Privilegio;
 
-                if (oRegistroLN.ListadoPrivilegiosDelUsuariosPorIntefaz(oRegistroEN, Program.oDatosDeConexion))
+                if (oRegistroLN.ListadoPrivilegiosDelUsuariosPorIntefaz(oRegistroEN, Program.oDatosDeConexioEN))
                 {
 
                     tsbActualizar.Enabled = oRegistroLN.VerificarSiTengoAcceso("Actualizar");

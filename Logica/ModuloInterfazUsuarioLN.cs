@@ -56,7 +56,7 @@ namespace Logica
 
         public bool Eliminar(ModuloInterfazUsuarioEN oREgistroEN, DatosDeConexionEN oDatos)
         {
-
+            //Console.WriteLine("PRUEVA DE IDMODULOINERFAZUSUARIO : " + oREgistroEN.IdModuloInterfazUsuario);
             if (string.IsNullOrEmpty(oREgistroEN.IdModuloInterfazUsuario.ToString()) || oREgistroEN.IdModuloInterfazUsuario == 0)
             {
 

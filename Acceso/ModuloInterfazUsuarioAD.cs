@@ -50,6 +50,7 @@ namespace Acceso
                                 @IdUsuarioDeModificacion, current_timestamp());
                             Select  last_insert_ID() as 'ID';";
 
+                System.Diagnostics.Debug.Print(Consultas);
                 Comando.CommandText = Consultas;
 
                 Comando.Parameters.Add(new MySqlParameter("@IdPrivilegio", MySqlDbType.Int32)).Value = oRegistroEN.oPrivilegioEN.IdPrivilegio;
@@ -288,11 +289,11 @@ namespace Acceso
                                             miu.Acceso, p.Nombre as 'Privilegio', i.NombreAMostrar,i.Nombre as 'Interfaz', m.Nombre as 'Modulo' 
                                             FROM modulointerfazusuario as miu
                                             inner join privilegio as p on p.IdPrivilegio = miu.IdPrivilegio
-                                            inner join modulointerfaz as mi on mi.idModuloInterfaz = p.idModuloInterfaz
-                                            inner join interfaz as i on i.idInterfaz = mi.idInterfaz
-                                            inner join modulo as m on m.idModulo = mi.idModulo
-                                            where miu.IdModuloInterfazUsuario > 0 and miu.IdUsuario = {0} and upper(trim( i.Nombre)) = upper('{1}') ", oRegistroEN.oUsuarioEN.IdUsuario, oRegistroEN.oPrivilegioEN.oModuloInterfazEN.oInterfazEN.Nombre.Trim());
+                                            inner join modulointerfaz as mi on mi.IdModuloInterfaz = p.IdModuloInterfaz
+                                            inner join interfaz as i on i.IdInterfaz = mi.IdInterfaz
+                                            inner join modulo as m on m.IdModulo = mi.IdModulo", oRegistroEN.oUsuarioEN.IdUsuario, oRegistroEN.oPrivilegioEN.oModuloInterfazEN.oInterfazEN.Nombre.Trim());
 
+                System.Diagnostics.Debug.Print(Consultas);
                 Comando.CommandText = Consultas;
 
                 Adaptador = new MySqlDataAdapter();
