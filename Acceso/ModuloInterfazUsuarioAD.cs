@@ -50,7 +50,7 @@ namespace Acceso
                                 @IdUsuarioDeModificacion, current_timestamp());
                             Select  last_insert_ID() as 'ID';";
 
-                System.Diagnostics.Debug.Print(Consultas);
+                
                 Comando.CommandText = Consultas;
 
                 Comando.Parameters.Add(new MySqlParameter("@IdPrivilegio", MySqlDbType.Int32)).Value = oRegistroEN.oPrivilegioEN.IdPrivilegio;
@@ -117,6 +117,7 @@ namespace Acceso
                 Comando.Parameters.Add(new MySqlParameter("@IdUsuario", MySqlDbType.Int32)).Value = oRegistroEN.oUsuarioEN.IdUsuario;
                 Comando.Parameters.Add(new MySqlParameter("@Acceso", MySqlDbType.Int32)).Value = oRegistroEN.Acceso;
                 Comando.Parameters.Add(new MySqlParameter("@IdUsuarioDeModificacion", MySqlDbType.Int32)).Value = oRegistroEN.oLoginEN.IdUsuario;
+                
 
                 Comando.ExecuteNonQuery();
 

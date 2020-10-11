@@ -223,7 +223,9 @@ namespace Acceso
             {
                 InicialisarVariablesGlovales(oDatos);
 
-                Consultas = string.Format(@"Select IdUsuario, Nombre, Login, Contrasena, Email, Estado, IdUsuarioDeCreacion, FechaDeCreacion, IdUsuarioDeModificacion, FechaDeModificacion, IdRol from usuario where IdUsuario > {0} ", oRegistroEN.IdUsuario);
+                Consultas = string.Format(@"SELECT u.IdUsuario, u.IdRol, u.Nombre as 'Usuario', u.Login, u.Contrasena, u.Email, r.Nombre as 'TipoDeCuenta', u.Estado  FROM usuario as u
+                inner join rol as r on r.IdRol = u.IdRol where u.IdUsuario = {0} ", oRegistroEN.IdUsuario);
+
                 Comando.CommandText = Consultas;
 
                 InicialisarAdaptador();

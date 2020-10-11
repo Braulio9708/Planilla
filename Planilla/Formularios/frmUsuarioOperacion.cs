@@ -587,11 +587,11 @@ namespace Planilla.Formularios
                 {
 
                     DataRow Fila = oRegistrosLN.TraerDatos().Rows[0];
-                    txtNombreUsuario.Text = Fila["Nombre"].ToString();
+                    txtNombreUsuario.Text = Fila["Usuario"].ToString();
                     cmbTipoDeCuenta.SelectedValue = Convert.ToInt32(Fila["IdRol"].ToString());
-                    txtNombreSecion.Text = Fila["Login"].ToString();
-                    txtConfirmar.Text = CifrarCadenas.DesencriptarCadena(Fila["Contrasena"].ToString());
+                    txtNombreSecion.Text = Fila["Login"].ToString();                    
                     txtContrasena.Text = CifrarCadenas.DesencriptarCadena(Fila["Contrasena"].ToString());
+                    txtConfirmar.Text = CifrarCadenas.DesencriptarCadena(Fila["Contrasena"].ToString());
                     txtCorreoElectronico.Text = Fila["Email"].ToString();
                     cmbEstado.Text = Fila["Estado"].ToString();
 
@@ -869,7 +869,7 @@ namespace Planilla.Formularios
                         oRegistrosEN.oPrivilegioEN.Nombre = Fila.Cells["Privilegio"].Value.ToString();
                         oRegistrosEN.oPrivilegioEN.oModuloInterfazEN.oInterfazEN.Nombre = Fila.Cells["Interfaz"].Value.ToString();
                         oRegistrosEN.oPrivilegioEN.oModuloInterfazEN.oInterfazEN.NombreAMostrar = Fila.Cells["NombreAMostrar"].Value.ToString();
-                        oRegistrosEN.oPrivilegioEN.oModuloInterfazEN.oModuloEN.Nombre = Fila.Cells["Nombre"].Value.ToString();                       
+                        oRegistrosEN.oPrivilegioEN.oModuloInterfazEN.oModuloEN.Nombre = Fila.Cells["Modulo"].Value.ToString();                       
                         
                         oRegistrosEN.Acceso = Convert.ToBoolean(Fila.Cells["Marcar"].Value.ToString()) == true ? 1 : 0;
 
@@ -883,6 +883,7 @@ namespace Planilla.Formularios
                         oRegistrosEN.oLoginEN = Program.oLoginEN;
 
                         //DETERMINAMOS LA OPERACION A REALIZAR
+                        
                         string Operacion = "";
                         string NombreLavePrimariaDetalle = "IdModuloInterfazUsuario";
 
@@ -914,7 +915,7 @@ namespace Planilla.Formularios
                             IndiceProgreso++;
                             continue;
                         }
-                        if (Operacion == "AGREGAR")
+                        /*if (Operacion == "AGREGAR")
                         {
                             //pendiente
                         }
@@ -925,7 +926,7 @@ namespace Planilla.Formularios
                         if (Operacion == "ELIMINAR")
                         {
                             //Pendiente
-                        }
+                        }*/
 
                         //OPERACIONES
                         if (Operacion == "AGREGAR")
@@ -1469,8 +1470,8 @@ namespace Planilla.Formularios
 
                         txtIdentificador.Text = oRegistroEN.IdUsuario.ToString();
                         txtNombreUsuario.Text = oRegistroEN.Nombre.ToString();
-                        ValorLlavePrimariaEntidad = oRegistroEN.IdUsuario;
-                        MessageBox.Show("PRUEVA DE CONTRASEÑA: " + oRegistroEN.Contrasena);
+                        ValorLlavePrimariaEntidad = oRegistroEN.IdUsuario;                        
+                        
                         oRegistroEN = null;
                         oRegistroLN = null;
 
@@ -1493,8 +1494,8 @@ namespace Planilla.Formularios
                             }
 
                         }
-
                     }
+
                     else
                     {
                         throw new ArgumentException(oRegistroLN.Error);
