@@ -51,6 +51,9 @@ namespace Acceso
                         values
                         (@Cargo);
                         Select  last_insert_ID() as 'ID';";
+
+                Comando.CommandText = Consultas;
+
                 Comando.Parameters.Add(new MySqlParameter("@Cargo", MySqlDbType.VarChar, oRegistroEN.Cargo.Trim().Length)).Value = oRegistroEN.Cargo.Trim();
 
                 InicialisarAdaptador();
@@ -214,8 +217,11 @@ namespace Acceso
             {
                 InicialisarVariablesGlovales(oDatos);
 
-                Consultas = string.Format(@"Select IdCargo, Cargo from Cargo where IdCargo = {0} ", oRegistroEN.IdCargo);
+                Consultas = string.Format(@"Select IdCargo, Cargo from Cargo where IdCargo = @IdCargo", oRegistroEN.IdCargo);
+
                 Comando.CommandText = Consultas;
+
+                Comando.Parameters.Add(new MySqlParameter("@IdCargo", MySqlDbType.Int32)).Value = oRegistroEN.IdCargo;
 
                 InicialisarAdaptador();
 

@@ -640,8 +640,7 @@ namespace Planilla.Formularios
             //txtId.Text = string.Empty;
             txtNombreUsuario.Text = string.Empty;
             txtNombreSecion.Text = string.Empty;
-            txtContrasena.Text = string.Empty;
-            txtConfirmar.Text = string.Empty;
+            
             txtCorreoElectronico.Text = string.Empty;
             cmbTipoDeCuenta.SelectedIndex = -1;
         }
@@ -688,7 +687,7 @@ namespace Planilla.Formularios
 
             oRegistroEN.IdUsuario = Convert.ToInt32((txtIdentificador.Text.Length > 0 ? txtIdentificador.Text : "0"));
             oRegistroEN.Nombre = txtNombreUsuario.Text.Trim();
-            oRegistroEN.Login = txtNombreSecion.Text.Trim();
+            oRegistroEN.Login = txtNombreSecion.Text.Trim();            
             oRegistroEN.Contrasena = CifrarCadenas.EncriptarCadena(txtContrasena.Text.Trim());
             oRegistroEN.Email = txtCorreoElectronico.Text.Trim();
             oRegistroEN.Estado = cmbEstado.Text;
@@ -870,12 +869,8 @@ namespace Planilla.Formularios
                         oRegistrosEN.oPrivilegioEN.Nombre = Fila.Cells["Privilegio"].Value.ToString();
                         oRegistrosEN.oPrivilegioEN.oModuloInterfazEN.oInterfazEN.Nombre = Fila.Cells["Interfaz"].Value.ToString();
                         oRegistrosEN.oPrivilegioEN.oModuloInterfazEN.oInterfazEN.NombreAMostrar = Fila.Cells["NombreAMostrar"].Value.ToString();
-                        //
-                        MessageBox.Show(oRegistrosEN.oPrivilegioEN.oModuloInterfazEN.oModuloEN.Nombre.ToString());
-                        oRegistrosEN.oPrivilegioEN.oModuloInterfazEN.oModuloEN.Nombre = Fila.Cells["Nombre"].Value.ToString();
+                        oRegistrosEN.oPrivilegioEN.oModuloInterfazEN.oModuloEN.Nombre = Fila.Cells["Nombre"].Value.ToString();                       
                         
-
-
                         oRegistrosEN.Acceso = Convert.ToBoolean(Fila.Cells["Marcar"].Value.ToString()) == true ? 1 : 0;
 
                         oRegistrosEN.oUsuarioEN = oUsuariosEN;
@@ -919,7 +914,19 @@ namespace Planilla.Formularios
                             IndiceProgreso++;
                             continue;
                         }
-                        
+                        if (Operacion == "AGREGAR")
+                        {
+                            //pendiente
+                        }
+                        if (Operacion == "ACTUALIZAR")
+                        {
+                            //pendiente
+                        }
+                        if (Operacion == "ELIMINAR")
+                        {
+                            //Pendiente
+                        }
+
                         //OPERACIONES
                         if (Operacion == "AGREGAR")
                         {
@@ -928,7 +935,6 @@ namespace Planilla.Formularios
                                 Fila.Cells[NombreLavePrimariaDetalle].Value = oRegistrosEN.IdModuloInterfazUsuario;
                                 Fila.Cells["Actualizar"].Value = false;
                                 oRegistrosEN = null;
-                                MessageBox.Show(oRegistrosEN.oUsuarioEN.Nombre.ToString());
                                 oRegistrosLN = null;
                                 indice++;
                                 IndiceProgreso++;
@@ -1432,6 +1438,7 @@ namespace Planilla.Formularios
 
                     UsuarioEN oRegistroEN = InformacionDelRegistro();
                     UsuarioLN oRegistroLN = new UsuarioLN();
+                    
 
                     if (oRegistroLN.ValidarRegistroDuplicadoPorNombre(oRegistroEN, Program.oDatosDeConexioEN, "AGREGAR"))
                     {
@@ -1463,7 +1470,7 @@ namespace Planilla.Formularios
                         txtIdentificador.Text = oRegistroEN.IdUsuario.ToString();
                         txtNombreUsuario.Text = oRegistroEN.Nombre.ToString();
                         ValorLlavePrimariaEntidad = oRegistroEN.IdUsuario;
-
+                        MessageBox.Show("PRUEVA DE CONTRASEÑA: " + oRegistroEN.Contrasena);
                         oRegistroEN = null;
                         oRegistroLN = null;
 

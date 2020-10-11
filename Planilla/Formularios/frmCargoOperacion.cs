@@ -96,7 +96,7 @@ namespace Planilla.Formularios
 
                 
 
-                if (oRegistroLN.ListadoPrivilegiosDelUsuariosPorModulo(oRegistroEN, Program.oDatosDeConexion))
+                if (oRegistroLN.ListadoPrivilegiosDelUsuariosPorModulo(oRegistroEN, Program.oDatosDeConexioEN))
                 {
                     PermitirCambiarRegistroAunqueEstenVinculados = oRegistroLN.VerificarSiTengoAcceso("Acceso");
                 }
@@ -312,15 +312,17 @@ namespace Planilla.Formularios
 
             oRegistrosEN.IdCargo = ValorLlavePrimariaEntidad;
 
-            if (oRegistrosLN.ListadoPorIdentificador(oRegistrosEN, Program.oDatosDeConexion))
+            if (oRegistrosLN.ListadoPorIdentificador(oRegistrosEN, Program.oDatosDeConexioEN))
             {
+                
                 if (oRegistrosLN.TraerDatos().Rows.Count > 0)
                 {
 
                     DataRow Fila = oRegistrosLN.TraerDatos().Rows[0];
-                    txtNombre.Text = Fila["Nombre"].ToString();
+                    txtNombre.Text = Fila["Cargo"].ToString();
                     oRegistrosEN = null;
                     oRegistrosLN = null;
+                    
 
                 }
                 else
@@ -430,7 +432,7 @@ namespace Planilla.Formularios
 
                     }
 
-                    if (oRegistroLN.Agregar(oRegistroEN, Program.oDatosDeConexion))
+                    if (oRegistroLN.Agregar(oRegistroEN, Program.oDatosDeConexioEN))
                     {
 
                         txtIdentificador.Text = oRegistroEN.IdCargo.ToString();
@@ -524,7 +526,7 @@ namespace Planilla.Formularios
 
                     }
 
-                    if (oRegistroLN.Actualizar(oRegistroEN, Program.oDatosDeConexion))
+                    if (oRegistroLN.Actualizar(oRegistroEN, Program.oDatosDeConexioEN))
                     {
 
                         txtIdentificador.Text = oRegistroEN.IdCargo.ToString();
@@ -592,7 +594,7 @@ namespace Planilla.Formularios
                         return;
                     }
 
-                    if (oRegistroLN.Eliminar(oRegistroEN, Program.oDatosDeConexion))
+                    if (oRegistroLN.Eliminar(oRegistroEN, Program.oDatosDeConexioEN))
                     {
 
                         txtIdentificador.Text = oRegistroEN.IdCargo.ToString();
