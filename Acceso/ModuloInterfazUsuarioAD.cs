@@ -100,7 +100,7 @@ namespace Acceso
 
                 IniciarVariablesGlovales(oDatos);
 
-                Consultas = @"UPDATE modulo set
+                Consultas = @"UPDATE modulointerfazusuario set
 	                            IdPrivilegio = @IdPrivilegio,
                                 IdUsuario = @IdUsuario,
                                 Acceso = @Acceso,
@@ -118,7 +118,6 @@ namespace Acceso
                 Comando.Parameters.Add(new MySqlParameter("@Acceso", MySqlDbType.Int32)).Value = oRegistroEN.Acceso;
                 Comando.Parameters.Add(new MySqlParameter("@IdUsuarioDeModificacion", MySqlDbType.Int32)).Value = oRegistroEN.oLoginEN.IdUsuario;
                 
-
                 Comando.ExecuteNonQuery();
 
                 DescripcionDeOperacion = string.Format("El registro fue Actualizado Correctamente. {0} {1}", Environment.NewLine, InformacionDelRegistro(oRegistroEN));

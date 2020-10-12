@@ -144,8 +144,8 @@
             // 
             this.cmbEstado.FormattingEnabled = true;
             this.cmbEstado.Items.AddRange(new object[] {
-            "Activo",
-            "Inactivo"});
+            "ACTIVO",
+            "INACTIVO"});
             this.cmbEstado.Location = new System.Drawing.Point(370, 196);
             this.cmbEstado.Name = "cmbEstado";
             this.cmbEstado.Size = new System.Drawing.Size(163, 21);

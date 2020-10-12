@@ -89,8 +89,6 @@ namespace Acceso
 
         public bool Actualizar(UsuarioEN oRegistroEN, DatosDeConexionEN oDatos)
         {
-            oTransaccionesAD = new TransaccionesAD();
-
             try
             {
                 InicialisarVariablesGlovales(oDatos);
@@ -116,7 +114,10 @@ namespace Acceso
                 Comando.Parameters.Add(new MySqlParameter("@Estado", MySqlDbType.VarChar, oRegistroEN.Estado.Trim().Length)).Value = oRegistroEN.Estado.Trim();
                 Comando.Parameters.Add(new MySqlParameter("@IdUsuarioDeModificacion", MySqlDbType.Int32)).Value = oRegistroEN.IdUsuarioDeModificacion;
                 Comando.Parameters.Add(new MySqlParameter("@IdRol", MySqlDbType.Int32)).Value = oRegistroEN.oRolEN.IdRol;
+
                 Comando.ExecuteNonQuery();
+
+                InicialisarAdaptador();
 
                 DescripcionDeLaOperacion = string.Format("El registro fue Actualizado correctamente. {0} {1}", Environment.NewLine, InformacionDelRegistro(oRegistroEN));
 
