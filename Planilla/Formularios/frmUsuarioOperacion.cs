@@ -637,7 +637,7 @@ namespace Planilla.Formularios
 
         private void LimpiarCampos()
         {
-            //txtId.Text = string.Empty;
+            txtIdentificador.Text = string.Empty;
             txtNombreUsuario.Text = string.Empty;
             txtNombreSecion.Text = string.Empty;
             
@@ -874,7 +874,6 @@ namespace Planilla.Formularios
                         oRegistrosEN.Acceso = Convert.ToBoolean(Fila.Cells["Marcar"].Value.ToString()) == true ? 1 : 0;
 
                         oRegistrosEN.oUsuarioEN = oUsuariosEN;
-
                         
                         oRegistrosEN.IdUsuarioDeCreacion = Program.oLoginEN.IdUsuario;
                         oRegistrosEN.IdUsuarioDeModificacion = Program.oLoginEN.IdUsuario;
@@ -1474,6 +1473,8 @@ namespace Planilla.Formularios
                         
                         oRegistroEN = null;
                         oRegistroLN = null;
+
+                       
 
                         if (InsertarActualizarOEliminarPrivilegiosDelUusuario())
                         {
