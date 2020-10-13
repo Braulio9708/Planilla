@@ -41,6 +41,9 @@
             this.MenuHerramientas = new System.Windows.Forms.Button();
             this.msMenu = new System.Windows.Forms.Button();
             this.btnEmpleado = new System.Windows.Forms.Button();
+            this.btnContrato = new System.Windows.Forms.Button();
+            this.btnAreaLaboral = new System.Windows.Forms.Button();
+            this.btnPrestaciones = new System.Windows.Forms.Button();
             this.toolsMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.tsRespaldar = new System.Windows.Forms.ToolStripMenuItem();
             this.restaurarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -58,9 +61,7 @@
             this.toolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.statusStrip = new System.Windows.Forms.StatusStrip();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
-            this.btnContrato = new System.Windows.Forms.Button();
-            this.btnAreaLaboral = new System.Windows.Forms.Button();
-            this.btnPrestaciones = new System.Windows.Forms.Button();
+            this.Empleado = new System.Windows.Forms.Button();
             this.menuStrip.SuspendLayout();
             this.statusStrip.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
@@ -205,6 +206,45 @@
             this.toolTip.SetToolTip(this.btnEmpleado, "Informacion del empleado");
             this.btnEmpleado.UseVisualStyleBackColor = false;
             this.btnEmpleado.Click += new System.EventHandler(this.btnEmpleado_Click);
+            // 
+            // btnContrato
+            // 
+            this.btnContrato.BackColor = System.Drawing.Color.Transparent;
+            this.btnContrato.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnContrato.Location = new System.Drawing.Point(0, 175);
+            this.btnContrato.Name = "btnContrato";
+            this.btnContrato.Size = new System.Drawing.Size(157, 35);
+            this.btnContrato.TabIndex = 7;
+            this.btnContrato.Tag = "Contrato";
+            this.btnContrato.Text = "Contrato";
+            this.toolTip.SetToolTip(this.btnContrato, "\r\n");
+            this.btnContrato.UseVisualStyleBackColor = false;
+            // 
+            // btnAreaLaboral
+            // 
+            this.btnAreaLaboral.BackColor = System.Drawing.Color.Transparent;
+            this.btnAreaLaboral.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnAreaLaboral.Location = new System.Drawing.Point(0, 210);
+            this.btnAreaLaboral.Name = "btnAreaLaboral";
+            this.btnAreaLaboral.Size = new System.Drawing.Size(157, 35);
+            this.btnAreaLaboral.TabIndex = 8;
+            this.btnAreaLaboral.Tag = "Area";
+            this.btnAreaLaboral.Text = "Area Laboral";
+            this.toolTip.SetToolTip(this.btnAreaLaboral, "\r\n");
+            this.btnAreaLaboral.UseVisualStyleBackColor = false;
+            // 
+            // btnPrestaciones
+            // 
+            this.btnPrestaciones.BackColor = System.Drawing.Color.Transparent;
+            this.btnPrestaciones.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnPrestaciones.Location = new System.Drawing.Point(0, 245);
+            this.btnPrestaciones.Name = "btnPrestaciones";
+            this.btnPrestaciones.Size = new System.Drawing.Size(157, 35);
+            this.btnPrestaciones.TabIndex = 9;
+            this.btnPrestaciones.Tag = "Prestacion";
+            this.btnPrestaciones.Text = "Prestaciones";
+            this.toolTip.SetToolTip(this.btnPrestaciones, "\r\n");
+            this.btnPrestaciones.UseVisualStyleBackColor = false;
             // 
             // toolsMenu
             // 
@@ -357,6 +397,7 @@
             // splitContainer1.Panel2
             // 
             this.splitContainer1.Panel2.AutoScroll = true;
+            this.splitContainer1.Panel2.Controls.Add(this.Empleado);
             this.splitContainer1.Panel2.Controls.Add(this.btnPrestaciones);
             this.splitContainer1.Panel2.Controls.Add(this.btnAreaLaboral);
             this.splitContainer1.Panel2.Controls.Add(this.btnContrato);
@@ -369,44 +410,18 @@
             this.splitContainer1.SplitterDistance = 211;
             this.splitContainer1.TabIndex = 4;
             // 
-            // btnContrato
+            // Empleado
             // 
-            this.btnContrato.BackColor = System.Drawing.Color.Transparent;
-            this.btnContrato.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnContrato.Location = new System.Drawing.Point(0, 175);
-            this.btnContrato.Name = "btnContrato";
-            this.btnContrato.Size = new System.Drawing.Size(157, 35);
-            this.btnContrato.TabIndex = 7;
-            this.btnContrato.Tag = "Contrato";
-            this.btnContrato.Text = "Contrato";
-            this.toolTip.SetToolTip(this.btnContrato, "\r\n");
-            this.btnContrato.UseVisualStyleBackColor = false;
-            // 
-            // btnAreaLaboral
-            // 
-            this.btnAreaLaboral.BackColor = System.Drawing.Color.Transparent;
-            this.btnAreaLaboral.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnAreaLaboral.Location = new System.Drawing.Point(0, 210);
-            this.btnAreaLaboral.Name = "btnAreaLaboral";
-            this.btnAreaLaboral.Size = new System.Drawing.Size(157, 35);
-            this.btnAreaLaboral.TabIndex = 8;
-            this.btnAreaLaboral.Tag = "Area";
-            this.btnAreaLaboral.Text = "Area Laboral";
-            this.toolTip.SetToolTip(this.btnAreaLaboral, "\r\n");
-            this.btnAreaLaboral.UseVisualStyleBackColor = false;
-            // 
-            // btnPrestaciones
-            // 
-            this.btnPrestaciones.BackColor = System.Drawing.Color.Transparent;
-            this.btnPrestaciones.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnPrestaciones.Location = new System.Drawing.Point(0, 245);
-            this.btnPrestaciones.Name = "btnPrestaciones";
-            this.btnPrestaciones.Size = new System.Drawing.Size(157, 35);
-            this.btnPrestaciones.TabIndex = 9;
-            this.btnPrestaciones.Tag = "Prestacion";
-            this.btnPrestaciones.Text = "Prestaciones";
-            this.toolTip.SetToolTip(this.btnPrestaciones, "\r\n");
-            this.btnPrestaciones.UseVisualStyleBackColor = false;
+            this.Empleado.BackColor = System.Drawing.Color.Transparent;
+            this.Empleado.Dock = System.Windows.Forms.DockStyle.Top;
+            this.Empleado.Location = new System.Drawing.Point(0, 280);
+            this.Empleado.Name = "Empleado";
+            this.Empleado.Size = new System.Drawing.Size(157, 35);
+            this.Empleado.TabIndex = 10;
+            this.Empleado.Tag = "Empleado";
+            this.Empleado.Text = "Empleado";
+            this.toolTip.SetToolTip(this.Empleado, "\r\n");
+            this.Empleado.UseVisualStyleBackColor = false;
             // 
             // Principal
             // 
@@ -466,6 +481,7 @@
         private System.Windows.Forms.Button btnPrestaciones;
         private System.Windows.Forms.Button btnAreaLaboral;
         private System.Windows.Forms.Button btnContrato;
+        private System.Windows.Forms.Button Empleado;
     }
 }
 

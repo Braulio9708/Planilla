@@ -29,7 +29,20 @@
         private void InitializeComponent()
         {
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.txtEmail = new System.Windows.Forms.TextBox();
+            this.txtCelular = new System.Windows.Forms.TextBox();
+            this.txtTelefono = new System.Windows.Forms.TextBox();
+            this.txtCedula = new System.Windows.Forms.TextBox();
+            this.txtApellidos = new System.Windows.Forms.TextBox();
+            this.txtNombre = new System.Windows.Forms.TextBox();
+            this.chkEmail = new System.Windows.Forms.CheckBox();
+            this.chkCelular = new System.Windows.Forms.CheckBox();
+            this.chkTelefono = new System.Windows.Forms.CheckBox();
+            this.chkCedula = new System.Windows.Forms.CheckBox();
+            this.chkNombre = new System.Windows.Forms.CheckBox();
+            this.chkApellidos = new System.Windows.Forms.CheckBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.txtEstado = new System.Windows.Forms.TextBox();
             this.txttipoDeDocumento = new System.Windows.Forms.TextBox();
@@ -38,45 +51,32 @@
             this.txtCargoDelEmpleado = new System.Windows.Forms.TextBox();
             this.txtEstructuraOrganizacional = new System.Windows.Forms.TextBox();
             this.chkEstado = new System.Windows.Forms.CheckBox();
-            this.chkTipoDeDocumento = new System.Windows.Forms.CheckBox();
+            this.chkTipoDeContrato = new System.Windows.Forms.CheckBox();
             this.chkDepartamento = new System.Windows.Forms.CheckBox();
-            this.chkCuidad = new System.Windows.Forms.CheckBox();
-            this.chkCargoDelEmpleado = new System.Windows.Forms.CheckBox();
-            this.chkEstrucutraOrganizacional = new System.Windows.Forms.CheckBox();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.txtINSS = new System.Windows.Forms.TextBox();
-            this.txtNoINSS = new System.Windows.Forms.TextBox();
-            this.txtGradoAcademico = new System.Windows.Forms.TextBox();
-            this.txtIdentificador = new System.Windows.Forms.TextBox();
-            this.txtEmpleado = new System.Windows.Forms.TextBox();
-            this.txtCodigo = new System.Windows.Forms.TextBox();
-            this.chkINSS = new System.Windows.Forms.CheckBox();
-            this.chkNoINSS = new System.Windows.Forms.CheckBox();
-            this.chkGradoAcademico = new System.Windows.Forms.CheckBox();
-            this.chkIdentificador = new System.Windows.Forms.CheckBox();
-            this.chkEmpleado = new System.Windows.Forms.CheckBox();
-            this.chkCodigo = new System.Windows.Forms.CheckBox();
+            this.chkMunicipio = new System.Windows.Forms.CheckBox();
+            this.chkCargo = new System.Windows.Forms.CheckBox();
+            this.chkAreaLaboral = new System.Windows.Forms.CheckBox();
+            this.statusStrip1 = new System.Windows.Forms.StatusStrip();
+            this.tsbNoRegistros = new System.Windows.Forms.ToolStripStatusLabel();
+            this.dgvLista = new System.Windows.Forms.DataGridView();
             this.tsMenu = new System.Windows.Forms.ToolStrip();
             this.tsFiltrar = new System.Windows.Forms.ToolStripButton();
-            this.tsImprimir = new System.Windows.Forms.ToolStripButton();
             this.tsNuevoRegistro = new System.Windows.Forms.ToolStripButton();
+            this.tsImprimir = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.tsMarcarTodo = new System.Windows.Forms.ToolStripButton();
             this.tsSeleccionar = new System.Windows.Forms.ToolStripButton();
             this.tsFiltroAutomatico = new System.Windows.Forms.ToolStripButton();
-            this.dgvLista = new System.Windows.Forms.DataGridView();
-            this.statusStrip1 = new System.Windows.Forms.StatusStrip();
-            this.tsbNoRegistros = new System.Windows.Forms.ToolStripStatusLabel();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
-            this.groupBox1.SuspendLayout();
-            this.groupBox3.SuspendLayout();
+            this.flowLayoutPanel1.SuspendLayout();
             this.groupBox2.SuspendLayout();
-            this.tsMenu.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvLista)).BeginInit();
+            this.groupBox3.SuspendLayout();
             this.statusStrip1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvLista)).BeginInit();
+            this.tsMenu.SuspendLayout();
             this.SuspendLayout();
             // 
             // splitContainer1
@@ -88,27 +88,155 @@
             // 
             // splitContainer1.Panel1
             // 
-            this.splitContainer1.Panel1.Controls.Add(this.groupBox1);
+            this.splitContainer1.Panel1.Controls.Add(this.flowLayoutPanel1);
             // 
             // splitContainer1.Panel2
             // 
             this.splitContainer1.Panel2.Controls.Add(this.statusStrip1);
             this.splitContainer1.Panel2.Controls.Add(this.dgvLista);
             this.splitContainer1.Panel2.Controls.Add(this.tsMenu);
-            this.splitContainer1.Size = new System.Drawing.Size(1115, 500);
-            this.splitContainer1.SplitterDistance = 233;
+            this.splitContainer1.Size = new System.Drawing.Size(1115, 656);
+            this.splitContainer1.SplitterDistance = 305;
             this.splitContainer1.TabIndex = 0;
             // 
-            // groupBox1
+            // flowLayoutPanel1
             // 
-            this.groupBox1.Controls.Add(this.groupBox3);
-            this.groupBox1.Controls.Add(this.groupBox2);
-            this.groupBox1.Location = new System.Drawing.Point(12, 12);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(1091, 286);
-            this.groupBox1.TabIndex = 0;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Filtros de Informacion de Empleados";
+            this.flowLayoutPanel1.Controls.Add(this.groupBox2);
+            this.flowLayoutPanel1.Controls.Add(this.groupBox3);
+            this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(0, 0);
+            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(1115, 305);
+            this.flowLayoutPanel1.TabIndex = 12;
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.txtEmail);
+            this.groupBox2.Controls.Add(this.txtCelular);
+            this.groupBox2.Controls.Add(this.txtTelefono);
+            this.groupBox2.Controls.Add(this.txtCedula);
+            this.groupBox2.Controls.Add(this.txtApellidos);
+            this.groupBox2.Controls.Add(this.txtNombre);
+            this.groupBox2.Controls.Add(this.chkEmail);
+            this.groupBox2.Controls.Add(this.chkCelular);
+            this.groupBox2.Controls.Add(this.chkTelefono);
+            this.groupBox2.Controls.Add(this.chkCedula);
+            this.groupBox2.Controls.Add(this.chkNombre);
+            this.groupBox2.Controls.Add(this.chkApellidos);
+            this.groupBox2.Location = new System.Drawing.Point(3, 3);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(536, 234);
+            this.groupBox2.TabIndex = 0;
+            this.groupBox2.TabStop = false;
+            // 
+            // txtEmail
+            // 
+            this.txtEmail.Location = new System.Drawing.Point(155, 198);
+            this.txtEmail.Name = "txtEmail";
+            this.txtEmail.Size = new System.Drawing.Size(374, 20);
+            this.txtEmail.TabIndex = 11;
+            // 
+            // txtCelular
+            // 
+            this.txtCelular.Location = new System.Drawing.Point(156, 162);
+            this.txtCelular.Name = "txtCelular";
+            this.txtCelular.Size = new System.Drawing.Size(374, 20);
+            this.txtCelular.TabIndex = 10;
+            // 
+            // txtTelefono
+            // 
+            this.txtTelefono.Location = new System.Drawing.Point(156, 125);
+            this.txtTelefono.Name = "txtTelefono";
+            this.txtTelefono.Size = new System.Drawing.Size(374, 20);
+            this.txtTelefono.TabIndex = 9;
+            // 
+            // txtCedula
+            // 
+            this.txtCedula.Location = new System.Drawing.Point(156, 88);
+            this.txtCedula.Name = "txtCedula";
+            this.txtCedula.Size = new System.Drawing.Size(374, 20);
+            this.txtCedula.TabIndex = 8;
+            // 
+            // txtApellidos
+            // 
+            this.txtApellidos.Location = new System.Drawing.Point(155, 53);
+            this.txtApellidos.Name = "txtApellidos";
+            this.txtApellidos.Size = new System.Drawing.Size(374, 20);
+            this.txtApellidos.TabIndex = 7;
+            // 
+            // txtNombre
+            // 
+            this.txtNombre.Location = new System.Drawing.Point(156, 19);
+            this.txtNombre.Name = "txtNombre";
+            this.txtNombre.Size = new System.Drawing.Size(374, 20);
+            this.txtNombre.TabIndex = 6;
+            // 
+            // chkEmail
+            // 
+            this.chkEmail.AutoSize = true;
+            this.chkEmail.Location = new System.Drawing.Point(30, 200);
+            this.chkEmail.Name = "chkEmail";
+            this.chkEmail.Size = new System.Drawing.Size(119, 17);
+            this.chkEmail.TabIndex = 5;
+            this.chkEmail.Tag = "Email";
+            this.chkEmail.Text = "Corrreo Electronico:";
+            this.chkEmail.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.chkEmail.UseVisualStyleBackColor = true;
+            // 
+            // chkCelular
+            // 
+            this.chkCelular.AutoSize = true;
+            this.chkCelular.Location = new System.Drawing.Point(30, 164);
+            this.chkCelular.Name = "chkCelular";
+            this.chkCelular.Size = new System.Drawing.Size(61, 17);
+            this.chkCelular.TabIndex = 4;
+            this.chkCelular.Tag = "Celular";
+            this.chkCelular.Text = "Celular:";
+            this.chkCelular.UseVisualStyleBackColor = true;
+            // 
+            // chkTelefono
+            // 
+            this.chkTelefono.AutoSize = true;
+            this.chkTelefono.Location = new System.Drawing.Point(30, 127);
+            this.chkTelefono.Name = "chkTelefono";
+            this.chkTelefono.Size = new System.Drawing.Size(71, 17);
+            this.chkTelefono.TabIndex = 3;
+            this.chkTelefono.Tag = "Telefono";
+            this.chkTelefono.Text = "Telefono:";
+            this.chkTelefono.UseVisualStyleBackColor = true;
+            // 
+            // chkCedula
+            // 
+            this.chkCedula.AutoSize = true;
+            this.chkCedula.Location = new System.Drawing.Point(30, 90);
+            this.chkCedula.Name = "chkCedula";
+            this.chkCedula.Size = new System.Drawing.Size(62, 17);
+            this.chkCedula.TabIndex = 2;
+            this.chkCedula.Tag = "Cedula";
+            this.chkCedula.Text = "Cedula:";
+            this.chkCedula.UseVisualStyleBackColor = true;
+            // 
+            // chkNombre
+            // 
+            this.chkNombre.AutoSize = true;
+            this.chkNombre.Location = new System.Drawing.Point(30, 21);
+            this.chkNombre.Name = "chkNombre";
+            this.chkNombre.Size = new System.Drawing.Size(66, 17);
+            this.chkNombre.TabIndex = 1;
+            this.chkNombre.Tag = "Nombre";
+            this.chkNombre.Text = "Nombre:";
+            this.chkNombre.UseVisualStyleBackColor = true;
+            // 
+            // chkApellidos
+            // 
+            this.chkApellidos.AutoSize = true;
+            this.chkApellidos.Location = new System.Drawing.Point(30, 55);
+            this.chkApellidos.Name = "chkApellidos";
+            this.chkApellidos.Size = new System.Drawing.Size(71, 17);
+            this.chkApellidos.TabIndex = 0;
+            this.chkApellidos.Tag = "Apellidos";
+            this.chkApellidos.Text = "Apellidos:";
+            this.chkApellidos.UseVisualStyleBackColor = true;
             // 
             // groupBox3
             // 
@@ -119,14 +247,14 @@
             this.groupBox3.Controls.Add(this.txtCargoDelEmpleado);
             this.groupBox3.Controls.Add(this.txtEstructuraOrganizacional);
             this.groupBox3.Controls.Add(this.chkEstado);
-            this.groupBox3.Controls.Add(this.chkTipoDeDocumento);
+            this.groupBox3.Controls.Add(this.chkTipoDeContrato);
             this.groupBox3.Controls.Add(this.chkDepartamento);
-            this.groupBox3.Controls.Add(this.chkCuidad);
-            this.groupBox3.Controls.Add(this.chkCargoDelEmpleado);
-            this.groupBox3.Controls.Add(this.chkEstrucutraOrganizacional);
-            this.groupBox3.Location = new System.Drawing.Point(548, 19);
+            this.groupBox3.Controls.Add(this.chkMunicipio);
+            this.groupBox3.Controls.Add(this.chkCargo);
+            this.groupBox3.Controls.Add(this.chkAreaLaboral);
+            this.groupBox3.Location = new System.Drawing.Point(545, 3);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(537, 185);
+            this.groupBox3.Size = new System.Drawing.Size(558, 234);
             this.groupBox3.TabIndex = 1;
             this.groupBox3.TabStop = false;
             // 
@@ -134,42 +262,42 @@
             // 
             this.txtEstado.Location = new System.Drawing.Point(162, 138);
             this.txtEstado.Name = "txtEstado";
-            this.txtEstado.Size = new System.Drawing.Size(367, 20);
+            this.txtEstado.Size = new System.Drawing.Size(390, 20);
             this.txtEstado.TabIndex = 11;
             // 
             // txttipoDeDocumento
             // 
             this.txttipoDeDocumento.Location = new System.Drawing.Point(162, 114);
             this.txttipoDeDocumento.Name = "txttipoDeDocumento";
-            this.txttipoDeDocumento.Size = new System.Drawing.Size(367, 20);
+            this.txttipoDeDocumento.Size = new System.Drawing.Size(390, 20);
             this.txttipoDeDocumento.TabIndex = 10;
             // 
             // txtDepartamento
             // 
             this.txtDepartamento.Location = new System.Drawing.Point(162, 90);
             this.txtDepartamento.Name = "txtDepartamento";
-            this.txtDepartamento.Size = new System.Drawing.Size(367, 20);
+            this.txtDepartamento.Size = new System.Drawing.Size(390, 20);
             this.txtDepartamento.TabIndex = 9;
             // 
             // txtCiudad
             // 
             this.txtCiudad.Location = new System.Drawing.Point(161, 66);
             this.txtCiudad.Name = "txtCiudad";
-            this.txtCiudad.Size = new System.Drawing.Size(368, 20);
+            this.txtCiudad.Size = new System.Drawing.Size(391, 20);
             this.txtCiudad.TabIndex = 8;
             // 
             // txtCargoDelEmpleado
             // 
             this.txtCargoDelEmpleado.Location = new System.Drawing.Point(162, 43);
             this.txtCargoDelEmpleado.Name = "txtCargoDelEmpleado";
-            this.txtCargoDelEmpleado.Size = new System.Drawing.Size(367, 20);
+            this.txtCargoDelEmpleado.Size = new System.Drawing.Size(390, 20);
             this.txtCargoDelEmpleado.TabIndex = 7;
             // 
             // txtEstructuraOrganizacional
             // 
             this.txtEstructuraOrganizacional.Location = new System.Drawing.Point(162, 19);
             this.txtEstructuraOrganizacional.Name = "txtEstructuraOrganizacional";
-            this.txtEstructuraOrganizacional.Size = new System.Drawing.Size(367, 20);
+            this.txtEstructuraOrganizacional.Size = new System.Drawing.Size(390, 20);
             this.txtEstructuraOrganizacional.TabIndex = 6;
             // 
             // chkEstado
@@ -183,16 +311,16 @@
             this.chkEstado.Text = "Estado:";
             this.chkEstado.UseVisualStyleBackColor = true;
             // 
-            // chkTipoDeDocumento
+            // chkTipoDeContrato
             // 
-            this.chkTipoDeDocumento.AutoSize = true;
-            this.chkTipoDeDocumento.Location = new System.Drawing.Point(6, 116);
-            this.chkTipoDeDocumento.Name = "chkTipoDeDocumento";
-            this.chkTipoDeDocumento.Size = new System.Drawing.Size(123, 17);
-            this.chkTipoDeDocumento.TabIndex = 4;
-            this.chkTipoDeDocumento.Tag = "Tipo De Documento";
-            this.chkTipoDeDocumento.Text = "Tipo de Documento:";
-            this.chkTipoDeDocumento.UseVisualStyleBackColor = true;
+            this.chkTipoDeContrato.AutoSize = true;
+            this.chkTipoDeContrato.Location = new System.Drawing.Point(6, 116);
+            this.chkTipoDeContrato.Name = "chkTipoDeContrato";
+            this.chkTipoDeContrato.Size = new System.Drawing.Size(108, 17);
+            this.chkTipoDeContrato.TabIndex = 4;
+            this.chkTipoDeContrato.Tag = "Tipo De Contrato";
+            this.chkTipoDeContrato.Text = "Tipo de Contrato:";
+            this.chkTipoDeContrato.UseVisualStyleBackColor = true;
             // 
             // chkDepartamento
             // 
@@ -205,175 +333,73 @@
             this.chkDepartamento.Text = "Departamento:";
             this.chkDepartamento.UseVisualStyleBackColor = true;
             // 
-            // chkCuidad
+            // chkMunicipio
             // 
-            this.chkCuidad.AutoSize = true;
-            this.chkCuidad.Location = new System.Drawing.Point(6, 68);
-            this.chkCuidad.Name = "chkCuidad";
-            this.chkCuidad.Size = new System.Drawing.Size(62, 17);
-            this.chkCuidad.TabIndex = 2;
-            this.chkCuidad.Tag = "Ciudad";
-            this.chkCuidad.Text = "Ciudad:";
-            this.chkCuidad.UseVisualStyleBackColor = true;
+            this.chkMunicipio.AutoSize = true;
+            this.chkMunicipio.Location = new System.Drawing.Point(6, 68);
+            this.chkMunicipio.Name = "chkMunicipio";
+            this.chkMunicipio.Size = new System.Drawing.Size(74, 17);
+            this.chkMunicipio.TabIndex = 2;
+            this.chkMunicipio.Tag = "Municipio";
+            this.chkMunicipio.Text = "Municipio:";
+            this.chkMunicipio.UseVisualStyleBackColor = true;
             // 
-            // chkCargoDelEmpleado
+            // chkCargo
             // 
-            this.chkCargoDelEmpleado.AutoSize = true;
-            this.chkCargoDelEmpleado.Location = new System.Drawing.Point(6, 44);
-            this.chkCargoDelEmpleado.Name = "chkCargoDelEmpleado";
-            this.chkCargoDelEmpleado.Size = new System.Drawing.Size(126, 17);
-            this.chkCargoDelEmpleado.TabIndex = 1;
-            this.chkCargoDelEmpleado.Tag = "Cargo Del Empleado";
-            this.chkCargoDelEmpleado.Text = "Cargo Del Empleado:";
-            this.chkCargoDelEmpleado.UseVisualStyleBackColor = true;
+            this.chkCargo.AutoSize = true;
+            this.chkCargo.Location = new System.Drawing.Point(6, 44);
+            this.chkCargo.Name = "chkCargo";
+            this.chkCargo.Size = new System.Drawing.Size(126, 17);
+            this.chkCargo.TabIndex = 1;
+            this.chkCargo.Tag = "Cargo Del Empleado";
+            this.chkCargo.Text = "Cargo Del Empleado:";
+            this.chkCargo.UseVisualStyleBackColor = true;
             // 
-            // chkEstrucutraOrganizacional
+            // chkAreaLaboral
             // 
-            this.chkEstrucutraOrganizacional.AutoSize = true;
-            this.chkEstrucutraOrganizacional.Location = new System.Drawing.Point(6, 21);
-            this.chkEstrucutraOrganizacional.Name = "chkEstrucutraOrganizacional";
-            this.chkEstrucutraOrganizacional.Size = new System.Drawing.Size(150, 17);
-            this.chkEstrucutraOrganizacional.TabIndex = 0;
-            this.chkEstrucutraOrganizacional.Tag = "Estructura Organizacional";
-            this.chkEstrucutraOrganizacional.Text = "Estructura Organizacional:";
-            this.chkEstrucutraOrganizacional.UseVisualStyleBackColor = true;
+            this.chkAreaLaboral.AutoSize = true;
+            this.chkAreaLaboral.Location = new System.Drawing.Point(6, 21);
+            this.chkAreaLaboral.Name = "chkAreaLaboral";
+            this.chkAreaLaboral.Size = new System.Drawing.Size(89, 17);
+            this.chkAreaLaboral.TabIndex = 0;
+            this.chkAreaLaboral.Tag = "AreaLaboral";
+            this.chkAreaLaboral.Text = "Area Laboral:";
+            this.chkAreaLaboral.UseVisualStyleBackColor = true;
             // 
-            // groupBox2
+            // statusStrip1
             // 
-            this.groupBox2.Controls.Add(this.txtINSS);
-            this.groupBox2.Controls.Add(this.txtNoINSS);
-            this.groupBox2.Controls.Add(this.txtGradoAcademico);
-            this.groupBox2.Controls.Add(this.txtIdentificador);
-            this.groupBox2.Controls.Add(this.txtEmpleado);
-            this.groupBox2.Controls.Add(this.txtCodigo);
-            this.groupBox2.Controls.Add(this.chkINSS);
-            this.groupBox2.Controls.Add(this.chkNoINSS);
-            this.groupBox2.Controls.Add(this.chkGradoAcademico);
-            this.groupBox2.Controls.Add(this.chkIdentificador);
-            this.groupBox2.Controls.Add(this.chkEmpleado);
-            this.groupBox2.Controls.Add(this.chkCodigo);
-            this.groupBox2.Location = new System.Drawing.Point(6, 19);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(536, 185);
-            this.groupBox2.TabIndex = 0;
-            this.groupBox2.TabStop = false;
+            this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tsbNoRegistros});
+            this.statusStrip1.Location = new System.Drawing.Point(0, 325);
+            this.statusStrip1.Name = "statusStrip1";
+            this.statusStrip1.Size = new System.Drawing.Size(1115, 22);
+            this.statusStrip1.TabIndex = 2;
+            this.statusStrip1.Text = "statusStrip1";
             // 
-            // txtINSS
+            // tsbNoRegistros
             // 
-            this.txtINSS.Location = new System.Drawing.Point(134, 139);
-            this.txtINSS.Name = "txtINSS";
-            this.txtINSS.Size = new System.Drawing.Size(396, 20);
-            this.txtINSS.TabIndex = 11;
+            this.tsbNoRegistros.Name = "tsbNoRegistros";
+            this.tsbNoRegistros.Size = new System.Drawing.Size(105, 17);
+            this.tsbNoRegistros.Tag = "No Registros";
+            this.tsbNoRegistros.Text = "No. de Registros: 0";
             // 
-            // txtNoINSS
+            // dgvLista
             // 
-            this.txtNoINSS.Location = new System.Drawing.Point(134, 115);
-            this.txtNoINSS.Name = "txtNoINSS";
-            this.txtNoINSS.Size = new System.Drawing.Size(396, 20);
-            this.txtNoINSS.TabIndex = 10;
-            // 
-            // txtGradoAcademico
-            // 
-            this.txtGradoAcademico.Location = new System.Drawing.Point(134, 91);
-            this.txtGradoAcademico.Name = "txtGradoAcademico";
-            this.txtGradoAcademico.Size = new System.Drawing.Size(396, 20);
-            this.txtGradoAcademico.TabIndex = 9;
-            // 
-            // txtIdentificador
-            // 
-            this.txtIdentificador.Location = new System.Drawing.Point(134, 67);
-            this.txtIdentificador.Name = "txtIdentificador";
-            this.txtIdentificador.Size = new System.Drawing.Size(396, 20);
-            this.txtIdentificador.TabIndex = 8;
-            // 
-            // txtEmpleado
-            // 
-            this.txtEmpleado.Location = new System.Drawing.Point(134, 43);
-            this.txtEmpleado.Name = "txtEmpleado";
-            this.txtEmpleado.Size = new System.Drawing.Size(396, 20);
-            this.txtEmpleado.TabIndex = 7;
-            // 
-            // txtCodigo
-            // 
-            this.txtCodigo.Location = new System.Drawing.Point(134, 19);
-            this.txtCodigo.Name = "txtCodigo";
-            this.txtCodigo.Size = new System.Drawing.Size(396, 20);
-            this.txtCodigo.TabIndex = 6;
-            // 
-            // chkINSS
-            // 
-            this.chkINSS.AutoSize = true;
-            this.chkINSS.Location = new System.Drawing.Point(7, 141);
-            this.chkINSS.Name = "chkINSS";
-            this.chkINSS.Size = new System.Drawing.Size(51, 17);
-            this.chkINSS.TabIndex = 5;
-            this.chkINSS.Tag = "INSS";
-            this.chkINSS.Text = "INSS";
-            this.chkINSS.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.chkINSS.UseVisualStyleBackColor = true;
-            // 
-            // chkNoINSS
-            // 
-            this.chkNoINSS.AutoSize = true;
-            this.chkNoINSS.Location = new System.Drawing.Point(7, 117);
-            this.chkNoINSS.Name = "chkNoINSS";
-            this.chkNoINSS.Size = new System.Drawing.Size(74, 17);
-            this.chkNoINSS.TabIndex = 4;
-            this.chkNoINSS.Tag = "No. INSS";
-            this.chkNoINSS.Text = "No. INSS:";
-            this.chkNoINSS.UseVisualStyleBackColor = true;
-            // 
-            // chkGradoAcademico
-            // 
-            this.chkGradoAcademico.AutoSize = true;
-            this.chkGradoAcademico.Location = new System.Drawing.Point(7, 93);
-            this.chkGradoAcademico.Name = "chkGradoAcademico";
-            this.chkGradoAcademico.Size = new System.Drawing.Size(114, 17);
-            this.chkGradoAcademico.TabIndex = 3;
-            this.chkGradoAcademico.Tag = "Grado Academinco";
-            this.chkGradoAcademico.Text = "Grado Academico:";
-            this.chkGradoAcademico.UseVisualStyleBackColor = true;
-            // 
-            // chkIdentificador
-            // 
-            this.chkIdentificador.AutoSize = true;
-            this.chkIdentificador.Location = new System.Drawing.Point(7, 69);
-            this.chkIdentificador.Name = "chkIdentificador";
-            this.chkIdentificador.Size = new System.Drawing.Size(107, 17);
-            this.chkIdentificador.TabIndex = 2;
-            this.chkIdentificador.Tag = "Identificador";
-            this.chkIdentificador.Text = "No. Identificador:";
-            this.chkIdentificador.UseVisualStyleBackColor = true;
-            // 
-            // chkEmpleado
-            // 
-            this.chkEmpleado.AutoSize = true;
-            this.chkEmpleado.Location = new System.Drawing.Point(7, 45);
-            this.chkEmpleado.Name = "chkEmpleado";
-            this.chkEmpleado.Size = new System.Drawing.Size(76, 17);
-            this.chkEmpleado.TabIndex = 1;
-            this.chkEmpleado.Tag = "Empleado";
-            this.chkEmpleado.Text = "Empleado:";
-            this.chkEmpleado.UseVisualStyleBackColor = true;
-            // 
-            // chkCodigo
-            // 
-            this.chkCodigo.AutoSize = true;
-            this.chkCodigo.Location = new System.Drawing.Point(7, 21);
-            this.chkCodigo.Name = "chkCodigo";
-            this.chkCodigo.Size = new System.Drawing.Size(62, 17);
-            this.chkCodigo.TabIndex = 0;
-            this.chkCodigo.Tag = "Codigo";
-            this.chkCodigo.Text = "Codigo:";
-            this.chkCodigo.UseVisualStyleBackColor = true;
+            this.dgvLista.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.dgvLista.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvLista.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgvLista.Location = new System.Drawing.Point(0, 39);
+            this.dgvLista.Name = "dgvLista";
+            this.dgvLista.Size = new System.Drawing.Size(1115, 308);
+            this.dgvLista.TabIndex = 1;
             // 
             // tsMenu
             // 
             this.tsMenu.ImageScalingSize = new System.Drawing.Size(32, 32);
             this.tsMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tsFiltrar,
-            this.tsImprimir,
             this.tsNuevoRegistro,
+            this.tsImprimir,
             this.toolStripSeparator1,
             this.tsMarcarTodo,
             this.tsSeleccionar,
@@ -386,21 +412,12 @@
             // 
             // tsFiltrar
             // 
-            this.tsFiltrar.Image = global::Planilla.Properties.Resources.filtrar24x24;
+            this.tsFiltrar.Image = global::Planilla.Properties.Resources.SearchFile32;
             this.tsFiltrar.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsFiltrar.Name = "tsFiltrar";
             this.tsFiltrar.Size = new System.Drawing.Size(73, 36);
             this.tsFiltrar.Tag = "Filtrar";
             this.tsFiltrar.Text = "Filtrar";
-            // 
-            // tsImprimir
-            // 
-            this.tsImprimir.Image = global::Planilla.Properties.Resources.printer24x24;
-            this.tsImprimir.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tsImprimir.Name = "tsImprimir";
-            this.tsImprimir.Size = new System.Drawing.Size(89, 36);
-            this.tsImprimir.Tag = "Imprimir";
-            this.tsImprimir.Text = "Imprimir";
             // 
             // tsNuevoRegistro
             // 
@@ -410,6 +427,15 @@
             this.tsNuevoRegistro.Size = new System.Drawing.Size(124, 36);
             this.tsNuevoRegistro.Tag = "NUevo Rergistro";
             this.tsNuevoRegistro.Text = "Nuevo Registro";
+            // 
+            // tsImprimir
+            // 
+            this.tsImprimir.Image = global::Planilla.Properties.Resources.printer24x24;
+            this.tsImprimir.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsImprimir.Name = "tsImprimir";
+            this.tsImprimir.Size = new System.Drawing.Size(89, 36);
+            this.tsImprimir.Tag = "Imprimir";
+            this.tsImprimir.Text = "Imprimir";
             // 
             // toolStripSeparator1
             // 
@@ -444,37 +470,11 @@
             this.tsFiltroAutomatico.Tag = "Filtro Automatico";
             this.tsFiltroAutomatico.Text = "Filtro Automatico";
             // 
-            // dgvLista
-            // 
-            this.dgvLista.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvLista.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgvLista.Location = new System.Drawing.Point(0, 39);
-            this.dgvLista.Name = "dgvLista";
-            this.dgvLista.Size = new System.Drawing.Size(1115, 224);
-            this.dgvLista.TabIndex = 1;
-            // 
-            // statusStrip1
-            // 
-            this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.tsbNoRegistros});
-            this.statusStrip1.Location = new System.Drawing.Point(0, 241);
-            this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(1115, 22);
-            this.statusStrip1.TabIndex = 2;
-            this.statusStrip1.Text = "statusStrip1";
-            // 
-            // tsbNoRegistros
-            // 
-            this.tsbNoRegistros.Name = "tsbNoRegistros";
-            this.tsbNoRegistros.Size = new System.Drawing.Size(105, 17);
-            this.tsbNoRegistros.Tag = "No Registros";
-            this.tsbNoRegistros.Text = "No. de Registros: 0";
-            // 
             // frmEmpleados
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1115, 500);
+            this.ClientSize = new System.Drawing.Size(1115, 656);
             this.Controls.Add(this.splitContainer1);
             this.Name = "frmEmpleados";
             this.Text = "frmEmpleados";
@@ -483,16 +483,16 @@
             this.splitContainer1.Panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox3.ResumeLayout(false);
-            this.groupBox3.PerformLayout();
+            this.flowLayoutPanel1.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
-            this.tsMenu.ResumeLayout(false);
-            this.tsMenu.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvLista)).EndInit();
+            this.groupBox3.ResumeLayout(false);
+            this.groupBox3.PerformLayout();
             this.statusStrip1.ResumeLayout(false);
             this.statusStrip1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvLista)).EndInit();
+            this.tsMenu.ResumeLayout(false);
+            this.tsMenu.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -500,33 +500,6 @@
         #endregion
 
         private System.Windows.Forms.SplitContainer splitContainer1;
-        private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.GroupBox groupBox3;
-        private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.TextBox txtEmpleado;
-        private System.Windows.Forms.TextBox txtCodigo;
-        private System.Windows.Forms.CheckBox chkINSS;
-        private System.Windows.Forms.CheckBox chkNoINSS;
-        private System.Windows.Forms.CheckBox chkGradoAcademico;
-        private System.Windows.Forms.CheckBox chkIdentificador;
-        private System.Windows.Forms.CheckBox chkEmpleado;
-        private System.Windows.Forms.CheckBox chkCodigo;
-        private System.Windows.Forms.TextBox txtINSS;
-        private System.Windows.Forms.TextBox txtNoINSS;
-        private System.Windows.Forms.TextBox txtGradoAcademico;
-        private System.Windows.Forms.TextBox txtIdentificador;
-        private System.Windows.Forms.TextBox txtEstado;
-        private System.Windows.Forms.TextBox txttipoDeDocumento;
-        private System.Windows.Forms.TextBox txtDepartamento;
-        private System.Windows.Forms.TextBox txtCiudad;
-        private System.Windows.Forms.TextBox txtCargoDelEmpleado;
-        private System.Windows.Forms.TextBox txtEstructuraOrganizacional;
-        private System.Windows.Forms.CheckBox chkEstado;
-        private System.Windows.Forms.CheckBox chkTipoDeDocumento;
-        private System.Windows.Forms.CheckBox chkDepartamento;
-        private System.Windows.Forms.CheckBox chkCuidad;
-        private System.Windows.Forms.CheckBox chkCargoDelEmpleado;
-        private System.Windows.Forms.CheckBox chkEstrucutraOrganizacional;
         private System.Windows.Forms.ToolStrip tsMenu;
         private System.Windows.Forms.ToolStripButton tsFiltrar;
         private System.Windows.Forms.ToolStripButton tsImprimir;
@@ -538,5 +511,32 @@
         private System.Windows.Forms.StatusStrip statusStrip1;
         private System.Windows.Forms.ToolStripStatusLabel tsbNoRegistros;
         private System.Windows.Forms.DataGridView dgvLista;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
+        private System.Windows.Forms.GroupBox groupBox3;
+        private System.Windows.Forms.TextBox txtEstado;
+        private System.Windows.Forms.TextBox txttipoDeDocumento;
+        private System.Windows.Forms.TextBox txtDepartamento;
+        private System.Windows.Forms.TextBox txtCiudad;
+        private System.Windows.Forms.TextBox txtCargoDelEmpleado;
+        private System.Windows.Forms.TextBox txtEstructuraOrganizacional;
+        private System.Windows.Forms.CheckBox chkEstado;
+        private System.Windows.Forms.CheckBox chkTipoDeContrato;
+        private System.Windows.Forms.CheckBox chkDepartamento;
+        private System.Windows.Forms.CheckBox chkMunicipio;
+        private System.Windows.Forms.CheckBox chkCargo;
+        private System.Windows.Forms.CheckBox chkAreaLaboral;
+        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.TextBox txtEmail;
+        private System.Windows.Forms.TextBox txtCelular;
+        private System.Windows.Forms.TextBox txtTelefono;
+        private System.Windows.Forms.TextBox txtCedula;
+        private System.Windows.Forms.TextBox txtApellidos;
+        private System.Windows.Forms.TextBox txtNombre;
+        private System.Windows.Forms.CheckBox chkEmail;
+        private System.Windows.Forms.CheckBox chkCelular;
+        private System.Windows.Forms.CheckBox chkTelefono;
+        private System.Windows.Forms.CheckBox chkCedula;
+        private System.Windows.Forms.CheckBox chkNombre;
+        private System.Windows.Forms.CheckBox chkApellidos;
     }
 }

@@ -50,6 +50,7 @@
     <Compile Include="ConfiguracionLN.cs" />
     <Compile Include="ContratoLN.cs" />
     <Compile Include="DeduccionesLN.cs" />
+    <Compile Include="EmpleadoLN.cs" />
     <Compile Include="InterfazLN.cs" />
     <Compile Include="ModuloInterfazRolLN.cs" />
     <Compile Include="ModuloInterfazUsuarioLN.cs" />

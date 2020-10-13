@@ -373,9 +373,11 @@ namespace Planilla.Formularios
 
         private void btnEmpleado_Click(object sender, EventArgs e)
         {
+            btnContrato.Enabled = true;
+            btnAreaLaboral.Enabled = true;
             btnCargo.Enabled = true;
             OcultarControlesDentroDelPanel();
-            string MostrarControles = "btnCargo";
+            string MostrarControles = "btnCargo, btnContrato, btnAreaLaboral";
             VisualizarControlesDentroDelPanel(MostrarControles);
         }
 

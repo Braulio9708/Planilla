@@ -16,7 +16,5 @@ namespace Planilla.Formularios
         {
             InitializeComponent();
         }
-
-      
     }
 }
