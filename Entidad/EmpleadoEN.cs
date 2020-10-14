@@ -17,6 +17,7 @@ namespace Entidad
         public string Telefono { set; get; }
         public string Celular { set; get; }
         public string Correo { set; get; }
+        public string NoINSS { set; get; }
 
         public CargoEN oCargoEN = new CargoEN();
         public MunicipioEN oMunicipioEN = new MunicipioEN();        

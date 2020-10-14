@@ -44,6 +44,7 @@
             this.btnContrato = new System.Windows.Forms.Button();
             this.btnAreaLaboral = new System.Windows.Forms.Button();
             this.btnPrestaciones = new System.Windows.Forms.Button();
+            this.btnEmpleado2 = new System.Windows.Forms.Button();
             this.toolsMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.tsRespaldar = new System.Windows.Forms.ToolStripMenuItem();
             this.restaurarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -61,7 +62,6 @@
             this.toolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.statusStrip = new System.Windows.Forms.StatusStrip();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
-            this.Empleado = new System.Windows.Forms.Button();
             this.menuStrip.SuspendLayout();
             this.statusStrip.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
@@ -246,6 +246,20 @@
             this.toolTip.SetToolTip(this.btnPrestaciones, "\r\n");
             this.btnPrestaciones.UseVisualStyleBackColor = false;
             // 
+            // btnEmpleado2
+            // 
+            this.btnEmpleado2.BackColor = System.Drawing.Color.Transparent;
+            this.btnEmpleado2.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnEmpleado2.Location = new System.Drawing.Point(0, 280);
+            this.btnEmpleado2.Name = "btnEmpleado2";
+            this.btnEmpleado2.Size = new System.Drawing.Size(157, 35);
+            this.btnEmpleado2.TabIndex = 10;
+            this.btnEmpleado2.Tag = "Empleado";
+            this.btnEmpleado2.Text = "Empleado";
+            this.toolTip.SetToolTip(this.btnEmpleado2, "\r\n");
+            this.btnEmpleado2.UseVisualStyleBackColor = false;
+            this.btnEmpleado2.Click += new System.EventHandler(this.btnEmpleado2_Click);
+            // 
             // toolsMenu
             // 
             this.toolsMenu.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -397,7 +411,7 @@
             // splitContainer1.Panel2
             // 
             this.splitContainer1.Panel2.AutoScroll = true;
-            this.splitContainer1.Panel2.Controls.Add(this.Empleado);
+            this.splitContainer1.Panel2.Controls.Add(this.btnEmpleado2);
             this.splitContainer1.Panel2.Controls.Add(this.btnPrestaciones);
             this.splitContainer1.Panel2.Controls.Add(this.btnAreaLaboral);
             this.splitContainer1.Panel2.Controls.Add(this.btnContrato);
@@ -409,19 +423,6 @@
             this.splitContainer1.Size = new System.Drawing.Size(178, 491);
             this.splitContainer1.SplitterDistance = 211;
             this.splitContainer1.TabIndex = 4;
-            // 
-            // Empleado
-            // 
-            this.Empleado.BackColor = System.Drawing.Color.Transparent;
-            this.Empleado.Dock = System.Windows.Forms.DockStyle.Top;
-            this.Empleado.Location = new System.Drawing.Point(0, 280);
-            this.Empleado.Name = "Empleado";
-            this.Empleado.Size = new System.Drawing.Size(157, 35);
-            this.Empleado.TabIndex = 10;
-            this.Empleado.Tag = "Empleado";
-            this.Empleado.Text = "Empleado";
-            this.toolTip.SetToolTip(this.Empleado, "\r\n");
-            this.Empleado.UseVisualStyleBackColor = false;
             // 
             // Principal
             // 
@@ -481,7 +482,7 @@
         private System.Windows.Forms.Button btnPrestaciones;
         private System.Windows.Forms.Button btnAreaLaboral;
         private System.Windows.Forms.Button btnContrato;
-        private System.Windows.Forms.Button Empleado;
+        private System.Windows.Forms.Button btnEmpleado2;
     }
 }
 

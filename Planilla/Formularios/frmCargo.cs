@@ -400,7 +400,7 @@ namespace Planilla.Formularios
                             }
                         }
                     }
-
+                    //Crear el pribiegio para esta operacion...
                     tsbImprimir.Enabled = true;
                     tsbNuevo.Enabled = true;
                 }

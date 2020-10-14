@@ -20,6 +20,7 @@ namespace Planilla.Formularios
         frmConfiguracion ofrmConfiguracion = null;
         frmUsuario ofrmUsuario = null;
         frmCargo ofrmCargo = null;
+        frmEmpleados ofrmEmpleados = null;
 
         public Principal()
         {
@@ -373,11 +374,12 @@ namespace Planilla.Formularios
 
         private void btnEmpleado_Click(object sender, EventArgs e)
         {
+            btnEmpleado2.Enabled = true;
             btnContrato.Enabled = true;
             btnAreaLaboral.Enabled = true;
             btnCargo.Enabled = true;
             OcultarControlesDentroDelPanel();
-            string MostrarControles = "btnCargo, btnContrato, btnAreaLaboral";
+            string MostrarControles = "btnCargo, btnContrato, btnAreaLaboral, btnEmpleado2";
             VisualizarControlesDentroDelPanel(MostrarControles);
         }
 
@@ -400,6 +402,23 @@ namespace Planilla.Formularios
             this.Cursor = Cursors.Default;
         }
 
-        
+        private void btnEmpleado2_Click(object sender, EventArgs e)
+        {
+            this.Cursor = Cursors.WaitCursor;
+
+            if(ofrmEmpleados == null || ofrmEmpleados.IsDisposed)
+            {
+                ofrmEmpleados = new frmEmpleados();
+                ofrmEmpleados.MdiParent = this;
+                ofrmEmpleados.StartPosition = FormStartPosition.CenterScreen;
+                ofrmEmpleados.WindowState = FormWindowState.Maximized;
+                ofrmEmpleados.Show();
+            }
+            else
+            {
+                ofrmEmpleados.BringToFront();
+            }
+            this.Cursor = Cursors.Default;
+        }
     }
 }

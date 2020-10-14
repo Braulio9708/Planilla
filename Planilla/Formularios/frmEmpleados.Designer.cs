@@ -28,45 +28,44 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.txtEmail = new System.Windows.Forms.TextBox();
-            this.txtCelular = new System.Windows.Forms.TextBox();
-            this.txtTelefono = new System.Windows.Forms.TextBox();
             this.txtCedula = new System.Windows.Forms.TextBox();
             this.txtApellidos = new System.Windows.Forms.TextBox();
             this.txtNombre = new System.Windows.Forms.TextBox();
             this.chkEmail = new System.Windows.Forms.CheckBox();
-            this.chkCelular = new System.Windows.Forms.CheckBox();
-            this.chkTelefono = new System.Windows.Forms.CheckBox();
             this.chkCedula = new System.Windows.Forms.CheckBox();
             this.chkNombre = new System.Windows.Forms.CheckBox();
             this.chkApellidos = new System.Windows.Forms.CheckBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.txtEstado = new System.Windows.Forms.TextBox();
-            this.txttipoDeDocumento = new System.Windows.Forms.TextBox();
-            this.txtDepartamento = new System.Windows.Forms.TextBox();
-            this.txtCiudad = new System.Windows.Forms.TextBox();
-            this.txtCargoDelEmpleado = new System.Windows.Forms.TextBox();
-            this.txtEstructuraOrganizacional = new System.Windows.Forms.TextBox();
-            this.chkEstado = new System.Windows.Forms.CheckBox();
-            this.chkTipoDeContrato = new System.Windows.Forms.CheckBox();
-            this.chkDepartamento = new System.Windows.Forms.CheckBox();
+            this.chkNoInss = new System.Windows.Forms.CheckBox();
             this.chkMunicipio = new System.Windows.Forms.CheckBox();
             this.chkCargo = new System.Windows.Forms.CheckBox();
             this.chkAreaLaboral = new System.Windows.Forms.CheckBox();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
-            this.tsbNoRegistros = new System.Windows.Forms.ToolStripStatusLabel();
+            this.NoRegistros = new System.Windows.Forms.ToolStripStatusLabel();
             this.dgvLista = new System.Windows.Forms.DataGridView();
             this.tsMenu = new System.Windows.Forms.ToolStrip();
-            this.tsFiltrar = new System.Windows.Forms.ToolStripButton();
-            this.tsNuevoRegistro = new System.Windows.Forms.ToolStripButton();
-            this.tsImprimir = new System.Windows.Forms.ToolStripButton();
+            this.tsbFiltrar = new System.Windows.Forms.ToolStripButton();
+            this.tsbNuevoRegistro = new System.Windows.Forms.ToolStripButton();
+            this.tsbImprimir = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
-            this.tsMarcarTodo = new System.Windows.Forms.ToolStripButton();
-            this.tsSeleccionar = new System.Windows.Forms.ToolStripButton();
-            this.tsFiltroAutomatico = new System.Windows.Forms.ToolStripButton();
+            this.tsbMarcarTodo = new System.Windows.Forms.ToolStripButton();
+            this.tsbSeleccionar = new System.Windows.Forms.ToolStripButton();
+            this.tsbFiltroAutomatico = new System.Windows.Forms.ToolStripButton();
+            this.mcsMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.nuevoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.actualizarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.eliminarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.visualizarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.imprimirToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.comboBox2 = new System.Windows.Forms.ComboBox();
+            this.comboBox3 = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -77,6 +76,7 @@
             this.statusStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvLista)).BeginInit();
             this.tsMenu.SuspendLayout();
+            this.mcsMenu.SuspendLayout();
             this.SuspendLayout();
             // 
             // splitContainer1
@@ -96,7 +96,7 @@
             this.splitContainer1.Panel2.Controls.Add(this.dgvLista);
             this.splitContainer1.Panel2.Controls.Add(this.tsMenu);
             this.splitContainer1.Size = new System.Drawing.Size(1115, 656);
-            this.splitContainer1.SplitterDistance = 305;
+            this.splitContainer1.SplitterDistance = 208;
             this.splitContainer1.TabIndex = 0;
             // 
             // flowLayoutPanel1
@@ -106,111 +106,72 @@
             this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flowLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(1115, 305);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(1115, 208);
             this.flowLayoutPanel1.TabIndex = 12;
             // 
             // groupBox2
             // 
             this.groupBox2.Controls.Add(this.txtEmail);
-            this.groupBox2.Controls.Add(this.txtCelular);
-            this.groupBox2.Controls.Add(this.txtTelefono);
             this.groupBox2.Controls.Add(this.txtCedula);
             this.groupBox2.Controls.Add(this.txtApellidos);
             this.groupBox2.Controls.Add(this.txtNombre);
             this.groupBox2.Controls.Add(this.chkEmail);
-            this.groupBox2.Controls.Add(this.chkCelular);
-            this.groupBox2.Controls.Add(this.chkTelefono);
             this.groupBox2.Controls.Add(this.chkCedula);
             this.groupBox2.Controls.Add(this.chkNombre);
             this.groupBox2.Controls.Add(this.chkApellidos);
+            this.groupBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox2.Location = new System.Drawing.Point(3, 3);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(536, 234);
+            this.groupBox2.Size = new System.Drawing.Size(536, 179);
             this.groupBox2.TabIndex = 0;
             this.groupBox2.TabStop = false;
             // 
             // txtEmail
             // 
-            this.txtEmail.Location = new System.Drawing.Point(155, 198);
+            this.txtEmail.Location = new System.Drawing.Point(156, 124);
             this.txtEmail.Name = "txtEmail";
-            this.txtEmail.Size = new System.Drawing.Size(374, 20);
+            this.txtEmail.Size = new System.Drawing.Size(374, 21);
             this.txtEmail.TabIndex = 11;
-            // 
-            // txtCelular
-            // 
-            this.txtCelular.Location = new System.Drawing.Point(156, 162);
-            this.txtCelular.Name = "txtCelular";
-            this.txtCelular.Size = new System.Drawing.Size(374, 20);
-            this.txtCelular.TabIndex = 10;
-            // 
-            // txtTelefono
-            // 
-            this.txtTelefono.Location = new System.Drawing.Point(156, 125);
-            this.txtTelefono.Name = "txtTelefono";
-            this.txtTelefono.Size = new System.Drawing.Size(374, 20);
-            this.txtTelefono.TabIndex = 9;
             // 
             // txtCedula
             // 
             this.txtCedula.Location = new System.Drawing.Point(156, 88);
             this.txtCedula.Name = "txtCedula";
-            this.txtCedula.Size = new System.Drawing.Size(374, 20);
+            this.txtCedula.Size = new System.Drawing.Size(374, 21);
             this.txtCedula.TabIndex = 8;
             // 
             // txtApellidos
             // 
             this.txtApellidos.Location = new System.Drawing.Point(155, 53);
             this.txtApellidos.Name = "txtApellidos";
-            this.txtApellidos.Size = new System.Drawing.Size(374, 20);
+            this.txtApellidos.Size = new System.Drawing.Size(374, 21);
             this.txtApellidos.TabIndex = 7;
             // 
             // txtNombre
             // 
             this.txtNombre.Location = new System.Drawing.Point(156, 19);
             this.txtNombre.Name = "txtNombre";
-            this.txtNombre.Size = new System.Drawing.Size(374, 20);
+            this.txtNombre.Size = new System.Drawing.Size(374, 21);
             this.txtNombre.TabIndex = 6;
             // 
             // chkEmail
             // 
             this.chkEmail.AutoSize = true;
-            this.chkEmail.Location = new System.Drawing.Point(30, 200);
+            this.chkEmail.Location = new System.Drawing.Point(16, 126);
             this.chkEmail.Name = "chkEmail";
-            this.chkEmail.Size = new System.Drawing.Size(119, 17);
+            this.chkEmail.Size = new System.Drawing.Size(134, 19);
             this.chkEmail.TabIndex = 5;
             this.chkEmail.Tag = "Email";
             this.chkEmail.Text = "Corrreo Electronico:";
             this.chkEmail.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.chkEmail.UseVisualStyleBackColor = true;
             // 
-            // chkCelular
-            // 
-            this.chkCelular.AutoSize = true;
-            this.chkCelular.Location = new System.Drawing.Point(30, 164);
-            this.chkCelular.Name = "chkCelular";
-            this.chkCelular.Size = new System.Drawing.Size(61, 17);
-            this.chkCelular.TabIndex = 4;
-            this.chkCelular.Tag = "Celular";
-            this.chkCelular.Text = "Celular:";
-            this.chkCelular.UseVisualStyleBackColor = true;
-            // 
-            // chkTelefono
-            // 
-            this.chkTelefono.AutoSize = true;
-            this.chkTelefono.Location = new System.Drawing.Point(30, 127);
-            this.chkTelefono.Name = "chkTelefono";
-            this.chkTelefono.Size = new System.Drawing.Size(71, 17);
-            this.chkTelefono.TabIndex = 3;
-            this.chkTelefono.Tag = "Telefono";
-            this.chkTelefono.Text = "Telefono:";
-            this.chkTelefono.UseVisualStyleBackColor = true;
-            // 
             // chkCedula
             // 
             this.chkCedula.AutoSize = true;
-            this.chkCedula.Location = new System.Drawing.Point(30, 90);
+            this.chkCedula.Location = new System.Drawing.Point(15, 90);
             this.chkCedula.Name = "chkCedula";
-            this.chkCedula.Size = new System.Drawing.Size(62, 17);
+            this.chkCedula.Size = new System.Drawing.Size(68, 19);
             this.chkCedula.TabIndex = 2;
             this.chkCedula.Tag = "Cedula";
             this.chkCedula.Text = "Cedula:";
@@ -219,9 +180,9 @@
             // chkNombre
             // 
             this.chkNombre.AutoSize = true;
-            this.chkNombre.Location = new System.Drawing.Point(30, 21);
+            this.chkNombre.Location = new System.Drawing.Point(15, 21);
             this.chkNombre.Name = "chkNombre";
-            this.chkNombre.Size = new System.Drawing.Size(66, 17);
+            this.chkNombre.Size = new System.Drawing.Size(74, 19);
             this.chkNombre.TabIndex = 1;
             this.chkNombre.Tag = "Nombre";
             this.chkNombre.Text = "Nombre:";
@@ -230,9 +191,9 @@
             // chkApellidos
             // 
             this.chkApellidos.AutoSize = true;
-            this.chkApellidos.Location = new System.Drawing.Point(30, 55);
+            this.chkApellidos.Location = new System.Drawing.Point(15, 55);
             this.chkApellidos.Name = "chkApellidos";
-            this.chkApellidos.Size = new System.Drawing.Size(71, 17);
+            this.chkApellidos.Size = new System.Drawing.Size(79, 19);
             this.chkApellidos.TabIndex = 0;
             this.chkApellidos.Tag = "Apellidos";
             this.chkApellidos.Text = "Apellidos:";
@@ -240,105 +201,45 @@
             // 
             // groupBox3
             // 
+            this.groupBox3.Controls.Add(this.comboBox3);
+            this.groupBox3.Controls.Add(this.comboBox2);
+            this.groupBox3.Controls.Add(this.comboBox1);
             this.groupBox3.Controls.Add(this.txtEstado);
-            this.groupBox3.Controls.Add(this.txttipoDeDocumento);
-            this.groupBox3.Controls.Add(this.txtDepartamento);
-            this.groupBox3.Controls.Add(this.txtCiudad);
-            this.groupBox3.Controls.Add(this.txtCargoDelEmpleado);
-            this.groupBox3.Controls.Add(this.txtEstructuraOrganizacional);
-            this.groupBox3.Controls.Add(this.chkEstado);
-            this.groupBox3.Controls.Add(this.chkTipoDeContrato);
-            this.groupBox3.Controls.Add(this.chkDepartamento);
+            this.groupBox3.Controls.Add(this.chkNoInss);
             this.groupBox3.Controls.Add(this.chkMunicipio);
             this.groupBox3.Controls.Add(this.chkCargo);
             this.groupBox3.Controls.Add(this.chkAreaLaboral);
+            this.groupBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox3.Location = new System.Drawing.Point(545, 3);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(558, 234);
+            this.groupBox3.Size = new System.Drawing.Size(558, 179);
             this.groupBox3.TabIndex = 1;
             this.groupBox3.TabStop = false;
             // 
             // txtEstado
             // 
-            this.txtEstado.Location = new System.Drawing.Point(162, 138);
+            this.txtEstado.Location = new System.Drawing.Point(161, 124);
             this.txtEstado.Name = "txtEstado";
-            this.txtEstado.Size = new System.Drawing.Size(390, 20);
+            this.txtEstado.Size = new System.Drawing.Size(390, 21);
             this.txtEstado.TabIndex = 11;
             // 
-            // txttipoDeDocumento
+            // chkNoInss
             // 
-            this.txttipoDeDocumento.Location = new System.Drawing.Point(162, 114);
-            this.txttipoDeDocumento.Name = "txttipoDeDocumento";
-            this.txttipoDeDocumento.Size = new System.Drawing.Size(390, 20);
-            this.txttipoDeDocumento.TabIndex = 10;
-            // 
-            // txtDepartamento
-            // 
-            this.txtDepartamento.Location = new System.Drawing.Point(162, 90);
-            this.txtDepartamento.Name = "txtDepartamento";
-            this.txtDepartamento.Size = new System.Drawing.Size(390, 20);
-            this.txtDepartamento.TabIndex = 9;
-            // 
-            // txtCiudad
-            // 
-            this.txtCiudad.Location = new System.Drawing.Point(161, 66);
-            this.txtCiudad.Name = "txtCiudad";
-            this.txtCiudad.Size = new System.Drawing.Size(391, 20);
-            this.txtCiudad.TabIndex = 8;
-            // 
-            // txtCargoDelEmpleado
-            // 
-            this.txtCargoDelEmpleado.Location = new System.Drawing.Point(162, 43);
-            this.txtCargoDelEmpleado.Name = "txtCargoDelEmpleado";
-            this.txtCargoDelEmpleado.Size = new System.Drawing.Size(390, 20);
-            this.txtCargoDelEmpleado.TabIndex = 7;
-            // 
-            // txtEstructuraOrganizacional
-            // 
-            this.txtEstructuraOrganizacional.Location = new System.Drawing.Point(162, 19);
-            this.txtEstructuraOrganizacional.Name = "txtEstructuraOrganizacional";
-            this.txtEstructuraOrganizacional.Size = new System.Drawing.Size(390, 20);
-            this.txtEstructuraOrganizacional.TabIndex = 6;
-            // 
-            // chkEstado
-            // 
-            this.chkEstado.AutoSize = true;
-            this.chkEstado.Location = new System.Drawing.Point(6, 140);
-            this.chkEstado.Name = "chkEstado";
-            this.chkEstado.Size = new System.Drawing.Size(62, 17);
-            this.chkEstado.TabIndex = 5;
-            this.chkEstado.Tag = "Estado";
-            this.chkEstado.Text = "Estado:";
-            this.chkEstado.UseVisualStyleBackColor = true;
-            // 
-            // chkTipoDeContrato
-            // 
-            this.chkTipoDeContrato.AutoSize = true;
-            this.chkTipoDeContrato.Location = new System.Drawing.Point(6, 116);
-            this.chkTipoDeContrato.Name = "chkTipoDeContrato";
-            this.chkTipoDeContrato.Size = new System.Drawing.Size(108, 17);
-            this.chkTipoDeContrato.TabIndex = 4;
-            this.chkTipoDeContrato.Tag = "Tipo De Contrato";
-            this.chkTipoDeContrato.Text = "Tipo de Contrato:";
-            this.chkTipoDeContrato.UseVisualStyleBackColor = true;
-            // 
-            // chkDepartamento
-            // 
-            this.chkDepartamento.AutoSize = true;
-            this.chkDepartamento.Location = new System.Drawing.Point(6, 92);
-            this.chkDepartamento.Name = "chkDepartamento";
-            this.chkDepartamento.Size = new System.Drawing.Size(96, 17);
-            this.chkDepartamento.TabIndex = 3;
-            this.chkDepartamento.Tag = "Departamento";
-            this.chkDepartamento.Text = "Departamento:";
-            this.chkDepartamento.UseVisualStyleBackColor = true;
+            this.chkNoInss.AutoSize = true;
+            this.chkNoInss.Location = new System.Drawing.Point(18, 126);
+            this.chkNoInss.Name = "chkNoInss";
+            this.chkNoInss.Size = new System.Drawing.Size(70, 19);
+            this.chkNoInss.TabIndex = 5;
+            this.chkNoInss.Tag = "NoInss";
+            this.chkNoInss.Text = "No Inss:";
+            this.chkNoInss.UseVisualStyleBackColor = true;
             // 
             // chkMunicipio
             // 
             this.chkMunicipio.AutoSize = true;
-            this.chkMunicipio.Location = new System.Drawing.Point(6, 68);
+            this.chkMunicipio.Location = new System.Drawing.Point(18, 90);
             this.chkMunicipio.Name = "chkMunicipio";
-            this.chkMunicipio.Size = new System.Drawing.Size(74, 17);
+            this.chkMunicipio.Size = new System.Drawing.Size(83, 19);
             this.chkMunicipio.TabIndex = 2;
             this.chkMunicipio.Tag = "Municipio";
             this.chkMunicipio.Text = "Municipio:";
@@ -347,9 +248,9 @@
             // chkCargo
             // 
             this.chkCargo.AutoSize = true;
-            this.chkCargo.Location = new System.Drawing.Point(6, 44);
+            this.chkCargo.Location = new System.Drawing.Point(18, 55);
             this.chkCargo.Name = "chkCargo";
-            this.chkCargo.Size = new System.Drawing.Size(126, 17);
+            this.chkCargo.Size = new System.Drawing.Size(144, 19);
             this.chkCargo.TabIndex = 1;
             this.chkCargo.Tag = "Cargo Del Empleado";
             this.chkCargo.Text = "Cargo Del Empleado:";
@@ -358,9 +259,9 @@
             // chkAreaLaboral
             // 
             this.chkAreaLaboral.AutoSize = true;
-            this.chkAreaLaboral.Location = new System.Drawing.Point(6, 21);
+            this.chkAreaLaboral.Location = new System.Drawing.Point(18, 21);
             this.chkAreaLaboral.Name = "chkAreaLaboral";
-            this.chkAreaLaboral.Size = new System.Drawing.Size(89, 17);
+            this.chkAreaLaboral.Size = new System.Drawing.Size(99, 19);
             this.chkAreaLaboral.TabIndex = 0;
             this.chkAreaLaboral.Tag = "AreaLaboral";
             this.chkAreaLaboral.Text = "Area Laboral:";
@@ -369,19 +270,19 @@
             // statusStrip1
             // 
             this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.tsbNoRegistros});
-            this.statusStrip1.Location = new System.Drawing.Point(0, 325);
+            this.NoRegistros});
+            this.statusStrip1.Location = new System.Drawing.Point(0, 422);
             this.statusStrip1.Name = "statusStrip1";
             this.statusStrip1.Size = new System.Drawing.Size(1115, 22);
             this.statusStrip1.TabIndex = 2;
             this.statusStrip1.Text = "statusStrip1";
             // 
-            // tsbNoRegistros
+            // NoRegistros
             // 
-            this.tsbNoRegistros.Name = "tsbNoRegistros";
-            this.tsbNoRegistros.Size = new System.Drawing.Size(105, 17);
-            this.tsbNoRegistros.Tag = "No Registros";
-            this.tsbNoRegistros.Text = "No. de Registros: 0";
+            this.NoRegistros.Name = "NoRegistros";
+            this.NoRegistros.Size = new System.Drawing.Size(105, 17);
+            this.NoRegistros.Tag = "No Registros";
+            this.NoRegistros.Text = "No. de Registros: 0";
             // 
             // dgvLista
             // 
@@ -390,85 +291,156 @@
             this.dgvLista.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvLista.Location = new System.Drawing.Point(0, 39);
             this.dgvLista.Name = "dgvLista";
-            this.dgvLista.Size = new System.Drawing.Size(1115, 308);
+            this.dgvLista.Size = new System.Drawing.Size(1115, 405);
             this.dgvLista.TabIndex = 1;
             // 
             // tsMenu
             // 
             this.tsMenu.ImageScalingSize = new System.Drawing.Size(32, 32);
             this.tsMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.tsFiltrar,
-            this.tsNuevoRegistro,
-            this.tsImprimir,
+            this.tsbFiltrar,
+            this.tsbNuevoRegistro,
+            this.tsbImprimir,
             this.toolStripSeparator1,
-            this.tsMarcarTodo,
-            this.tsSeleccionar,
-            this.tsFiltroAutomatico});
+            this.tsbMarcarTodo,
+            this.tsbSeleccionar,
+            this.tsbFiltroAutomatico});
             this.tsMenu.Location = new System.Drawing.Point(0, 0);
             this.tsMenu.Name = "tsMenu";
             this.tsMenu.Size = new System.Drawing.Size(1115, 39);
             this.tsMenu.TabIndex = 0;
             this.tsMenu.Text = "toolStrip1";
             // 
-            // tsFiltrar
+            // tsbFiltrar
             // 
-            this.tsFiltrar.Image = global::Planilla.Properties.Resources.SearchFile32;
-            this.tsFiltrar.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tsFiltrar.Name = "tsFiltrar";
-            this.tsFiltrar.Size = new System.Drawing.Size(73, 36);
-            this.tsFiltrar.Tag = "Filtrar";
-            this.tsFiltrar.Text = "Filtrar";
+            this.tsbFiltrar.Image = global::Planilla.Properties.Resources.SearchFile32;
+            this.tsbFiltrar.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbFiltrar.Name = "tsbFiltrar";
+            this.tsbFiltrar.Size = new System.Drawing.Size(73, 36);
+            this.tsbFiltrar.Tag = "Filtrar";
+            this.tsbFiltrar.Text = "Filtrar";
             // 
-            // tsNuevoRegistro
+            // tsbNuevoRegistro
             // 
-            this.tsNuevoRegistro.Image = global::Planilla.Properties.Resources.New32;
-            this.tsNuevoRegistro.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tsNuevoRegistro.Name = "tsNuevoRegistro";
-            this.tsNuevoRegistro.Size = new System.Drawing.Size(124, 36);
-            this.tsNuevoRegistro.Tag = "NUevo Rergistro";
-            this.tsNuevoRegistro.Text = "Nuevo Registro";
+            this.tsbNuevoRegistro.Image = global::Planilla.Properties.Resources.New32;
+            this.tsbNuevoRegistro.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbNuevoRegistro.Name = "tsbNuevoRegistro";
+            this.tsbNuevoRegistro.Size = new System.Drawing.Size(124, 36);
+            this.tsbNuevoRegistro.Tag = "NUevo Rergistro";
+            this.tsbNuevoRegistro.Text = "Nuevo Registro";
             // 
-            // tsImprimir
+            // tsbImprimir
             // 
-            this.tsImprimir.Image = global::Planilla.Properties.Resources.printer24x24;
-            this.tsImprimir.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tsImprimir.Name = "tsImprimir";
-            this.tsImprimir.Size = new System.Drawing.Size(89, 36);
-            this.tsImprimir.Tag = "Imprimir";
-            this.tsImprimir.Text = "Imprimir";
+            this.tsbImprimir.Image = global::Planilla.Properties.Resources.printer24x24;
+            this.tsbImprimir.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbImprimir.Name = "tsbImprimir";
+            this.tsbImprimir.Size = new System.Drawing.Size(89, 36);
+            this.tsbImprimir.Tag = "Imprimir";
+            this.tsbImprimir.Text = "Imprimir";
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
             this.toolStripSeparator1.Size = new System.Drawing.Size(6, 39);
             // 
-            // tsMarcarTodo
+            // tsbMarcarTodo
             // 
-            this.tsMarcarTodo.Image = global::Planilla.Properties.Resources.checked24x24;
-            this.tsMarcarTodo.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tsMarcarTodo.Name = "tsMarcarTodo";
-            this.tsMarcarTodo.Size = new System.Drawing.Size(109, 36);
-            this.tsMarcarTodo.Tag = "Marcar Todo";
-            this.tsMarcarTodo.Text = "Marcar Todo";
+            this.tsbMarcarTodo.Image = global::Planilla.Properties.Resources.checked24x24;
+            this.tsbMarcarTodo.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbMarcarTodo.Name = "tsbMarcarTodo";
+            this.tsbMarcarTodo.Size = new System.Drawing.Size(109, 36);
+            this.tsbMarcarTodo.Tag = "Marcar Todo";
+            this.tsbMarcarTodo.Text = "Marcar Todo";
             // 
-            // tsSeleccionar
+            // tsbSeleccionar
             // 
-            this.tsSeleccionar.Image = global::Planilla.Properties.Resources.checked24x24;
-            this.tsSeleccionar.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tsSeleccionar.Name = "tsSeleccionar";
-            this.tsSeleccionar.Size = new System.Drawing.Size(103, 36);
-            this.tsSeleccionar.Tag = "Seleccionar";
-            this.tsSeleccionar.Text = "Seleccionar";
+            this.tsbSeleccionar.Image = global::Planilla.Properties.Resources.checked24x24;
+            this.tsbSeleccionar.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbSeleccionar.Name = "tsbSeleccionar";
+            this.tsbSeleccionar.Size = new System.Drawing.Size(103, 36);
+            this.tsbSeleccionar.Tag = "Seleccionar";
+            this.tsbSeleccionar.Text = "Seleccionar";
             // 
-            // tsFiltroAutomatico
+            // tsbFiltroAutomatico
             // 
-            this.tsFiltroAutomatico.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
-            this.tsFiltroAutomatico.Image = global::Planilla.Properties.Resources.checked24x24;
-            this.tsFiltroAutomatico.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tsFiltroAutomatico.Name = "tsFiltroAutomatico";
-            this.tsFiltroAutomatico.Size = new System.Drawing.Size(136, 36);
-            this.tsFiltroAutomatico.Tag = "Filtro Automatico";
-            this.tsFiltroAutomatico.Text = "Filtro Automatico";
+            this.tsbFiltroAutomatico.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.tsbFiltroAutomatico.Image = global::Planilla.Properties.Resources.checked24x24;
+            this.tsbFiltroAutomatico.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbFiltroAutomatico.Name = "tsbFiltroAutomatico";
+            this.tsbFiltroAutomatico.Size = new System.Drawing.Size(136, 36);
+            this.tsbFiltroAutomatico.Tag = "Filtro Automatico";
+            this.tsbFiltroAutomatico.Text = "Filtro Automatico";
+            this.tsbFiltroAutomatico.Click += new System.EventHandler(this.tsbFiltroAutomatico_Click);
+            // 
+            // mcsMenu
+            // 
+            this.mcsMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.nuevoToolStripMenuItem,
+            this.actualizarToolStripMenuItem,
+            this.eliminarToolStripMenuItem,
+            this.visualizarToolStripMenuItem,
+            this.imprimirToolStripMenuItem});
+            this.mcsMenu.Name = "mcsMenu";
+            this.mcsMenu.Size = new System.Drawing.Size(127, 114);
+            // 
+            // nuevoToolStripMenuItem
+            // 
+            this.nuevoToolStripMenuItem.Image = global::Planilla.Properties.Resources.New16x16;
+            this.nuevoToolStripMenuItem.Name = "nuevoToolStripMenuItem";
+            this.nuevoToolStripMenuItem.Size = new System.Drawing.Size(126, 22);
+            this.nuevoToolStripMenuItem.Text = "Nuevo";
+            // 
+            // actualizarToolStripMenuItem
+            // 
+            this.actualizarToolStripMenuItem.Image = global::Planilla.Properties.Resources.Edit16x16;
+            this.actualizarToolStripMenuItem.Name = "actualizarToolStripMenuItem";
+            this.actualizarToolStripMenuItem.Size = new System.Drawing.Size(126, 22);
+            this.actualizarToolStripMenuItem.Text = "Actualizar";
+            // 
+            // eliminarToolStripMenuItem
+            // 
+            this.eliminarToolStripMenuItem.Image = global::Planilla.Properties.Resources.Eliminar16x16;
+            this.eliminarToolStripMenuItem.Name = "eliminarToolStripMenuItem";
+            this.eliminarToolStripMenuItem.Size = new System.Drawing.Size(126, 22);
+            this.eliminarToolStripMenuItem.Text = "Eliminar";
+            // 
+            // visualizarToolStripMenuItem
+            // 
+            this.visualizarToolStripMenuItem.Image = global::Planilla.Properties.Resources.if_old_edit_find_23490__1_;
+            this.visualizarToolStripMenuItem.Name = "visualizarToolStripMenuItem";
+            this.visualizarToolStripMenuItem.Size = new System.Drawing.Size(126, 22);
+            this.visualizarToolStripMenuItem.Text = "Visualizar";
+            // 
+            // imprimirToolStripMenuItem
+            // 
+            this.imprimirToolStripMenuItem.Image = global::Planilla.Properties.Resources.printer16x16;
+            this.imprimirToolStripMenuItem.Name = "imprimirToolStripMenuItem";
+            this.imprimirToolStripMenuItem.Size = new System.Drawing.Size(126, 22);
+            this.imprimirToolStripMenuItem.Text = "Imprimir";
+            // 
+            // comboBox1
+            // 
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Location = new System.Drawing.Point(162, 19);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(390, 23);
+            this.comboBox1.TabIndex = 12;
+            // 
+            // comboBox2
+            // 
+            this.comboBox2.FormattingEnabled = true;
+            this.comboBox2.Location = new System.Drawing.Point(161, 53);
+            this.comboBox2.Name = "comboBox2";
+            this.comboBox2.Size = new System.Drawing.Size(390, 23);
+            this.comboBox2.TabIndex = 13;
+            // 
+            // comboBox3
+            // 
+            this.comboBox3.FormattingEnabled = true;
+            this.comboBox3.Location = new System.Drawing.Point(161, 88);
+            this.comboBox3.Name = "comboBox3";
+            this.comboBox3.Size = new System.Drawing.Size(390, 23);
+            this.comboBox3.TabIndex = 14;
             // 
             // frmEmpleados
             // 
@@ -478,6 +450,7 @@
             this.Controls.Add(this.splitContainer1);
             this.Name = "frmEmpleados";
             this.Text = "frmEmpleados";
+            this.Shown += new System.EventHandler(this.frmEmpleados_Shown);
             this.splitContainer1.Panel1.ResumeLayout(false);
             this.splitContainer1.Panel2.ResumeLayout(false);
             this.splitContainer1.Panel2.PerformLayout();
@@ -493,6 +466,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgvLista)).EndInit();
             this.tsMenu.ResumeLayout(false);
             this.tsMenu.PerformLayout();
+            this.mcsMenu.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -501,42 +475,40 @@
 
         private System.Windows.Forms.SplitContainer splitContainer1;
         private System.Windows.Forms.ToolStrip tsMenu;
-        private System.Windows.Forms.ToolStripButton tsFiltrar;
-        private System.Windows.Forms.ToolStripButton tsImprimir;
-        private System.Windows.Forms.ToolStripButton tsNuevoRegistro;
+        private System.Windows.Forms.ToolStripButton tsbFiltrar;
+        private System.Windows.Forms.ToolStripButton tsbImprimir;
+        private System.Windows.Forms.ToolStripButton tsbNuevoRegistro;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
-        private System.Windows.Forms.ToolStripButton tsMarcarTodo;
-        private System.Windows.Forms.ToolStripButton tsSeleccionar;
-        private System.Windows.Forms.ToolStripButton tsFiltroAutomatico;
+        private System.Windows.Forms.ToolStripButton tsbMarcarTodo;
+        private System.Windows.Forms.ToolStripButton tsbSeleccionar;
+        private System.Windows.Forms.ToolStripButton tsbFiltroAutomatico;
         private System.Windows.Forms.StatusStrip statusStrip1;
-        private System.Windows.Forms.ToolStripStatusLabel tsbNoRegistros;
+        private System.Windows.Forms.ToolStripStatusLabel NoRegistros;
         private System.Windows.Forms.DataGridView dgvLista;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.TextBox txtEstado;
-        private System.Windows.Forms.TextBox txttipoDeDocumento;
-        private System.Windows.Forms.TextBox txtDepartamento;
-        private System.Windows.Forms.TextBox txtCiudad;
-        private System.Windows.Forms.TextBox txtCargoDelEmpleado;
-        private System.Windows.Forms.TextBox txtEstructuraOrganizacional;
-        private System.Windows.Forms.CheckBox chkEstado;
-        private System.Windows.Forms.CheckBox chkTipoDeContrato;
-        private System.Windows.Forms.CheckBox chkDepartamento;
+        private System.Windows.Forms.CheckBox chkNoInss;
         private System.Windows.Forms.CheckBox chkMunicipio;
         private System.Windows.Forms.CheckBox chkCargo;
         private System.Windows.Forms.CheckBox chkAreaLaboral;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.TextBox txtEmail;
-        private System.Windows.Forms.TextBox txtCelular;
-        private System.Windows.Forms.TextBox txtTelefono;
         private System.Windows.Forms.TextBox txtCedula;
         private System.Windows.Forms.TextBox txtApellidos;
         private System.Windows.Forms.TextBox txtNombre;
         private System.Windows.Forms.CheckBox chkEmail;
-        private System.Windows.Forms.CheckBox chkCelular;
-        private System.Windows.Forms.CheckBox chkTelefono;
         private System.Windows.Forms.CheckBox chkCedula;
         private System.Windows.Forms.CheckBox chkNombre;
         private System.Windows.Forms.CheckBox chkApellidos;
+        private System.Windows.Forms.ContextMenuStrip mcsMenu;
+        private System.Windows.Forms.ToolStripMenuItem nuevoToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem actualizarToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem eliminarToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem visualizarToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem imprimirToolStripMenuItem;
+        private System.Windows.Forms.ComboBox comboBox3;
+        private System.Windows.Forms.ComboBox comboBox2;
+        private System.Windows.Forms.ComboBox comboBox1;
     }
 }

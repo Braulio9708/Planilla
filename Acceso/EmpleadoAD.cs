@@ -43,10 +43,10 @@ namespace Acceso
 
                 Consultas = @"insert into empleado
                             (Nombre, Apellidos, Cedula, Direccion, Telefono, 
-                            Celular, Correo, IdCargo, IdMunicipio, IdAreaLaboral)
+                            Celular, Correo, IdCargo, IdMunicipio, IdAreaLaboral, NoINSS)
                             value
                             (@Nombre, @Apellidos, @Cedula, @Direccion, @Telefono, 
-                            @Celular, @Correo, @IdCargo, @IdMunicipio, @IdAreaLaboral);
+                            @Celular, @Correo, @IdCargo, @IdMunicipio, @IdAreaLaboral, @NoINSS);
 
                             select last_insert_id() as 'ID';";
 
@@ -59,6 +59,7 @@ namespace Acceso
                 Comando.Parameters.Add(new MySqlParameter("@Telefono", MySqlDbType.VarChar, oRegistroEN.Telefono.Trim().Length)).Value = oRegistroEN.Telefono.Trim();
                 Comando.Parameters.Add(new MySqlParameter("@Celular", MySqlDbType.VarChar, oRegistroEN.Celular.Trim().Length)).Value = oRegistroEN.Celular.Trim();
                 Comando.Parameters.Add(new MySqlParameter("@Correo", MySqlDbType.VarChar, oRegistroEN.Correo.Trim().Length)).Value = oRegistroEN.Correo.Trim();
+                Comando.Parameters.Add(new MySqlParameter("@NoINSS", MySqlDbType.VarChar, oRegistroEN.NoINSS.Trim().Length)).Value = oRegistroEN.NoINSS.Trim();
                 Comando.Parameters.Add(new MySqlParameter("@IdCargo", MySqlDbType.Int32)).Value = oRegistroEN.oCargoEN.IdCargo;
                 Comando.Parameters.Add(new MySqlParameter("@IdMunicipio", MySqlDbType.Int32)).Value = oRegistroEN.oMunicipioEN.IdMunicipio;
                 Comando.Parameters.Add(new MySqlParameter("@IdAreaLaboral", MySqlDbType.Int32)).Value = oRegistroEN.oAreaLaboralEN.IdAreaLaboral;
@@ -108,7 +109,8 @@ namespace Acceso
                             Direccion = @Direccion, 
                             Telefono = @Telefono, 
                             Celular = @Celular, 
-                            Correo = @Correo, 
+                            Correo = @Correo,
+                            NoINSS = @NoINSS,
                             IdCargo = @IdCargo, 
                             IdMunicipio = @IdMunicipio, 
                             IdAreaLaboral = @IdAreaLaboral
@@ -123,6 +125,7 @@ namespace Acceso
                 Comando.Parameters.Add(new MySqlParameter("@Telefono", MySqlDbType.VarChar, oRegistroEN.Telefono.Trim().Length)).Value = oRegistroEN.Telefono.Trim();
                 Comando.Parameters.Add(new MySqlParameter("@Celular", MySqlDbType.VarChar, oRegistroEN.Celular.Trim().Length)).Value = oRegistroEN.Celular.Trim();
                 Comando.Parameters.Add(new MySqlParameter("@Correo", MySqlDbType.VarChar, oRegistroEN.Correo.Trim().Length)).Value = oRegistroEN.Correo.Trim();
+                Comando.Parameters.Add(new MySqlParameter("@NoINSS", MySqlDbType.VarChar, oRegistroEN.NoINSS.Trim().Length)).Value = oRegistroEN.NoINSS.Trim();
                 Comando.Parameters.Add(new MySqlParameter("@IdCargo", MySqlDbType.Int32)).Value = oRegistroEN.oCargoEN.IdCargo;
                 Comando.Parameters.Add(new MySqlParameter("@IdMunicipio", MySqlDbType.Int32)).Value = oRegistroEN.oMunicipioEN.IdMunicipio;
                 Comando.Parameters.Add(new MySqlParameter("@IdAreaLaboral", MySqlDbType.Int32)).Value = oRegistroEN.oAreaLaboralEN.IdAreaLaboral;
@@ -211,7 +214,7 @@ namespace Acceso
                 Consultas = string.Format(@"Select emp.IdEmpleado, emp.IdCargo, emp.IdMunicipio, emp.IdAreaLaboral,
 				                            emp.Nombre, emp.Apellidos, emp.Cedula, 
                                             emp.Direccion, emp.Telefono, emp.Celular, 
-                                            emp.Correo,  dol.Area as 'AreaLaboral', 
+                                            emp.Correo, emp.NoINSS, dol.Area as 'AreaLaboral', 
                                             co.Cargo as 'Cargo', cd.Municipio as 'Municipio'                
                                             From Empleado as emp
                                             inner join AreaLaboral as dol on dol.IdAreaLaboral = emp.IdAreaLaboral
@@ -245,7 +248,7 @@ namespace Acceso
 
                 Consultas = string.Format(@"Select emp.Nombre, emp.Apellidos, emp.Cedula, 
                 emp.Direccion, emp.Telefono, emp.Celular, 
-                emp.Correo,emp.IdCargo, emp.IdMunicipio, emp.IdAreaLaboral,dol.Area as 'AreaLaboral', 
+                emp.Correo, emp.NoINSS, emp.IdCargo, emp.IdMunicipio, emp.IdAreaLaboral,dol.Area as 'AreaLaboral', 
                 co.Cargo as 'Cargo', cd.Municipio as 'Municipio'
                 From Empleado as emp
                 inner join AreaLaboral as dol on dol.IdAreaLaboral = emp.IdAreaLaboral
@@ -279,7 +282,7 @@ namespace Acceso
 
                 InicialisarVariablesGlovales(oDatos);
 
-                Consultas = string.Format(@"select IdEmpleado, Nombre, Apellidos, Cedula, Direccion, Telefono, Celular, Correo, IdCargo, IdMunicipio, IdAreaLaboral from empleado where IdEmpleado > 0 {0} {1}; ", oRegistroEN.Where, oRegistroEN.OrderBy);
+                Consultas = string.Format(@"select IdEmpleado, Nombre, Apellidos, Cedula, Direccion, Telefono, Celular, Correo, NoINSS, IdCargo, IdMunicipio, IdAreaLaboral from empleado where IdEmpleado > 0 {0} {1}; ", oRegistroEN.Where, oRegistroEN.OrderBy);
                 Comando.CommandText = Consultas;
 
                 InicialisarAdaptador();
@@ -310,7 +313,7 @@ namespace Acceso
 
                 InicialisarVariablesGlovales(oDatos);
 
-                Consultas = string.Format(@"select IdEmpleado, Nombre, Apellidos, Cedula, Direccion, Telefono, Celular, Correo, IdCargo, IdMunicipio, IdAreaLaboral from empleado where IdEmpleado > 0 {0} {1} ", oRegistroEN.Where, oRegistroEN.OrderBy);
+                Consultas = string.Format(@"select IdEmpleado, Nombre, Apellidos, Cedula, Direccion, Telefono, Celular, Correo, NoINSS, IdCargo, IdMunicipio, IdAreaLaboral from empleado where IdEmpleado > 0 {0} {1} ", oRegistroEN.Where, oRegistroEN.OrderBy);
                 Comando.CommandText = Consultas;
 
                 InicialisarAdaptador();
@@ -421,6 +424,95 @@ namespace Acceso
         #endregion
 
         #region "Funciones de Validación"
+
+        public bool ValidarRegistroDuplicado(EmpleadoEN oRegistroEN, DatosDeConexionEN oDatos, string TipoDeOperacion)
+        {
+            oTransaccionesAD = new TransaccionesAD();
+
+            try
+            {
+
+                InicialisarVariablesGlovales(oDatos);
+
+                switch (TipoDeOperacion.Trim().ToUpper())
+                {
+
+                    case "AGREGAR":
+
+                        Consultas = @"SELECT CASE WHEN EXISTS(Select IdEmpleado from empleado where IdAreaLaboral = @IdAreaLaboral and  IdCargo = @IdCargo and  IdMunicipio = @IdMunicipio and upper(trim(Nombre)) = upper(trim( @Nombre)) and upper(trim(Apellidos)) = upper(trim(@Apellidos)) and upper(trim(Cedula)) = upper(trim(@Cedula)) and upper(trim(Direccion)) = upper(trim(@Direccion)) and upper(trim(Telefono)) = upper(trim(@Telefono)) and upper(trim(Celular)) = upper(trim(@Celular)) and upper(trim(Correo)) = upper(trim(@Correo)) and upper(trim(NoINSS)) = upper(trim(@NoINSS))) THEN 1 ELSE 0 END AS 'RES'";
+                        Comando.Parameters.Add(new MySqlParameter("@IdAreaLaboral", MySqlDbType.Int32)).Value = oRegistroEN.oAreaLaboralEN.IdAreaLaboral;
+                        Comando.Parameters.Add(new MySqlParameter("@IdCargo", MySqlDbType.Int32)).Value = oRegistroEN.oCargoEN.IdCargo;
+                        Comando.Parameters.Add(new MySqlParameter("@Municipio", MySqlDbType.Int32)).Value = oRegistroEN.oMunicipioEN.IdMunicipio;
+                        Comando.Parameters.Add(new MySqlParameter("@Nombre", MySqlDbType.VarChar, oRegistroEN.Nombre.Trim().Length)).Value = oRegistroEN.Nombre.Trim();
+                        Comando.Parameters.Add(new MySqlParameter("@Apellidos", MySqlDbType.VarChar, oRegistroEN.Apellidos.Trim().Length)).Value = oRegistroEN.Apellidos.Trim();
+                        Comando.Parameters.Add(new MySqlParameter("@Cedula", MySqlDbType.VarChar, oRegistroEN.Cedula.Trim().Length)).Value = oRegistroEN.Cedula.Trim();
+                        Comando.Parameters.Add(new MySqlParameter("@Direccion", MySqlDbType.VarChar, oRegistroEN.Direccion.Trim().Length)).Value = oRegistroEN.Direccion.Trim();
+                        Comando.Parameters.Add(new MySqlParameter("@Telefono", MySqlDbType.VarChar, oRegistroEN.Telefono.Trim().Length)).Value = oRegistroEN.Telefono.Trim();
+                        Comando.Parameters.Add(new MySqlParameter("@Celular", MySqlDbType.VarChar, oRegistroEN.Celular.Trim().Length)).Value = oRegistroEN.Celular.Trim();
+                        Comando.Parameters.Add(new MySqlParameter("@Correo", MySqlDbType.VarChar, oRegistroEN.Correo.Trim().Length)).Value = oRegistroEN.Correo.Trim();
+                        Comando.Parameters.Add(new MySqlParameter("@NoINSS", MySqlDbType.VarChar, oRegistroEN.NoINSS.Trim().Length)).Value = oRegistroEN.NoINSS.Trim();
+                        break;
+
+                    case "ACTUALIZAR":
+
+                        Consultas = @"SELECT CASE WHEN EXISTS(Select IdEmpleado from empleado where IdAreaLaboral = @IdAreaLaboral and  IdCargo = @IdCargo and  IdMunicipio = @IdMunicipio and upper(trim(Nombre)) = upper(trim( @Nombre)) and upper(trim(Apellidos)) = upper(trim(@Apellidos)) and upper(trim(Cedula)) = upper(trim(@Cedula)) and IdEmpleado <> @IdEmpleado) THEN 1 ELSE 0 END AS 'RES'";
+                        Comando.Parameters.Add(new MySqlParameter("@IdEmpleado", MySqlDbType.Int32)).Value = oRegistroEN.IdEmpleado;
+                        Comando.Parameters.Add(new MySqlParameter("@IdAreaLaboral", MySqlDbType.Int32)).Value = oRegistroEN.oAreaLaboralEN.IdAreaLaboral;
+                        Comando.Parameters.Add(new MySqlParameter("@IdCargo", MySqlDbType.Int32)).Value = oRegistroEN.oCargoEN.IdCargo;
+                        Comando.Parameters.Add(new MySqlParameter("@Municipio", MySqlDbType.Int32)).Value = oRegistroEN.oMunicipioEN.IdMunicipio;
+                        Comando.Parameters.Add(new MySqlParameter("@Nombre", MySqlDbType.VarChar, oRegistroEN.Nombre.Trim().Length)).Value = oRegistroEN.Nombre.Trim();
+                        Comando.Parameters.Add(new MySqlParameter("@Apellidos", MySqlDbType.VarChar, oRegistroEN.Apellidos.Trim().Length)).Value = oRegistroEN.Apellidos.Trim();
+                        Comando.Parameters.Add(new MySqlParameter("@Cedula", MySqlDbType.VarChar, oRegistroEN.Cedula.Trim().Length)).Value = oRegistroEN.Cedula.Trim();
+                        Comando.Parameters.Add(new MySqlParameter("@Direccion", MySqlDbType.VarChar, oRegistroEN.Direccion.Trim().Length)).Value = oRegistroEN.Direccion.Trim();
+                        Comando.Parameters.Add(new MySqlParameter("@Telefono", MySqlDbType.VarChar, oRegistroEN.Telefono.Trim().Length)).Value = oRegistroEN.Telefono.Trim();
+                        Comando.Parameters.Add(new MySqlParameter("@Celular", MySqlDbType.VarChar, oRegistroEN.Celular.Trim().Length)).Value = oRegistroEN.Celular.Trim();
+                        Comando.Parameters.Add(new MySqlParameter("@Correo", MySqlDbType.VarChar, oRegistroEN.Correo.Trim().Length)).Value = oRegistroEN.Correo.Trim();
+                        Comando.Parameters.Add(new MySqlParameter("@NoINSS", MySqlDbType.VarChar, oRegistroEN.NoINSS.Trim().Length)).Value = oRegistroEN.NoINSS.Trim();
+
+                        break;
+
+                    default:
+                        throw new ArgumentException("La aperación solicitada no esta disponible");
+
+                }
+
+                Comando.CommandText = Consultas;
+
+                InicialisarAdaptador();
+
+                if (Convert.ToInt32(DT.Rows[0]["RES"].ToString()) > 0)
+                {
+
+                    DescripcionDeLaOperacion = string.Format("Ya existe información del Registro dentro de nuestro sistema: {0} {1}", Environment.NewLine, InformacionDelRegistro(oRegistroEN));
+                    this.Error = DescripcionDeLaOperacion;
+                    return true;
+
+                }
+
+                return false;
+
+            }
+            catch (Exception ex)
+            {
+                this.Error = ex.Message;
+
+                DescripcionDeLaOperacion = string.Format("Se produjo el seguiente error: '{2}' al validar el registro. {0} {1} ", Environment.NewLine, InformacionDelRegistro(oRegistroEN), ex.Message);
+
+                //Agregamos la Transacción....
+                TransaccionesEN oTransaccion = InformacionDeLaTransaccion(oRegistroEN, "VALIDAR", "REGISTRO DUPLICADO DENTRO DE LA BASE DE DATOS", "ERROR");
+                oTransaccionesAD.Agregar(oTransaccion, oDatos);
+
+                return false;
+            }
+            finally
+            {
+
+                FinalizarConexion();
+                oTransaccionesAD = null;
+
+            }
+
+        }
 
         public bool ValidarSiElRegistroEstaVinculado(EmpleadoEN oRegistroEN, DatosDeConexionEN oDatos, string TipoDeOperacion)
         {
