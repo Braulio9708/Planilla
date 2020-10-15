@@ -321,7 +321,7 @@ namespace Planilla.Formularios
 
             if (Controles.IsNullOEmptyElControl(chkEstado) == false && Controles.IsNullOEmptyElControl(cmbEstado) == false)
             {
-                Where += string.Format(" and upper( u.Estado ) = '{0}' ", cmbEstado.Text);
+                Where += string.Format(" and upper( u.Estado ) = {0} ", cmbEstado.Text);
             }
 
             return Where;
@@ -608,7 +608,7 @@ namespace Planilla.Formularios
             try
             {
                 this.Cursor = Cursors.WaitCursor;
-                tsbSeleccionarTodos.Checked =! tsbMarcarTodos.Checked;
+                tsbSeleccionarTodos.Checked =! tsbSeleccionarTodos.Checked;
                 if (tsbSeleccionarTodos.Checked == true)
                 {
                     tsbSeleccionarTodos.Image = Properties.Resources.unchecked16x16;
@@ -941,6 +941,8 @@ namespace Planilla.Formularios
                 LLenarListado();
             }
         }
+
+        
     }
     
 }

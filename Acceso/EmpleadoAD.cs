@@ -220,7 +220,7 @@ namespace Acceso
                                             inner join AreaLaboral as dol on dol.IdAreaLaboral = emp.IdAreaLaboral
                                             inner join Cargo as co on co.IdCargo = emp.IdCargo
                                             inner join Municipio as cd on cd.IdMunicipio = emp.IdMunicipio
-                                            Where emp.idEmpleado > 0  {0} {1} ", oRegistroEN.Where, oRegistroEN.OrderBy);
+                                            Where emp.idEmpleado > 0 {0} {1} ", oRegistroEN.Where, oRegistroEN.OrderBy);
 
                 Comando.CommandText = Consultas;
 

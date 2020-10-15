@@ -171,9 +171,6 @@
             // cmbTipoDeCuenta
             // 
             this.cmbTipoDeCuenta.FormattingEnabled = true;
-            this.cmbTipoDeCuenta.Items.AddRange(new object[] {
-            "ACTIVO",
-            "INACTIVO"});
             this.cmbTipoDeCuenta.Location = new System.Drawing.Point(145, 49);
             this.cmbTipoDeCuenta.Name = "cmbTipoDeCuenta";
             this.cmbTipoDeCuenta.Size = new System.Drawing.Size(359, 24);

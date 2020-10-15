@@ -41,7 +41,10 @@
             this.chkNombre = new System.Windows.Forms.CheckBox();
             this.chkApellidos = new System.Windows.Forms.CheckBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.txtEstado = new System.Windows.Forms.TextBox();
+            this.cmbMunicipio = new System.Windows.Forms.ComboBox();
+            this.cmbCargo = new System.Windows.Forms.ComboBox();
+            this.cmbAreaLaboral = new System.Windows.Forms.ComboBox();
+            this.txtNoInss = new System.Windows.Forms.TextBox();
             this.chkNoInss = new System.Windows.Forms.CheckBox();
             this.chkMunicipio = new System.Windows.Forms.CheckBox();
             this.chkCargo = new System.Windows.Forms.CheckBox();
@@ -58,14 +61,11 @@
             this.tsbSeleccionar = new System.Windows.Forms.ToolStripButton();
             this.tsbFiltroAutomatico = new System.Windows.Forms.ToolStripButton();
             this.mcsMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.nuevoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.actualizarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.eliminarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.visualizarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.imprimirToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
-            this.comboBox3 = new System.Windows.Forms.ComboBox();
+            this.cmNuevo = new System.Windows.Forms.ToolStripMenuItem();
+            this.cmActualizar = new System.Windows.Forms.ToolStripMenuItem();
+            this.cmEliminar = new System.Windows.Forms.ToolStripMenuItem();
+            this.cmVisualizar = new System.Windows.Forms.ToolStripMenuItem();
+            this.cmImprimir = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -132,6 +132,7 @@
             this.txtEmail.Name = "txtEmail";
             this.txtEmail.Size = new System.Drawing.Size(374, 21);
             this.txtEmail.TabIndex = 11;
+            this.txtEmail.KeyUp += new System.Windows.Forms.KeyEventHandler(this.txtEmail_KeyUp);
             // 
             // txtCedula
             // 
@@ -139,6 +140,7 @@
             this.txtCedula.Name = "txtCedula";
             this.txtCedula.Size = new System.Drawing.Size(374, 21);
             this.txtCedula.TabIndex = 8;
+            this.txtCedula.KeyUp += new System.Windows.Forms.KeyEventHandler(this.txtCedula_KeyUp);
             // 
             // txtApellidos
             // 
@@ -146,6 +148,7 @@
             this.txtApellidos.Name = "txtApellidos";
             this.txtApellidos.Size = new System.Drawing.Size(374, 21);
             this.txtApellidos.TabIndex = 7;
+            this.txtApellidos.KeyUp += new System.Windows.Forms.KeyEventHandler(this.txtApellidos_KeyUp);
             // 
             // txtNombre
             // 
@@ -153,6 +156,7 @@
             this.txtNombre.Name = "txtNombre";
             this.txtNombre.Size = new System.Drawing.Size(374, 21);
             this.txtNombre.TabIndex = 6;
+            this.txtNombre.KeyUp += new System.Windows.Forms.KeyEventHandler(this.txtNombre_KeyUp);
             // 
             // chkEmail
             // 
@@ -201,10 +205,10 @@
             // 
             // groupBox3
             // 
-            this.groupBox3.Controls.Add(this.comboBox3);
-            this.groupBox3.Controls.Add(this.comboBox2);
-            this.groupBox3.Controls.Add(this.comboBox1);
-            this.groupBox3.Controls.Add(this.txtEstado);
+            this.groupBox3.Controls.Add(this.cmbMunicipio);
+            this.groupBox3.Controls.Add(this.cmbCargo);
+            this.groupBox3.Controls.Add(this.cmbAreaLaboral);
+            this.groupBox3.Controls.Add(this.txtNoInss);
             this.groupBox3.Controls.Add(this.chkNoInss);
             this.groupBox3.Controls.Add(this.chkMunicipio);
             this.groupBox3.Controls.Add(this.chkCargo);
@@ -216,12 +220,40 @@
             this.groupBox3.TabIndex = 1;
             this.groupBox3.TabStop = false;
             // 
-            // txtEstado
+            // cmbMunicipio
             // 
-            this.txtEstado.Location = new System.Drawing.Point(161, 124);
-            this.txtEstado.Name = "txtEstado";
-            this.txtEstado.Size = new System.Drawing.Size(390, 21);
-            this.txtEstado.TabIndex = 11;
+            this.cmbMunicipio.FormattingEnabled = true;
+            this.cmbMunicipio.Location = new System.Drawing.Point(161, 88);
+            this.cmbMunicipio.Name = "cmbMunicipio";
+            this.cmbMunicipio.Size = new System.Drawing.Size(390, 23);
+            this.cmbMunicipio.TabIndex = 14;
+            this.cmbMunicipio.SelectionChangeCommitted += new System.EventHandler(this.cmbMunicipio_SelectionChangeCommitted);
+            // 
+            // cmbCargo
+            // 
+            this.cmbCargo.FormattingEnabled = true;
+            this.cmbCargo.Location = new System.Drawing.Point(161, 53);
+            this.cmbCargo.Name = "cmbCargo";
+            this.cmbCargo.Size = new System.Drawing.Size(390, 23);
+            this.cmbCargo.TabIndex = 13;
+            this.cmbCargo.SelectionChangeCommitted += new System.EventHandler(this.cmbCargo_SelectionChangeCommitted);
+            // 
+            // cmbAreaLaboral
+            // 
+            this.cmbAreaLaboral.FormattingEnabled = true;
+            this.cmbAreaLaboral.Location = new System.Drawing.Point(162, 19);
+            this.cmbAreaLaboral.Name = "cmbAreaLaboral";
+            this.cmbAreaLaboral.Size = new System.Drawing.Size(390, 23);
+            this.cmbAreaLaboral.TabIndex = 12;
+            this.cmbAreaLaboral.SelectionChangeCommitted += new System.EventHandler(this.cmbAreaLaboral_SelectionChangeCommitted);
+            // 
+            // txtNoInss
+            // 
+            this.txtNoInss.Location = new System.Drawing.Point(161, 124);
+            this.txtNoInss.Name = "txtNoInss";
+            this.txtNoInss.Size = new System.Drawing.Size(390, 21);
+            this.txtNoInss.TabIndex = 11;
+            this.txtNoInss.KeyUp += new System.Windows.Forms.KeyEventHandler(this.txtNoInss_KeyUp);
             // 
             // chkNoInss
             // 
@@ -293,6 +325,11 @@
             this.dgvLista.Name = "dgvLista";
             this.dgvLista.Size = new System.Drawing.Size(1115, 405);
             this.dgvLista.TabIndex = 1;
+            this.dgvLista.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvLista_CellContentClick);
+            this.dgvLista.CellContextMenuStripNeeded += new System.Windows.Forms.DataGridViewCellContextMenuStripNeededEventHandler(this.dgvLista_CellContextMenuStripNeeded);
+            this.dgvLista.CurrentCellDirtyStateChanged += new System.EventHandler(this.dgvLista_CurrentCellDirtyStateChanged);
+            this.dgvLista.DoubleClick += new System.EventHandler(this.dgvLista_DoubleClick);
+            this.dgvLista.MouseDown += new System.Windows.Forms.MouseEventHandler(this.dgvLista_MouseDown);
             // 
             // tsMenu
             // 
@@ -319,6 +356,7 @@
             this.tsbFiltrar.Size = new System.Drawing.Size(73, 36);
             this.tsbFiltrar.Tag = "Filtrar";
             this.tsbFiltrar.Text = "Filtrar";
+            this.tsbFiltrar.Click += new System.EventHandler(this.tsbFiltrar_Click);
             // 
             // tsbNuevoRegistro
             // 
@@ -328,6 +366,7 @@
             this.tsbNuevoRegistro.Size = new System.Drawing.Size(124, 36);
             this.tsbNuevoRegistro.Tag = "NUevo Rergistro";
             this.tsbNuevoRegistro.Text = "Nuevo Registro";
+            this.tsbNuevoRegistro.Click += new System.EventHandler(this.tsbNuevoRegistro_Click);
             // 
             // tsbImprimir
             // 
@@ -351,6 +390,7 @@
             this.tsbMarcarTodo.Size = new System.Drawing.Size(109, 36);
             this.tsbMarcarTodo.Tag = "Marcar Todo";
             this.tsbMarcarTodo.Text = "Marcar Todo";
+            this.tsbMarcarTodo.Click += new System.EventHandler(this.tsbMarcarTodo_Click);
             // 
             // tsbSeleccionar
             // 
@@ -360,6 +400,7 @@
             this.tsbSeleccionar.Size = new System.Drawing.Size(103, 36);
             this.tsbSeleccionar.Tag = "Seleccionar";
             this.tsbSeleccionar.Text = "Seleccionar";
+            this.tsbSeleccionar.Click += new System.EventHandler(this.tsbSeleccionar_Click);
             // 
             // tsbFiltroAutomatico
             // 
@@ -375,72 +416,53 @@
             // mcsMenu
             // 
             this.mcsMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.nuevoToolStripMenuItem,
-            this.actualizarToolStripMenuItem,
-            this.eliminarToolStripMenuItem,
-            this.visualizarToolStripMenuItem,
-            this.imprimirToolStripMenuItem});
+            this.cmNuevo,
+            this.cmActualizar,
+            this.cmEliminar,
+            this.cmVisualizar,
+            this.cmImprimir});
             this.mcsMenu.Name = "mcsMenu";
-            this.mcsMenu.Size = new System.Drawing.Size(127, 114);
+            this.mcsMenu.Size = new System.Drawing.Size(153, 136);
+            this.mcsMenu.Opened += new System.EventHandler(this.mcsMenu_Opened);
             // 
-            // nuevoToolStripMenuItem
+            // cmNuevo
             // 
-            this.nuevoToolStripMenuItem.Image = global::Planilla.Properties.Resources.New16x16;
-            this.nuevoToolStripMenuItem.Name = "nuevoToolStripMenuItem";
-            this.nuevoToolStripMenuItem.Size = new System.Drawing.Size(126, 22);
-            this.nuevoToolStripMenuItem.Text = "Nuevo";
+            this.cmNuevo.Image = global::Planilla.Properties.Resources.New16x16;
+            this.cmNuevo.Name = "cmNuevo";
+            this.cmNuevo.Size = new System.Drawing.Size(152, 22);
+            this.cmNuevo.Text = "Nuevo";
+            this.cmNuevo.Click += new System.EventHandler(this.cmNuevo_Click);
             // 
-            // actualizarToolStripMenuItem
+            // cmActualizar
             // 
-            this.actualizarToolStripMenuItem.Image = global::Planilla.Properties.Resources.Edit16x16;
-            this.actualizarToolStripMenuItem.Name = "actualizarToolStripMenuItem";
-            this.actualizarToolStripMenuItem.Size = new System.Drawing.Size(126, 22);
-            this.actualizarToolStripMenuItem.Text = "Actualizar";
+            this.cmActualizar.Image = global::Planilla.Properties.Resources.Edit16x16;
+            this.cmActualizar.Name = "cmActualizar";
+            this.cmActualizar.Size = new System.Drawing.Size(152, 22);
+            this.cmActualizar.Text = "Actualizar";
+            this.cmActualizar.Click += new System.EventHandler(this.cmActualizar_Click);
             // 
-            // eliminarToolStripMenuItem
+            // cmEliminar
             // 
-            this.eliminarToolStripMenuItem.Image = global::Planilla.Properties.Resources.Eliminar16x16;
-            this.eliminarToolStripMenuItem.Name = "eliminarToolStripMenuItem";
-            this.eliminarToolStripMenuItem.Size = new System.Drawing.Size(126, 22);
-            this.eliminarToolStripMenuItem.Text = "Eliminar";
+            this.cmEliminar.Image = global::Planilla.Properties.Resources.Eliminar16x16;
+            this.cmEliminar.Name = "cmEliminar";
+            this.cmEliminar.Size = new System.Drawing.Size(152, 22);
+            this.cmEliminar.Text = "Eliminar";
+            this.cmEliminar.Click += new System.EventHandler(this.cmEliminar_Click);
             // 
-            // visualizarToolStripMenuItem
+            // cmVisualizar
             // 
-            this.visualizarToolStripMenuItem.Image = global::Planilla.Properties.Resources.if_old_edit_find_23490__1_;
-            this.visualizarToolStripMenuItem.Name = "visualizarToolStripMenuItem";
-            this.visualizarToolStripMenuItem.Size = new System.Drawing.Size(126, 22);
-            this.visualizarToolStripMenuItem.Text = "Visualizar";
+            this.cmVisualizar.Image = global::Planilla.Properties.Resources.if_old_edit_find_23490__1_;
+            this.cmVisualizar.Name = "cmVisualizar";
+            this.cmVisualizar.Size = new System.Drawing.Size(152, 22);
+            this.cmVisualizar.Text = "Visualizar";
+            this.cmVisualizar.Click += new System.EventHandler(this.cmVisualizar_Click);
             // 
-            // imprimirToolStripMenuItem
+            // cmImprimir
             // 
-            this.imprimirToolStripMenuItem.Image = global::Planilla.Properties.Resources.printer16x16;
-            this.imprimirToolStripMenuItem.Name = "imprimirToolStripMenuItem";
-            this.imprimirToolStripMenuItem.Size = new System.Drawing.Size(126, 22);
-            this.imprimirToolStripMenuItem.Text = "Imprimir";
-            // 
-            // comboBox1
-            // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(162, 19);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(390, 23);
-            this.comboBox1.TabIndex = 12;
-            // 
-            // comboBox2
-            // 
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(161, 53);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(390, 23);
-            this.comboBox2.TabIndex = 13;
-            // 
-            // comboBox3
-            // 
-            this.comboBox3.FormattingEnabled = true;
-            this.comboBox3.Location = new System.Drawing.Point(161, 88);
-            this.comboBox3.Name = "comboBox3";
-            this.comboBox3.Size = new System.Drawing.Size(390, 23);
-            this.comboBox3.TabIndex = 14;
+            this.cmImprimir.Image = global::Planilla.Properties.Resources.printer16x16;
+            this.cmImprimir.Name = "cmImprimir";
+            this.cmImprimir.Size = new System.Drawing.Size(152, 22);
+            this.cmImprimir.Text = "Imprimir";
             // 
             // frmEmpleados
             // 
@@ -487,7 +509,7 @@
         private System.Windows.Forms.DataGridView dgvLista;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
         private System.Windows.Forms.GroupBox groupBox3;
-        private System.Windows.Forms.TextBox txtEstado;
+        private System.Windows.Forms.TextBox txtNoInss;
         private System.Windows.Forms.CheckBox chkNoInss;
         private System.Windows.Forms.CheckBox chkMunicipio;
         private System.Windows.Forms.CheckBox chkCargo;
@@ -502,13 +524,13 @@
         private System.Windows.Forms.CheckBox chkNombre;
         private System.Windows.Forms.CheckBox chkApellidos;
         private System.Windows.Forms.ContextMenuStrip mcsMenu;
-        private System.Windows.Forms.ToolStripMenuItem nuevoToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem actualizarToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem eliminarToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem visualizarToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem imprimirToolStripMenuItem;
-        private System.Windows.Forms.ComboBox comboBox3;
-        private System.Windows.Forms.ComboBox comboBox2;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ToolStripMenuItem cmNuevo;
+        private System.Windows.Forms.ToolStripMenuItem cmActualizar;
+        private System.Windows.Forms.ToolStripMenuItem cmEliminar;
+        private System.Windows.Forms.ToolStripMenuItem cmVisualizar;
+        private System.Windows.Forms.ToolStripMenuItem cmImprimir;
+        private System.Windows.Forms.ComboBox cmbMunicipio;
+        private System.Windows.Forms.ComboBox cmbCargo;
+        private System.Windows.Forms.ComboBox cmbAreaLaboral;
     }
 }
