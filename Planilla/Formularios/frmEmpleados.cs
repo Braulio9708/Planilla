@@ -234,35 +234,35 @@ namespace Planilla.Formularios
         {
             string where = " ";
 
-            if(Controles.IsNullOEmptyElControl(chkNombre) == false && Controles.IsNullOEmptyElControl(txtNombre) == false)
+            if (Controles.IsNullOEmptyElControl(chkNombre) == false && Controles.IsNullOEmptyElControl(txtNombre) == false)
             {
                 where += string.Format(" and emp.Nombre like '%{0}%'", txtNombre.Text.Trim());
             }
-            if(Controles.IsNullOEmptyElControl(chkApellidos) == false && Controles.IsNullOEmptyElControl(txtApellidos) == false)
+            if (Controles.IsNullOEmptyElControl(chkApellidos) == false && Controles.IsNullOEmptyElControl(txtApellidos) == false)
             {
                 where += string.Format(" and emp.Apellidos like '%{0}%'", txtApellidos.Text.Trim());
             }
-            if(Controles.IsNullOEmptyElControl(chkCedula) == false && Controles.IsNullOEmptyElControl(txtCedula) == false)
+            if (Controles.IsNullOEmptyElControl(chkCedula) == false && Controles.IsNullOEmptyElControl(txtCedula) == false)
             {
                 where += string.Format(" and emp.Cedula like '%{0}%'", txtCedula.Text.Trim());
             }
-            if(Controles.IsNullOEmptyElControl(chkEmail) == false && Controles.IsNullOEmptyElControl(txtEmail) == false)
+            if (Controles.IsNullOEmptyElControl(chkEmail) == false && Controles.IsNullOEmptyElControl(txtEmail) == false)
             {
                 where += string.Format(" and emp.Correo like '%{0}%'", txtEmail.Text.Trim());
             }
-            if(Controles.IsNullOEmptyElControl(chkNoInss) == false && Controles.IsNullOEmptyElControl(txtNoInss) == false)
+            if (Controles.IsNullOEmptyElControl(chkNoInss) == false && Controles.IsNullOEmptyElControl(txtNoInss) == false)
             {
                 where += string.Format(" and emp.NoINSS like '%{0}%'", txtNoInss.Text.Trim());
             }
-            if(Controles.IsNullOEmptyElControl(chkAreaLaboral) == false && Controles.IsNullOEmptyElControl(cmbAreaLaboral) == false)
+            if (Controles.IsNullOEmptyElControl(chkAreaLaboral) == false && Controles.IsNullOEmptyElControl(cmbAreaLaboral) == false)
             {
                 where += string.Format(" and al.Area like {0}", cmbAreaLaboral.Text.Trim());
             }
-            if(Controles.IsNullOEmptyElControl(chkCargo) == false && Controles.IsNullOEmptyElControl(cmbCargo) == false)
+            if (Controles.IsNullOEmptyElControl(chkCargo) == false && Controles.IsNullOEmptyElControl(cmbCargo) == false)
             {
                 where += string.Format(" and co.Cargo like {0}", cmbCargo.Text.Trim());
             }
-            if(Controles.IsNullOEmptyElControl(chkMunicipio) == false && Controles.IsNullOEmptyElControl(cmbMunicipio) == false)
+            if (Controles.IsNullOEmptyElControl(chkMunicipio) == false && Controles.IsNullOEmptyElControl(cmbMunicipio) == false)
             {
                 where += string.Format(" and mpo.Municipio like {0}", cmbMunicipio.Text.Trim());
             }
@@ -281,12 +281,12 @@ namespace Planilla.Formularios
 
                 oRegistroEN.Where = WhereDinamico();
 
-                if(oRegistroLN.Listado(oRegistroEN, Program.oDatosDeConexioEN))
+                if (oRegistroLN.Listado(oRegistroEN, Program.oDatosDeConexioEN))
                 {
                     dgvLista.Columns.Clear();
                     System.Diagnostics.Debug.Print(oRegistroLN.TraerDatos().Rows.Count.ToString());
 
-                    if(Activar_Filtros == true)
+                    if (Activar_Filtros == true)
                     {
                         dgvLista.DataSource = AgregarColumnaSeleccionar(oRegistroLN.TraerDatos());
                     }
@@ -295,7 +295,7 @@ namespace Planilla.Formularios
                         dgvLista.DataSource = oRegistroLN.TraerDatos();
                     }
 
-                    //FormatearDGV();
+                    FormatearDGV();
                     this.dgvLista.ClearSelection();
 
                     tsbNoRegistros.Text = "No Registros: " + oRegistroLN.TotalRegistros().ToString();
@@ -305,7 +305,7 @@ namespace Planilla.Formularios
                     throw new ArgumentException(oRegistroLN.Error);
                 }
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "Lelnar listado del registro en la lista", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
@@ -315,7 +315,7 @@ namespace Planilla.Formularios
             }
         }
 
-        private void FormaterDGV()
+        private void FormatearDGV()
         {
             try
             {
@@ -324,7 +324,7 @@ namespace Planilla.Formularios
                 this.dgvLista.AllowUserToDeleteRows = false;
                 this.dgvLista.DefaultCellStyle.BackColor = Color.White;
 
-                if(VariosRegistros == true)
+                if (VariosRegistros == true)
                 {
                     this.dgvLista.MultiSelect = VariosRegistros;
                     this.dgvLista.RowHeadersVisible = false;
@@ -351,9 +351,9 @@ namespace Planilla.Formularios
                 this.dgvLista.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
                 this.dgvLista.StandardTab = true;
                 this.dgvLista.ReadOnly = false;
-                this.dgvLista.CellBorderStyle = DataGridViewCellBorderStyle.Raised;                
+                this.dgvLista.CellBorderStyle = DataGridViewCellBorderStyle.Raised;
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "FormatoDGV", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
@@ -361,14 +361,14 @@ namespace Planilla.Formularios
 
         private void OcultarColumnasEnElDGV(String ColumnasDelDGV)
         {
-            if(dgvLista.Rows.Count > 0)
+            if (dgvLista.Rows.Count > 0)
             {
                 String[] ArrayColumnasDGV = ColumnasDelDGV.Split(',');
-                foreach(String c in ArrayColumnasDGV)
+                foreach (String c in ArrayColumnasDGV)
                 {
-                    foreach(DataGridViewColumn c1 in dgvLista.Columns)
+                    foreach (DataGridViewColumn c1 in dgvLista.Columns)
                     {
-                        if(c1.Name.Trim().ToUpper() == c.Trim().ToUpper())
+                        if (c1.Name.Trim().ToUpper() == c.Trim().ToUpper())
                         {
                             c1.Visible = false;
                         }
@@ -379,22 +379,22 @@ namespace Planilla.Formularios
 
         private void FormatearColumnasEnELDGV()
         {
-            if(dgvLista.Columns.Count > 0)
+            if (dgvLista.Columns.Count > 0)
             {
-                foreach(DataGridViewColumn c1 in dgvLista.Columns)
+                foreach (DataGridViewColumn c1 in dgvLista.Columns)
                 {
-                    if(c1.Visible == true)
+                    if (c1.Visible == true)
                     {
-                        if(c1.Name.Trim().ToUpper() != "Seleccionar".ToUpper())
+                        if (c1.Name.Trim().ToUpper() != "Seleccionar".ToUpper())
                         {
                             FormatoDGV oFormato = new FormatoDGV(c1.Name.Trim(), "Empleado");
-                            if(oFormato.ValorEncontrado == false)
+                            if (oFormato.ValorEncontrado == false)
                             {
                                 oFormato = new FormatoDGV(c1.Name.Trim());
                             }
-                            if(oFormato != null)
+                            if (oFormato != null)
                             {
-                                if(oFormato.ValorEncontrado == true)
+                                if (oFormato.ValorEncontrado == true)
                                 {
                                     c1.HeaderText = oFormato.Descripcion;
                                     c1.Width = oFormato.Tamano;
@@ -421,13 +421,13 @@ namespace Planilla.Formularios
                 oRegistroEN.oUsuarioEN.IdUsuario = Program.oLoginEN.IdUsuario;
                 oRegistroEN.oPrivilegioEN.oModuloInterfazEN.oInterfazEN.Nombre = Nombre_Entidad_Privilegio;
 
-                if(oRegistroLN.ListadoPrivilegiosDelUsuariosPorIntefaz(oRegistroEN, Program.oDatosDeConexioEN))
+                if (oRegistroLN.ListadoPrivilegiosDelUsuariosPorIntefaz(oRegistroEN, Program.oDatosDeConexioEN))
                 {
-                    foreach(ToolStripItem item in mcsMenu.Items)
+                    foreach (ToolStripItem item in mcsMenu.Items)
                     {
-                        if(item.Tag != null)
+                        if (item.Tag != null)
                         {
-                            if(item.GetType() == typeof(ToolStripMenuItem))
+                            if (item.GetType() == typeof(ToolStripMenuItem))
                             {
                                 item.Enabled = oRegistroLN.VerificarSiTengoAcceso(item.Tag.ToString());
                             }
@@ -442,47 +442,39 @@ namespace Planilla.Formularios
                     mcsMenu.Enabled = false;
                     tsbImprimir.Enabled = false;
                     tsbNuevoRegistro.Enabled = false;
-
+                    throw new ArgumentException(oRegistroLN.Error);
                 }
-            }
-            catch(Exception ex)
-            {
 
+                oRegistroEN = null;
+                oRegistroLN = null;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Privilegios de Usuarios", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            }
+            finally
+            {
+                this.Cursor = Cursors.Default;
             }
         }
 
+        private void MostrarFormularioParaOperacion(string OperacionARealizar)
+        {
+            /*
+            frmEmpleadoOperacion ofrmEmpleadoOperacion = new frmEmpleadoOperacion();
+            ofrmEmpleadoOperacion.OperacionARealizar = OperacionesARealizar;
+            ofrmEmpleadoOperacion.NOMBRE_ENTIDAD_PRIVILEGIO = NOMBRE_ENTIDAD_PRIVILEGIO;
+            ofrmEmpleadoOperacion.NombreEntidad = NOMBRE_ENTIDAD;
+            ofrmEmpleadoOperacion.ValorLlavePrimariaEntidad = this.ValorLlavePrimariaEntidad;
+            ofrmEmpleadoOperacion.MdiParent = this.ParentForm;
+            ofrmEmpleadoOperacion.Show();*/
+        }
+
+        private void AsignarLlavePrimaria()
+        {
+            this.ValorLlavePrimariaEntidad = Convert.ToInt32(this.dgvLista.Rows[this.IndiceSeleccionado].Cells[this.Nombre_Llave_Primaria].Value);
+        }
         #endregion
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -491,9 +483,9 @@ namespace Planilla.Formularios
         private void frmEmpleados_Shown(object sender, EventArgs e)
         {
             dgvLista.ContextMenuStrip = mcsMenu;
-            CargarPrivilegiosUsuario();
+            CargarPrivilegios();
 
-            ActivarFiltrosDeBusqueda();
+            ActivarFiltosDeBusqueda();
             tsbFiltroAutomatico_Click(null, null);
         }
 
@@ -513,7 +505,7 @@ namespace Planilla.Formularios
 
         private void tsbFiltrar_Click(object sender, EventArgs e)
         {
-            LLenarListado();
+            LlenarListado();
         }
 
         private void tsbNuevoRegistro_Click(object sender, EventArgs e)
@@ -527,7 +519,7 @@ namespace Planilla.Formularios
             {
                 this.Cursor = Cursors.WaitCursor;
 
-                tsbMarcarTodo.Checked = ! tsbMarcarTodo.Checked;
+                tsbMarcarTodo.Checked = !tsbMarcarTodo.Checked;
                 if (tsbMarcarTodo.Checked == true)
                 {
                     tsbMarcarTodo.Image = Properties.Resources.unchecked16x16;
@@ -564,7 +556,7 @@ namespace Planilla.Formularios
             try
             {
                 this.Cursor = Cursors.WaitCursor;
-                tsbSeleccionar.Checked = ! tsbSeleccionar.Checked;
+                tsbSeleccionar.Checked = !tsbSeleccionar.Checked;
                 if (tsbSeleccionar.Checked == true)
                 {
                     tsbSeleccionar.Image = Properties.Resources.unchecked16x16;
@@ -583,24 +575,24 @@ namespace Planilla.Formularios
                         if (Convert.ToBoolean(Fila.Cells["Seleccionar"].Value) == true)
                         {
                             a++;
-                            Array.Resize(ref oEmpleado, a);
+                            Array.Resize(ref oEmpleadoEN, a);
 
-                            oEmpleado[a - 1] = new EmpleadoEN();
-                            oEmpleado[a - 1].IdEmpleado = Convert.ToInt32(Fila.Cells["IdEmpleado"].Value);
-                            oEmpleado[a - 1].Nombre = Fila.Cells["Nombre"].Value.ToString();
-                            oEmpleado[a - 1].Apellidos = Fila.Cells["Apellidos"].Value.ToString();
-                            oEmpleado[a - 1].Cedula = Fila.Cells["Cedula"].Value.ToString();
-                            oEmpleado[a - 1].Direccion = Fila.Cells["Direccion"].Value.ToString();
-                            oEmpleado[a - 1].Telefono = Fila.Cells["Telefono"].Value.ToString();
-                            oEmpleado[a - 1].Celular = Fila.Cells["Celular"].Value.ToString();
-                            oEmpleado[a - 1].Correo = Fila.Cells["Correo"].Value.ToString();
-                            oEmpleado[a - 1].NoINSS = Fila.Cells["NoINSS"].Value.ToString();
-                            oEmpleado[a - 1].oCargoEN.IdCargo = Convert.ToInt32(Fila.Cells["IdCargo"].Value.ToString());
-                            oEmpleado[a - 1].oMunicipioEN.IdMunicipio = Convert.ToInt32(Fila.Cells["IdMunicipio"].Value.ToString());
-                            oEmpleado[a - 1].oAreaLaboralEN.IdAreaLaboral = Convert.ToInt32(Fila.Cells["IdAreaLaboral"].Value.ToString());
-                            oEmpleado[a - 1].oAreaLaboralEN.Area = Fila.Cells["Area"].Value.ToString();
-                            oEmpleado[a - 1].oCargoEN.Cargo = Fila.Cells["Cargo"].Value.ToString();
-                            oEmpleado[a - 1].oMunicipioEN.Municipio = Fila.Cells["Municipio"].Value.ToString();
+                            oEmpleadoEN[a - 1] = new EmpleadoEN();
+                            oEmpleadoEN[a - 1].IdEmpleado = Convert.ToInt32(Fila.Cells["IdEmpleado"].Value);
+                            oEmpleadoEN[a - 1].Nombre = Fila.Cells["Nombre"].Value.ToString();
+                            oEmpleadoEN[a - 1].Apellidos = Fila.Cells["Apellidos"].Value.ToString();
+                            oEmpleadoEN[a - 1].Cedula = Fila.Cells["Cedula"].Value.ToString();
+                            oEmpleadoEN[a - 1].Direccion = Fila.Cells["Direccion"].Value.ToString();
+                            oEmpleadoEN[a - 1].Telefono = Fila.Cells["Telefono"].Value.ToString();
+                            oEmpleadoEN[a - 1].Celular = Fila.Cells["Celular"].Value.ToString();
+                            oEmpleadoEN[a - 1].Correo = Fila.Cells["Correo"].Value.ToString();
+                            oEmpleadoEN[a - 1].NoINSS = Fila.Cells["NoINSS"].Value.ToString();
+                            oEmpleadoEN[a - 1].oCargoEN.IdCargo = Convert.ToInt32(Fila.Cells["IdCargo"].Value.ToString());
+                            oEmpleadoEN[a - 1].oMunicipioEN.IdMunicipio = Convert.ToInt32(Fila.Cells["IdMunicipio"].Value.ToString());
+                            oEmpleadoEN[a - 1].oAreaLaboralEN.IdAreaLaboral = Convert.ToInt32(Fila.Cells["IdAreaLaboral"].Value.ToString());
+                            oEmpleadoEN[a - 1].oAreaLaboralEN.Area = Fila.Cells["Area"].Value.ToString();
+                            oEmpleadoEN[a - 1].oCargoEN.Cargo = Fila.Cells["Cargo"].Value.ToString();
+                            oEmpleadoEN[a - 1].oMunicipioEN.Municipio = Fila.Cells["Municipio"].Value.ToString();
                         }
                     }
                 }
@@ -614,7 +606,7 @@ namespace Planilla.Formularios
             finally
             {
 
-                AgregarColumnasAlDTRegistro();
+                AgregarColumnasAlDTRegistros();
                 this.Cursor = Cursors.Default;
                 this.Close();
 
@@ -623,114 +615,42 @@ namespace Planilla.Formularios
 
         private void txtNombre_KeyUp(object sender, KeyEventArgs e)
         {
-            if (Controles.IsNullOEmptyElControl(txtNombre))
-            {
-                chkNombre.CheckState = CheckState.Unchecked;
-            }
-            else { chkNombre.CheckState = CheckState.Checked; }
 
-            if (chkNombre.CheckState == CheckState.Checked && tsbFiltroAutomatico.CheckState == CheckState.Checked)
-            {
-                LLenarListado();
-            }
         }
 
         private void txtApellidos_KeyUp(object sender, KeyEventArgs e)
         {
-            if (Controles.IsNullOEmptyElControl(txtApellidos))
-            {
-                chkApellidos.CheckState = CheckState.Unchecked;
-            }
-            else { chkApellidos.CheckState = CheckState.Checked; }
 
-            if (chkApellidos.CheckState == CheckState.Checked && tsbFiltroAutomatico.CheckState == CheckState.Checked)
-            {
-                LLenarListado();
-            }
         }
 
         private void txtCedula_KeyUp(object sender, KeyEventArgs e)
         {
-            if (Controles.IsNullOEmptyElControl(txtCedula))
-            {
-                chkCedula.CheckState = CheckState.Unchecked;
-            }
-            else { chkCedula.CheckState = CheckState.Checked; }
 
-            if (chkCedula.CheckState == CheckState.Checked && tsbFiltroAutomatico.CheckState == CheckState.Checked)
-            {
-                LLenarListado();
-            }
         }
 
         private void txtEmail_KeyUp(object sender, KeyEventArgs e)
         {
-            if (Controles.IsNullOEmptyElControl(txtEmail))
-            {
-                chkEmail.CheckState = CheckState.Unchecked;
-            }
-            else { chkEmail.CheckState = CheckState.Checked; }
 
-            if (chkEmail.CheckState == CheckState.Checked && tsbFiltroAutomatico.CheckState == CheckState.Checked)
-            {
-                LLenarListado();
-            }
         }
 
         private void txtNoInss_KeyUp(object sender, KeyEventArgs e)
         {
-            if (Controles.IsNullOEmptyElControl(txtNoInss))
-            {
-                chkNoInss.CheckState = CheckState.Unchecked;
-            }
-            else { chkNoInss.CheckState = CheckState.Checked; }
 
-            if (chkNoInss.CheckState == CheckState.Checked && tsbFiltroAutomatico.CheckState == CheckState.Checked)
-            {
-                LLenarListado();
-            }
         }
 
         private void cmbAreaLaboral_SelectionChangeCommitted(object sender, EventArgs e)
         {
-            if (Controles.IsNullOEmptyElControl(cmbAreaLaboral))
-            {
-                chkAreaLaboral.CheckState = CheckState.Unchecked;
-            }
-            else { chkAreaLaboral.CheckState = CheckState.Checked; }
 
-            if (chkAreaLaboral.CheckState == CheckState.Checked && tsbFiltroAutomatico.CheckState == CheckState.Checked)
-            {
-                LLenarListado();
-            }
         }
 
         private void cmbCargo_SelectionChangeCommitted(object sender, EventArgs e)
         {
-            if (Controles.IsNullOEmptyElControl(cmbCargo))
-            {
-                chkCargo.CheckState = CheckState.Unchecked;
-            }
-            else { chkCargo.CheckState = CheckState.Checked; }
 
-            if (chkCargo.CheckState == CheckState.Checked && tsbFiltroAutomatico.CheckState == CheckState.Checked)
-            {
-                LLenarListado();
-            }
         }
 
         private void cmbMunicipio_SelectionChangeCommitted(object sender, EventArgs e)
         {
-            if (Controles.IsNullOEmptyElControl(cmbMunicipio))
-            {
-                chkMunicipio.CheckState = CheckState.Unchecked;
-            }
-            else { chkMunicipio.CheckState = CheckState.Checked; }
 
-            if (chkMunicipio.CheckState == CheckState.Checked && tsbFiltroAutomatico.CheckState == CheckState.Checked)
-            {
-                LLenarListado();
-            }
         }
 
         private void mcsMenu_Opened(object sender, EventArgs e)
@@ -744,14 +664,14 @@ namespace Planilla.Formularios
             }
             else
             {
-                CargarPrivilegiosUsuario();
+                CargarPrivilegios();
 
             }
         }
 
         private void dgvLista_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (ActivarFiltros == true)
+            if (Activar_Filtros == true)
             {
                 if (dgvLista.Columns[dgvLista.CurrentCell.ColumnIndex].Name == "Seleccionar" && VariosRegistros == false)
                 {
@@ -778,7 +698,7 @@ namespace Planilla.Formularios
 
         private void dgvLista_DoubleClick(object sender, EventArgs e)
         {
-            if (ActivarFiltros == true)
+            if (Activar_Filtros == true)
             {
                 int a = 0;
                 this.Cursor = Cursors.WaitCursor;
@@ -788,27 +708,27 @@ namespace Planilla.Formularios
                 foreach (DataGridViewRow Fila in dgvLista.Rows)
                 {
                     if (Convert.ToBoolean(Fila.Cells["Seleccionar"].Value) == true)
-                    {   
+                    {
 
                         a++;
-                        Array.Resize(ref oEmpleado, a);
+                        Array.Resize(ref oEmpleadoEN, a);
 
-                        oEmpleado[a - 1] = new EmpleadoEN();
-                        oEmpleado[a - 1].IdEmpleado = Convert.ToInt32(Fila.Cells["IdEmpleado"].Value);
-                        oEmpleado[a - 1].Nombre = Fila.Cells["Nombre"].Value.ToString();
-                        oEmpleado[a - 1].Apellidos = Fila.Cells["Apellidos"].Value.ToString();
-                        oEmpleado[a - 1].Cedula = Fila.Cells["Cedula"].Value.ToString();
-                        oEmpleado[a - 1].Direccion = Fila.Cells["Direccion"].Value.ToString();
-                        oEmpleado[a - 1].Telefono = Fila.Cells["Telefono"].Value.ToString();
-                        oEmpleado[a - 1].Celular = Fila.Cells["Celular"].Value.ToString();
-                        oEmpleado[a - 1].Correo = Fila.Cells["Correo"].Value.ToString();
-                        oEmpleado[a - 1].NoINSS = Fila.Cells["NoINSS"].Value.ToString();
-                        oEmpleado[a - 1].oCargoEN.IdCargo = Convert.ToInt32(Fila.Cells["IdCargo"].Value.ToString());
-                        oEmpleado[a - 1].oMunicipioEN.IdMunicipio = Convert.ToInt32(Fila.Cells["IdMunicipio"].Value.ToString());
-                        oEmpleado[a - 1].oAreaLaboralEN.IdAreaLaboral = Convert.ToInt32(Fila.Cells["IdAreaLaboral"].Value.ToString());
-                        oEmpleado[a - 1].oAreaLaboralEN.Area = Fila.Cells["Area"].Value.ToString();
-                        oEmpleado[a - 1].oCargoEN.Cargo = Fila.Cells["Cargo"].Value.ToString();
-                        oEmpleado[a - 1].oMunicipioEN.Municipio = Fila.Cells["Municipio"].Value.ToString();
+                        oEmpleadoEN[a - 1] = new EmpleadoEN();
+                        oEmpleadoEN[a - 1].IdEmpleado = Convert.ToInt32(Fila.Cells["IdEmpleado"].Value);
+                        oEmpleadoEN[a - 1].Nombre = Fila.Cells["Nombre"].Value.ToString();
+                        oEmpleadoEN[a - 1].Apellidos = Fila.Cells["Apellidos"].Value.ToString();
+                        oEmpleadoEN[a - 1].Cedula = Fila.Cells["Cedula"].Value.ToString();
+                        oEmpleadoEN[a - 1].Direccion = Fila.Cells["Direccion"].Value.ToString();
+                        oEmpleadoEN[a - 1].Telefono = Fila.Cells["Telefono"].Value.ToString();
+                        oEmpleadoEN[a - 1].Celular = Fila.Cells["Celular"].Value.ToString();
+                        oEmpleadoEN[a - 1].Correo = Fila.Cells["Correo"].Value.ToString();
+                        oEmpleadoEN[a - 1].NoINSS = Fila.Cells["NoINSS"].Value.ToString();
+                        oEmpleadoEN[a - 1].oCargoEN.IdCargo = Convert.ToInt32(Fila.Cells["IdCargo"].Value.ToString());
+                        oEmpleadoEN[a - 1].oMunicipioEN.IdMunicipio = Convert.ToInt32(Fila.Cells["IdMunicipio"].Value.ToString());
+                        oEmpleadoEN[a - 1].oAreaLaboralEN.IdAreaLaboral = Convert.ToInt32(Fila.Cells["IdAreaLaboral"].Value.ToString());
+                        oEmpleadoEN[a - 1].oAreaLaboralEN.Area = Fila.Cells["Area"].Value.ToString();
+                        oEmpleadoEN[a - 1].oCargoEN.Cargo = Fila.Cells["Cargo"].Value.ToString();
+                        oEmpleadoEN[a - 1].oMunicipioEN.Municipio = Fila.Cells["Municipio"].Value.ToString();
                     }
                 }
 
@@ -821,36 +741,36 @@ namespace Planilla.Formularios
         {
             if (e.Button == MouseButtons.Right)
             {
-                DataGridView.HitTestInfo Hitest = dgvLista.HitTest(e.X, e.Y);
+                DataGridView.HitTestInfo HitTest = dgvLista.HitTest(e.X, e.Y);
 
-                if (Hitest.Type == DataGridViewHitTestType.Cell)
+                if(HitTest.Type == DataGridViewHitTestType.Cell)
                 {
-                    dgvLista.CurrentCell = dgvLista.Rows[Hitest.RowIndex].Cells[Hitest.ColumnIndex];
+                    dgvLista.CurrentCell = dgvLista.Rows[HitTest.RowIndex].Cells[HitTest.ColumnIndex];
                 }
-
             }
+
         }
 
         private void cmNuevo_Click(object sender, EventArgs e)
-        {            
+        {
             MostrarFormularioParaOperacion("Nuevo");
         }
 
         private void cmActualizar_Click(object sender, EventArgs e)
         {
-            AsignarLalvePrimaria();
+            AsignarLlavePrimaria();
             MostrarFormularioParaOperacion("Modificar");
         }
 
         private void cmEliminar_Click(object sender, EventArgs e)
         {
-            AsignarLalvePrimaria();
+            AsignarLlavePrimaria();
             MostrarFormularioParaOperacion("Eliminar");
         }
 
         private void cmVisualizar_Click(object sender, EventArgs e)
         {
-            AsignarLalvePrimaria();
+            AsignarLlavePrimaria();
             MostrarFormularioParaOperacion("Consultar");
         }
 
