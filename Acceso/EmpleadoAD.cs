@@ -210,17 +210,14 @@ namespace Acceso
             try
             {
                 InicialisarVariablesGlovales(oDatos);
-
-                Consultas = string.Format(@"Select emp.IdEmpleado, emp.IdCargo, emp.IdMunicipio, emp.IdAreaLaboral,
-				                            emp.Nombre, emp.Apellidos, emp.Cedula, 
-                                            emp.Direccion, emp.Telefono, emp.Celular, 
-                                            emp.Correo, emp.NoINSS, dol.Area as 'AreaLaboral', 
-                                            co.Cargo as 'Cargo', cd.Municipio as 'Municipio'                
-                                            From Empleado as emp
-                                            inner join AreaLaboral as dol on dol.IdAreaLaboral = emp.IdAreaLaboral
-                                            inner join Cargo as co on co.IdCargo = emp.IdCargo
-                                            inner join Municipio as cd on cd.IdMunicipio = emp.IdMunicipio
-                                            Where emp.idEmpleado > 0 {0} {1} ", oRegistroEN.Where, oRegistroEN.OrderBy);
+                
+                Consultas = string.Format(@"select emp.idempleado, emp.Nombre, emp.Apellidos, emp.Cedula, emp.Direccion, emp.Telefono, emp.Celular, emp.Correo, emp.NoINSS,
+								emp.idCargo, emp.idMunicipio, emp.idAreaLaboral, al.Area as 'AreaLaboral', co.Cargo as 'Cargo', mpo.Municipio as 'Municipio'
+                                from empleado as emp
+                                inner join cargo as co on emp.idCargo = co.idCargo
+                                inner join arealaboral as al on emp.idAreaLaboral = al.idAreaLaboral
+                                inner join municipio as mpo on emp.idMunicipio = mpo.idMunicipio
+                                where emp.idEmpleado > 0 {0} {1} ", oRegistroEN.Where, oRegistroEN.OrderBy);
 
                 Comando.CommandText = Consultas;
 
@@ -246,15 +243,13 @@ namespace Acceso
             {
                 InicialisarVariablesGlovales(oDatos);
 
-                Consultas = string.Format(@"Select emp.Nombre, emp.Apellidos, emp.Cedula, 
-                emp.Direccion, emp.Telefono, emp.Celular, 
-                emp.Correo, emp.NoINSS, emp.IdCargo, emp.IdMunicipio, emp.IdAreaLaboral,dol.Area as 'AreaLaboral', 
-                co.Cargo as 'Cargo', cd.Municipio as 'Municipio'
-                From Empleado as emp
-                inner join AreaLaboral as dol on dol.IdAreaLaboral = emp.IdAreaLaboral
-                inner join Cargo as co on co.IdCargo = emp.IdCargo
-                inner join Municipio as cd on cd.IdMunicipio = emp.IdMunicipio
-                Where emp.idEmpleado = {0}", oRegistroEN.IdEmpleado);
+                Consultas = string.Format(@"select emp.idempleado, emp.Nombre, emp.Apellidos, emp.Cedula, emp.Direccion, emp.Telefono, emp.Celular, emp.Correo, emp.NoINSS,
+								emp.idCargo, emp.idMunicipio, emp.idAreaLaboral, al.Area as 'AreaLaboral', co.Cargo as 'Cargo', mpo.Municipio as 'Municipio'
+                                from empleado as emp
+                                inner join cargo as co on emp.idCargo = co.idCargo
+                                inner join arealaboral as al on emp.idAreaLaboral = al.idAreaLaboral
+                                inner join municipio as mpo on emp.idMunicipio = mpo.idMunicipio
+                                where emp.idEmpleado > {0}", oRegistroEN.IdEmpleado);
 
                 Comando.CommandText = Consultas;
 
@@ -282,7 +277,13 @@ namespace Acceso
 
                 InicialisarVariablesGlovales(oDatos);
 
-                Consultas = string.Format(@"select IdEmpleado, Nombre, Apellidos, Cedula, Direccion, Telefono, Celular, Correo, NoINSS, IdCargo, IdMunicipio, IdAreaLaboral from empleado where IdEmpleado > 0 {0} {1}; ", oRegistroEN.Where, oRegistroEN.OrderBy);
+                Consultas = string.Format(@"select emp.idempleado, emp.Nombre, emp.Apellidos, emp.Cedula, emp.Direccion, emp.Telefono, emp.Celular, emp.Correo, emp.NoINSS,
+								emp.idCargo, emp.idMunicipio, emp.idAreaLaboral, al.Area as 'AreaLaboral', co.Cargo as 'Cargo', mpo.Municipio as 'Municipio'
+                                from empleado as emp
+                                inner join cargo as co on emp.idCargo = co.idCargo
+                                inner join arealaboral as al on emp.idAreaLaboral = al.idAreaLaboral
+                                inner join municipio as mpo on emp.idMunicipio = mpo.idMunicipio
+                                where emp.idEmpleado > 0 {0} {1}; ", oRegistroEN.Where, oRegistroEN.OrderBy);
                 Comando.CommandText = Consultas;
 
                 InicialisarAdaptador();
@@ -403,9 +404,9 @@ namespace Acceso
 
         private string InformacionDelRegistro(EmpleadoEN oRegistroEN)
         {
-            string Cadena= @"IdEmpleado={0}, IdAreaLaboral={1}, IdCargo={2}, IdMunicipio={3}, Nombre={4}, Apellidos={5}, Cedula={6}, Direccion={7}, Telefono={8}, Celular={9}, Correo={10}";
-            Cadena = string.Format(Cadena, oRegistroEN.IdEmpleado, oRegistroEN.oAreaLaboralEN.IdAreaLaboral, oRegistroEN.oCargoEN.IdCargo,
-                oRegistroEN.oMunicipioEN.IdMunicipio, oRegistroEN.Nombre, oRegistroEN.Apellidos, oRegistroEN.Cedula, oRegistroEN.Direccion, oRegistroEN.Telefono, oRegistroEN.Celular, oRegistroEN.Correo);
+            string Cadena= @"IdEmpleado={0}, Nombre={2}, Apellidos={3}, Cedula={4}, Direccion={5}, Telefono={6}, Celular={7}, Correo={8}, NoINSS={9}, IdCargo={10}, IdMunicipio={11}, IdAreaLaboral={12}, Area={13}, Cargo={14}, Municipio{15}";
+            Cadena = string.Format(Cadena, oRegistroEN.IdEmpleado, oRegistroEN.Nombre, oRegistroEN.Apellidos, oRegistroEN.Cedula, oRegistroEN.Direccion, oRegistroEN.Telefono, oRegistroEN.Celular, oRegistroEN.Correo, oRegistroEN.NoINSS, oRegistroEN.oCargoEN.IdCargo, oRegistroEN.oMunicipioEN.IdMunicipio,
+                oRegistroEN.oAreaLaboralEN.IdAreaLaboral, oRegistroEN.oAreaLaboralEN.Area, oRegistroEN.oCargoEN.Cargo, oRegistroEN.oMunicipioEN.Municipio);
             Cadena = Cadena.Replace(",", Environment.NewLine);
             return Cadena;
         }

@@ -25,11 +25,6 @@ C:\Users\JUSET\Source\Repos\Braulio9708\Planilla\Entidad\bin\Debug\Entidad.pdb
 C:\Users\JUSET\Source\Repos\Braulio9708\Planilla\Entidad\obj\Debug\Entidad.csprojResolveAssemblyReference.cache
 C:\Users\JUSET\Source\Repos\Braulio9708\Planilla\Entidad\obj\Debug\Entidad.dll
 C:\Users\JUSET\Source\Repos\Braulio9708\Planilla\Entidad\obj\Debug\Entidad.pdb
-C:\Users\JUSET\Source\Repos\Braulio9708\Planilla\Planilla\Entidad\bin\Debug\Entidad.dll
-C:\Users\JUSET\Source\Repos\Braulio9708\Planilla\Planilla\Entidad\bin\Debug\Entidad.pdb
-C:\Users\JUSET\Source\Repos\Braulio9708\Planilla\Planilla\Entidad\obj\Debug\Entidad.csprojResolveAssemblyReference.cache
-C:\Users\JUSET\Source\Repos\Braulio9708\Planilla\Planilla\Entidad\obj\Debug\Entidad.dll
-C:\Users\JUSET\Source\Repos\Braulio9708\Planilla\Planilla\Entidad\obj\Debug\Entidad.pdb
 C:\Users\Inspiron i5\Source\Repos\Braulio9708\Planilla\Entidad\bin\Debug\Entidad.dll
 C:\Users\Inspiron i5\Source\Repos\Braulio9708\Planilla\Entidad\bin\Debug\Entidad.pdb
 C:\Users\Inspiron i5\Source\Repos\Braulio9708\Planilla\Entidad\obj\Debug\Entidad.csprojResolveAssemblyReference.cache

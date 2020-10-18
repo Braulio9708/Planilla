@@ -50,7 +50,7 @@
             this.chkCargo = new System.Windows.Forms.CheckBox();
             this.chkAreaLaboral = new System.Windows.Forms.CheckBox();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
-            this.NoRegistros = new System.Windows.Forms.ToolStripStatusLabel();
+            this.tsbNoRegistros = new System.Windows.Forms.ToolStripStatusLabel();
             this.dgvLista = new System.Windows.Forms.DataGridView();
             this.tsMenu = new System.Windows.Forms.ToolStrip();
             this.tsbFiltrar = new System.Windows.Forms.ToolStripButton();
@@ -302,19 +302,19 @@
             // statusStrip1
             // 
             this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.NoRegistros});
+            this.tsbNoRegistros});
             this.statusStrip1.Location = new System.Drawing.Point(0, 422);
             this.statusStrip1.Name = "statusStrip1";
             this.statusStrip1.Size = new System.Drawing.Size(1115, 22);
             this.statusStrip1.TabIndex = 2;
             this.statusStrip1.Text = "statusStrip1";
             // 
-            // NoRegistros
+            // tsbNoRegistros
             // 
-            this.NoRegistros.Name = "NoRegistros";
-            this.NoRegistros.Size = new System.Drawing.Size(105, 17);
-            this.NoRegistros.Tag = "No Registros";
-            this.NoRegistros.Text = "No. de Registros: 0";
+            this.tsbNoRegistros.Name = "tsbNoRegistros";
+            this.tsbNoRegistros.Size = new System.Drawing.Size(105, 17);
+            this.tsbNoRegistros.Tag = "No Registros";
+            this.tsbNoRegistros.Text = "No. de Registros: 0";
             // 
             // dgvLista
             // 
@@ -384,7 +384,7 @@
             // 
             // tsbMarcarTodo
             // 
-            this.tsbMarcarTodo.Image = global::Planilla.Properties.Resources.checked24x24;
+            this.tsbMarcarTodo.Image = global::Planilla.Properties.Resources.checked16x16;
             this.tsbMarcarTodo.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsbMarcarTodo.Name = "tsbMarcarTodo";
             this.tsbMarcarTodo.Size = new System.Drawing.Size(109, 36);
@@ -394,7 +394,7 @@
             // 
             // tsbSeleccionar
             // 
-            this.tsbSeleccionar.Image = global::Planilla.Properties.Resources.checked24x24;
+            this.tsbSeleccionar.Image = global::Planilla.Properties.Resources.checked16x16;
             this.tsbSeleccionar.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsbSeleccionar.Name = "tsbSeleccionar";
             this.tsbSeleccionar.Size = new System.Drawing.Size(103, 36);
@@ -405,7 +405,7 @@
             // tsbFiltroAutomatico
             // 
             this.tsbFiltroAutomatico.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
-            this.tsbFiltroAutomatico.Image = global::Planilla.Properties.Resources.checked24x24;
+            this.tsbFiltroAutomatico.Image = global::Planilla.Properties.Resources.checked16x16;
             this.tsbFiltroAutomatico.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsbFiltroAutomatico.Name = "tsbFiltroAutomatico";
             this.tsbFiltroAutomatico.Size = new System.Drawing.Size(136, 36);
@@ -422,14 +422,14 @@
             this.cmVisualizar,
             this.cmImprimir});
             this.mcsMenu.Name = "mcsMenu";
-            this.mcsMenu.Size = new System.Drawing.Size(153, 136);
+            this.mcsMenu.Size = new System.Drawing.Size(127, 114);
             this.mcsMenu.Opened += new System.EventHandler(this.mcsMenu_Opened);
             // 
             // cmNuevo
             // 
             this.cmNuevo.Image = global::Planilla.Properties.Resources.New16x16;
             this.cmNuevo.Name = "cmNuevo";
-            this.cmNuevo.Size = new System.Drawing.Size(152, 22);
+            this.cmNuevo.Size = new System.Drawing.Size(126, 22);
             this.cmNuevo.Text = "Nuevo";
             this.cmNuevo.Click += new System.EventHandler(this.cmNuevo_Click);
             // 
@@ -437,7 +437,7 @@
             // 
             this.cmActualizar.Image = global::Planilla.Properties.Resources.Edit16x16;
             this.cmActualizar.Name = "cmActualizar";
-            this.cmActualizar.Size = new System.Drawing.Size(152, 22);
+            this.cmActualizar.Size = new System.Drawing.Size(126, 22);
             this.cmActualizar.Text = "Actualizar";
             this.cmActualizar.Click += new System.EventHandler(this.cmActualizar_Click);
             // 
@@ -445,7 +445,7 @@
             // 
             this.cmEliminar.Image = global::Planilla.Properties.Resources.Eliminar16x16;
             this.cmEliminar.Name = "cmEliminar";
-            this.cmEliminar.Size = new System.Drawing.Size(152, 22);
+            this.cmEliminar.Size = new System.Drawing.Size(126, 22);
             this.cmEliminar.Text = "Eliminar";
             this.cmEliminar.Click += new System.EventHandler(this.cmEliminar_Click);
             // 
@@ -453,7 +453,7 @@
             // 
             this.cmVisualizar.Image = global::Planilla.Properties.Resources.if_old_edit_find_23490__1_;
             this.cmVisualizar.Name = "cmVisualizar";
-            this.cmVisualizar.Size = new System.Drawing.Size(152, 22);
+            this.cmVisualizar.Size = new System.Drawing.Size(126, 22);
             this.cmVisualizar.Text = "Visualizar";
             this.cmVisualizar.Click += new System.EventHandler(this.cmVisualizar_Click);
             // 
@@ -461,7 +461,7 @@
             // 
             this.cmImprimir.Image = global::Planilla.Properties.Resources.printer16x16;
             this.cmImprimir.Name = "cmImprimir";
-            this.cmImprimir.Size = new System.Drawing.Size(152, 22);
+            this.cmImprimir.Size = new System.Drawing.Size(126, 22);
             this.cmImprimir.Text = "Imprimir";
             // 
             // frmEmpleados
@@ -473,6 +473,7 @@
             this.Name = "frmEmpleados";
             this.Text = "frmEmpleados";
             this.Shown += new System.EventHandler(this.frmEmpleados_Shown);
+            this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.frmEmpleados_KeyUp);
             this.splitContainer1.Panel1.ResumeLayout(false);
             this.splitContainer1.Panel2.ResumeLayout(false);
             this.splitContainer1.Panel2.PerformLayout();
@@ -505,7 +506,7 @@
         private System.Windows.Forms.ToolStripButton tsbSeleccionar;
         private System.Windows.Forms.ToolStripButton tsbFiltroAutomatico;
         private System.Windows.Forms.StatusStrip statusStrip1;
-        private System.Windows.Forms.ToolStripStatusLabel NoRegistros;
+        private System.Windows.Forms.ToolStripStatusLabel tsbNoRegistros;
         private System.Windows.Forms.DataGridView dgvLista;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
         private System.Windows.Forms.GroupBox groupBox3;
