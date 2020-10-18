@@ -211,13 +211,13 @@ namespace Acceso
             {
                 InicialisarVariablesGlovales(oDatos);
                 
-                Consultas = string.Format(@"select emp.idempleado, emp.Nombre, emp.Apellidos, emp.Cedula, emp.Direccion, emp.Telefono, emp.Celular, emp.Correo, emp.NoINSS,
-								emp.idCargo, emp.idMunicipio, emp.idAreaLaboral, al.Area as 'AreaLaboral', co.Cargo as 'Cargo', mpo.Municipio as 'Municipio'
+                Consultas = string.Format(@"select emp.IdEmpleado, emp.Nombre, emp.Apellidos, emp.Cedula, emp.Direccion, emp.Telefono, emp.Celular, emp.Correo, emp.NoINSS,
+								emp.IdCargo, emp.IdMunicipio, emp.IdAreaLaboral, al.Area as 'AreaLaboral', co.Cargo as 'Cargo', mpo.Municipio as 'Municipio'
                                 from empleado as emp
-                                inner join cargo as co on emp.idCargo = co.idCargo
-                                inner join arealaboral as al on emp.idAreaLaboral = al.idAreaLaboral
-                                inner join municipio as mpo on emp.idMunicipio = mpo.idMunicipio
-                                where emp.idEmpleado > 0 {0} {1} ", oRegistroEN.Where, oRegistroEN.OrderBy);
+                                inner join cargo as co on emp.IdCargo = co.IdCargo
+                                inner join arealaboral as al on emp.IdAreaLaboral = al.IdAreaLaboral
+                                inner join municipio as mpo on emp.IdMunicipio = mpo.IdMunicipio
+                                where emp.IdEmpleado > 0 {0} {1} ", oRegistroEN.Where, oRegistroEN.OrderBy);
 
                 Comando.CommandText = Consultas;
 

@@ -341,7 +341,7 @@ namespace Planilla.Formularios
                 this.dgvLista.BackgroundColor = System.Drawing.SystemColors.Window;
                 this.dgvLista.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
 
-                string OcultarColumnas = "IdEmplado";
+                string OcultarColumnas = "idEmplado, idAreaLaboral, idCargo, idMunicipio";
                 OcultarColumnasEnElDGV(OcultarColumnas);
 
                 FormatearColumnasEnELDGV();
@@ -474,6 +474,102 @@ namespace Planilla.Formularios
         {
             this.ValorLlavePrimariaEntidad = Convert.ToInt32(this.dgvLista.Rows[this.IndiceSeleccionado].Cells[this.Nombre_Llave_Primaria].Value);
         }
+
+        private void LlenarCargosDelEmpleado()
+        {
+            try
+            {
+                this.Cursor = Cursors.WaitCursor;
+
+                CargoEN oRegistroEN = new CargoEN();
+                CargoLN oRegistroLN = new CargoLN();
+                oRegistroEN.Where = "";
+                oRegistroEN.OrderBy = "";
+
+                if (oRegistroLN.ListadoParaCombos(oRegistroEN, Program.oDatosDeConexioEN))
+                {
+                    cmbCargo.DataSource = oRegistroLN.TraerDatos();
+                    cmbCargo.DisplayMember = "Cargo";
+                    cmbCargo.ValueMember = "IdCargo";
+                    cmbCargo.SelectedIndex = -1;
+                }
+
+                else { throw new ArgumentException(oRegistroLN.Error); }
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Información del tipo de cuentas", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                this.Cursor = Cursors.Default;
+            }
+        }
+
+        private void LlenarAreaLaboral()
+        {
+            try
+            {
+                this.Cursor = Cursors.WaitCursor;
+
+                AreaLaboralEN oRegistroEN = new AreaLaboralEN();
+                AreaLaboralLN oRegistroLN = new AreaLaboralLN();
+                oRegistroEN.Where = "";
+                oRegistroEN.OrderBy = "";
+
+                if (oRegistroLN.ListadoParaCombos(oRegistroEN, Program.oDatosDeConexioEN))
+                {
+                    cmbAreaLaboral.DataSource = oRegistroLN.TraerDatos();
+                    cmbAreaLaboral.DisplayMember = "Area";
+                    cmbAreaLaboral.ValueMember = "IdAreaLaboral";
+                    cmbAreaLaboral.SelectedIndex = -1;
+                }
+
+                else { throw new ArgumentException(oRegistroLN.Error); }
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Información del tipo de cuentas", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                this.Cursor = Cursors.Default;
+            }
+        }
+
+        private void LlenarMunicipio()
+        {
+            try
+            {
+                this.Cursor = Cursors.WaitCursor;
+
+                MunicipioEN oRegistroEN = new MunicipioEN();
+                //MunicipioLN oRegistroLN = new MunicipioLN();
+                oRegistroEN.Where = "";
+                oRegistroEN.OrderBy = "";
+
+                if (oRegistroLN.ListadoParaCombos(oRegistroEN, Program.oDatosDeConexioEN))
+                {
+                    cmbCargo.DataSource = oRegistroLN.TraerDatos();
+                    cmbCargo.DisplayMember = "Area";
+                    cmbCargo.ValueMember = "IdAreaLaboral";
+                    cmbCargo.SelectedIndex = -1;
+                }
+
+                else { throw new ArgumentException(oRegistroLN.Error); }
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Información del tipo de cuentas", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                this.Cursor = Cursors.Default;
+            }
+        }
         #endregion
 
 
@@ -484,7 +580,8 @@ namespace Planilla.Formularios
         {
             dgvLista.ContextMenuStrip = mcsMenu;
             CargarPrivilegios();
-
+            LlenarCargosDelEmpleado();
+            LlenarAreaLaboral();
             ActivarFiltosDeBusqueda();
             tsbFiltroAutomatico_Click(null, null);
         }
@@ -615,42 +712,114 @@ namespace Planilla.Formularios
 
         private void txtNombre_KeyUp(object sender, KeyEventArgs e)
         {
+            if (Controles.IsNullOEmptyElControl(txtNombre))
+            {
+                chkNombre.CheckState = CheckState.Unchecked;
+            }
+            else { chkNombre.CheckState = CheckState.Checked; }
 
+            if (chkNombre.CheckState == CheckState.Checked && tsbFiltroAutomatico.CheckState == CheckState.Checked)
+            {
+                LlenarListado();
+            }
         }
 
         private void txtApellidos_KeyUp(object sender, KeyEventArgs e)
         {
+            if (Controles.IsNullOEmptyElControl(txtApellidos))
+            {
+                chkApellidos.CheckState = CheckState.Unchecked;
+            }
+            else { chkApellidos.CheckState = CheckState.Checked; }
 
+            if (chkApellidos.CheckState == CheckState.Checked && tsbFiltroAutomatico.CheckState == CheckState.Checked)
+            {
+                LlenarListado();
+            }
         }
 
         private void txtCedula_KeyUp(object sender, KeyEventArgs e)
         {
+            if (Controles.IsNullOEmptyElControl(txtCedula))
+            {
+                chkCedula.CheckState = CheckState.Unchecked;
+            }
+            else { chkCedula.CheckState = CheckState.Checked; }
 
+            if (chkCedula.CheckState == CheckState.Checked && tsbFiltroAutomatico.CheckState == CheckState.Checked)
+            {
+                LlenarListado();
+            }
         }
 
         private void txtEmail_KeyUp(object sender, KeyEventArgs e)
         {
+            if (Controles.IsNullOEmptyElControl(txtEmail))
+            {
+                chkEmail.CheckState = CheckState.Unchecked;
+            }
+            else { chkEmail.CheckState = CheckState.Checked; }
 
+            if (chkEmail.CheckState == CheckState.Checked && tsbFiltroAutomatico.CheckState == CheckState.Checked)
+            {
+                LlenarListado();
+            }
         }
 
         private void txtNoInss_KeyUp(object sender, KeyEventArgs e)
         {
+            if (Controles.IsNullOEmptyElControl(txtNoInss))
+            {
+                chkNoInss.CheckState = CheckState.Unchecked;
+            }
+            else { chkNoInss.CheckState = CheckState.Checked; }
 
+            if (chkNoInss.CheckState == CheckState.Checked && tsbFiltroAutomatico.CheckState == CheckState.Checked)
+            {
+                LlenarListado();
+            }
         }
 
         private void cmbAreaLaboral_SelectionChangeCommitted(object sender, EventArgs e)
         {
+            if (Controles.IsNullOEmptyElControl(cmbAreaLaboral))
+            {
+                chkAreaLaboral.CheckState = CheckState.Unchecked;
+            }
+            else { chkAreaLaboral.CheckState = CheckState.Checked; }
 
+            if (chkAreaLaboral.CheckState == CheckState.Checked && tsbFiltroAutomatico.CheckState == CheckState.Checked)
+            {
+                LlenarListado();
+            }
         }
 
         private void cmbCargo_SelectionChangeCommitted(object sender, EventArgs e)
         {
+            if (Controles.IsNullOEmptyElControl(cmbCargo))
+            {
+                chkCargo.CheckState = CheckState.Unchecked;
+            }
+            else { chkCargo.CheckState = CheckState.Checked; }
 
+            if (chkCargo.CheckState == CheckState.Checked && tsbFiltroAutomatico.CheckState == CheckState.Checked)
+            {
+                LlenarListado();
+            }
         }
 
         private void cmbMunicipio_SelectionChangeCommitted(object sender, EventArgs e)
         {
+            if (Controles.IsNullOEmptyElControl(cmbMunicipio))
+            {
+                chkMunicipio.CheckState = CheckState.Unchecked;
+            }
+            else { chkMunicipio.CheckState = CheckState.Checked; }
 
+            if (chkMunicipio.CheckState == CheckState.Checked && tsbFiltroAutomatico.CheckState == CheckState.Checked)
+            {
+                LlenarListado();
+            }
         }
 
         private void mcsMenu_Opened(object sender, EventArgs e)
