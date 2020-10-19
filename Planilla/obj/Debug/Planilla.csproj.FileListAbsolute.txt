@@ -178,3 +178,4 @@ C:\Users\JUSET\Source\Repos\Braulio9708\Planilla\Planilla\Planilla\obj\Debug\Pla
 C:\Users\JUSET\Source\Repos\Braulio9708\Planilla\Planilla\Planilla\obj\Debug\Planilla.csproj.GenerateResource.Cache
 C:\Users\JUSET\Source\Repos\Braulio9708\Planilla\Planilla\Planilla\obj\Debug\Planilla.exe
 C:\Users\JUSET\Source\Repos\Braulio9708\Planilla\Planilla\Planilla\obj\Debug\Planilla.pdb
+C:\Users\JUSET\Source\Repos\Braulio9708\Planilla\Planilla\Planilla\obj\Debug\Planilla.Formularios.frmEmpleadoOperacion.resources

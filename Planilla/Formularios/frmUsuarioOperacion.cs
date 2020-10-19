@@ -590,8 +590,8 @@ namespace Planilla.Formularios
                     txtNombreUsuario.Text = Fila["Usuario"].ToString();
                     cmbTipoDeCuenta.SelectedValue = Convert.ToInt32(Fila["IdRol"].ToString());
                     txtNombreSecion.Text = Fila["Login"].ToString();                    
-                    txtContrasena.Text = CifrarCadenas.DesencriptarCadena(Fila["Contrasena"].ToString());
-                    txtConfirmar.Text = CifrarCadenas.DesencriptarCadena(Fila["Contrasena"].ToString());
+                    //txtContrasena.Text = CifrarCadenas.DesencriptarCadena(Fila["Contrasena"].ToString());
+                    //txtConfirmar.Text = CifrarCadenas.DesencriptarCadena(Fila["Contrasena"].ToString());
                     txtCorreoElectronico.Text = Fila["Email"].ToString();
                     cmbEstado.Text = Fila["Estado"].ToString();
 

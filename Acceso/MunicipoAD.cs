@@ -291,7 +291,133 @@ namespace Acceso
                 FinalizarConexion();
             }
 
-        }      
+        }
+
+        public bool ValidarRegistroDuplicado(MunicipioEN oRegistroEN, DatosDeConexionEN oDatos, string TipoDeOperacion)
+        {
+            oTransaccionesAD = new TransaccionesAD();
+
+            try
+            {
+
+                InicialisarVariablesGlovales(oDatos);
+
+                switch (TipoDeOperacion.Trim().ToUpper())
+                {
+
+                    case "AGREGAR":
+
+                        Consultas = @"SELECT CASE WHEN EXISTS(Select IdMunicipio from Municipio where upper(trim(Municipio)) = upper(trim(@Municipio))) THEN 1 ELSE 0 END AS 'RES'";
+                        Comando.Parameters.Add(new MySqlParameter("@Municipio", MySqlDbType.VarChar, oRegistroEN.Municipio.Trim().Length)).Value = oRegistroEN.Municipio.Trim();
+
+                        break;
+
+                    case "ACTUALIZAR":
+
+                        Consultas = @"SELECT CASE WHEN EXISTS(Select IdMunicipio from Municipio where upper(trim(Municipio)) = upper(trim(@Municipio)) and IdDepartamento = @IdDepartamento and IdMunicipio <> @IdMunicipio) THEN 1 ELSE 0 END AS 'RES'";
+                        Comando.Parameters.Add(new MySqlParameter("@Municipio", MySqlDbType.VarChar, oRegistroEN.Municipio.Trim().Length)).Value = oRegistroEN.Municipio.Trim();
+                        Comando.Parameters.Add(new MySqlParameter("@IdDepartamento", MySqlDbType.Int32)).Value = oRegistroEN.oDepartamentoEN.IdDepartamento;
+                        Comando.Parameters.Add(new MySqlParameter("@IdMunicipio", MySqlDbType.Int32)).Value = oRegistroEN.IdMunicipio;
+
+                        break;
+
+                    default:
+                        throw new ArgumentException("La aperación solicitada no esta disponible");
+
+                }
+
+                Comando.CommandText = Consultas;
+
+                InicialisarAdaptador();
+
+                if (Convert.ToInt32(DT.Rows[0]["RES"].ToString()) > 0)
+                {
+
+                    DescripcionDeOperacion = string.Format("Ya existe información del Registro dentro de nuestro sistema: {0} {1}", Environment.NewLine, InformacionDelRegistro(oRegistroEN));
+                    this.Error = DescripcionDeOperacion;
+                    return true;
+
+                }
+
+                return false;
+
+            }
+            catch (Exception ex)
+            {
+                this.Error = ex.Message;
+
+                DescripcionDeOperacion = string.Format("Se produjo el seguiente error: '{2}' al validar el registro. {0} {1} ", Environment.NewLine, InformacionDelRegistro(oRegistroEN), ex.Message);
+
+                //Agregamos la Transacción....
+                TransaccionesEN oTransaccion = InformacionDelaTransaccion(oRegistroEN, "VALIDAR", "REGISTRO DUPLICADO DENTRO DE LA BASE DE DATOS", "ERROR");
+                oTransaccionesAD.Agregar(oTransaccion, oDatos);
+
+                return false;
+            }
+            finally
+            {
+
+                FinalizarConexion();
+                oTransaccionesAD = null;
+
+            }
+
+        }
+
+        public bool ValidarSiElRegistroEstaVinculado(MunicipioEN oRegistroEN, DatosDeConexionEN oDatos, string TipoDeOperacion)
+        {
+            oTransaccionesAD = new TransaccionesAD();
+
+            try
+            {
+
+                InicialisarVariablesGlobalesProcedure(oDatos);
+
+                Comando.Parameters.Add(new MySqlParameter("@CampoABuscar_", MySqlDbType.VarChar, 200)).Value = "IdMunicipio";
+                Comando.Parameters.Add(new MySqlParameter("@ValorCampoABuscar", MySqlDbType.Int32)).Value = oRegistroEN.IdMunicipio;
+                Comando.Parameters.Add(new MySqlParameter("@ExcluirTabla_", MySqlDbType.VarChar, 200)).Value = string.Empty;
+
+                InicialisarAdaptador();
+
+                if (DT.Rows[0].ItemArray[0].ToString().ToUpper() == "NINGUNA".ToUpper())
+                {
+                    return false;
+                }
+                else
+                {
+
+                    this.Error = String.Format("La Operación: '{1}', {0} no se puede completar por que el registro: {0} '{2}', {0} se encuentra asociado con: {0} {3}", Environment.NewLine, TipoDeOperacion, InformacionDelRegistro(oRegistroEN));
+                    DescripcionDeOperacion = this.Error;
+
+                    //Agregamos la Transacción....
+                    TransaccionesEN oTransaccion = InformacionDelaTransaccion(oRegistroEN, "VALIDAR", "VALIDAR SI EL REGISTRO ESTA VINCULADO", "CORRECTO");
+                    oTransaccionesAD.Agregar(oTransaccion, oDatos);
+
+                    return true;
+                }
+
+            }
+            catch (Exception ex)
+            {
+                this.Error = ex.Message;
+
+                DescripcionDeOperacion = string.Format("Se produjo el seguiente error: '{2}' al validar el registro. {0} {1} ", Environment.NewLine, InformacionDelRegistro(oRegistroEN), ex.Message);
+
+                //Agregamos la Transacción....
+                TransaccionesEN oTransaccion = InformacionDelaTransaccion(oRegistroEN, "VALIDAR", "VALIDAR SI EL REGISTRO ESTA VINCULADO", "ERROR");
+                oTransaccionesAD.Agregar(oTransaccion, oDatos);
+
+                return false;
+            }
+            finally
+            {
+
+                FinalizarConexion();
+                oTransaccionesAD = null;
+
+            }
+
+        }
         #endregion
 
         #region "Funciones Para Retornar Informacion Y Llamados"

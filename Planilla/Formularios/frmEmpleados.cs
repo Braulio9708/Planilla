@@ -341,7 +341,7 @@ namespace Planilla.Formularios
                 this.dgvLista.BackgroundColor = System.Drawing.SystemColors.Window;
                 this.dgvLista.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
 
-                string OcultarColumnas = "idEmplado, idAreaLaboral, idCargo, idMunicipio";
+                string OcultarColumnas = "IdEmplado, IdAreaLaboral, IdCargo, IdMunicipio";
                 OcultarColumnasEnElDGV(OcultarColumnas);
 
                 FormatearColumnasEnELDGV();
@@ -459,15 +459,14 @@ namespace Planilla.Formularios
         }
 
         private void MostrarFormularioParaOperacion(string OperacionARealizar)
-        {
-            /*
+        {            
             frmEmpleadoOperacion ofrmEmpleadoOperacion = new frmEmpleadoOperacion();
-            ofrmEmpleadoOperacion.OperacionARealizar = OperacionesARealizar;
-            ofrmEmpleadoOperacion.NOMBRE_ENTIDAD_PRIVILEGIO = NOMBRE_ENTIDAD_PRIVILEGIO;
-            ofrmEmpleadoOperacion.NombreEntidad = NOMBRE_ENTIDAD;
+            ofrmEmpleadoOperacion.OperacionARealizar = OperacionARealizar;
+            ofrmEmpleadoOperacion.Nombre_Entidad_Privilegio = Nombre_Entidad_Privilegio;
+            ofrmEmpleadoOperacion.Nombre_Entidad = Nombre_Entidad;
             ofrmEmpleadoOperacion.ValorLlavePrimariaEntidad = this.ValorLlavePrimariaEntidad;
             ofrmEmpleadoOperacion.MdiParent = this.ParentForm;
-            ofrmEmpleadoOperacion.Show();*/
+            ofrmEmpleadoOperacion.Show();
         }
 
         private void AsignarLlavePrimaria()
@@ -546,16 +545,16 @@ namespace Planilla.Formularios
                 this.Cursor = Cursors.WaitCursor;
 
                 MunicipioEN oRegistroEN = new MunicipioEN();
-                //MunicipioLN oRegistroLN = new MunicipioLN();
+                MunicipioLN oRegistroLN = new MunicipioLN();
                 oRegistroEN.Where = "";
                 oRegistroEN.OrderBy = "";
 
                 if (oRegistroLN.ListadoParaCombos(oRegistroEN, Program.oDatosDeConexioEN))
                 {
-                    cmbCargo.DataSource = oRegistroLN.TraerDatos();
-                    cmbCargo.DisplayMember = "Area";
-                    cmbCargo.ValueMember = "IdAreaLaboral";
-                    cmbCargo.SelectedIndex = -1;
+                    cmbMunicipio.DataSource = oRegistroLN.TraerDatos();
+                    cmbMunicipio.DisplayMember = "Municipio";
+                    cmbMunicipio.ValueMember = "IdMunicipio";
+                    cmbMunicipio.SelectedIndex = -1;
                 }
 
                 else { throw new ArgumentException(oRegistroLN.Error); }
@@ -582,6 +581,7 @@ namespace Planilla.Formularios
             CargarPrivilegios();
             LlenarCargosDelEmpleado();
             LlenarAreaLaboral();
+            LlenarMunicipio();
             ActivarFiltosDeBusqueda();
             tsbFiltroAutomatico_Click(null, null);
         }

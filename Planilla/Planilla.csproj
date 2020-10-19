@@ -70,6 +70,12 @@
     <Compile Include="Formularios\frmContrato.Designer.cs">
       <DependentUpon>frmContrato.cs</DependentUpon>
     </Compile>
+    <Compile Include="Formularios\frmEmpleadoOperacion.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\frmEmpleadoOperacion.Designer.cs">
+      <DependentUpon>frmEmpleadoOperacion.cs</DependentUpon>
+    </Compile>
     <Compile Include="Formularios\frmEmpleados.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -127,6 +133,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios\frmContrato.resx">
       <DependentUpon>frmContrato.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\frmEmpleadoOperacion.resx">
+      <DependentUpon>frmEmpleadoOperacion.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios\frmEmpleados.resx">
       <DependentUpon>frmEmpleados.cs</DependentUpon>
