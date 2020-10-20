@@ -71,14 +71,14 @@ create table Usuario (
 IdUsuario int (11) not null auto_increment primary key,
 Nombre varchar (200)default null,
 Login varchar (200) default null,
-Contrasena varchar (500) default null,
+Contrasena varchar (500) not null,
 Email varchar (5000) default null,
 Estado varchar (50) default null,
 IdUsuarioDeCreacion int (11) default null,
 FechaDeCreacion datetime default null,
 IdUsuarioDeModificacion int (11) default null,
 FechaDeModificacion datetime default null,
-IdRol int (11) not null,
+IdRol int (11) default null,
 key UsuarioRol_Idx (IdRol),
 constraint UsuarioRol foreign key (IdRol) references Rol (IdRol) on delete no action on update no action
 )engine = InnoDB auto_increment = 1 default charset = utf8 comment='';
@@ -115,8 +115,8 @@ constraint ModuloInterfazRolPrivilegio foreign key (IdPrivilegio) references Pri
 
 create table ModuloInterfazUsuario (
 IdModuloInterfazUsuario int (11) not null auto_increment primary key,
-IdPrivilegio int (11) not null,
-IdUsuario int (11) not null,
+IdPrivilegio int (11) default null,
+IdUsuario int (11) default null,
 Acceso int (2) default null,
 IdUsuarioDeCreacion int (11) default null,
 FechaDeCreacion datetime default null,
@@ -187,9 +187,10 @@ Direccion varchar (500) default null,
 Telefono Varchar (100) default null,
 Celular varchar (100) default null,
 Correo varchar (500) default null,
-IdCargo int (11) not null,
-IdMunicipio int (11) not null,
-IdAreaLaboral int (11) not null,
+NoINSS varchar (100) default null,
+IdCargo int (11) default null,
+IdMunicipio int (11) default null,
+IdAreaLaboral int (11) default null,
 key EmpleadoCargo_Idx (IdCargo),
 constraint EmpleadoCargo foreign key (IdCargo) references Cargo (IdCargo) on delete no action on update no action,
 key EmpleadoMunicipio_Idx (IdMunicipio),
@@ -293,7 +294,7 @@ set @IdUsuarioDeModificacion = 1;
 
 ##insertamos el registro de la interfaz;
 insert into interfaz
-Select 0,'Usuario', 'Interfaz para la información del usuario', 'usuasrio', 1, current_timestamp(), 1, current_timestamp();
+Select 0,'Usuario', 'Interfaz para la información del usuario', 'usuario', 1, current_timestamp(), 1, current_timestamp();
 
 #insertamos el registro del modulo interfaz
 insert into modulointerfaz
@@ -335,6 +336,11 @@ select 0, @idModuloInterfaz, 'Acceso', @IdUsuarioDeCreacion, current_timestamp()
 
 insert into privilegio
 select 0, @idModuloInterfaz, 'Actualizar', @IdUsuarioDeCreacion, current_timestamp(), @IdUsuarioDeModificacion, current_timestamp();
+
+/**privilegios para el empleado**/
+##insertamos el registro de la interfaz;
+insert into interfaz
+Select 0,'Empleado', 'Interfaz para la información del empleado', 'Empleado', 1, current_timestamp(), 1, current_timestamp();
 
 insert into privilegio
 select 0, @idModuloInterfaz, 'Eliminar', @IdUsuarioDeCreacion, current_timestamp(), @IdUsuarioDeModificacion, current_timestamp();

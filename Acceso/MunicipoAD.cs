@@ -44,15 +44,14 @@ namespace Acceso
                 InicialisarVariablesGlovales(oDatos);
 
                 Consultas = @"insert into municipio 
-				                (Municipio, IdDepartamento) 
+				                (Municipio) 
                                 values 
-                                (@Municipio, @IdDepartamento);
+                                (@Municipio);
                             Select  last_insert_ID() as 'ID';";
 
                 Comando.CommandText = Consultas;
 
                 Comando.Parameters.Add(new MySqlParameter("@Municipio", MySqlDbType.VarChar, oRegistroEN.Municipio.Trim().Length)).Value = oRegistroEN.Municipio.Trim();
-                Comando.Parameters.Add(new MySqlParameter("@IdDepartamento", MySqlDbType.Int32)).Value = oRegistroEN.oDepartamentoEN.IdDepartamento;
 
                 InicialisarAdaptador();
 
@@ -93,15 +92,13 @@ namespace Acceso
                 InicialisarVariablesGlovales(oDatos);
 
                 Consultas = @"UPDATE municipio set
-	                            Municipio = @Municipio,
-                                IdDepartamento = @IdDepartamento                    
+	                            Municipio = @Municipio
                             where IdMunicipio = @IdMunicipio;";
 
                 Comando.CommandText = Consultas;
 
                 Comando.Parameters.Add(new MySqlParameter("@IdMunicipio", MySqlDbType.Int32)).Value = oRegistroEN.IdMunicipio;
                 Comando.Parameters.Add(new MySqlParameter("@Municipio", MySqlDbType.VarChar, oRegistroEN.Municipio.Trim().Length)).Value = oRegistroEN.Municipio.Trim();
-                Comando.Parameters.Add(new MySqlParameter("@IdDepartamento", MySqlDbType.Int32)).Value = oRegistroEN.oDepartamentoEN.IdDepartamento;
                 
                 Comando.ExecuteNonQuery();
 
@@ -179,7 +176,7 @@ namespace Acceso
 
                 InicialisarVariablesGlovales(oDatos);
 
-                Consultas = string.Format(@"Select IdMunicipio, Municipio, IdDepartamento from municipio where IdMunicipio > 0 {0} {1} ", oRegistroEN.Where, oRegistroEN.OrderBy);
+                Consultas = string.Format(@"Select IdMunicipio, Municipio from municipio where IdMunicipio > 0 {0} {1} ", oRegistroEN.Where, oRegistroEN.OrderBy);
                 Comando.CommandText = Consultas;
 
                 InicialisarAdaptador();
@@ -210,7 +207,7 @@ namespace Acceso
 
                 InicialisarVariablesGlovales(oDatos);
 
-                Consultas = string.Format(@"Select IdMunicipio, Municipio, IdDepartamento from municipio where IdMunicipio > 0{0} ", oRegistroEN.IdMunicipio);
+                Consultas = string.Format(@"Select IdMunicipio, Municipio from municipio where IdMunicipio > 0{0} ", oRegistroEN.IdMunicipio);
                 Comando.CommandText = Consultas;
 
                 InicialisarAdaptador();
@@ -241,7 +238,7 @@ namespace Acceso
 
                 InicialisarVariablesGlovales(oDatos);
 
-                Consultas = string.Format(@"Select IdMunicipio, Municipio, IdDepartamento from municipio where IdMunicipio > 0 {0} {1}; ", oRegistroEN.Where, oRegistroEN.OrderBy);
+                Consultas = string.Format(@"Select IdMunicipio, Municipio from municipio where IdMunicipio > 0 {0} {1}; ", oRegistroEN.Where, oRegistroEN.OrderBy);
                 Comando.CommandText = Consultas;
 
                 InicialisarAdaptador();
@@ -272,7 +269,7 @@ namespace Acceso
 
                 InicialisarVariablesGlovales(oDatos);
 
-                Consultas = string.Format(@"Select IdMunicipio, Municipio, IdDepartamento from municipio where IdMunicipio > 0 {0} {1} ", oRegistroEN.Where, oRegistroEN.OrderBy);
+                Consultas = string.Format(@"Select IdMunicipio, Municipio from municipio where IdMunicipio > 0 {0} {1} ", oRegistroEN.Where, oRegistroEN.OrderBy);
                 Comando.CommandText = Consultas;
 
                 InicialisarAdaptador();
@@ -314,9 +311,8 @@ namespace Acceso
 
                     case "ACTUALIZAR":
 
-                        Consultas = @"SELECT CASE WHEN EXISTS(Select IdMunicipio from Municipio where upper(trim(Municipio)) = upper(trim(@Municipio)) and IdDepartamento = @IdDepartamento and IdMunicipio <> @IdMunicipio) THEN 1 ELSE 0 END AS 'RES'";
+                        Consultas = @"SELECT CASE WHEN EXISTS(Select IdMunicipio from Municipio where upper(trim(Municipio)) = upper(trim(@Municipio)) and IdMunicipio <> @IdMunicipio) THEN 1 ELSE 0 END AS 'RES'";
                         Comando.Parameters.Add(new MySqlParameter("@Municipio", MySqlDbType.VarChar, oRegistroEN.Municipio.Trim().Length)).Value = oRegistroEN.Municipio.Trim();
-                        Comando.Parameters.Add(new MySqlParameter("@IdDepartamento", MySqlDbType.Int32)).Value = oRegistroEN.oDepartamentoEN.IdDepartamento;
                         Comando.Parameters.Add(new MySqlParameter("@IdMunicipio", MySqlDbType.Int32)).Value = oRegistroEN.IdMunicipio;
 
                         break;
@@ -427,7 +423,7 @@ namespace Acceso
 
             oRegistroEN.IdRegistro = oMunicipio.IdMunicipio;
             oRegistroEN.Modelo = "MunicipioAD";
-            //oRegistroEN.Modulo = "Clientes";
+            oRegistroEN.Modulo = "General";
             oRegistroEN.Tabla = "Municipio";
             oRegistroEN.TipoDeOperacion = TipoDeOperacion;
             oRegistroEN.Estado = Estado;
@@ -491,8 +487,8 @@ namespace Acceso
         }
         private string InformacionDelRegistro(MunicipioEN oRegistroEN)
         {
-            string Cadena = @"IdMunicipio: {0}, Municipio: {1}, IdDepartamento: {2}";
-            Cadena = string.Format(Cadena, oRegistroEN.IdMunicipio, oRegistroEN.Municipio, oRegistroEN.oDepartamentoEN.IdDepartamento);
+            string Cadena = @"IdMunicipio: {0}, Municipio: {1}";
+            Cadena = string.Format(Cadena, oRegistroEN.IdMunicipio, oRegistroEN.Municipio);
             Cadena = Cadena.Replace(",", Environment.NewLine);
             return Cadena;
         }

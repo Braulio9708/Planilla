@@ -424,7 +424,7 @@ namespace Planilla.Formularios
                     CargoEN oRegistroEN = InformacionDelRegistro();
                     CargoLN oRegistroLN = new CargoLN();
 
-                    if (oRegistroLN.ValidarRegistroDuplicado(oRegistroEN, Program.oDatosDeConexion, "AGREGAR"))
+                    if (oRegistroLN.ValidarRegistroDuplicado(oRegistroEN, Program.oDatosDeConexioEN, "AGREGAR"))
                     {
 
                         MessageBox.Show(oRegistroLN.Error, "Guardar información", MessageBoxButtons.OK, MessageBoxIcon.Error);

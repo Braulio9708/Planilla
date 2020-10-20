@@ -401,8 +401,12 @@ namespace Planilla.Formularios
                         }
                     }
                     //Crear el pribiegio para esta operacion...
-                    tsbImprimir.Enabled = true;
-                    tsbNuevo.Enabled = true;
+                    tsbImprimir.Enabled = oRegistroLN.VerificarSiTengoAcceso("Imprimir");
+                    tsbNuevo.Enabled = oRegistroLN.VerificarSiTengoAcceso("Nuevo");
+                    cmActualizar.Enabled = oRegistroLN.VerificarSiTengoAcceso("Actualizar");
+                    cmEliminar.Enabled = oRegistroLN.VerificarSiTengoAcceso("Eliminar");
+                    cmVisualizar.Enabled = oRegistroLN.VerificarSiTengoAcceso("Visualizar");
+                    //cmImprimir.Enabled = oRegistroLN.VerificarSiTengoAcceso("Imprimir");
                 }
                 else
                 {
