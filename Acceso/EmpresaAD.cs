@@ -9,7 +9,7 @@ using System.Data;
 
 namespace Acceso
 {
-    class EmpresaAD
+    public class EmpresaAD
     {
 
         public string Error { set; get; }
@@ -295,6 +295,74 @@ namespace Acceso
 
             }
 
+        }
+
+        public bool ValidarRegistroDuplicado(EmpresaEN oRegistroEN, DatosDeConexionEN oDatos, string TipoDeOperacion)
+        {
+            oTransaccionesAD = new TransaccionesAD();
+
+            try
+            {
+
+                InicialisarVariablesGlovales(oDatos);
+
+                switch (TipoDeOperacion.Trim().ToUpper())
+                {
+
+                    case "AGREGAR":
+
+                        Consultas = @"SELECT CASE WHEN EXISTS(Select IdEmpresa from Empresa where IdUsuario = @IdUsuario and upper(trim(Nombre)) = upper(trim(@Nombre)) and upper(trim(Direccion)) = upper(trim(@Direccion)) and upper(trim(Telefono)) = upper(trim(@Telefono)) and upper(trim(NRuc)) = upper(trim(@NRuc)) and upper(trim(Logo)) = upper(trim(@Logo)) and upper(trim(Celular)) = upper(trim(@Celular)) and upper(trim(SitioWeb)) = upper(trim(@SitioWeb)) and upper(trim(Descripcion)) = upper(trim(@Descripcion))) THEN 1 ELSE 0 END AS 'RES'";
+                        Comando.Parameters.Add(new MySqlParameter("@IdUsuario", MySqlDbType.Int32)).Value = oRegistroEN.oUsuarioEN.IdUsuario;
+                        Comando.Parameters.Add(new MySqlParameter("@Nombre", MySqlDbType.VarChar, oRegistroEN.Nombre.Trim().Length).Value = oRegistroEN.Nombre.Trim();
+                        break;
+
+                    case "ACTUALIZAR":
+
+                        Consultas = @"SELECT CASE WHEN EXISTS(Select IdEmpresa from Empresa where IdUsuario = @IdUsuario and upper(trim(Nombre)) = upper(trim(@Nombre)) and upper(trim(Direccion)) = upper(trim(@Direccion)) and upper(trim(Telefono)) = upper(trim(@Telefono)) and upper(trim(NRuc)) = upper(trim(@NRuc)) and upper(trim(Logo)) = upper(trim(@Logo)) and upper(trim(Celular)) = upper(trim(@Celular)) and upper(trim(SitioWeb)) = upper(trim(@SitioWeb)) and upper(trim(Descripcion)) = upper(trim(@Descripcion)) and IdEmpresa <> @IdEmpresa) THEN 1 ELSE 0 END AS 'RES'";
+
+
+                        break;
+
+                    default:
+                        throw new ArgumentException("La aperación solicitada no esta disponible");
+
+                }
+
+                Comando.CommandText = Consultas;
+
+                InicialisarAdaptador();
+
+                if (Convert.ToInt32(DT.Rows[0]["RES"].ToString()) > 0)
+                {
+
+                    DescripcionDeLaOperacion = string.Format("Ya existe información del Registro dentro de nuestro sistema: {0} {1}", Environment.NewLine, InformacionDelRegistro(oRegistroEN));
+                    this.Error = DescripcionDeLaOperacion;
+                    return true;
+
+                }
+
+                return false;
+
+            }
+            catch (Exception ex)
+            {
+                this.Error = ex.Message;
+
+                DescripcionDeLaOperacion = string.Format("Se produjo el seguiente error: '{2}' al validar el registro. {0} {1} ", Environment.NewLine, InformacionDelRegistro(oRegistroEN), ex.Message);
+
+                //Agregamos la Transacción....
+                TransaccionesEN oTransaccion = InformacionDelaTransaccion(oRegistroEN, "VALIDAR", "REGISTRO DUPLICADO DENTRO DE LA BASE DE DATOS", "ERROR");
+                oTransaccionesAD.Agregar(oTransaccion, oDatos);
+
+                return false;
+            }
+            finally
+            {
+
+                FinalizarConexion();
+                oTransaccionesAD = null;
+
+            }
         }
 
         #endregion

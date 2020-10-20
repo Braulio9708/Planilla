@@ -175,7 +175,10 @@ namespace Acceso
             {
                 InicializarVariablesGlovales(oDatos);
 
-                Consultas = string.Format(@"Select IdAreaLaboral, Area from AreaLaboral where IdAreaLaboral> 0  {0} {1} ", oRegistroEN.Where, oRegistroEN.OrderBy);
+                Consultas = string.Format(@"select al.Area AS 'Area Laboral', esa.Nombre as 'Empresa' 
+								            from arealaboral as al
+                                            inner join empresa as esa on al.IdEmpresa = esa.IdEmpresa
+                                            where al.IdAreaLaboral > 0  {0} {1} ", oRegistroEN.Where, oRegistroEN.OrderBy);
 
                 Comando.CommandText = Consultas;
 
@@ -201,7 +204,10 @@ namespace Acceso
             {
                 InicializarVariablesGlovales(oDatos);
 
-                Consultas = string.Format(@"Select IdAreaLaboral, Area from AreaLaboral where IdAreaLaboral> {0}", oRegistroEN.IdAreaLaboral);
+                Consultas = string.Format(@"select al.IdAreaLaboral, al.Area as 'Area Laboral', al.IdEmpresa, esa.Nombre as 'Empresa' 
+								            from arealaboral as al
+                                            inner join empresa as esa on al.IdEmpresa = esa.IdEmpresa
+                                            where al.IdAreaLaboral > {0}", oRegistroEN.IdAreaLaboral);
 
                 Comando.CommandText = Consultas;
                 
@@ -230,7 +236,10 @@ namespace Acceso
 
                 InicializarVariablesGlovales(oDatos);
 
-                Consultas = string.Format(@"select IdAreaLaboral, Area, IdEmpresa from arealaboral where IdAreaLaboral > 0 {0} {1}; ", oRegistroEN.Where, oRegistroEN.OrderBy);
+                Consultas = string.Format(@"select al.IdAreaLaboral, al.Area as 'Area Laboral', al.IdEmpresa, esa.Nombre as 'Empresa' 
+								            from arealaboral as al
+                                            inner join empresa as esa on al.IdEmpresa = esa.IdEmpresa
+                                            where al.IdAreaLaboral > 0 {0} {1}; ", oRegistroEN.Where, oRegistroEN.OrderBy);
                 Comando.CommandText = Consultas;
 
                 InicializarAdaptador();

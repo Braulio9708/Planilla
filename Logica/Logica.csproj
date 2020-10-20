@@ -51,6 +51,7 @@
     <Compile Include="ContratoLN.cs" />
     <Compile Include="DeduccionesLN.cs" />
     <Compile Include="EmpleadoLN.cs" />
+    <Compile Include="EmpresaLN.cs" />
     <Compile Include="InterfazLN.cs" />
     <Compile Include="ModuloInterfazRolLN.cs" />
     <Compile Include="ModuloInterfazUsuarioLN.cs" />

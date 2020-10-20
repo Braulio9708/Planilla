@@ -57,7 +57,7 @@ namespace Planilla.Formularios
             if (ActivarFiltros == false)
             {
                 tsbFiltrar.DisplayStyle = ToolStripItemDisplayStyle.ImageAndText;
-                tsbImprimir.DisplayStyle = ToolStripItemDisplayStyle.ImageAndText;
+                tsbNuevo.DisplayStyle = ToolStripItemDisplayStyle.ImageAndText;
                 tsbImprimir.DisplayStyle = ToolStripItemDisplayStyle.ImageAndText;
                 tsbMarcarTodos.DisplayStyle = ToolStripItemDisplayStyle.ImageAndText;
                 tsbSeleccionarTodos.DisplayStyle = ToolStripItemDisplayStyle.ImageAndText;
@@ -81,7 +81,7 @@ namespace Planilla.Formularios
                 if (ActivarFiltros == true)
                 {
                     tsbFiltrar.DisplayStyle = ToolStripItemDisplayStyle.ImageAndText;
-                    tsbImprimir.DisplayStyle = ToolStripItemDisplayStyle.ImageAndText;
+                    tsbNuevo.DisplayStyle = ToolStripItemDisplayStyle.ImageAndText;
                     tsbImprimir.DisplayStyle = ToolStripItemDisplayStyle.ImageAndText;
                     tsbMarcarTodos.DisplayStyle = ToolStripItemDisplayStyle.ImageAndText;
                     tsbSeleccionarTodos.DisplayStyle = ToolStripItemDisplayStyle.ImageAndText;
@@ -90,7 +90,7 @@ namespace Planilla.Formularios
 
                     if (VariosRegistros == true)
                     {
-                        tsbMarcarTodos.Visible = true;
+                        tsbMarcarTodos.Visible = false;
                     }
                     else
                     {

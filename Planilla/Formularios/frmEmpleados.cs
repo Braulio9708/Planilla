@@ -21,7 +21,7 @@ namespace Planilla.Formularios
         }
 
         private string Nombre_Entidad_Privilegio = "Empleado";
-        private string Nombre_Entidad = "Administrador de empleados";
+        private string Nombre_Entidad = "Administrar empleados";
         private string Nombre_Llave_Primaria = "IdEmpleado";
         private int ValorLlavePrimariaEntidad;
         private int IndiceSeleccionado;
@@ -434,8 +434,12 @@ namespace Planilla.Formularios
                         }
                     }
 
+                    //Crear el pribiegio para esta operacion...
                     tsbImprimir.Enabled = oRegistroLN.VerificarSiTengoAcceso("Imprimir");
                     tsbNuevoRegistro.Enabled = oRegistroLN.VerificarSiTengoAcceso("Nuevo");
+                    cmActualizar.Enabled = oRegistroLN.VerificarSiTengoAcceso("Actualizar");
+                    cmEliminar.Enabled = oRegistroLN.VerificarSiTengoAcceso("Eliminar");
+                    cmVisualizar.Enabled = oRegistroLN.VerificarSiTengoAcceso("Visualizar");
                 }
                 else
                 {
