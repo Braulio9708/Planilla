@@ -311,7 +311,7 @@ namespace Planilla.Formularios
                 this.dgvLista.BackgroundColor = System.Drawing.SystemColors.Window;
                 this.dgvLista.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
 
-                string OcultarColumnas = "";
+                string OcultarColumnas = "IdAreaLaboral";
                 OcultarColumnasEnElDGV(OcultarColumnas);
 
                 FormatearColumnasDelDGV();
@@ -404,13 +404,12 @@ namespace Planilla.Formularios
                             }
                         }
                     }
-                    //Crear el pribiegio para esta operacion...
-                    tsbImprimir.Enabled = oRegistroLN.VerificarSiTengoAcceso("Imprimir");
+                    //Crear el pribiegio para esta operacion...                    
                     tsbNuevo.Enabled = oRegistroLN.VerificarSiTengoAcceso("Nuevo");
                     cmActualizar.Enabled = oRegistroLN.VerificarSiTengoAcceso("Actualizar");
                     cmEliminar.Enabled = oRegistroLN.VerificarSiTengoAcceso("Eliminar");
                     cmVisualizar.Enabled = oRegistroLN.VerificarSiTengoAcceso("Visualizar");
-                    //cmImprimir.Enabled = oRegistroLN.VerificarSiTengoAcceso("Imprimir");
+                    cmImprimir.Enabled = false;
                 }
                 else
                 {
@@ -436,16 +435,25 @@ namespace Planilla.Formularios
 
         private void MostrarFormularioSegunOpeacion(string OperacionARealizar)
         {
-
+            frmAreaLaboralOperacion ofrmAreaLaboralOperacion = new frmAreaLaboralOperacion();
+            ofrmAreaLaboralOperacion.OperacionARealizar = OperacionARealizar;
+            ofrmAreaLaboralOperacion.Nombre_Entidad_Privilegio = Nombre_Entidad_Privilegio;
+            ofrmAreaLaboralOperacion.Nombre_Entidad = Nombre_Entidad;
+            ofrmAreaLaboralOperacion.ValorLlavePrimariaEntidad = this.ValorLlavePrimariaEntidad;
+            ofrmAreaLaboralOperacion.MdiParent = this.ParentForm;
+            ofrmAreaLaboralOperacion.Show();
         }
 
-        private void AsignarLlavePrimaria()
+        private void AsiganarLlavePrimaria()
         {
             this.ValorLlavePrimariaEntidad = Convert.ToInt32(this.dgvLista.Rows[this.IndiceSeleccionado].Cells[this.Nombre_Llave_Primaria].Value);
         }
-                
+
 
         #endregion
+
+
+
 
         private void frmAreaLaboral_Shown(object sender, EventArgs e)
         {
@@ -682,19 +690,19 @@ namespace Planilla.Formularios
 
         private void cmActualizar_Click(object sender, EventArgs e)
         {
-            AsignarLlavePrimaria();
+            AsiganarLlavePrimaria();
             MostrarFormularioSegunOpeacion("Modificar");
         }
 
         private void cmEliminar_Click(object sender, EventArgs e)
         {
-            AsignarLlavePrimaria();
+            AsiganarLlavePrimaria();
             MostrarFormularioSegunOpeacion("Eliminar");
         }
 
         private void cmVisualizar_Click(object sender, EventArgs e)
         {
-            AsignarLlavePrimaria();
+            AsiganarLlavePrimaria();
             MostrarFormularioSegunOpeacion("Consultar");
         }
 

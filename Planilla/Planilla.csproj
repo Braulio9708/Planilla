@@ -58,6 +58,12 @@
     <Compile Include="Formularios\frmAreaLaboral.Designer.cs">
       <DependentUpon>frmAreaLaboral.cs</DependentUpon>
     </Compile>
+    <Compile Include="Formularios\frmAreaLaboralOperacion.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\frmAreaLaboralOperacion.Designer.cs">
+      <DependentUpon>frmAreaLaboralOperacion.cs</DependentUpon>
+    </Compile>
     <Compile Include="Formularios\frmCargo.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -133,6 +139,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Formularios\frmAreaLaboral.resx">
       <DependentUpon>frmAreaLaboral.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\frmAreaLaboralOperacion.resx">
+      <DependentUpon>frmAreaLaboralOperacion.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios\frmCargo.resx">
       <DependentUpon>frmCargo.cs</DependentUpon>

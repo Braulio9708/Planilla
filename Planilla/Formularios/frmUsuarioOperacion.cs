@@ -266,6 +266,7 @@ namespace Planilla.Formularios
 
             }
         }
+
         private void OcultarColumnasEnElDGV(String ColumnasDelDGV)
         {
             if (dgvLista.Columns.Count > 0)

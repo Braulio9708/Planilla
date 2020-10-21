@@ -13,9 +13,9 @@ using Funciones;
 
 namespace Planilla.Formularios
 {
-    public partial class frmCargoOperacion : Form
+    public partial class frmAreaLaboralOperacion : Form
     {
-        public frmCargoOperacion()
+        public frmAreaLaboralOperacion()
         {
             InitializeComponent();
         }
@@ -30,52 +30,34 @@ namespace Planilla.Formularios
         private bool PermitirCambiarRegistroAunqueEstenVinculados = false;
         private bool AplicarCambio = false;
 
-        private void frmCargoOperacion_Shown(object sender, EventArgs e)
+        #region "Funciones del programador"
+
+        private void EvaluarErrorParaMensageDePantalla(String Error, string TipoDeOperacion)
         {
-            ObtenerValoresDeConfiguracion();
-            LlamarMetodoSegunOperacion();
-            EstablecerTituloDeVentana();
-            DeshabilitarControlesSegunOperacionesARealizar();
-            CargarPrivilegiosDelUsuario();
-
-            tsbGuardar.DisplayStyle = ToolStripItemDisplayStyle.ImageAndText;
-            tsbEliminar.DisplayStyle = ToolStripItemDisplayStyle.ImageAndText;
-            tsbActualizar.DisplayStyle = ToolStripItemDisplayStyle.ImageAndText;
-            tsbLimpiarCampos.DisplayStyle = ToolStripItemDisplayStyle.ImageAndText;
-            tsbRecarRegistro.DisplayStyle = ToolStripItemDisplayStyle.ImageAndText;
-            tsbCerrarVentana.DisplayStyle = ToolStripItemDisplayStyle.ImageAndText;
-            CargarPrivilegiosDelUsuarioPermitirCambiar();
-        }
-
-        #region "Funciones"
-
-        private void EvaluarErrorParaMensajeAPantalla(String Error, string TipoOperacion)
-        {
-            if (string.IsNullOrEmpty(Error) || Error.Trim().Length == 0)
+            if(string.IsNullOrEmpty(Error) || Error.Trim().Length == 0)
             {
                 Error = string.Empty;
-                MessageBox.Show(string.Format("Operación '{0}' realizada correctamente", TipoOperacion), string.Format("{0} Registro", TipoOperacion), MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show(string.Format("Operación '{0}' realizada correctamente", TipoDeOperacion), string.Format("{0} Registro", TipoDeOperacion), MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             else
             {
-                string cadena = "";
-                switch (TipoOperacion.ToUpper())
+                string Cadena = "";
+                switch (TipoDeOperacion.ToUpper())
                 {
                     case "GUARDAR":
-                        cadena = "Registro Guardado correctamente pero con errores: ";
+                        Cadena = "Registro Guardado correctamente pero con errores: ";
                         break;
                     case "ACTUALIZAR":
-                        cadena = "Registros Actualizado correctamente pero con errores: ";
+                        Cadena = "Registros Actualizado correctamente pero con errores: ";
                         break;
                     case "ELIMINAR":
-                        cadena = "Registro Eliminado Correctamente pero con errores: ";
+                        Cadena = "Registro Eliminado Correctamente pero con errores: ";
                         break;
                 }
 
-                cadena = string.Format("{0} {1} {1} {2}", cadena, Environment.NewLine, Error);
+                Cadena = string.Format("{0} {1} {1} {2}", Cadena, Environment.NewLine, Error);
 
-                MessageBox.Show(cadena, string.Format("{0} Registro", TipoOperacion), MessageBoxButtons.OK, MessageBoxIcon.Warning);
-
+                MessageBox.Show(Cadena, string.Format("{0} Registro", TipoDeOperacion), MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
 
@@ -87,11 +69,11 @@ namespace Planilla.Formularios
 
                 ModuloInterfazUsuarioEN oRegistroEN = new ModuloInterfazUsuarioEN();
                 ModuloInterfazUsuarioLN oRegistroLN = new ModuloInterfazUsuarioLN();
-                                
+
                 oRegistroEN.oUsuarioEN.IdUsuario = Program.oLoginEN.IdUsuario;
                 oRegistroEN.oPrivilegioEN.oModuloInterfazEN.oInterfazEN.Nombre = Nombre_Entidad_Privilegio;
 
-                
+
 
                 if (oRegistroLN.ListadoPrivilegiosDelUsuariosPorModulo(oRegistroEN, Program.oDatosDeConexioEN))
                 {
@@ -114,12 +96,10 @@ namespace Planilla.Formularios
             {
                 this.Cursor = Cursors.Default;
             }
-
         }
 
-        private void CargarPrivilegiosDelUsuario()
+        private void CargarPrivilegios()
         {
-
             try
             {
                 this.Cursor = Cursors.WaitCursor;
@@ -168,10 +148,9 @@ namespace Planilla.Formularios
             {
                 this.Cursor = Cursors.Default;
             }
-
         }
 
-        private void ObtenerValoresDeConfiguracion()
+        private void ObtenerValoresDeLaConfiguracion()
         {
             chkCerrarVentana.CheckState = (Properties.Settings.Default.CargoVentanaDespuesDeOperacion == true ? CheckState.Checked : CheckState.Unchecked);
             this.CerrarVentana = (Properties.Settings.Default.CargoVentanaDespuesDeOperacion == true ? true : false);
@@ -304,22 +283,23 @@ namespace Planilla.Formularios
         {
             this.Cursor = Cursors.WaitCursor;
 
-            CargoEN oRegistrosEN = new CargoEN();
-            CargoLN oRegistrosLN = new CargoLN();
+            AreaLaboralEN oRegistrosEN = new AreaLaboralEN();
+            AreaLaboralLN oRegistrosLN = new AreaLaboralLN();
 
-            oRegistrosEN.IdCargo = ValorLlavePrimariaEntidad;
+            oRegistrosEN.IdAreaLaboral = ValorLlavePrimariaEntidad;
 
             if (oRegistrosLN.ListadoPorIdentificador(oRegistrosEN, Program.oDatosDeConexioEN))
             {
-                
+
                 if (oRegistrosLN.TraerDatos().Rows.Count > 0)
                 {
 
                     DataRow Fila = oRegistrosLN.TraerDatos().Rows[0];
-                    txtNombre.Text = Fila["Cargo"].ToString();
+                    txtArea.Text = Fila["Area"].ToString();
+                    cmbEmpresa.SelectedValue = Convert.ToInt32(Fila["IdEmpresa"].ToString());
                     oRegistrosEN = null;
                     oRegistrosLN = null;
-                    
+
 
                 }
                 else
@@ -353,14 +333,11 @@ namespace Planilla.Formularios
         private void EstablecerTituloDeVentana()
         {
             this.Text = string.Format("{0} - {1}", this.Nombre_Entidad, this.OperacionARealizar.ToUpper());
-            
         }
 
         private void LimpiarCampos()
         {
-            //txtIdentificador.Text = string.Empty;
-            txtNombre.Text = string.Empty;
-
+            txtArea.Text = string.Empty;
         }
 
         private void GuardarValoresDeConfiguracion()
@@ -378,33 +355,65 @@ namespace Planilla.Formularios
         {
             LimpiarEP();
 
-            if (Controles.IsNullOEmptyElControl(txtNombre))
+            if (Controles.IsNullOEmptyElControl(txtArea))
             {
-                EP.SetError(txtNombre, "Este campo no puede quedar vacío");
-                txtNombre.Focus();
+                EP.SetError(txtArea, "Este campo no puede quedar vacío");
+                txtArea.Focus();
+                return false;
+            }
+            if (Controles.IsNullOEmptyElControl(cmbEmpresa))
+            {
+                EP.SetError(cmbEmpresa, "Este campo no puede quedar vacío");
+                cmbEmpresa.Focus();
                 return false;
             }
 
             return true;
-
         }
 
-        private CargoEN InformacionDelRegistro()
+        private AreaLaboralEN InformacionDeElRegistro()
         {
+            AreaLaboralEN oRegistroEN = new AreaLaboralEN();
 
-            CargoEN oRegistroEN = new CargoEN();
-
-            oRegistroEN.IdCargo = Convert.ToInt32((txtIdentificador.Text.Length > 0 ? txtIdentificador.Text : "0"));
-            oRegistroEN.Cargo = txtNombre.Text.Trim();
+            oRegistroEN.IdAreaLaboral = Convert.ToInt32((txtIdentificador.Text.Length > 0 ? txtIdentificador.Text : "0"));
+            oRegistroEN.Area = txtArea.Text.Trim();
+            oRegistroEN.oEmpresaEN.IdEmpresa = Convert.ToInt32(cmbEmpresa.SelectedValue);
+            oRegistroEN.oEmpresaEN.Nombre = cmbEmpresa.Text.Trim();
 
             //partes generales.            
             oRegistroEN.oLoginEN = Program.oLoginEN;
-            oRegistroEN.IdUsuarioDeCreacion = Program.oLoginEN.IdUsuario;
-            oRegistroEN.IdUsuarioDeModificacion = Program.oLoginEN.IdUsuario;
-            oRegistroEN.FechaDeCreacion = System.DateTime.Now;
-            oRegistroEN.FechaDeModificacion = System.DateTime.Now;
+            
             return oRegistroEN;
+        }
 
+        private void LlenarInformacionDeEmpresa()
+        {
+            try
+            {
+                this.Cursor = Cursors.WaitCursor;
+
+                EmpresaEN oRegistroEN = new EmpresaEN();
+                EmpresaLN oRegistroLN = new EmpresaLN();
+                oRegistroEN.Where = "";
+                oRegistroEN.OrderBy = "";
+
+                if (oRegistroLN.Listado(oRegistroEN, Program.oDatosDeConexioEN))
+                {
+                    cmbEmpresa.DataSource = oRegistroLN.TraerDatos();
+                    cmbEmpresa.DisplayMember = "Nombre";
+                    cmbEmpresa.ValueMember = "IdEmpresa";
+                    cmbEmpresa.SelectedIndex = -1;
+                }
+                else { throw new ArgumentException(oRegistroLN.Error); }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Información de los tipos de cuentas", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                this.Cursor = Cursors.Default;
+            }
         }
 
         #endregion
@@ -418,8 +427,8 @@ namespace Planilla.Formularios
                 if (LosDatosIngresadosSonCorrectos())
                 {
 
-                    CargoEN oRegistroEN = InformacionDelRegistro();
-                    CargoLN oRegistroLN = new CargoLN();
+                    AreaLaboralEN oRegistroEN = InformacionDeElRegistro();
+                    AreaLaboralLN oRegistroLN = new AreaLaboralLN();
 
                     if (oRegistroLN.ValidarRegistroDuplicado(oRegistroEN, Program.oDatosDeConexioEN, "AGREGAR"))
                     {
@@ -429,13 +438,18 @@ namespace Planilla.Formularios
 
                     }
 
+                    if(oRegistroLN.ValidarSiElRegistroEstaVinculado(oRegistroEN, Program.oDatosDeConexioEN, "AGREGAR"))
+                    {
+                        MessageBox.Show(oRegistroLN.Error, "Guardar Informacion", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+
                     if (oRegistroLN.Agregar(oRegistroEN, Program.oDatosDeConexioEN))
                     {
 
-                        txtIdentificador.Text = oRegistroEN.IdCargo.ToString();
-                        ValorLlavePrimariaEntidad = oRegistroEN.IdCargo;
+                        txtIdentificador.Text = oRegistroEN.IdAreaLaboral.ToString();
+                        ValorLlavePrimariaEntidad = oRegistroEN.IdAreaLaboral;
 
-                        EvaluarErrorParaMensajeAPantalla(oRegistroLN.Error, "Guardar");
+                        EvaluarErrorParaMensageDePantalla(oRegistroLN.Error, "Guardar");
 
                         oRegistroEN = null;
                         oRegistroLN = null;
@@ -449,7 +463,7 @@ namespace Planilla.Formularios
                         else
                         {
                             OperacionARealizar = "Modificar";
-                            ObtenerValoresDeConfiguracion();
+                            ObtenerValoresDeLaConfiguracion();
                             LlamarMetodoSegunOperacion();
                             EstablecerTituloDeVentana();
                             DeshabilitarControlesSegunOperacionesARealizar();
@@ -494,8 +508,8 @@ namespace Planilla.Formularios
                         return;
                     }
 
-                    CargoEN oRegistroEN = InformacionDelRegistro();
-                    CargoLN oRegistroLN = new CargoLN();
+                    AreaLaboralEN oRegistroEN = InformacionDeElRegistro();
+                    AreaLaboralLN oRegistroLN = new AreaLaboralLN();
 
                     if (oRegistroLN.ValidarSiElRegistroEstaVinculado(oRegistroEN, Program.oDatosDeConexioEN, "ACTUALIZAR"))
                     {
@@ -515,7 +529,7 @@ namespace Planilla.Formularios
                         }
                     }
 
-                    if (oRegistroLN.ValidarRegistroDuplicado(oRegistroEN, Program.oDatosDeConexion, "ACTUALIZAR"))
+                    if (oRegistroLN.ValidarRegistroDuplicado(oRegistroEN, Program.oDatosDeConexioEN, "ACTUALIZAR"))
                     {
                         this.Cursor = Cursors.Default;
                         MessageBox.Show(oRegistroLN.Error, "Actualizar la información", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -526,10 +540,10 @@ namespace Planilla.Formularios
                     if (oRegistroLN.Actualizar(oRegistroEN, Program.oDatosDeConexioEN))
                     {
 
-                        txtIdentificador.Text = oRegistroEN.IdCargo.ToString();
-                        ValorLlavePrimariaEntidad = oRegistroEN.IdCargo;
+                        txtIdentificador.Text = oRegistroEN.IdAreaLaboral.ToString();
+                        ValorLlavePrimariaEntidad = oRegistroEN.IdAreaLaboral;
 
-                        EvaluarErrorParaMensajeAPantalla(oRegistroLN.Error, "Actualizar");
+                        EvaluarErrorParaMensageDePantalla(oRegistroLN.Error, "Actualizar");
 
                         oRegistroEN = null;
                         oRegistroLN = null;
@@ -581,8 +595,8 @@ namespace Planilla.Formularios
                         return;
                     }
 
-                    CargoEN oRegistroEN = InformacionDelRegistro();
-                    CargoLN oRegistroLN = new CargoLN();
+                    AreaLaboralEN oRegistroEN = InformacionDeElRegistro();
+                    AreaLaboralLN oRegistroLN = new AreaLaboralLN();
 
                     if (oRegistroLN.ValidarSiElRegistroEstaVinculado(oRegistroEN, Program.oDatosDeConexioEN, "ELIMINAR"))
                     {
@@ -594,10 +608,10 @@ namespace Planilla.Formularios
                     if (oRegistroLN.Eliminar(oRegistroEN, Program.oDatosDeConexioEN))
                     {
 
-                        txtIdentificador.Text = oRegistroEN.IdCargo.ToString();
-                        ValorLlavePrimariaEntidad = oRegistroEN.IdCargo;
+                        txtIdentificador.Text = oRegistroEN.IdAreaLaboral.ToString();
+                        ValorLlavePrimariaEntidad = oRegistroEN.IdAreaLaboral;
 
-                        EvaluarErrorParaMensajeAPantalla(oRegistroLN.Error, "Eliminar");
+                        EvaluarErrorParaMensageDePantalla(oRegistroLN.Error, "Eliminar");
 
                         oRegistroEN = null;
                         oRegistroLN = null;
@@ -663,9 +677,27 @@ namespace Planilla.Formularios
             this.CerrarVentana = (chkCerrarVentana.CheckState == CheckState.Checked ? true : false);
         }
 
-        private void frmCargoOperacion_FormClosing(object sender, FormClosingEventArgs e)
+        private void frmAreaLaboralOperacion_FormClosing(object sender, FormClosingEventArgs e)
         {
             GuardarValoresDeConfiguracion();
+        }
+
+        private void frmAreaLaboralOperacion_Shown(object sender, EventArgs e)
+        {
+            ObtenerValoresDeLaConfiguracion();
+            LlamarMetodoSegunOperacion();
+            EstablecerTituloDeVentana();
+            DeshabilitarControlesSegunOperacionesARealizar();
+            CargarPrivilegios();
+            LlenarInformacionDeEmpresa();
+
+            tsbGuardar.DisplayStyle = ToolStripItemDisplayStyle.ImageAndText;
+            tsbEliminar.DisplayStyle = ToolStripItemDisplayStyle.ImageAndText;
+            tsbActualizar.DisplayStyle = ToolStripItemDisplayStyle.ImageAndText;
+            tsbLimpiarCampos.DisplayStyle = ToolStripItemDisplayStyle.ImageAndText;
+            tsbRecarRegistro.DisplayStyle = ToolStripItemDisplayStyle.ImageAndText;
+            tsbCerrarVentana.DisplayStyle = ToolStripItemDisplayStyle.ImageAndText;
+            CargarPrivilegiosDelUsuarioPermitirCambiar();
         }
     }
 }

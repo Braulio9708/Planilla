@@ -190,7 +190,11 @@ namespace Acceso
             {
                 InicialisarVariablesGlovales(oDatos);
 
-                Consultas = string.Format(@"Select IdEmpresa, Nombre, Direccion, Telefono, NRuc, Logo, Celular, Email, SitioWeb, Descripcion, IdUsuario from empresa where IdEmpresa = 0 {0} {1}", oRegistroEN.Where, oRegistroEN.OrderBy);
+                Consultas = string.Format(@"select emp.IdEmpresa, emp.Nombre, emp.Direccion, emp.Telefono, emp.NRuc, emp.Celular,
+						emp.Email, emp.SitioWeb, emp.Descripcion, usr.Nombre as 'Usuario'
+                        from empresa as emp
+                        inner join usuario as usr on usr.IdUsuario = emp.IdUsuario
+                        where emp.IdEmpresa > 0 {0} {1}", oRegistroEN.Where, oRegistroEN.OrderBy);
 
                 Comando.CommandText = Consultas;
 
@@ -216,7 +220,11 @@ namespace Acceso
             {
                 InicialisarVariablesGlovales(oDatos);
 
-                Consultas = string.Format(@"Select IdEmpresa, Nombre, Direccion, Telefono, NRuc, Logo, Celular, Email, SitioWeb, Descripcion, IdUsuario from empresa where IdEmpresa = {0} ", oRegistroEN.IdEmpresa);
+                Consultas = string.Format(@"select emp.IdEmpresa, emp.Nombre, emp.Direccion, emp.Telefono, emp.NRuc, emp.Celular,
+						emp.Email, emp.SitioWeb, emp.Descripcion, usr.IdUsuario , usr.Nombre as 'Usuario'
+                        from empresa as emp
+                        inner join usuario as usr on usr.IdUsuario = emp.IdUsuario
+                        where emp.IdEmpresa > {0} ", oRegistroEN.IdEmpresa);
                 Comando.CommandText = Consultas;
 
                 InicialisarAdaptador();
@@ -243,7 +251,11 @@ namespace Acceso
 
                 InicialisarVariablesGlovales(oDatos);
 
-                Consultas = string.Format(@"select IdEmpresa, Nombre, Direccion, Telefono, NRuc, Logo, Celular, Email, SitioWeb, Descripcion, IdUsuario from empresa where IdEmpresa > 0 {0} {1}; ", oRegistroEN.Where, oRegistroEN.OrderBy);
+                Consultas = string.Format(@"select emp.IdEmpresa, emp.Nombre, emp.Direccion, emp.Telefono, emp.NRuc, emp.Celular,
+						emp.Email, emp.SitioWeb, emp.Descripcion, usr.IdUsuario , usr.Nombre as 'Usuario'
+                        from empresa as emp
+                        inner join usuario as usr on usr.IdUsuario = emp.IdUsuario
+                        where emp.IdEmpresa > 0 {0} {1}; ", oRegistroEN.Where, oRegistroEN.OrderBy);
                 Comando.CommandText = Consultas;
 
                 InicialisarAdaptador();
@@ -274,7 +286,11 @@ namespace Acceso
 
                 InicialisarVariablesGlovales(oDatos);
 
-                Consultas = string.Format(@"select IdEmpresa, Nombre, Direccion, Telefono, NRuc, Logo, Celular, Email, SitioWeb, Descripcion, IdUsuario from empresa where IdEmpresa > 0 {0} {1} ", oRegistroEN.Where, oRegistroEN.OrderBy);
+                Consultas = string.Format(@"select emp.IdEmpresa, emp.Nombre, emp.Direccion, emp.Telefono, emp.NRuc, emp.Celular,
+						emp.Email, emp.SitioWeb, emp.Descripcion, usr.IdUsuario , usr.Nombre as 'Usuario'
+                        from empresa as emp
+                        inner join usuario as usr on usr.IdUsuario = emp.IdUsuario
+                        where emp.IdEmpresa > 0 {0} {1} ", oRegistroEN.Where, oRegistroEN.OrderBy);
                 Comando.CommandText = Consultas;
 
                 InicialisarAdaptador();

@@ -130,6 +130,34 @@ namespace Logica
             }
         }
 
+        public bool ValidarRegistroDuplicado(AreaLaboralEN oRegistroEN, DatosDeConexionEN oDatos, string TipoDeOperacion)
+        {
+            if(oAreaLaboralAD.ValidarSiElRegistroEstaDuplicado(oRegistroEN, oDatos, TipoDeOperacion))
+            {
+                Error = oAreaLaboralAD.Error;
+                return true;
+            }
+            else
+            {
+                Error = string.Empty;
+                return false;
+            }
+        }
+
+        public bool ValidarSiElRegistroEstaVinculado(AreaLaboralEN oRegistroEN, DatosDeConexionEN oDatos, string TipoDeOperacion)
+        {
+            if(oAreaLaboralAD.ValidarSiElRegistroEstaVinculado(oRegistroEN, oDatos, TipoDeOperacion))
+            {
+                Error = oAreaLaboralAD.Error;
+                return true;
+            }
+            else
+            {
+                Error = string.Empty;
+                return false;
+            }
+        }
+
         public DataTable TraerDatos()
         {
             return oAreaLaboralAD.TraerDatos();

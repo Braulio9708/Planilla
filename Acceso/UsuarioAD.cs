@@ -113,6 +113,7 @@ namespace Acceso
                 Comando.Parameters.Add(new MySqlParameter("@Email", MySqlDbType.VarChar, oRegistroEN.Email.Trim().Length)).Value = oRegistroEN.Email.Trim();
                 Comando.Parameters.Add(new MySqlParameter("@Estado", MySqlDbType.VarChar, oRegistroEN.Estado.Trim().Length)).Value = oRegistroEN.Estado.Trim();
                 Comando.Parameters.Add(new MySqlParameter("@IdUsuarioDeModificacion", MySqlDbType.Int32)).Value = oRegistroEN.IdUsuarioDeModificacion;
+                Comando.Parameters.Add(new MySqlParameter("@FechaDeModificacion", MySqlDbType.DateTime)).Value = oRegistroEN.FechaDeModificacion;
                 Comando.Parameters.Add(new MySqlParameter("@IdRol", MySqlDbType.Int32)).Value = oRegistroEN.oRolEN.IdRol;
 
                 Comando.ExecuteNonQuery();
@@ -228,6 +229,8 @@ namespace Acceso
                 inner join rol as r on r.IdRol = u.IdRol where u.IdUsuario = {0} ", oRegistroEN.IdUsuario);
 
                 Comando.CommandText = Consultas;
+
+                Comando.Parameters.Add(new MySqlParameter("@IdUsuario", MySqlDbType.Int32)).Value = oRegistroEN.IdUsuario;
 
                 InicialisarAdaptador();
 

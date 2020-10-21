@@ -211,8 +211,8 @@ namespace Acceso
             {
                 InicialisarVariablesGlovales(oDatos);
                 
-                Consultas = string.Format(@"select emp.IdEmpleado, emp.Nombre, emp.Apellidos, emp.Cedula, emp.Direccion, emp.Telefono, emp.Celular, emp.Correo, emp.NoINSS,
-								emp.IdCargo, emp.IdMunicipio, emp.IdAreaLaboral, al.Area as 'AreaLaboral', co.Cargo as 'Cargo', mpo.Municipio as 'Municipio'
+                Consultas = string.Format(@"select emp.Nombre, emp.Apellidos, emp.Cedula, emp.Direccion, emp.Telefono, emp.Celular, emp.Correo, emp.NoINSS,
+								al.Area as 'AreaLaboral', co.Cargo as 'Cargo', mpo.Municipio as 'Municipio'
                                 from empleado as emp
                                 inner join cargo as co on emp.IdCargo = co.IdCargo
                                 inner join arealaboral as al on emp.IdAreaLaboral = al.IdAreaLaboral
