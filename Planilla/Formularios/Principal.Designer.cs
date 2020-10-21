@@ -232,6 +232,7 @@
             this.btnAreaLaboral.Text = "Area Laboral";
             this.toolTip.SetToolTip(this.btnAreaLaboral, "\r\n");
             this.btnAreaLaboral.UseVisualStyleBackColor = false;
+            this.btnAreaLaboral.Click += new System.EventHandler(this.btnAreaLaboral_Click);
             // 
             // btnPrestaciones
             // 

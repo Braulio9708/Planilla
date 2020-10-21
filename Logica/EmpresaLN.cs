@@ -96,7 +96,7 @@ namespace Logica
             }
         }
 
-        public bool ListadoParaCombos(EmpleadoEN oRegistroEN, DatosDeConexionEN oDatos)
+        public bool ListadoParaCombos(EmpresaEN oRegistroEN, DatosDeConexionEN oDatos)
         {
             if(oEmpresaAD.ListadoParaCombos(oRegistroEN, oDatos))
             {
@@ -120,6 +120,20 @@ namespace Logica
             else
             {
                 Error = oEmpresaAD.Error;
+                return false;
+            }
+        }
+
+        public bool ValidarRegistroDuplicado(EmpresaEN oRegistroEN, DatosDeConexionEN oDatos, string TipoDeOperacion)
+        {
+            if(oEmpresaAD.ValidarRegistroDuplicado(oRegistroEN, oDatos, TipoDeOperacion))
+            {
+                Error = oEmpresaAD.Error;
+                return true;
+            }
+            else
+            {
+                Error = string.Empty;
                 return false;
             }
         }

@@ -29,10 +29,15 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle34 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle35 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle36 = new System.Windows.Forms.DataGridViewCellStyle();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.txtArea = new System.Windows.Forms.TextBox();
+            this.txtIdentificador = new System.Windows.Forms.TextBox();
+            this.chkArea = new System.Windows.Forms.CheckBox();
+            this.chkIdentificador = new System.Windows.Forms.CheckBox();
             this.tsMenu = new System.Windows.Forms.ToolStrip();
             this.tsbFiltrar = new System.Windows.Forms.ToolStripButton();
             this.tsbNuevo = new System.Windows.Forms.ToolStripButton();
@@ -40,14 +45,9 @@
             this.tsbMarcarTodos = new System.Windows.Forms.ToolStripButton();
             this.tsbSeleccionarTodos = new System.Windows.Forms.ToolStripButton();
             this.tsbFiltroAutomatico = new System.Windows.Forms.ToolStripButton();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.txtArea = new System.Windows.Forms.TextBox();
-            this.txtIdentificador = new System.Windows.Forms.TextBox();
-            this.chkArea = new System.Windows.Forms.CheckBox();
-            this.chkIdentificador = new System.Windows.Forms.CheckBox();
+            this.dgvLista = new System.Windows.Forms.DataGridView();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.tsbNoRegistros = new System.Windows.Forms.ToolStripStatusLabel();
-            this.dgvLista = new System.Windows.Forms.DataGridView();
             this.mcsMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.cmNuevo = new System.Windows.Forms.ToolStripMenuItem();
             this.cmActualizar = new System.Windows.Forms.ToolStripMenuItem();
@@ -58,10 +58,10 @@
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
-            this.tsMenu.SuspendLayout();
             this.groupBox1.SuspendLayout();
-            this.statusStrip1.SuspendLayout();
+            this.tsMenu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvLista)).BeginInit();
+            this.statusStrip1.SuspendLayout();
             this.mcsMenu.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -84,6 +84,57 @@
             this.splitContainer1.Size = new System.Drawing.Size(613, 378);
             this.splitContainer1.SplitterDistance = 175;
             this.splitContainer1.TabIndex = 0;
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.txtArea);
+            this.groupBox1.Controls.Add(this.txtIdentificador);
+            this.groupBox1.Controls.Add(this.chkArea);
+            this.groupBox1.Controls.Add(this.chkIdentificador);
+            this.groupBox1.Location = new System.Drawing.Point(12, 12);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(589, 100);
+            this.groupBox1.TabIndex = 3;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Informacion de cargos del empleado";
+            // 
+            // txtArea
+            // 
+            this.txtArea.Location = new System.Drawing.Point(233, 71);
+            this.txtArea.Name = "txtArea";
+            this.txtArea.Size = new System.Drawing.Size(323, 20);
+            this.txtArea.TabIndex = 3;
+            this.txtArea.KeyUp += new System.Windows.Forms.KeyEventHandler(this.txtArea_KeyUp);
+            // 
+            // txtIdentificador
+            // 
+            this.txtIdentificador.Location = new System.Drawing.Point(233, 29);
+            this.txtIdentificador.Name = "txtIdentificador";
+            this.txtIdentificador.Size = new System.Drawing.Size(323, 20);
+            this.txtIdentificador.TabIndex = 2;
+            this.txtIdentificador.KeyUp += new System.Windows.Forms.KeyEventHandler(this.txtIdentificador_KeyUp);
+            // 
+            // chkArea
+            // 
+            this.chkArea.AutoSize = true;
+            this.chkArea.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chkArea.Location = new System.Drawing.Point(21, 71);
+            this.chkArea.Name = "chkArea";
+            this.chkArea.Size = new System.Drawing.Size(108, 20);
+            this.chkArea.TabIndex = 1;
+            this.chkArea.Text = "Area Laboral:";
+            this.chkArea.UseVisualStyleBackColor = true;
+            // 
+            // chkIdentificador
+            // 
+            this.chkIdentificador.AutoSize = true;
+            this.chkIdentificador.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chkIdentificador.Location = new System.Drawing.Point(21, 29);
+            this.chkIdentificador.Name = "chkIdentificador";
+            this.chkIdentificador.Size = new System.Drawing.Size(103, 20);
+            this.chkIdentificador.TabIndex = 0;
+            this.chkIdentificador.Text = "Identificador:";
+            this.chkIdentificador.UseVisualStyleBackColor = true;
             // 
             // tsMenu
             // 
@@ -111,6 +162,7 @@
             this.tsbFiltrar.Size = new System.Drawing.Size(73, 36);
             this.tsbFiltrar.Text = "Filtrar";
             this.tsbFiltrar.ToolTipText = "Filtrar (F5)";
+            this.tsbFiltrar.Click += new System.EventHandler(this.tsbFiltrar_Click);
             // 
             // tsbNuevo
             // 
@@ -120,6 +172,7 @@
             this.tsbNuevo.Size = new System.Drawing.Size(78, 36);
             this.tsbNuevo.Text = "Nuevo";
             this.tsbNuevo.ToolTipText = "Nuevo (F2)";
+            this.tsbNuevo.Click += new System.EventHandler(this.tsbNuevo_Click);
             // 
             // tsbImprimir
             // 
@@ -138,6 +191,7 @@
             this.tsbMarcarTodos.Name = "tsbMarcarTodos";
             this.tsbMarcarTodos.Size = new System.Drawing.Size(93, 36);
             this.tsbMarcarTodos.Text = "Marca todos";
+            this.tsbMarcarTodos.Click += new System.EventHandler(this.tsbMarcarTodos_Click);
             // 
             // tsbSeleccionarTodos
             // 
@@ -147,6 +201,7 @@
             this.tsbSeleccionarTodos.Name = "tsbSeleccionarTodos";
             this.tsbSeleccionarTodos.Size = new System.Drawing.Size(116, 36);
             this.tsbSeleccionarTodos.Text = "Seleccionar Todo";
+            this.tsbSeleccionarTodos.Click += new System.EventHandler(this.tsbSeleccionarTodos_Click);
             // 
             // tsbFiltroAutomatico
             // 
@@ -157,55 +212,46 @@
             this.tsbFiltroAutomatico.Name = "tsbFiltroAutomatico";
             this.tsbFiltroAutomatico.Size = new System.Drawing.Size(120, 36);
             this.tsbFiltroAutomatico.Text = "Filtro Automatico";
+            this.tsbFiltroAutomatico.Click += new System.EventHandler(this.tsbFiltroAutomatico_Click);
             // 
-            // groupBox1
+            // dgvLista
             // 
-            this.groupBox1.Controls.Add(this.txtArea);
-            this.groupBox1.Controls.Add(this.txtIdentificador);
-            this.groupBox1.Controls.Add(this.chkArea);
-            this.groupBox1.Controls.Add(this.chkIdentificador);
-            this.groupBox1.Location = new System.Drawing.Point(12, 12);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(589, 100);
-            this.groupBox1.TabIndex = 3;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Informacion de cargos del empleado";
-            // 
-            // txtArea
-            // 
-            this.txtArea.Location = new System.Drawing.Point(233, 71);
-            this.txtArea.Name = "txtArea";
-            this.txtArea.Size = new System.Drawing.Size(323, 20);
-            this.txtArea.TabIndex = 3;
-            // 
-            // txtIdentificador
-            // 
-            this.txtIdentificador.Location = new System.Drawing.Point(233, 29);
-            this.txtIdentificador.Name = "txtIdentificador";
-            this.txtIdentificador.Size = new System.Drawing.Size(323, 20);
-            this.txtIdentificador.TabIndex = 2;
-            // 
-            // chkArea
-            // 
-            this.chkArea.AutoSize = true;
-            this.chkArea.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chkArea.Location = new System.Drawing.Point(21, 71);
-            this.chkArea.Name = "chkArea";
-            this.chkArea.Size = new System.Drawing.Size(108, 20);
-            this.chkArea.TabIndex = 1;
-            this.chkArea.Text = "Area Laboral:";
-            this.chkArea.UseVisualStyleBackColor = true;
-            // 
-            // chkIdentificador
-            // 
-            this.chkIdentificador.AutoSize = true;
-            this.chkIdentificador.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chkIdentificador.Location = new System.Drawing.Point(21, 29);
-            this.chkIdentificador.Name = "chkIdentificador";
-            this.chkIdentificador.Size = new System.Drawing.Size(103, 20);
-            this.chkIdentificador.TabIndex = 0;
-            this.chkIdentificador.Text = "Identificador:";
-            this.chkIdentificador.UseVisualStyleBackColor = true;
+            this.dgvLista.BackgroundColor = System.Drawing.Color.Azure;
+            dataGridViewCellStyle34.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle34.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle34.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle34.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle34.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle34.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle34.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvLista.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle34;
+            this.dgvLista.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewCellStyle35.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle35.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle35.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle35.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle35.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle35.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle35.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvLista.DefaultCellStyle = dataGridViewCellStyle35;
+            this.dgvLista.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgvLista.Location = new System.Drawing.Point(0, 0);
+            this.dgvLista.Name = "dgvLista";
+            dataGridViewCellStyle36.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle36.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle36.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle36.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle36.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle36.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle36.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvLista.RowHeadersDefaultCellStyle = dataGridViewCellStyle36;
+            this.dgvLista.Size = new System.Drawing.Size(613, 173);
+            this.dgvLista.TabIndex = 4;
+            this.dgvLista.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvLista_CellContentClick);
+            this.dgvLista.CellContextMenuStripNeeded += new System.Windows.Forms.DataGridViewCellContextMenuStripNeededEventHandler(this.dgvLista_CellContextMenuStripNeeded);
+            this.dgvLista.CurrentCellDirtyStateChanged += new System.EventHandler(this.dgvLista_CurrentCellDirtyStateChanged);
+            this.dgvLista.DoubleClick += new System.EventHandler(this.dgvLista_DoubleClick);
+            this.dgvLista.MouseDown += new System.Windows.Forms.MouseEventHandler(this.dgvLista_MouseDown);
             // 
             // statusStrip1
             // 
@@ -224,40 +270,6 @@
             this.tsbNoRegistros.Size = new System.Drawing.Size(136, 21);
             this.tsbNoRegistros.Text = "No. de registros: 0";
             // 
-            // dgvLista
-            // 
-            this.dgvLista.BackgroundColor = System.Drawing.Color.Azure;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvLista.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
-            this.dgvLista.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvLista.DefaultCellStyle = dataGridViewCellStyle2;
-            this.dgvLista.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgvLista.Location = new System.Drawing.Point(0, 0);
-            this.dgvLista.Name = "dgvLista";
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvLista.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
-            this.dgvLista.Size = new System.Drawing.Size(613, 173);
-            this.dgvLista.TabIndex = 4;
-            // 
             // mcsMenu
             // 
             this.mcsMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -267,7 +279,8 @@
             this.cmVisualizar,
             this.cmImprimir});
             this.mcsMenu.Name = "mcsMenu";
-            this.mcsMenu.Size = new System.Drawing.Size(153, 136);
+            this.mcsMenu.Size = new System.Drawing.Size(127, 114);
+            this.mcsMenu.Opened += new System.EventHandler(this.mcsMenu_Opened);
             // 
             // cmNuevo
             // 
@@ -275,6 +288,7 @@
             this.cmNuevo.Name = "cmNuevo";
             this.cmNuevo.Size = new System.Drawing.Size(152, 22);
             this.cmNuevo.Text = "Nuevo";
+            this.cmNuevo.Click += new System.EventHandler(this.cmNuevo_Click);
             // 
             // cmActualizar
             // 
@@ -282,6 +296,7 @@
             this.cmActualizar.Name = "cmActualizar";
             this.cmActualizar.Size = new System.Drawing.Size(152, 22);
             this.cmActualizar.Text = "Actualizar";
+            this.cmActualizar.Click += new System.EventHandler(this.cmActualizar_Click);
             // 
             // cmEliminar
             // 
@@ -289,6 +304,7 @@
             this.cmEliminar.Name = "cmEliminar";
             this.cmEliminar.Size = new System.Drawing.Size(152, 22);
             this.cmEliminar.Text = "Eliminar";
+            this.cmEliminar.Click += new System.EventHandler(this.cmEliminar_Click);
             // 
             // cmVisualizar
             // 
@@ -296,12 +312,13 @@
             this.cmVisualizar.Name = "cmVisualizar";
             this.cmVisualizar.Size = new System.Drawing.Size(152, 22);
             this.cmVisualizar.Text = "Visualizar";
+            this.cmVisualizar.Click += new System.EventHandler(this.cmVisualizar_Click);
             // 
             // cmImprimir
             // 
             this.cmImprimir.Image = global::Planilla.Properties.Resources.iconfinder_preferences_desktop_printer_8803;
             this.cmImprimir.Name = "cmImprimir";
-            this.cmImprimir.Size = new System.Drawing.Size(152, 22);
+            this.cmImprimir.Size = new System.Drawing.Size(126, 22);
             this.cmImprimir.Text = "Imprimir";
             // 
             // frmAreaLaboral
@@ -312,18 +329,20 @@
             this.Controls.Add(this.splitContainer1);
             this.Name = "frmAreaLaboral";
             this.Text = "frmAreaLaboral";
+            this.Shown += new System.EventHandler(this.frmAreaLaboral_Shown);
+            this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.frmAreaLaboral_KeyUp);
             this.splitContainer1.Panel1.ResumeLayout(false);
             this.splitContainer1.Panel2.ResumeLayout(false);
             this.splitContainer1.Panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
-            this.tsMenu.ResumeLayout(false);
-            this.tsMenu.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            this.tsMenu.ResumeLayout(false);
+            this.tsMenu.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvLista)).EndInit();
             this.statusStrip1.ResumeLayout(false);
             this.statusStrip1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvLista)).EndInit();
             this.mcsMenu.ResumeLayout(false);
             this.ResumeLayout(false);
 

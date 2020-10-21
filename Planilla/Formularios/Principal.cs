@@ -21,6 +21,7 @@ namespace Planilla.Formularios
         frmUsuario ofrmUsuario = null;
         frmCargo ofrmCargo = null;
         frmEmpleados ofrmEmpleados = null;
+        frmAreaLaboral ofrmAreaLaboral = null;
 
         public Principal()
         {
@@ -417,6 +418,25 @@ namespace Planilla.Formularios
             else
             {
                 ofrmEmpleados.BringToFront();
+            }
+            this.Cursor = Cursors.Default;
+        }
+
+        private void btnAreaLaboral_Click(object sender, EventArgs e)
+        {
+            this.Cursor = Cursors.WaitCursor;
+
+            if (ofrmAreaLaboral == null || ofrmAreaLaboral.IsDisposed)
+            {
+                ofrmAreaLaboral = new frmAreaLaboral();
+                ofrmAreaLaboral.MdiParent = this;
+                ofrmAreaLaboral.StartPosition = FormStartPosition.CenterScreen;
+                ofrmAreaLaboral.WindowState = FormWindowState.Maximized;
+                ofrmAreaLaboral.Show();
+            }
+            else
+            {
+                ofrmAreaLaboral.BringToFront();
             }
             this.Cursor = Cursors.Default;
         }

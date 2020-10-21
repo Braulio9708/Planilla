@@ -264,11 +264,16 @@ namespace Planilla.Formularios
                     this.dgvLista.ClearSelection();
 
                     tsbNoRegistros.Text = "No. Registros: " + oRegistroLN.TotalRegistros().ToString();
+
+                    
                 }
                 else
                 {
                     throw new ArgumentException(oRegistroLN.Error);
                 }
+
+                
+
             }
             catch(Exception ex)
             {
@@ -276,7 +281,7 @@ namespace Planilla.Formularios
             }
             finally
             {
-                this.Cursor = Cursors.WaitCursor;
+                this.Cursor = Cursors.Default;
             }
         }
 
@@ -429,7 +434,7 @@ namespace Planilla.Formularios
             }
         }
 
-        private void MostrarFormularioSegunOpeacion()
+        private void MostrarFormularioSegunOpeacion(string OperacionARealizar)
         {
 
         }
@@ -438,32 +443,177 @@ namespace Planilla.Formularios
         {
             this.ValorLlavePrimariaEntidad = Convert.ToInt32(this.dgvLista.Rows[this.IndiceSeleccionado].Cells[this.Nombre_Llave_Primaria].Value);
         }
+                
 
-        private void LlenarInformacionDeEmpresa()
+        #endregion
+
+        private void frmAreaLaboral_Shown(object sender, EventArgs e)
+        {
+            dgvLista.ContextMenuStrip = mcsMenu;
+            CargarPrivilegios();
+
+            ActivarFiltrosDeBusqueda();
+            tsbFiltroAutomatico_Click(null, null);
+        }
+
+        private void tsbSeleccionarTodos_Click(object sender, EventArgs e)
         {
             try
             {
                 this.Cursor = Cursors.WaitCursor;
+                tsbSeleccionarTodos.Checked = !tsbMarcarTodos.Checked;
 
-                EmpresaEN oRegistroEN = new EmpresaEN();
-                // oRegistroLN = new MunicipioLN();
-                oRegistroEN.Where = "";
-                oRegistroEN.OrderBy = "";
-
-                if (oRegistroLN.ListadoParaCombos(oRegistroEN, Program.oDatosDeConexioEN))
+                if (tsbSeleccionarTodos.Checked == true)
                 {
-                    cmbMunicipio.DataSource = oRegistroLN.TraerDatos();
-                    cmbMunicipio.DisplayMember = "Municipio";
-                    cmbMunicipio.ValueMember = "IdMunicipio";
-                    cmbMunicipio.SelectedIndex = -1;
+                    tsbSeleccionarTodos.Image = Properties.Resources.unchecked16x16;
                 }
+                else
+                {
+                    tsbSeleccionarTodos.Image = Properties.Resources.checked16x16;
+                }
+                int a = 0;
+                this.Cursor = Cursors.WaitCursor;
+                if (dgvLista.Rows.Count > 0)
+                {
+                    foreach (DataGridViewRow Fila in dgvLista.Rows)
+                    {
+                        if (Convert.ToBoolean(Fila.Cells["Seleccionar"].Value) == true)
+                        {
+                            a++;
+                            Array.Resize(ref oAreaLaboral, a);
 
-                else { throw new ArgumentException(oRegistroLN.Error); }
-
+                            oAreaLaboral[a - 1] = new AreaLaboralEN();
+                            oAreaLaboral[a - 1].IdAreaLaboral = Convert.ToInt32(Fila.Cells["ID"].Value);
+                            oAreaLaboral[a - 1].Area = Fila.Cells["Area"].Value.ToString();
+                            oAreaLaboral[a - 1].oEmpresaEN.Nombre = Fila.Cells["Empresa"].Value.ToString();
+                        }
+                    }
+                }
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message, "Información del tipo de cuentas", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(ex.Message, "Seleccionar registros", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                AgregarRegistroAlDTUsuario();
+                this.Cursor = Cursors.Default;
+                this.Close();
+            }
+        }
+
+        private void tsbFiltroAutomatico_Click(object sender, EventArgs e)
+        {
+            tsbFiltroAutomatico.Checked = !tsbFiltroAutomatico.Checked;
+
+            if (tsbFiltroAutomatico.Checked == true)
+            {
+                tsbFiltroAutomatico.Image = Properties.Resources.unchecked16x16;
+            }
+            else
+            {
+                tsbFiltroAutomatico.Image = Properties.Resources.checked16x16;
+            }
+        }
+
+        private void dgvLista_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if(Activar_Filtros == true)
+            {
+                if(dgvLista.Columns[dgvLista.CurrentCell.ColumnIndex].Name == "Seleccionar" && VariosRegistros == false)
+                {
+                    if(Convert.ToBoolean(dgvLista.CurrentCell.Value) == true)
+                    {
+                        DesmarcarFilas(dgvLista.CurrentCell.RowIndex);
+                    }
+                }
+            }
+        }
+
+        private void dgvLista_CellContextMenuStripNeeded(object sender, DataGridViewCellContextMenuStripNeededEventArgs e)
+        {
+            this.IndiceSeleccionado = e.RowIndex;
+        }
+
+        private void dgvLista_CurrentCellDirtyStateChanged(object sender, EventArgs e)
+        {
+            if (dgvLista.IsCurrentCellDirty)
+            {
+                dgvLista.CommitEdit(DataGridViewDataErrorContexts.Commit);
+            }
+        }
+
+        private void dgvLista_DoubleClick(object sender, EventArgs e)
+        {
+            if(Activar_Filtros == true)
+            {
+                int a = 0;
+                this.Cursor = Cursors.WaitCursor;
+
+                dgvLista.CurrentRow.Cells["Seleccionar"].Value = true;
+                foreach(DataGridViewRow Fila in dgvLista.Rows)
+                {
+                    if(Convert.ToBoolean(Fila.Cells["Seleccionar"].Value) == true)
+                    {
+                        a++;
+                        Array.Resize(ref oAreaLaboral, a);
+
+                        oAreaLaboral[a - 1] = new AreaLaboralEN();
+                        oAreaLaboral[a - 1].IdAreaLaboral = Convert.ToInt32(Fila.Cells["IdAreaLaboral"].Value);
+                        oAreaLaboral[a - 1].Area = Fila.Cells["Area"].Value.ToString();
+                        oAreaLaboral[a - 1].oEmpresaEN.Nombre = Fila.Cells["Empresa"].Value.ToString();
+                    }
+                }
+
+                this.Cursor = Cursors.Default;
+                this.Close();
+            }
+        }
+
+        private void dgvLista_MouseDown(object sender, MouseEventArgs e)
+        {
+            if(e.Button == MouseButtons.Right)
+            {
+                DataGridView.HitTestInfo HitTest = dgvLista.HitTest(e.X, e.Y);
+
+                if(HitTest.Type == DataGridViewHitTestType.Cell)
+                {
+                    dgvLista.CurrentCell = dgvLista.Rows[HitTest.RowIndex].Cells[HitTest.ColumnIndex];
+                }
+            }
+        }
+
+        private void tsbMarcarTodos_Click(object sender, EventArgs e)
+        {
+
+            try
+            {
+                this.Cursor = Cursors.WaitCursor;
+
+                tsbMarcarTodos.Checked = !tsbMarcarTodos.Checked;
+
+                if (tsbMarcarTodos.Checked == true)
+                {
+                    tsbMarcarTodos.Image = Properties.Resources.unchecked16x16;
+                }
+                else
+                {
+                    tsbMarcarTodos.Image = Properties.Resources.checked16x16;
+                }
+                foreach (DataGridViewRow Fila in dgvLista.Rows)
+                {
+                    Fila.Cells["Seleccionar"].Value = true;
+                    //Si se llamo a la interfaz para seleccionar un solo registro, despues de marcar el primero, llamamos al que desmarca y terminamos
+                    if (VariosRegistros == false)
+                    {
+                        DesmarcarFilas(Fila.Index);
+                        return;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al marcar filas. \n" + ex.Message, "Marcar todas las filas", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             finally
             {
@@ -471,6 +621,134 @@ namespace Planilla.Formularios
             }
         }
 
-        #endregion
+        private void frmAreaLaboral_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (Convert.ToInt32(e.KeyData) == Convert.ToInt32(Keys.F2) && cmNuevo.Enabled == true)
+            {
+                cmNuevo_Click(null, null);
+            }
+
+            if (Convert.ToInt32(e.KeyData) == Convert.ToInt32(Keys.F3) && cmActualizar.Enabled == true)
+            {
+                if (dgvLista.SelectedRows.Count > 0)
+                {
+                    IndiceSeleccionado = dgvLista.CurrentRow.Index;
+                    cmActualizar_Click(null, null);
+                }
+                else
+                {
+                    MessageBox.Show("Se debe de seleccionar un registro de la lista", "Actualizar Registro ", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+
+            }
+
+            if (Convert.ToInt32(e.KeyData) == Convert.ToInt32(Keys.F4) && cmEliminar.Enabled == true)
+            {
+                if (dgvLista.SelectedRows.Count > 0)
+                {
+                    IndiceSeleccionado = dgvLista.CurrentRow.Index;
+                    cmEliminar_Click(null, null);
+                }
+                else
+                {
+                    MessageBox.Show("Se debe de seleccionar un registro de la lista", "Eliminar Registro ", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+
+            }
+
+            if (Convert.ToInt32(e.KeyData) == Convert.ToInt32(Keys.F5))
+            {
+                tsbFiltrar_Click(null, null);
+            }
+
+            if (Convert.ToInt32(e.KeyData) == Convert.ToInt32(Keys.F6) && cmVisualizar.Enabled == true && dgvLista.SelectedRows.Count > 0)
+            {
+                if (dgvLista.SelectedRows.Count > 0)
+                {
+                    IndiceSeleccionado = dgvLista.CurrentRow.Index;
+                    cmVisualizar_Click(null, null);
+                }
+                else
+                {
+                    MessageBox.Show("Se debe de seleccionar un registro de la lista", "Consultar Registro ", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
+
+        private void cmNuevo_Click(object sender, EventArgs e)
+        {
+            MostrarFormularioSegunOpeacion("Nuevo");
+        }
+
+        private void cmActualizar_Click(object sender, EventArgs e)
+        {
+            AsignarLlavePrimaria();
+            MostrarFormularioSegunOpeacion("Modificar");
+        }
+
+        private void cmEliminar_Click(object sender, EventArgs e)
+        {
+            AsignarLlavePrimaria();
+            MostrarFormularioSegunOpeacion("Eliminar");
+        }
+
+        private void cmVisualizar_Click(object sender, EventArgs e)
+        {
+            AsignarLlavePrimaria();
+            MostrarFormularioSegunOpeacion("Consultar");
+        }
+
+        private void mcsMenu_Opened(object sender, EventArgs e)
+        {
+            if(dgvLista.DataSource == null || dgvLista.Rows.Count <= 0 || dgvLista.SelectedRows.Count <= 0)
+            {
+                cmEliminar.Enabled = false;
+                cmActualizar.Enabled = false;
+                cmVisualizar.Enabled = false;
+                cmImprimir.Enabled = false;
+            }
+            else
+            {
+                CargarPrivilegios();
+            }
+        }
+
+        private void txtIdentificador_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (Controles.IsNullOEmptyElControl(txtIdentificador))
+            {
+                chkIdentificador.CheckState = CheckState.Unchecked;
+            }
+            else { chkIdentificador.CheckState = CheckState.Checked; }
+
+            if (chkIdentificador.CheckState == CheckState.Checked && tsbFiltroAutomatico.CheckState == CheckState.Checked)
+            {
+                LlenarListado();
+            }
+        }
+
+        private void txtArea_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (Controles.IsNullOEmptyElControl(txtArea))
+            {
+                chkArea.CheckState = CheckState.Unchecked;
+            }
+            else { chkArea.CheckState = CheckState.Checked; }
+
+            if (chkArea.CheckState == CheckState.Checked && tsbFiltroAutomatico.CheckState == CheckState.Checked)
+            {
+                LlenarListado();
+            }
+        }
+
+        private void tsbFiltrar_Click(object sender, EventArgs e)
+        {
+            LlenarListado();
+        }
+
+        private void tsbNuevo_Click(object sender, EventArgs e)
+        {
+            MostrarFormularioSegunOpeacion("Nuevo");
+        }
     }
 }

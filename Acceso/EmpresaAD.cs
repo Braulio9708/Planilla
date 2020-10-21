@@ -310,16 +310,17 @@ namespace Acceso
                 {
 
                     case "AGREGAR":
-
-                        Consultas = @"SELECT CASE WHEN EXISTS(Select IdEmpresa from Empresa where IdUsuario = @IdUsuario and upper(trim(Nombre)) = upper(trim(@Nombre)) and upper(trim(Direccion)) = upper(trim(@Direccion)) and upper(trim(Telefono)) = upper(trim(@Telefono)) and upper(trim(NRuc)) = upper(trim(@NRuc)) and upper(trim(Logo)) = upper(trim(@Logo)) and upper(trim(Celular)) = upper(trim(@Celular)) and upper(trim(SitioWeb)) = upper(trim(@SitioWeb)) and upper(trim(Descripcion)) = upper(trim(@Descripcion))) THEN 1 ELSE 0 END AS 'RES'";
-                        Comando.Parameters.Add(new MySqlParameter("@IdUsuario", MySqlDbType.Int32)).Value = oRegistroEN.oUsuarioEN.IdUsuario;
-                        Comando.Parameters.Add(new MySqlParameter("@Nombre", MySqlDbType.VarChar, oRegistroEN.Nombre.Trim().Length).Value = oRegistroEN.Nombre.Trim();
+                        //Nombre, Direccion, Telefono, NRuc, Logo, Celular, Email, SitioWeb, Descripcion, IdUsuario
+                        Consultas = @"SELECT CASE WHEN EXISTS(SELECT IdEmpresa FROM empresa WHERE upper(trim(Nombre)) = upper(@Nombre)) THEN 1 ELSE 0 END AS 'RES'";
+                        Comando.Parameters.Add(new MySqlParameter("@Nombre", MySqlDbType.VarChar, oRegistroEN.Nombre.Trim().Length)).Value = oRegistroEN.Nombre.Trim();                      
+                                             
                         break;
 
                     case "ACTUALIZAR":
 
-                        Consultas = @"SELECT CASE WHEN EXISTS(Select IdEmpresa from Empresa where IdUsuario = @IdUsuario and upper(trim(Nombre)) = upper(trim(@Nombre)) and upper(trim(Direccion)) = upper(trim(@Direccion)) and upper(trim(Telefono)) = upper(trim(@Telefono)) and upper(trim(NRuc)) = upper(trim(@NRuc)) and upper(trim(Logo)) = upper(trim(@Logo)) and upper(trim(Celular)) = upper(trim(@Celular)) and upper(trim(SitioWeb)) = upper(trim(@SitioWeb)) and upper(trim(Descripcion)) = upper(trim(@Descripcion)) and IdEmpresa <> @IdEmpresa) THEN 1 ELSE 0 END AS 'RES'";
-
+                        Consultas = @"SELECT CASE WHEN EXISTS(SELECT IdEmpresa FROM empresa WHERE upper(trim(Nombre)) = upper(@Nombre) and IdEmpresa <> @IdEmpresa) THEN 1 ELSE 0 END AS 'RES'";
+                        Comando.Parameters.Add(new MySqlParameter("@Nombre", MySqlDbType.VarChar, oRegistroEN.Nombre.Trim().Length)).Value = oRegistroEN.Nombre.Trim();
+                        Comando.Parameters.Add(new MySqlParameter("@IdEmpresa", MySqlDbType.Int32)).Value = oRegistroEN.IdEmpresa;
 
                         break;
 
@@ -365,16 +366,20 @@ namespace Acceso
             }
         }
 
+        
+
         #endregion
 
         #region "Funciones Para Retornar Informacion Y Llamados"
+
+
         private TransaccionesEN InformacionDelaTransaccion(EmpresaEN oEmpresa, String TipoDeOperacion, String Descripcion, String Estado)
         {
             TransaccionesEN oRegistroEN = new TransaccionesEN();
 
             oRegistroEN.IdRegistro = oEmpresa.IdEmpresa;
             oRegistroEN.Modelo = "EmpresaAD";
-            //oRegistroEN.Modulo = "Clientes";
+            oRegistroEN.Modulo = "General";
             oRegistroEN.Tabla = "Empresa";
             oRegistroEN.TipoDeOperacion = TipoDeOperacion;
             oRegistroEN.Estado = Estado;
