@@ -43,10 +43,10 @@ namespace Acceso
 
                 Consultas = @"insert into empleado
                             (Nombre, Apellidos, Cedula, Direccion, Telefono, 
-                            Celular, Correo, IdCargo, IdMunicipio, IdAreaLaboral, NoINSS)
+                            Celular, Correo, IdCargo, IdCiudad, IdAreaLaboral, NoINSS)
                             value
                             (@Nombre, @Apellidos, @Cedula, @Direccion, @Telefono, 
-                            @Celular, @Correo, @IdCargo, @IdMunicipio, @IdAreaLaboral, @NoINSS);
+                            @Celular, @Correo, @IdCargo, @IdCiudad, @IdAreaLaboral, @NoINSS);
 
                             select last_insert_id() as 'ID';";
 
@@ -61,7 +61,7 @@ namespace Acceso
                 Comando.Parameters.Add(new MySqlParameter("@Correo", MySqlDbType.VarChar, oRegistroEN.Correo.Trim().Length)).Value = oRegistroEN.Correo.Trim();
                 Comando.Parameters.Add(new MySqlParameter("@NoINSS", MySqlDbType.VarChar, oRegistroEN.NoINSS.Trim().Length)).Value = oRegistroEN.NoINSS.Trim();
                 Comando.Parameters.Add(new MySqlParameter("@IdCargo", MySqlDbType.Int32)).Value = oRegistroEN.oCargoEN.IdCargo;
-                Comando.Parameters.Add(new MySqlParameter("@IdMunicipio", MySqlDbType.Int32)).Value = oRegistroEN.oMunicipioEN.IdMunicipio;
+                Comando.Parameters.Add(new MySqlParameter("@IdCiudad", MySqlDbType.Int32)).Value = oRegistroEN.oCiudad.IdCiudad;
                 Comando.Parameters.Add(new MySqlParameter("@IdAreaLaboral", MySqlDbType.Int32)).Value = oRegistroEN.oAreaLaboralEN.IdAreaLaboral;
 
                 InicialisarAdaptador();
@@ -112,7 +112,7 @@ namespace Acceso
                             Correo = @Correo,
                             NoINSS = @NoINSS,
                             IdCargo = @IdCargo, 
-                            IdMunicipio = @IdMunicipio, 
+                            IdCiudad = @IdCiudad, 
                             IdAreaLaboral = @IdAreaLaboral
                             where IdEmpleado = @IdEmpleado;";
 
@@ -127,7 +127,7 @@ namespace Acceso
                 Comando.Parameters.Add(new MySqlParameter("@Correo", MySqlDbType.VarChar, oRegistroEN.Correo.Trim().Length)).Value = oRegistroEN.Correo.Trim();
                 Comando.Parameters.Add(new MySqlParameter("@NoINSS", MySqlDbType.VarChar, oRegistroEN.NoINSS.Trim().Length)).Value = oRegistroEN.NoINSS.Trim();
                 Comando.Parameters.Add(new MySqlParameter("@IdCargo", MySqlDbType.Int32)).Value = oRegistroEN.oCargoEN.IdCargo;
-                Comando.Parameters.Add(new MySqlParameter("@IdMunicipio", MySqlDbType.Int32)).Value = oRegistroEN.oMunicipioEN.IdMunicipio;
+                Comando.Parameters.Add(new MySqlParameter("@IdCiudad", MySqlDbType.Int32)).Value = oRegistroEN.oCiudad.IdCiudad;
                 Comando.Parameters.Add(new MySqlParameter("@IdAreaLaboral", MySqlDbType.Int32)).Value = oRegistroEN.oAreaLaboralEN.IdAreaLaboral;
 
                 Comando.ExecuteNonQuery();
@@ -212,11 +212,11 @@ namespace Acceso
                 InicialisarVariablesGlovales(oDatos);
                 
                 Consultas = string.Format(@"select emp.Nombre, emp.Apellidos, emp.Cedula, emp.Direccion, emp.Telefono, emp.Celular, emp.Correo, emp.NoINSS,
-								al.Area as 'AreaLaboral', co.Cargo as 'Cargo', mpo.Municipio as 'Municipio'
+								al.Area as 'AreaLaboral', co.Cargo as 'Cargo', cdd.Ciudad 
                                 from empleado as emp
                                 inner join cargo as co on emp.IdCargo = co.IdCargo
                                 inner join arealaboral as al on emp.IdAreaLaboral = al.IdAreaLaboral
-                                inner join municipio as mpo on emp.IdMunicipio = mpo.IdMunicipio
+                                inner join ciudad as cdd on cdd.IdCiudad = cdd.IdCiudad
                                 where emp.IdEmpleado > 0 {0} {1} ", oRegistroEN.Where, oRegistroEN.OrderBy);
 
                 Comando.CommandText = Consultas;
@@ -243,12 +243,12 @@ namespace Acceso
             {
                 InicialisarVariablesGlovales(oDatos);
 
-                Consultas = string.Format(@"select emp.idempleado, emp.Nombre, emp.Apellidos, emp.Cedula, emp.Direccion, emp.Telefono, emp.Celular, emp.Correo, emp.NoINSS,
-								emp.idCargo, emp.idMunicipio, emp.idAreaLaboral, al.Area as 'AreaLaboral', co.Cargo as 'Cargo', mpo.Municipio as 'Municipio'
+                Consultas = string.Format(@"select emp.Idempleado, emp.Nombre, emp.Apellidos, emp.Cedula, emp.Direccion, emp.Telefono, emp.Celular, emp.Correo, emp.NoINSS,
+								emp.IdCargo, emp.IdCiudad, emp.IdAreaLaboral, al.Area as 'AreaLaboral', co.Cargo as 'Cargo', cdd.Ciudad
                                 from empleado as emp
-                                inner join cargo as co on emp.idCargo = co.idCargo
-                                inner join arealaboral as al on emp.idAreaLaboral = al.idAreaLaboral
-                                inner join municipio as mpo on emp.idMunicipio = mpo.idMunicipio
+                                inner join cargo as co on emp.IdCargo = co.IdCargo
+                                inner join arealaboral as al on emp.IdAreaLaboral = al.IdAreaLaboral
+                                inner join ciudad as cdd on cdd.IdCiudad = cdd.IdCiudad
                                 where emp.idEmpleado > {0}", oRegistroEN.IdEmpleado);
 
                 Comando.CommandText = Consultas;
@@ -277,12 +277,12 @@ namespace Acceso
 
                 InicialisarVariablesGlovales(oDatos);
 
-                Consultas = string.Format(@"select emp.idempleado, emp.Nombre, emp.Apellidos, emp.Cedula, emp.Direccion, emp.Telefono, emp.Celular, emp.Correo, emp.NoINSS,
-								emp.idCargo, emp.idMunicipio, emp.idAreaLaboral, al.Area as 'AreaLaboral', co.Cargo as 'Cargo', mpo.Municipio as 'Municipio'
+                Consultas = string.Format(@"select emp.Idempleado, emp.Nombre, emp.Apellidos, emp.Cedula, emp.Direccion, emp.Telefono, emp.Celular, emp.Correo, emp.NoINSS,
+								emp.IdCargo, emp.IdCiudad, emp.IdAreaLaboral, al.Area as 'AreaLaboral', co.Cargo as 'Cargo', cdd.Ciudad
                                 from empleado as emp
-                                inner join cargo as co on emp.idCargo = co.idCargo
-                                inner join arealaboral as al on emp.idAreaLaboral = al.idAreaLaboral
-                                inner join municipio as mpo on emp.idMunicipio = mpo.idMunicipio
+                                inner join cargo as co on emp.IdCargo = co.IdCargo
+                                inner join arealaboral as al on emp.IdAreaLaboral = al.IdAreaLaboral
+                                inner join ciudad as cdd on cdd.IdCiudad = cdd.IdCiudad
                                 where emp.idEmpleado > 0 {0} {1}; ", oRegistroEN.Where, oRegistroEN.OrderBy);
                 Comando.CommandText = Consultas;
 
@@ -314,7 +314,7 @@ namespace Acceso
 
                 InicialisarVariablesGlovales(oDatos);
 
-                Consultas = string.Format(@"select IdEmpleado, Nombre, Apellidos, Cedula, Direccion, Telefono, Celular, Correo, NoINSS, IdCargo, IdMunicipio, IdAreaLaboral from empleado where IdEmpleado > 0 {0} {1} ", oRegistroEN.Where, oRegistroEN.OrderBy);
+                Consultas = string.Format(@"select IdEmpleado, Nombre, Apellidos, Cedula, Direccion, Telefono, Celular, Correo, NoINSS, IdCargo, IdCiudad, IdAreaLaboral from empleado where IdEmpleado > 0 {0} {1} ", oRegistroEN.Where, oRegistroEN.OrderBy);
                 Comando.CommandText = Consultas;
 
                 InicialisarAdaptador();
@@ -404,9 +404,9 @@ namespace Acceso
 
         private string InformacionDelRegistro(EmpleadoEN oRegistroEN)
         {
-            string Cadena= @"IdEmpleado={0}, Nombre={2}, Apellidos={3}, Cedula={4}, Direccion={5}, Telefono={6}, Celular={7}, Correo={8}, NoINSS={9}, IdCargo={10}, IdMunicipio={11}, IdAreaLaboral={12}, Area={13}, Cargo={14}, Municipio{15}";
-            Cadena = string.Format(Cadena, oRegistroEN.IdEmpleado, oRegistroEN.Nombre, oRegistroEN.Apellidos, oRegistroEN.Cedula, oRegistroEN.Direccion, oRegistroEN.Telefono, oRegistroEN.Celular, oRegistroEN.Correo, oRegistroEN.NoINSS, oRegistroEN.oCargoEN.IdCargo, oRegistroEN.oMunicipioEN.IdMunicipio,
-                oRegistroEN.oAreaLaboralEN.IdAreaLaboral, oRegistroEN.oAreaLaboralEN.Area, oRegistroEN.oCargoEN.Cargo, oRegistroEN.oMunicipioEN.Municipio);
+            string Cadena= @"IdEmpleado={0}, Nombre={2}, Apellidos={3}, Cedula={4}, Direccion={5}, Telefono={6}, Celular={7}, Correo={8}, NoINSS={9}, IdCargo={10}, IdCiudad={11}, IdAreaLaboral={12}, Area={13}, Cargo={14}, Municipio{15}";
+            Cadena = string.Format(Cadena, oRegistroEN.IdEmpleado, oRegistroEN.Nombre, oRegistroEN.Apellidos, oRegistroEN.Cedula, oRegistroEN.Direccion, oRegistroEN.Telefono, oRegistroEN.Celular, oRegistroEN.Correo, oRegistroEN.NoINSS, oRegistroEN.oCargoEN.IdCargo, oRegistroEN.oCiudad.IdCiudad,
+                oRegistroEN.oAreaLaboralEN.IdAreaLaboral, oRegistroEN.oAreaLaboralEN.Area, oRegistroEN.oCargoEN.Cargo, oRegistroEN.oCiudad.Ciudad);
             Cadena = Cadena.Replace(",", Environment.NewLine);
             return Cadena;
         }
@@ -443,7 +443,7 @@ namespace Acceso
                         Consultas = @"SELECT CASE WHEN EXISTS(Select IdEmpleado from empleado where IdAreaLaboral = @IdAreaLaboral and  IdCargo = @IdCargo and  IdMunicipio = @IdMunicipio and upper(trim(Nombre)) = upper(trim( @Nombre)) and upper(trim(Apellidos)) = upper(trim(@Apellidos)) and upper(trim(Cedula)) = upper(trim(@Cedula)) and upper(trim(Direccion)) = upper(trim(@Direccion)) and upper(trim(Telefono)) = upper(trim(@Telefono)) and upper(trim(Celular)) = upper(trim(@Celular)) and upper(trim(Correo)) = upper(trim(@Correo)) and upper(trim(NoINSS)) = upper(trim(@NoINSS))) THEN 1 ELSE 0 END AS 'RES'";
                         Comando.Parameters.Add(new MySqlParameter("@IdAreaLaboral", MySqlDbType.Int32)).Value = oRegistroEN.oAreaLaboralEN.IdAreaLaboral;
                         Comando.Parameters.Add(new MySqlParameter("@IdCargo", MySqlDbType.Int32)).Value = oRegistroEN.oCargoEN.IdCargo;
-                        Comando.Parameters.Add(new MySqlParameter("@Municipio", MySqlDbType.Int32)).Value = oRegistroEN.oMunicipioEN.IdMunicipio;
+                        Comando.Parameters.Add(new MySqlParameter("@IdCiudad", MySqlDbType.Int32)).Value = oRegistroEN.oCiudad.IdCiudad;
                         Comando.Parameters.Add(new MySqlParameter("@Nombre", MySqlDbType.VarChar, oRegistroEN.Nombre.Trim().Length)).Value = oRegistroEN.Nombre.Trim();
                         Comando.Parameters.Add(new MySqlParameter("@Apellidos", MySqlDbType.VarChar, oRegistroEN.Apellidos.Trim().Length)).Value = oRegistroEN.Apellidos.Trim();
                         Comando.Parameters.Add(new MySqlParameter("@Cedula", MySqlDbType.VarChar, oRegistroEN.Cedula.Trim().Length)).Value = oRegistroEN.Cedula.Trim();
@@ -460,7 +460,7 @@ namespace Acceso
                         Comando.Parameters.Add(new MySqlParameter("@IdEmpleado", MySqlDbType.Int32)).Value = oRegistroEN.IdEmpleado;
                         Comando.Parameters.Add(new MySqlParameter("@IdAreaLaboral", MySqlDbType.Int32)).Value = oRegistroEN.oAreaLaboralEN.IdAreaLaboral;
                         Comando.Parameters.Add(new MySqlParameter("@IdCargo", MySqlDbType.Int32)).Value = oRegistroEN.oCargoEN.IdCargo;
-                        Comando.Parameters.Add(new MySqlParameter("@Municipio", MySqlDbType.Int32)).Value = oRegistroEN.oMunicipioEN.IdMunicipio;
+                        Comando.Parameters.Add(new MySqlParameter("@IdCiudad", MySqlDbType.Int32)).Value = oRegistroEN.oCiudad.IdCiudad;
                         Comando.Parameters.Add(new MySqlParameter("@Nombre", MySqlDbType.VarChar, oRegistroEN.Nombre.Trim().Length)).Value = oRegistroEN.Nombre.Trim();
                         Comando.Parameters.Add(new MySqlParameter("@Apellidos", MySqlDbType.VarChar, oRegistroEN.Apellidos.Trim().Length)).Value = oRegistroEN.Apellidos.Trim();
                         Comando.Parameters.Add(new MySqlParameter("@Cedula", MySqlDbType.VarChar, oRegistroEN.Cedula.Trim().Length)).Value = oRegistroEN.Cedula.Trim();

@@ -60,7 +60,7 @@
     <Compile Include="ModuloInterfazEN.cs" />
     <Compile Include="ModuloInterfazRolEN.cs" />
     <Compile Include="ModuloInterfazUsuarioEN.cs" />
-    <Compile Include="MunicipioEN.cs" />
+    <Compile Include="CiudadEN.cs" />
     <Compile Include="PaisEN.cs" />
     <Compile Include="PlanillaEN.cs" />
     <Compile Include="PrestacionesEN.cs" />

@@ -9,126 +9,127 @@ using System.Data;
 
 namespace Logica
 {
-    public class MunicipioLN
+    public class CiudadLN
     {
 
         public string Error { set; get; }
 
-        public MunicipoAD oMunicipioAD = new MunicipoAD();
+        public CiudadAD oCiudadAD = new CiudadAD();
 
-        public bool Agregar(MunicipioEN oRegistroEN, DatosDeConexionEN oDatos)
+        public bool Agregar(CiudadEN oRegistroEN, DatosDeConexionEN oDatos)
         {
-            if(oMunicipioAD.Agregar(oRegistroEN, oDatos))
-            {
+            
+            if (oCiudadAD.Agregar(oRegistroEN, oDatos))
+            {                
                 Error = string.Empty;
                 return true;
             }
             else
             {
-                Error = oMunicipioAD.Error;
+                Error = oCiudadAD.Error;
                 return false;
             }
         }
 
-        public bool Actualizar(MunicipioEN oRegistroEN, DatosDeConexionEN oDatos)
+        public bool Actualizar(CiudadEN oRegistroEN, DatosDeConexionEN oDatos)
         {
-            if(string.IsNullOrEmpty(oRegistroEN.IdMunicipio.ToString()) || oRegistroEN.IdMunicipio == 0)
+            if(string.IsNullOrEmpty(oRegistroEN.IdCiudad.ToString()) || oRegistroEN.IdCiudad == 0)
             {
                 this.Error = string.Format("Se debe seleccionar un elemento de la lista.");
                 return false;
             }
-            if(oMunicipioAD.Actualizar(oRegistroEN, oDatos))
+            if(oCiudadAD.Actualizar(oRegistroEN, oDatos))
             {
                 Error = string.Empty;
                 return true;
             }
             else
             {
-                Error = oMunicipioAD.Error;
+                Error = oCiudadAD.Error;
                 return false;
             }
         }
 
-        public bool Eliminar(MunicipioEN oRegistroEN, DatosDeConexionEN oDatos)
+        public bool Eliminar(CiudadEN oRegistroEN, DatosDeConexionEN oDatos)
         {
-            if(string.IsNullOrEmpty(oRegistroEN.IdMunicipio.ToString()) || oRegistroEN.IdMunicipio == 0)
+            if(string.IsNullOrEmpty(oRegistroEN.IdCiudad.ToString()) || oRegistroEN.IdCiudad == 0)
             {
                 this.Error = string.Format("Se debe seleccionar un elemento de la lista.");
                 return false;
             }
-            if(oMunicipioAD.Eliminar(oRegistroEN, oDatos))
+            if(oCiudadAD.Eliminar(oRegistroEN, oDatos))
             {
                 Error = string.Empty;
                 return true;
             }
             else
             {
-                Error = oMunicipioAD.Error;
+                Error = oCiudadAD.Error;
                 return false;
             }
         }
 
-        public bool Listado(MunicipioEN oRegistroEN, DatosDeConexionEN oDatos)
+        public bool Listado(CiudadEN oRegistroEN, DatosDeConexionEN oDatos)
         {
-            if(oMunicipioAD.Listado(oRegistroEN, oDatos))
+            if(oCiudadAD.Listado(oRegistroEN, oDatos))
             {
                 Error = string.Empty;
                 return true;
             }
             else
             {
-                Error = oMunicipioAD.Error;
+                Error = oCiudadAD.Error;
                 return false;
             }
         }
 
-        public bool ListadoPorIdentificador(MunicipioEN oRegistroEN, DatosDeConexionEN oDatos)
+        public bool ListadoPorIdentificador(CiudadEN oRegistroEN, DatosDeConexionEN oDatos)
         {
-            if(oMunicipioAD.ListadoPorIdentificador(oRegistroEN, oDatos))
+            if(oCiudadAD.ListadoPorIdentificador(oRegistroEN, oDatos))
             {
                 Error = string.Empty;
                 return true;
             }
             else
             {
-                Error = oMunicipioAD.Error;
+                Error = oCiudadAD.Error;
                 return false;
             }
         }
 
-        public bool ListadoParaCombos(MunicipioEN oRegistroEN, DatosDeConexionEN oDatos)
+        public bool ListadoParaCombos(CiudadEN oRegistroEN, DatosDeConexionEN oDatos)
         {
-            if(oMunicipioAD.ListadoParaCombos(oRegistroEN, oDatos))
+            if(oCiudadAD.ListadoParaCombos(oRegistroEN, oDatos))
             {
                 Error = string.Empty;
                 return true;
             }
             else
             {
-                Error = oMunicipioAD.Error;
+                Error = oCiudadAD.Error;
                 return false;
             }
         }
 
-        public bool ListadoParaReportes(MunicipioEN oRegistroEN, DatosDeConexionEN oDatos)
+        public bool ListadoParaReportes(CiudadEN oRegistroEN, DatosDeConexionEN oDatos)
         {
-            if(oMunicipioAD.ListadoParaReportes(oRegistroEN, oDatos))
+            if(oCiudadAD.ListadoParaReportes(oRegistroEN, oDatos))
             {
                 Error = string.Empty;
                 return true;
             }
             else
             {
-                Error = oMunicipioAD.Error;
+                Error = oCiudadAD.Error;
                 return false;
             }
         }
 
-        public bool ValidarRegistroDuplicado(MunicipioEN oRegistroEN, DatosDeConexionEN oDatos, string TipoDeOperacion)
+        public bool ValidarRegistroDuplicado(CiudadEN oRegistroEN, DatosDeConexionEN oDatos, string TipoDeOperacion)
         {
-            if(oMunicipioAD.ValidarRegistroDuplicado(oRegistroEN, oDatos, TipoDeOperacion))
+            if(oCiudadAD.ValidarRegistroDuplicado(oRegistroEN, oDatos, TipoDeOperacion))
             {
-                Error = oMunicipioAD.Error;
+                Error = oCiudadAD.Error;
                 return true;
             }
             else
@@ -138,11 +139,11 @@ namespace Logica
             }
         }
 
-        public bool ValidarSiElRegistroEstaVinculado(MunicipioEN oRegistro, DatosDeConexionEN oDatos, string TipoDeOperacion)
+        public bool ValidarSiElRegistroEstaVinculado(CiudadEN oRegistro, DatosDeConexionEN oDatos, string TipoDeOperacion)
         {
-            if(oMunicipioAD.ValidarSiElRegistroEstaVinculado(oRegistro, oDatos, TipoDeOperacion))
+            if(oCiudadAD.ValidarSiElRegistroEstaVinculado(oRegistro, oDatos, TipoDeOperacion))
             {
-                Error = oMunicipioAD.Error;
+                Error = oCiudadAD.Error;
                 return true;
             }
             else
@@ -154,12 +155,12 @@ namespace Logica
 
         public DataTable TraerDatos()
         {
-            return oMunicipioAD.TraerDatos();
+            return oCiudadAD.TraerDatos();
         }
 
         public int TotalRegistros()
         {
-            return oMunicipioAD.TraerDatos().Rows.Count;
+            return oCiudadAD.TraerDatos().Rows.Count;
         }
 
     }

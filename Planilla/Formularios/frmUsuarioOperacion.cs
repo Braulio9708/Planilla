@@ -359,6 +359,7 @@ namespace Planilla.Formularios
 
         private void EvaluarErrorParaMensajeAPantalla(String Error, string TipoOperacion)
         {
+            
             if (string.IsNullOrEmpty(Error) || Error.Trim().Length == 0)
             {
                 Error = string.Empty;
@@ -956,7 +957,7 @@ namespace Planilla.Formularios
                         if (Operacion == "ACTUALIZAR")
                         {
                             oRegistrosEN.IdModuloInterfazUsuario = Convert.ToInt32(Fila.Cells[NombreLavePrimariaDetalle].Value);
-
+                            
                             if (oRegistrosLN.Actualizar(oRegistrosEN, Program.oDatosDeConexioEN))
                             {
                                 dgvLista.Rows[Fila.Index].Cells["Actualizar"].Value = false;
@@ -1166,14 +1167,13 @@ namespace Planilla.Formularios
 
                         txtIdentificador.Text = oRegistroEN.IdUsuario.ToString();
                         ValorLlavePrimariaEntidad = oRegistroEN.IdUsuario;
-
-                        EvaluarErrorParaMensajeAPantalla(oRegistroLN.Error, "Actualizar");
-
-                        oRegistroEN = null;
-                        oRegistroLN = null;
-
+                        
                         if (InsertarActualizarOEliminarPrivilegiosDelUusuario())
                         {
+                            EvaluarErrorParaMensajeAPantalla(oRegistroLN.Error, "ACTUALIZAR");
+
+                            oRegistroEN = null;
+                            oRegistroLN = null;
 
                             if (CerrarVentana == true)
                             {
@@ -1240,7 +1240,7 @@ namespace Planilla.Formularios
                             txtIdentificador.Text = oRegistroEN.IdUsuario.ToString();
                             ValorLlavePrimariaEntidad = oRegistroEN.IdUsuario;
 
-                            EvaluarErrorParaMensajeAPantalla(oRegistroLN.Error, "Eliminar");
+                            EvaluarErrorParaMensajeAPantalla(oRegistroLN.Error, "ELIMINAR");
 
                             oRegistroEN = null;
                             oRegistroLN = null;
@@ -1469,17 +1469,15 @@ namespace Planilla.Formularios
                     {
 
                         txtIdentificador.Text = oRegistroEN.IdUsuario.ToString();
-                        txtNombreUsuario.Text = oRegistroEN.Nombre.ToString();
-                        ValorLlavePrimariaEntidad = oRegistroEN.IdUsuario;                        
+                        //txtNombreUsuario.Text = oRegistroEN.Nombre.ToString();
+                        ValorLlavePrimariaEntidad = oRegistroEN.IdUsuario;
                         
-                        oRegistroEN = null;
-                        oRegistroLN = null;
-
-                       
-
                         if (InsertarActualizarOEliminarPrivilegiosDelUusuario())
                         {
-                            EvaluarErrorParaMensajeAPantalla(oRegistroLN.Error, "Guardar");
+                            EvaluarErrorParaMensajeAPantalla(oRegistroLN.Error, "GUARDAR");
+
+                            oRegistroEN = null;
+                            oRegistroLN = null;
 
                             if (CerrarVentana == true)
                             {

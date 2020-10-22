@@ -11,11 +11,12 @@ using Entidad;
 using Logica;
 using Funciones;
 
+
 namespace Planilla.Formularios
 {
-    public partial class frmCargoOperacion : Form
+    public partial class frmCiudadOperacion : Form
     {
-        public frmCargoOperacion()
+        public frmCiudadOperacion()
         {
             InitializeComponent();
         }
@@ -30,7 +31,7 @@ namespace Planilla.Formularios
         private bool PermitirCambiarRegistroAunqueEstenVinculados = false;
         private bool AplicarCambio = false;
 
-        private void frmCargoOperacion_Shown(object sender, EventArgs e)
+        private void frmMunicipioOperacion_Shown(object sender, EventArgs e)
         {
             ObtenerValoresDeConfiguracion();
             LlamarMetodoSegunOperacion();
@@ -47,7 +48,7 @@ namespace Planilla.Formularios
             CargarPrivilegiosDelUsuarioPermitirCambiar();
         }
 
-        #region "Funciones"
+        #region "Funciones del programador"
 
         private void EvaluarErrorParaMensajeAPantalla(String Error, string TipoOperacion)
         {
@@ -87,11 +88,11 @@ namespace Planilla.Formularios
 
                 ModuloInterfazUsuarioEN oRegistroEN = new ModuloInterfazUsuarioEN();
                 ModuloInterfazUsuarioLN oRegistroLN = new ModuloInterfazUsuarioLN();
-                                
+
                 oRegistroEN.oUsuarioEN.IdUsuario = Program.oLoginEN.IdUsuario;
                 oRegistroEN.oPrivilegioEN.oModuloInterfazEN.oInterfazEN.Nombre = Nombre_Entidad_Privilegio;
 
-                
+
 
                 if (oRegistroLN.ListadoPrivilegiosDelUsuariosPorModulo(oRegistroEN, Program.oDatosDeConexioEN))
                 {
@@ -208,6 +209,35 @@ namespace Planilla.Formularios
             }
         }
 
+        private void Nuevo()
+        {
+            
+        }
+
+        private void Modificar()
+        {
+            txtIdentificador.Text = ValorLlavePrimariaEntidad.ToString();
+            LlenarCamposDesdeBaseDatosSegunID();
+        }
+
+        private void Eliminar()
+        {
+            txtIdentificador.Text = ValorLlavePrimariaEntidad.ToString();
+            LlenarCamposDesdeBaseDatosSegunID();
+        }
+
+        private void Consultar()
+        {
+            txtIdentificador.Text = ValorLlavePrimariaEntidad.ToString();
+            LlenarCamposDesdeBaseDatosSegunID();
+        }
+
+        private void NuevoAPartirDeRegistroSeleccionado()
+        {
+            txtIdentificador.Text = ValorLlavePrimariaEntidad.ToString();
+            LlenarCamposDesdeBaseDatosSegunID();
+        }
+
         private void DeshabilitarControlesSegunOperacionesARealizar()
         {
             switch (this.OperacionARealizar.ToUpper())
@@ -272,54 +302,27 @@ namespace Planilla.Formularios
             }
         }
 
-        private void Nuevo()
-        {
-
-        }
-
-        private void Modificar()
-        {
-            txtIdentificador.Text = ValorLlavePrimariaEntidad.ToString();
-            LlenarCamposDesdeBaseDatosSegunID();
-        }
-
-        private void Eliminar()
-        {
-            txtIdentificador.Text = ValorLlavePrimariaEntidad.ToString();
-            LlenarCamposDesdeBaseDatosSegunID();
-        }
-
-        private void Consultar()
-        {
-            txtIdentificador.Text = ValorLlavePrimariaEntidad.ToString();
-            LlenarCamposDesdeBaseDatosSegunID();
-        }
-
-        private void NuevoAPartirDeRegistroSeleccionado()
-        {
-            LlenarCamposDesdeBaseDatosSegunID();
-        }
 
         private void LlenarCamposDesdeBaseDatosSegunID()
         {
             this.Cursor = Cursors.WaitCursor;
 
-            CargoEN oRegistrosEN = new CargoEN();
-            CargoLN oRegistrosLN = new CargoLN();
+            CiudadEN oRegistrosEN = new CiudadEN();
+            CiudadLN oRegistrosLN = new CiudadLN();
 
-            oRegistrosEN.IdCargo = ValorLlavePrimariaEntidad;
+            oRegistrosEN.IdCiudad = ValorLlavePrimariaEntidad;
 
             if (oRegistrosLN.ListadoPorIdentificador(oRegistrosEN, Program.oDatosDeConexioEN))
             {
-                
+
                 if (oRegistrosLN.TraerDatos().Rows.Count > 0)
                 {
 
                     DataRow Fila = oRegistrosLN.TraerDatos().Rows[0];
-                    txtNombre.Text = Fila["Cargo"].ToString();
+                    txtCiudad.Text = Fila["Ciudad"].ToString();
                     oRegistrosEN = null;
                     oRegistrosLN = null;
-                    
+
 
                 }
                 else
@@ -353,13 +356,13 @@ namespace Planilla.Formularios
         private void EstablecerTituloDeVentana()
         {
             this.Text = string.Format("{0} - {1}", this.Nombre_Entidad, this.OperacionARealizar.ToUpper());
-            
+
         }
 
         private void LimpiarCampos()
         {
             //txtIdentificador.Text = string.Empty;
-            txtNombre.Text = string.Empty;
+            txtCiudad.Text = string.Empty;
 
         }
 
@@ -378,10 +381,10 @@ namespace Planilla.Formularios
         {
             LimpiarEP();
 
-            if (Controles.IsNullOEmptyElControl(txtNombre))
+            if (Controles.IsNullOEmptyElControl(txtCiudad))
             {
-                EP.SetError(txtNombre, "Este campo no puede quedar vacío");
-                txtNombre.Focus();
+                EP.SetError(txtCiudad, "Este campo no puede quedar vacío");
+                txtCiudad.Focus();
                 return false;
             }
 
@@ -389,24 +392,21 @@ namespace Planilla.Formularios
 
         }
 
-        private CargoEN InformacionDelRegistro()
+        private CiudadEN InformacionDelRegistro()
         {
 
-            CargoEN oRegistroEN = new CargoEN();
+            CiudadEN oRegistroEN = new CiudadEN();
 
-            oRegistroEN.IdCargo = Convert.ToInt32((txtIdentificador.Text.Length > 0 ? txtIdentificador.Text : "0"));
-            oRegistroEN.Cargo = txtNombre.Text.Trim();
+            oRegistroEN.IdCiudad = Convert.ToInt32((txtIdentificador.Text.Length > 0 ? txtIdentificador.Text : "0"));
+            oRegistroEN.Ciudad = txtCiudad.Text.Trim();
 
             //partes generales.            
             oRegistroEN.oLoginEN = Program.oLoginEN;
-            oRegistroEN.IdUsuarioDeCreacion = Program.oLoginEN.IdUsuario;
-            oRegistroEN.IdUsuarioDeModificacion = Program.oLoginEN.IdUsuario;
-            oRegistroEN.FechaDeCreacion = System.DateTime.Now;
-            oRegistroEN.FechaDeModificacion = System.DateTime.Now;
+            
             return oRegistroEN;
 
         }
-
+                
         #endregion
 
         private void tsbGuardar_Click(object sender, EventArgs e)
@@ -417,23 +417,20 @@ namespace Planilla.Formularios
 
                 if (LosDatosIngresadosSonCorrectos())
                 {
+                    CiudadEN oRegistroEN = InformacionDelRegistro();
+                    CiudadLN oRegistroLN = new CiudadLN();
 
-                    CargoEN oRegistroEN = InformacionDelRegistro();
-                    CargoLN oRegistroLN = new CargoLN();
-
-                    if (oRegistroLN.ValidarRegistroDuplicado(oRegistroEN, Program.oDatosDeConexioEN, "AGREGAR"))
+                    if(oRegistroLN.ValidarRegistroDuplicado(oRegistroEN, Program.oDatosDeConexioEN, "AGREGAR"))
                     {
-
                         MessageBox.Show(oRegistroLN.Error, "Guardar información", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         return;
-
                     }
 
-                    if (oRegistroLN.Agregar(oRegistroEN, Program.oDatosDeConexioEN))
+                    if(oRegistroLN.Agregar(oRegistroEN, Program.oDatosDeConexioEN))
                     {
-
-                        txtIdentificador.Text = oRegistroEN.IdCargo.ToString();
-                        ValorLlavePrimariaEntidad = oRegistroEN.IdCargo;
+                        
+                        txtIdentificador.Text = oRegistroEN.IdCiudad.ToString();
+                        ValorLlavePrimariaEntidad = oRegistroEN.IdCiudad;
 
                         EvaluarErrorParaMensajeAPantalla(oRegistroLN.Error, "GUARDAR");
 
@@ -446,25 +443,23 @@ namespace Planilla.Formularios
                         {
                             this.Close();
                         }
+
                         else
-                        {
+                        {                            
                             OperacionARealizar = "Modificar";
                             ObtenerValoresDeConfiguracion();
                             LlamarMetodoSegunOperacion();
                             EstablecerTituloDeVentana();
                             DeshabilitarControlesSegunOperacionesARealizar();
                         }
-
                     }
                     else
                     {
                         throw new ArgumentException(oRegistroLN.Error);
                     }
-
                 }
-
             }
-            catch (Exception ex)
+            catch(Exception ex)
             {
                 MessageBox.Show(ex.Message, "Guardar la información del registro", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
@@ -494,8 +489,8 @@ namespace Planilla.Formularios
                         return;
                     }
 
-                    CargoEN oRegistroEN = InformacionDelRegistro();
-                    CargoLN oRegistroLN = new CargoLN();
+                    CiudadEN oRegistroEN = InformacionDelRegistro();
+                    CiudadLN oRegistroLN = new CiudadLN();
 
                     if (oRegistroLN.ValidarSiElRegistroEstaVinculado(oRegistroEN, Program.oDatosDeConexioEN, "ACTUALIZAR"))
                     {
@@ -526,10 +521,10 @@ namespace Planilla.Formularios
                     if (oRegistroLN.Actualizar(oRegistroEN, Program.oDatosDeConexioEN))
                     {
 
-                        txtIdentificador.Text = oRegistroEN.IdCargo.ToString();
-                        ValorLlavePrimariaEntidad = oRegistroEN.IdCargo;
+                        txtIdentificador.Text = oRegistroEN.IdCiudad.ToString();
+                        ValorLlavePrimariaEntidad = oRegistroEN.IdCiudad;
 
-                        EvaluarErrorParaMensajeAPantalla(oRegistroLN.Error, "ACTUALIZAR");
+                        EvaluarErrorParaMensajeAPantalla(oRegistroLN.Error, "Actualizar");
 
                         oRegistroEN = null;
                         oRegistroLN = null;
@@ -581,8 +576,8 @@ namespace Planilla.Formularios
                         return;
                     }
 
-                    CargoEN oRegistroEN = InformacionDelRegistro();
-                    CargoLN oRegistroLN = new CargoLN();
+                    CiudadEN oRegistroEN = InformacionDelRegistro();
+                    CiudadLN oRegistroLN = new CiudadLN();
 
                     if (oRegistroLN.ValidarSiElRegistroEstaVinculado(oRegistroEN, Program.oDatosDeConexioEN, "ELIMINAR"))
                     {
@@ -594,10 +589,10 @@ namespace Planilla.Formularios
                     if (oRegistroLN.Eliminar(oRegistroEN, Program.oDatosDeConexioEN))
                     {
 
-                        txtIdentificador.Text = oRegistroEN.IdCargo.ToString();
-                        ValorLlavePrimariaEntidad = oRegistroEN.IdCargo;
+                        txtIdentificador.Text = oRegistroEN.IdCiudad.ToString();
+                        ValorLlavePrimariaEntidad = oRegistroEN.IdCiudad;
 
-                        EvaluarErrorParaMensajeAPantalla(oRegistroLN.Error, "ELIMINAR");
+                        EvaluarErrorParaMensajeAPantalla(oRegistroLN.Error, "Eliminar");
 
                         oRegistroEN = null;
                         oRegistroLN = null;
@@ -652,18 +647,18 @@ namespace Planilla.Formularios
         {
             LlenarCamposDesdeBaseDatosSegunID();
         }
-
-        private void tsbCerrarVentana_Click(object sender, EventArgs e)
-        {
-            this.Close();
-        }
-
+                
         private void chkCerrarVentana_CheckedChanged(object sender, EventArgs e)
         {
             this.CerrarVentana = (chkCerrarVentana.CheckState == CheckState.Checked ? true : false);
         }
 
-        private void frmCargoOperacion_FormClosing(object sender, FormClosingEventArgs e)
+        private void chkCerrarVentana_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void frmMunicipioOperacion_FormClosing(object sender, FormClosingEventArgs e)
         {
             GuardarValoresDeConfiguracion();
         }

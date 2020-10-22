@@ -99,6 +99,18 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>frmLoginMySql.resx</DependentUpon>
     </Compile>
+    <Compile Include="Formularios\frmCiudad.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\frmCiudad.Designer.cs">
+      <DependentUpon>frmCiudad.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\frmCiudadOperacion.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\frmCiudadOperacion.Designer.cs">
+      <DependentUpon>frmCiudadOperacion.cs</DependentUpon>
+    </Compile>
     <Compile Include="Formularios\frmUsuario.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -157,6 +169,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios\frmEmpleados.resx">
       <DependentUpon>frmEmpleados.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\frmCiudad.resx">
+      <DependentUpon>frmCiudad.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\frmCiudadOperacion.resx">
+      <DependentUpon>frmCiudadOperacion.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios\frmUsuario.resx">
       <DependentUpon>frmUsuario.cs</DependentUpon>

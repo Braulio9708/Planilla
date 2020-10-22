@@ -69,7 +69,6 @@ namespace Acceso
 
                 DescripcionDeOperacion = string.Format("El registro fue Insertado Correctamente. {0} {1}", Environment.NewLine, InformacionDelRegistro(oRegistroEN));
 
-                oTransaccionesAD.Agregar(oRegistroEN.oLoginEN.IdUsuario, oRegistroEN.oLoginEN.NumeroIP, oRegistroEN.IdModuloInterfazUsuario, "AGREGAR", "INFORMACIÓN DE LA MODULO INTERFAZ USUARIO AGREGADA CORRECTAMENTE", "CORRECTA", DescripcionDeOperacion, oRegistroEN.oLoginEN.IdUsuario, oDatos);
 
                 return true;
 
@@ -79,7 +78,6 @@ namespace Acceso
                 this.Error = ex.Message;
 
                 DescripcionDeOperacion = string.Format("Se produjo el seguiente error: '{2}' al insertar el registro. {0} {1} ", Environment.NewLine, InformacionDelRegistro(oRegistroEN), ex.Message);
-                oTransaccionesAD.Agregar(oRegistroEN.oLoginEN.IdUsuario, oRegistroEN.oLoginEN.NumeroIP, oRegistroEN.IdModuloInterfazUsuario, "AGREGAR", "ERROR AL AGREGAR LA INFORMACIÓN DE LA ModuloInterfazUsuarios", "ERROR", DescripcionDeOperacion, oRegistroEN.oLoginEN.IdUsuario, oDatos);
 
                 return false;
             }
@@ -104,26 +102,23 @@ namespace Acceso
 	                            IdPrivilegio = @IdPrivilegio,
                                 IdUsuario = @IdUsuario,
                                 Acceso = @Acceso,
-                                IdUsuarioDeCreacion = @IdUsuarioDeCreacion,
-                                FechaDeCreacion = @FechaDeCreacion,
                                 IdUsuarioDeModificacion = @IdUsuarioDeModificacion,
                                 FechaDeModificacion = @FechaDeModificacion                    
                             where IdModuloInterfazUsuario = @IdModuloInterfazUsuario;";
-
+                
                 Comando.CommandText = Consultas;
-
+                
                 Comando.Parameters.Add(new MySqlParameter("@IdModuloInterfazUsuario", MySqlDbType.Int32)).Value = oRegistroEN.IdModuloInterfazUsuario;
                 Comando.Parameters.Add(new MySqlParameter("@IdPrivilegio", MySqlDbType.Int32)).Value = oRegistroEN.oPrivilegioEN.IdPrivilegio;
                 Comando.Parameters.Add(new MySqlParameter("@IdUsuario", MySqlDbType.Int32)).Value = oRegistroEN.oUsuarioEN.IdUsuario;
                 Comando.Parameters.Add(new MySqlParameter("@Acceso", MySqlDbType.Int32)).Value = oRegistroEN.Acceso;
                 Comando.Parameters.Add(new MySqlParameter("@IdUsuarioDeModificacion", MySqlDbType.Int32)).Value = oRegistroEN.oLoginEN.IdUsuario;
-                
+                Comando.Parameters.Add(new MySqlParameter("@FechaDeModificacion", MySqlDbType.DateTime)).Value = oRegistroEN.FechaDeModificacion;
+
                 Comando.ExecuteNonQuery();
-
+                
                 DescripcionDeOperacion = string.Format("El registro fue Actualizado Correctamente. {0} {1}", Environment.NewLine, InformacionDelRegistro(oRegistroEN));
-
-                oTransaccionesAD.Agregar(oRegistroEN.oLoginEN.IdUsuario, oRegistroEN.oLoginEN.NumeroIP, oRegistroEN.IdModuloInterfazUsuario, "ACTUALIZAR", "INFORMACIÓN DE LA MODULO INTERFAZ USUARIO ACTUALIZADA", "CORRECTA", DescripcionDeOperacion, oRegistroEN.oLoginEN.IdUsuario, oDatos);
-
+                
                 return true;
 
             }
@@ -132,7 +127,6 @@ namespace Acceso
                 this.Error = ex.Message;
 
                 DescripcionDeOperacion = string.Format("Se produjo el seguiente error: '{2}' al actualizar el registro. {0} {1} ", Environment.NewLine, InformacionDelRegistro(oRegistroEN), ex.Message);
-                oTransaccionesAD.Agregar(oRegistroEN.oLoginEN.IdUsuario, oRegistroEN.oLoginEN.NumeroIP, oRegistroEN.IdModuloInterfazUsuario, "ACTUALIZAR", "ERROR AL ACTUALIZAR LA INFORMACIÓN DE LA MODULO INTERFAZ USUARIO", "ERROR", DescripcionDeOperacion, oRegistroEN.oLoginEN.IdUsuario, oDatos);
 
                 return false;
             }
@@ -162,7 +156,6 @@ namespace Acceso
 
                 DescripcionDeOperacion = string.Format("El registro fue Eliminado Correctamente. {0} {1}", Environment.NewLine, InformacionDelRegistro(oRegistroEN));
 
-                //oTransaccionesAD.Agregar(oRegistroEN.oLoginEN.IdUsuario, oRegistroEN.oLoginEN.NumeroIP, oRegistroEN.IdModuloInterfazUsuario, "ELIMINAR", "INFORMACIÓN DE LA MODULO INTERFAZ USUARIO ELIMINADA", "CORRECTA", DescripcionDeOperacion, oRegistroEN.oLoginEN.IdUsuario, oDatos);
 
                 return true;
 
@@ -172,7 +165,6 @@ namespace Acceso
                 this.Error = ex.Message;
 
                 DescripcionDeOperacion = string.Format("Se produjo el seguiente error: '{2}' al eliminar el registro. {0} {1} ", Environment.NewLine, InformacionDelRegistro(oRegistroEN), ex.Message);
-                //oTransaccionesAD.Agregar(oRegistroEN.oLoginEN.IdUsuario, oRegistroEN.oLoginEN.NumeroIP, oRegistroEN.IdModuloInterfazUsuario, "ELIMINAR", "ERROR AL ELIMINAR LA INFORMACIÓN DE LA MODULO INTERFAZ USUARIO", "ERROR", DescripcionDeOperacion, oRegistroEN.oLoginEN.IdUsuario, oDatos);
 
                 return false;
             }

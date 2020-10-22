@@ -445,9 +445,7 @@ namespace Planilla.Formularios
         {
             this.ValorLlavePrimariaEntidad = Convert.ToInt32(this.dgvLista.Rows[this.IndiceSeleccionado].Cells[this.Nombre_Llave_Primaria].Value);
         }
-
-
-
+                
         #endregion
 
         private void frmCargo_Shown(object sender, EventArgs e)

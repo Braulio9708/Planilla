@@ -20,7 +20,7 @@ namespace Entidad
         public string NoINSS { set; get; }
 
         public CargoEN oCargoEN = new CargoEN();
-        public MunicipioEN oMunicipioEN = new MunicipioEN();        
+        public CiudadEN oCiudad = new CiudadEN();        
         public AreaLaboralEN oAreaLaboralEN = new AreaLaboralEN();
         public LoginEN oLoginEN = new LoginEN();
 

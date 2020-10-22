@@ -1,6 +1,6 @@
 ﻿namespace Planilla.Formularios
 {
-    partial class frmCargoOperacion
+    partial class frmCiudadOperacion
     {
         /// <summary>
         /// Required designer variable.
@@ -34,7 +34,7 @@
             this.panel2 = new System.Windows.Forms.Panel();
             this.label3 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.txtNombre = new System.Windows.Forms.TextBox();
+            this.txtCiudad = new System.Windows.Forms.TextBox();
             this.txtIdentificador = new System.Windows.Forms.TextBox();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.tsbGuardar = new System.Windows.Forms.ToolStripButton();
@@ -65,7 +65,7 @@
             this.panel1.Margin = new System.Windows.Forms.Padding(4);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(746, 377);
-            this.panel1.TabIndex = 1;
+            this.panel1.TabIndex = 2;
             // 
             // chkCerrarVentana
             // 
@@ -80,6 +80,7 @@
             this.chkCerrarVentana.Text = "Cerrar ventana de manera automatica";
             this.chkCerrarVentana.UseVisualStyleBackColor = true;
             this.chkCerrarVentana.CheckedChanged += new System.EventHandler(this.chkCerrarVentana_CheckedChanged);
+            this.chkCerrarVentana.Click += new System.EventHandler(this.chkCerrarVentana_Click);
             // 
             // panel2
             // 
@@ -89,12 +90,12 @@
             this.panel2.AutoScroll = true;
             this.panel2.Controls.Add(this.label3);
             this.panel2.Controls.Add(this.label1);
-            this.panel2.Controls.Add(this.txtNombre);
+            this.panel2.Controls.Add(this.txtCiudad);
             this.panel2.Controls.Add(this.txtIdentificador);
-            this.panel2.Location = new System.Drawing.Point(20, 54);
+            this.panel2.Location = new System.Drawing.Point(20, 45);
             this.panel2.Margin = new System.Windows.Forms.Padding(4);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(700, 220);
+            this.panel2.Size = new System.Drawing.Size(700, 229);
             this.panel2.TabIndex = 1;
             // 
             // label3
@@ -104,9 +105,9 @@
             this.label3.Location = new System.Drawing.Point(27, 71);
             this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(147, 18);
+            this.label3.Size = new System.Drawing.Size(58, 18);
             this.label3.TabIndex = 8;
-            this.label3.Text = "Cargo del Empleado:";
+            this.label3.Text = "Ciudad:";
             // 
             // label1
             // 
@@ -119,16 +120,16 @@
             this.label1.TabIndex = 7;
             this.label1.Text = "Identificador";
             // 
-            // txtNombre
+            // txtCiudad
             // 
-            this.txtNombre.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.txtCiudad.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtNombre.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtNombre.Location = new System.Drawing.Point(185, 68);
-            this.txtNombre.Margin = new System.Windows.Forms.Padding(4);
-            this.txtNombre.Name = "txtNombre";
-            this.txtNombre.Size = new System.Drawing.Size(477, 24);
-            this.txtNombre.TabIndex = 3;
+            this.txtCiudad.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtCiudad.Location = new System.Drawing.Point(185, 68);
+            this.txtCiudad.Margin = new System.Windows.Forms.Padding(4);
+            this.txtCiudad.Name = "txtCiudad";
+            this.txtCiudad.Size = new System.Drawing.Size(477, 24);
+            this.txtCiudad.TabIndex = 3;
             // 
             // txtIdentificador
             // 
@@ -219,7 +220,6 @@
             this.tsbCerrarVentana.Size = new System.Drawing.Size(52, 68);
             this.tsbCerrarVentana.Text = "Salir";
             this.tsbCerrarVentana.ToolTipText = "Cerrar la ventana y retornar";
-            this.tsbCerrarVentana.Click += new System.EventHandler(this.tsbCerrarVentana_Click);
             // 
             // tsbRecarRegistro
             // 
@@ -271,18 +271,18 @@
             this.InformacionEntidadOperacion.Location = new System.Drawing.Point(47, 9);
             this.InformacionEntidadOperacion.Name = "InformacionEntidadOperacion";
             this.InformacionEntidadOperacion.Size = new System.Drawing.Size(0, 16);
-            this.InformacionEntidadOperacion.TabIndex = 9;
+            this.InformacionEntidadOperacion.TabIndex = 5;
             // 
-            // frmCargoOperacion
+            // frmMunicipioOperacion
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(746, 377);
             this.Controls.Add(this.panel1);
-            this.Name = "frmCargoOperacion";
-            this.Text = "frmCargoOperacion";
-            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmCargoOperacion_FormClosing);
-            this.Shown += new System.EventHandler(this.frmCargoOperacion_Shown);
+            this.Name = "frmMunicipioOperacion";
+            this.Text = "frmMunicipioOperacion";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmMunicipioOperacion_FormClosing);
+            this.Shown += new System.EventHandler(this.frmMunicipioOperacion_Shown);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.panel2.ResumeLayout(false);
@@ -297,10 +297,11 @@
         #endregion
 
         private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.CheckBox chkCerrarVentana;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox txtNombre;
+        private System.Windows.Forms.TextBox txtCiudad;
         private System.Windows.Forms.TextBox txtIdentificador;
         private System.Windows.Forms.ToolStrip toolStrip1;
         private System.Windows.Forms.ToolStripButton tsbGuardar;
@@ -312,7 +313,6 @@
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         private System.Windows.Forms.ToolStripButton tsbImprimir;
         private System.Windows.Forms.ToolStripButton tsbAplicarCambio;
-        private System.Windows.Forms.CheckBox chkCerrarVentana;
         private System.Windows.Forms.ErrorProvider EP;
         private System.Windows.Forms.Label InformacionEntidadOperacion;
     }

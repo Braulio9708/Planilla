@@ -64,8 +64,6 @@ namespace Acceso
 
                 DescripcionDeLaOperacion = string.Format("El registro se ha insertado correctamente. {0} {1}", Environment.NewLine, InformacionDelRegistro(oRegistroEN));
 
-                TransaccionesEN oTransacciones = InformacionDelaTransaccion(oRegistroEN, "Agregar", "Agregar Nuevo Registro", "CORRECTO");
-                oTransaccionesAD.Agregar(oTransacciones, oDatos);
 
                 return true;
             }
@@ -75,15 +73,12 @@ namespace Acceso
 
                 DescripcionDeLaOperacion = string.Format("Se produjo el seguiente error: '{2}' al insertar el registro. {0} {1} ", Environment.NewLine, InformacionDelRegistro(oRegistroEN), ex.Message);
 
-                TransaccionesEN oTransacciones = InformacionDelaTransaccion(oRegistroEN, "Agregar", "Agregar Nuevo Registro", "ERROR");
-                oTransaccionesAD.Agregar(oTransacciones, oDatos);
 
                 return false;
             }
             finally
             {
                 FinalizarConexion();
-                oTransaccionesAD = null;
             }
         }
 
@@ -122,8 +117,6 @@ namespace Acceso
 
                 DescripcionDeLaOperacion = string.Format("El registro fue Actualizado correctamente. {0} {1}", Environment.NewLine, InformacionDelRegistro(oRegistroEN));
 
-                TransaccionesEN oTransacciones = InformacionDelaTransaccion(oRegistroEN, "Actualizar", "Actualizar Registro", "CORRECTO");
-                oTransaccionesAD.Agregar(oTransacciones, oDatos);
 
                 return true;
             }
@@ -133,8 +126,6 @@ namespace Acceso
 
                 DescripcionDeLaOperacion = string.Format("Se produjo el siguiente error: {2} al actualizar el registro {0} {1}", Environment.NewLine, InformacionDelRegistro(oRegistroEN), ex.Message);
 
-                TransaccionesEN oTransacciones = InformacionDelaTransaccion(oRegistroEN, "Actualizar", "Actualizar Registro", "ERROR");
-                oTransaccionesAD.Agregar(oTransacciones, oDatos);
 
                 return false;
             }
@@ -162,9 +153,6 @@ namespace Acceso
 
                 DescripcionDeLaOperacion = string.Format("El registro fue eliminado correctamente. {0} {1}", Environment.NewLine, InformacionDelRegistro(oRegistroEN));
 
-                //Agregamos la transaccion...
-                TransaccionesEN oTransacciones = InformacionDelaTransaccion(oRegistroEN, "Eliminar", "Elminar Registro", "CORRECTO");
-                oTransaccionesAD.Agregar(oTransacciones, oDatos);
 
                 return true;
             }
@@ -174,15 +162,12 @@ namespace Acceso
 
                 DescripcionDeLaOperacion = string.Format("Se produjo el siguiente error: {2} al eliminar el registro. {0} {1}", Environment.NewLine, InformacionDelRegistro(oRegistroEN), ex.Message);
 
-                TransaccionesEN oTransacciones = InformacionDelaTransaccion(oRegistroEN, "Eliminar", "Eliminar Registro", "ERROR");
-                oTransaccionesAD.Agregar(oTransacciones, oDatos);
 
                 return false;
             }
             finally
             {
                 FinalizarConexion();
-                oTransaccionesAD = null;
             }
         }
 

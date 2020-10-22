@@ -264,7 +264,7 @@ namespace Planilla.Formularios
             }
             if (Controles.IsNullOEmptyElControl(chkMunicipio) == false && Controles.IsNullOEmptyElControl(cmbMunicipio) == false)
             {
-                where += string.Format(" and mpo.Municipio like {0}", cmbMunicipio.Text.Trim());
+                where += string.Format(" and cdd.Ciudad like {0}", cmbMunicipio.Text.Trim());
             }
 
             return where;
@@ -548,16 +548,16 @@ namespace Planilla.Formularios
             {
                 this.Cursor = Cursors.WaitCursor;
 
-                MunicipioEN oRegistroEN = new MunicipioEN();
-                MunicipioLN oRegistroLN = new MunicipioLN();
+                CiudadEN oRegistroEN = new CiudadEN();
+                CiudadLN oRegistroLN = new CiudadLN();
                 oRegistroEN.Where = "";
                 oRegistroEN.OrderBy = "";
 
                 if (oRegistroLN.ListadoParaCombos(oRegistroEN, Program.oDatosDeConexioEN))
                 {
                     cmbMunicipio.DataSource = oRegistroLN.TraerDatos();
-                    cmbMunicipio.DisplayMember = "Municipio";
-                    cmbMunicipio.ValueMember = "IdMunicipio";
+                    cmbMunicipio.DisplayMember = "Ciudad";
+                    cmbMunicipio.ValueMember = "IdCiudad";
                     cmbMunicipio.SelectedIndex = -1;
                 }
 
@@ -689,11 +689,11 @@ namespace Planilla.Formularios
                             oEmpleadoEN[a - 1].Correo = Fila.Cells["Correo"].Value.ToString();
                             oEmpleadoEN[a - 1].NoINSS = Fila.Cells["NoINSS"].Value.ToString();
                             oEmpleadoEN[a - 1].oCargoEN.IdCargo = Convert.ToInt32(Fila.Cells["IdCargo"].Value.ToString());
-                            oEmpleadoEN[a - 1].oMunicipioEN.IdMunicipio = Convert.ToInt32(Fila.Cells["IdMunicipio"].Value.ToString());
+                            oEmpleadoEN[a - 1].oCiudad.IdCiudad = Convert.ToInt32(Fila.Cells["IdCiudad"].Value.ToString());
                             oEmpleadoEN[a - 1].oAreaLaboralEN.IdAreaLaboral = Convert.ToInt32(Fila.Cells["IdAreaLaboral"].Value.ToString());
                             oEmpleadoEN[a - 1].oAreaLaboralEN.Area = Fila.Cells["Area"].Value.ToString();
                             oEmpleadoEN[a - 1].oCargoEN.Cargo = Fila.Cells["Cargo"].Value.ToString();
-                            oEmpleadoEN[a - 1].oMunicipioEN.Municipio = Fila.Cells["Municipio"].Value.ToString();
+                            oEmpleadoEN[a - 1].oCiudad.Ciudad = Fila.Cells["Ciudad"].Value.ToString();
                         }
                     }
                 }
@@ -897,11 +897,11 @@ namespace Planilla.Formularios
                         oEmpleadoEN[a - 1].Correo = Fila.Cells["Correo"].Value.ToString();
                         oEmpleadoEN[a - 1].NoINSS = Fila.Cells["NoINSS"].Value.ToString();
                         oEmpleadoEN[a - 1].oCargoEN.IdCargo = Convert.ToInt32(Fila.Cells["IdCargo"].Value.ToString());
-                        oEmpleadoEN[a - 1].oMunicipioEN.IdMunicipio = Convert.ToInt32(Fila.Cells["IdMunicipio"].Value.ToString());
+                        oEmpleadoEN[a - 1].oCiudad.IdCiudad = Convert.ToInt32(Fila.Cells["IdCiudad"].Value.ToString());
                         oEmpleadoEN[a - 1].oAreaLaboralEN.IdAreaLaboral = Convert.ToInt32(Fila.Cells["IdAreaLaboral"].Value.ToString());
                         oEmpleadoEN[a - 1].oAreaLaboralEN.Area = Fila.Cells["Area"].Value.ToString();
                         oEmpleadoEN[a - 1].oCargoEN.Cargo = Fila.Cells["Cargo"].Value.ToString();
-                        oEmpleadoEN[a - 1].oMunicipioEN.Municipio = Fila.Cells["Municipio"].Value.ToString();
+                        oEmpleadoEN[a - 1].oCiudad.Ciudad = Fila.Cells["Ciudad"].Value.ToString();
                     }
                 }
 

@@ -13,26 +13,25 @@ using Funciones;
 
 namespace Planilla.Formularios
 {
-    public partial class frmAreaLaboral : Form
+    public partial class frmCiudad : Form
     {
-        public frmAreaLaboral()
+        public frmCiudad()
         {
             InitializeComponent();
         }
 
-
-        private string Nombre_Entidad_Privilegio = "AreaLaboral";
-        private string Nombre_Entidad = "Administrador de Areas Laborales";
-        private string Nombre_Llave_Primaria = "IdAreaLaboral";
+        private string Nombre_Entidad_Privilegio = "Ciudad";
+        private string Nombre_Entidad = "Administrador de Ciudad en el que vive el empleado";
+        private string Nombre_Llave_Primaria = "IdCiudad";
         private int ValorLlavePrimariaEntidad;
         private int IndiceSeleccionado;
 
         #region "Funciones del programador"
 
-        public bool Activar_Filtros { set; get; }
+        public bool ActivarFiltros { set; get; }
         public bool VariosRegistros { set; get; }
         public string TituloDeLaVentana { set; get; }
-        public AreaLaboralEN[] oAreaLaboral = new AreaLaboralEN[0];
+        public CiudadEN[] oMunicipioEN = new CiudadEN[0];
 
         public string Columnas { set; get; }
 
@@ -50,10 +49,9 @@ namespace Planilla.Formularios
 
         public bool Activar_Exportacion { set; get; }
 
-
         private void ActivarFiltrosDeBusqueda()
         {
-            if(Activar_Filtros == false)
+            if(ActivarFiltros == true)
             {
                 tsbFiltrar.DisplayStyle = ToolStripItemDisplayStyle.ImageAndText;
                 tsbNuevo.DisplayStyle = ToolStripItemDisplayStyle.ImageAndText;
@@ -69,14 +67,14 @@ namespace Planilla.Formularios
                 Activar_MenuContextual = true;
 
                 Activar_MenuContextual_Consultar = true;
-                Activar_MenuContextual_Eliminar = true;
-                Activar_MenuContextual_Modificar = true;
                 Activar_MenuContextual_Nuevo = true;
                 Activar_MenuContextual_NuevoApartiDe = true;
+                Activar_MenuContextual_Eliminar = true;
+                Activar_MenuContextual_Modificar = true;
             }
             else
             {
-                if(Activar_Filtros == true)
+                if(ActivarFiltros == true)
                 {
                     tsbFiltrar.DisplayStyle = ToolStripItemDisplayStyle.ImageAndText;
                     tsbNuevo.DisplayStyle = ToolStripItemDisplayStyle.ImageAndText;
@@ -86,7 +84,7 @@ namespace Planilla.Formularios
 
                     tsbSeleccionarTodos.Visible = true;
 
-                    if(VariosRegistros == true)
+                    if (VariosRegistros == true)
                     {
                         tsbMarcarTodos.Visible = false;
                     }
@@ -100,7 +98,7 @@ namespace Planilla.Formularios
                     {
                         tsbImprimir.Visible = Activar_btn_Nuevo;
                     }
-                    if(tsbImprimir.Visible == true)
+                    if (tsbImprimir.Visible == true)
                     {
                         tsbImprimir.Visible = Activar_btn_Imprimir;
                     }
@@ -115,18 +113,17 @@ namespace Planilla.Formularios
         {
             if (Columnas == null) return;
 
-            if(DTRegistros == null)
+            if (DTRegistros == null)
             {
-                string[] ArrayColumnas = Columnas.Split(',');
+                string[] arrayColumnas = Columnas.Split(',');
                 DTRegistros = new DataTable();
 
-                foreach(string item in ArrayColumnas)
+                foreach (string item in arrayColumnas)
                 {
                     DataColumn c = DTRegistros.Columns.Add();
                     c.ColumnName = item.Trim();
                 }
             }
-            
         }
 
         private void DesmarcarFilas(int FilaMarcada)
@@ -135,13 +132,13 @@ namespace Planilla.Formularios
             {
                 foreach (DataGridViewRow Fila in dgvLista.Rows)
                 {
-                    if(Fila.Index!=FilaMarcada && Convert.ToBoolean(Fila.Cells["Seleccionar"].Value) == true)
+                    if (Fila.Index != FilaMarcada && Convert.ToBoolean(Fila.Cells["Seleccionar"].Value) == true)
                     {
                         Fila.Cells["Seleccionar"].Value = false;
                     }
                 }
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 MessageBox.Show("Error al desmarcar filas. \n" + ex.Message, "FormatoDGV", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
@@ -151,22 +148,22 @@ namespace Planilla.Formularios
         {
             if (Columnas == null) return;
 
-            if(oAreaLaboral.Length > 0)
+            if (oMunicipioEN.Length > 0)
             {
-                DataTable DTClass = TraerInformacionDDGV();
+                DataTable DTClass = TraerInformacionDGV();
 
-                foreach(DataRow Fila in DTClass.Rows)
+                foreach (DataRow Fila in DTClass.Rows)
                 {
                     bool Existe = false;
 
-                    if(DTRegistros.Rows.Count > 0)
+                    if (DTRegistros.Rows.Count > 0)
                     {
-                        foreach(DataRow Item in DTRegistros.Rows)
+                        foreach (DataRow Item in DTRegistros.Rows)
                         {
                             int IdRegistro;
                             int.TryParse(Item[Nombre_Llave_Primaria].ToString(), out IdRegistro);
 
-                            if(IdRegistro == Convert.ToInt32(Fila[Nombre_Llave_Primaria]))
+                            if (IdRegistro == Convert.ToInt32(Fila[Nombre_Llave_Primaria]))
                             {
                                 Existe = true;
                             }
@@ -176,25 +173,23 @@ namespace Planilla.Formularios
                     {
                         Existe = false;
                     }
-                    if(Existe == false)
+                    if (Existe == false)
                     {
                         DataRow row = DTRegistros.Rows.Add();
 
                         String[] ArrayColumnas = Columnas.Split(',');
 
-                        foreach(string c in ArrayColumnas)
+                        foreach (string c in ArrayColumnas)
                         {
                             row[c.Trim()] = Fila[c.Trim()];
                         }
-
                         Application.DoEvents();
                     }
                 }
             }
-
         }
 
-        private DataTable TraerInformacionDDGV()
+        private DataTable TraerInformacionDGV()
         {
             DataTable DT = (DataTable)dgvLista.DataSource;
             DataTable DTCopy = new DataTable();
@@ -217,22 +212,24 @@ namespace Planilla.Formularios
             Seleccionar.SetOrdinal(0);
 
             return Datos;
+
         }
 
         private string WhereDinamico()
         {
-            string Where = "";
+            string Where = " ";
 
             if (Controles.IsNullOEmptyElControl(chkIdentificador) == false && Controles.IsNullOEmptyElControl(txtIdentificador) == false)
             {
-                Where += string.Format(" and IdAreaLaboral like '%{0}%' ", txtIdentificador.Text.Trim());
+                Where += string.Format(" and IdMunicipio like '%{0}%' ", txtIdentificador.Text.Trim());
             }
-            if (Controles.IsNullOEmptyElControl(chkArea) == false && Controles.IsNullOEmptyElControl(txtArea) == false)
+            if (Controles.IsNullOEmptyElControl(chkMunicipio) == false && Controles.IsNullOEmptyElControl(txtMunicipio) == false)
             {
-                Where += string.Format(" and Area like '%{0}%' ", txtArea.Text.Trim());
+                Where += string.Format(" and Municipio like '%{0}%' ", txtMunicipio.Text.Trim());
             }
 
             return Where;
+
         }
 
         private void LlenarListado()
@@ -241,9 +238,9 @@ namespace Planilla.Formularios
             {
                 this.Cursor = Cursors.WaitCursor;
 
-                AreaLaboralEN oRegistroEN = new AreaLaboralEN();
-                AreaLaboralLN oRegistroLN = new AreaLaboralLN();
-                            
+                CiudadEN oRegistroEN = new CiudadEN();
+                CiudadLN oRegistroLN = new CiudadLN();
+
                 oRegistroEN.Where = WhereDinamico();
 
                 if (oRegistroLN.Listado(oRegistroEN, Program.oDatosDeConexioEN))
@@ -251,7 +248,7 @@ namespace Planilla.Formularios
                     dgvLista.Columns.Clear();
                     System.Diagnostics.Debug.Print(oRegistroLN.TraerDatos().Rows.Count.ToString());
 
-                    if (Activar_Filtros == true)
+                    if (ActivarFiltros == true)
                     {
                         dgvLista.DataSource = AgregarColumnaSeleccionar(oRegistroLN.TraerDatos());
                     }
@@ -264,18 +261,13 @@ namespace Planilla.Formularios
                     this.dgvLista.ClearSelection();
 
                     tsbNoRegistros.Text = "No. Registros: " + oRegistroLN.TotalRegistros().ToString();
-
-                    
                 }
                 else
                 {
                     throw new ArgumentException(oRegistroLN.Error);
                 }
-
-                
-
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "Llenar listado de registro en la lista", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
@@ -311,7 +303,7 @@ namespace Planilla.Formularios
                 this.dgvLista.BackgroundColor = System.Drawing.SystemColors.Window;
                 this.dgvLista.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
 
-                string OcultarColumnas = "IdAreaLaboral";
+                string OcultarColumnas = "";
                 OcultarColumnasEnElDGV(OcultarColumnas);
 
                 FormatearColumnasDelDGV();
@@ -361,7 +353,7 @@ namespace Planilla.Formularios
                             FormatoDGV oFormato = new FormatoDGV(c1.Name.Trim());
                             if (oFormato.ValorEncontrado == false)
                             {
-                                oFormato = new FormatoDGV(c1.Name.Trim(), "Area");
+                                oFormato = new FormatoDGV(c1.Name.Trim(), "Municipio");
                             }
                             if (oFormato != null)
                             {
@@ -380,7 +372,7 @@ namespace Planilla.Formularios
             }
         }
 
-        private void CargarPrivilegios()
+        private void CargarPrivilegiosUsuario()
         {
             try
             {
@@ -404,12 +396,13 @@ namespace Planilla.Formularios
                             }
                         }
                     }
-                    //Crear el pribiegio para esta operacion...                    
+                    //Crear el pribiegio para esta operacion...
+                    tsbImprimir.Enabled = oRegistroLN.VerificarSiTengoAcceso("Imprimir");
                     tsbNuevo.Enabled = oRegistroLN.VerificarSiTengoAcceso("Nuevo");
                     cmActualizar.Enabled = oRegistroLN.VerificarSiTengoAcceso("Actualizar");
                     cmEliminar.Enabled = oRegistroLN.VerificarSiTengoAcceso("Eliminar");
                     cmVisualizar.Enabled = oRegistroLN.VerificarSiTengoAcceso("Visualizar");
-                    cmImprimir.Enabled = false;
+                    //cmImprimir.Enabled = oRegistroLN.VerificarSiTengoAcceso("Imprimir");
                 }
                 else
                 {
@@ -433,32 +426,30 @@ namespace Planilla.Formularios
             }
         }
 
-        private void MostrarFormularioSegunOpeacion(string OperacionARealizar)
+        private void MostrarFormularioParaOperacion(string OperacionARealizar)
         {
-            frmAreaLaboralOperacion ofrmAreaLaboralOperacion = new frmAreaLaboralOperacion();
-            ofrmAreaLaboralOperacion.OperacionARealizar = OperacionARealizar;
-            ofrmAreaLaboralOperacion.Nombre_Entidad_Privilegio = Nombre_Entidad_Privilegio;
-            ofrmAreaLaboralOperacion.Nombre_Entidad = Nombre_Entidad;
-            ofrmAreaLaboralOperacion.ValorLlavePrimariaEntidad = this.ValorLlavePrimariaEntidad;
-            ofrmAreaLaboralOperacion.MdiParent = this.ParentForm;
-            ofrmAreaLaboralOperacion.Show();
+            frmCiudadOperacion ofrmMunicipioOperacion = new frmCiudadOperacion();
+            ofrmMunicipioOperacion.OperacionARealizar = OperacionARealizar;
+            ofrmMunicipioOperacion.Nombre_Entidad_Privilegio = Nombre_Entidad_Privilegio;
+            ofrmMunicipioOperacion.Nombre_Entidad = Nombre_Entidad;
+            ofrmMunicipioOperacion.ValorLlavePrimariaEntidad = this.ValorLlavePrimariaEntidad;
+            ofrmMunicipioOperacion.MdiParent = this.ParentForm;
+            ofrmMunicipioOperacion.Show();
         }
 
-        private void AsiganarLlavePrimaria()
+        private void AsignarLalvePrimaria()
         {
             this.ValorLlavePrimariaEntidad = Convert.ToInt32(this.dgvLista.Rows[this.IndiceSeleccionado].Cells[this.Nombre_Llave_Primaria].Value);
         }
 
 
+
         #endregion
 
-
-
-
-        private void frmAreaLaboral_Shown(object sender, EventArgs e)
+        private void frmMunicipio_Shown(object sender, EventArgs e)
         {
             dgvLista.ContextMenuStrip = mcsMenu;
-            CargarPrivilegios();
+            CargarPrivilegiosUsuario();
 
             ActivarFiltrosDeBusqueda();
             tsbFiltroAutomatico_Click(null, null);
@@ -488,12 +479,11 @@ namespace Planilla.Formularios
                         if (Convert.ToBoolean(Fila.Cells["Seleccionar"].Value) == true)
                         {
                             a++;
-                            Array.Resize(ref oAreaLaboral, a);
+                            Array.Resize(ref oMunicipioEN, a);
 
-                            oAreaLaboral[a - 1] = new AreaLaboralEN();
-                            oAreaLaboral[a - 1].IdAreaLaboral = Convert.ToInt32(Fila.Cells["ID"].Value);
-                            oAreaLaboral[a - 1].Area = Fila.Cells["Area"].Value.ToString();
-                            oAreaLaboral[a - 1].oEmpresaEN.Nombre = Fila.Cells["Empresa"].Value.ToString();
+                            oMunicipioEN[a - 1] = new CiudadEN();
+                            oMunicipioEN[a - 1].IdCiudad = Convert.ToInt32(Fila.Cells["ID"].Value);
+                            oMunicipioEN[a - 1].Ciudad = Fila.Cells["Municipio"].Value.ToString();
                         }
                     }
                 }
@@ -510,23 +500,9 @@ namespace Planilla.Formularios
             }
         }
 
-        private void tsbFiltroAutomatico_Click(object sender, EventArgs e)
-        {
-            tsbFiltroAutomatico.Checked = !tsbFiltroAutomatico.Checked;
-
-            if (tsbFiltroAutomatico.Checked == true)
-            {
-                tsbFiltroAutomatico.Image = Properties.Resources.unchecked16x16;
-            }
-            else
-            {
-                tsbFiltroAutomatico.Image = Properties.Resources.checked16x16;
-            }
-        }
-
         private void dgvLista_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            if(Activar_Filtros == true)
+            if(ActivarFiltros == true)
             {
                 if(dgvLista.Columns[dgvLista.CurrentCell.ColumnIndex].Name == "Seleccionar" && VariosRegistros == false)
                 {
@@ -545,31 +521,24 @@ namespace Planilla.Formularios
 
         private void dgvLista_CurrentCellDirtyStateChanged(object sender, EventArgs e)
         {
-            if (dgvLista.IsCurrentCellDirty)
-            {
-                dgvLista.CommitEdit(DataGridViewDataErrorContexts.Commit);
-            }
-        }
-
-        private void dgvLista_DoubleClick(object sender, EventArgs e)
-        {
-            if(Activar_Filtros == true)
+            if (ActivarFiltros == true)
             {
                 int a = 0;
                 this.Cursor = Cursors.WaitCursor;
 
                 dgvLista.CurrentRow.Cells["Seleccionar"].Value = true;
-                foreach(DataGridViewRow Fila in dgvLista.Rows)
+
+                foreach (DataGridViewRow Fila in dgvLista.Rows)
                 {
-                    if(Convert.ToBoolean(Fila.Cells["Seleccionar"].Value) == true)
+                    if (Convert.ToBoolean(Fila.Cells["Seleccionar"].Value) == true)
                     {
                         a++;
-                        Array.Resize(ref oAreaLaboral, a);
+                        Array.Resize(ref oMunicipioEN, a);
 
-                        oAreaLaboral[a - 1] = new AreaLaboralEN();
-                        oAreaLaboral[a - 1].IdAreaLaboral = Convert.ToInt32(Fila.Cells["IdAreaLaboral"].Value);
-                        oAreaLaboral[a - 1].Area = Fila.Cells["Area"].Value.ToString();
-                        oAreaLaboral[a - 1].oEmpresaEN.Nombre = Fila.Cells["Empresa"].Value.ToString();
+                        oMunicipioEN[a - 1] = new CiudadEN();
+                        oMunicipioEN[a - 1].IdCiudad = Convert.ToInt32(Fila.Cells["IdMunicipio"].Value);
+                        oMunicipioEN[a - 1].Ciudad = Fila.Cells["Ciudad"].Value.ToString();
+
                     }
                 }
 
@@ -580,20 +549,19 @@ namespace Planilla.Formularios
 
         private void dgvLista_MouseDown(object sender, MouseEventArgs e)
         {
-            if(e.Button == MouseButtons.Right)
+            if (e.Button == MouseButtons.Right)
             {
-                DataGridView.HitTestInfo HitTest = dgvLista.HitTest(e.X, e.Y);
+                DataGridView.HitTestInfo Hitest = dgvLista.HitTest(e.X, e.Y);
 
-                if(HitTest.Type == DataGridViewHitTestType.Cell)
+                if (Hitest.Type == DataGridViewHitTestType.Cell)
                 {
-                    dgvLista.CurrentCell = dgvLista.Rows[HitTest.RowIndex].Cells[HitTest.ColumnIndex];
+                    dgvLista.CurrentCell = dgvLista.Rows[Hitest.RowIndex].Cells[Hitest.ColumnIndex];
                 }
             }
         }
 
         private void tsbMarcarTodos_Click(object sender, EventArgs e)
         {
-
             try
             {
                 this.Cursor = Cursors.WaitCursor;
@@ -629,7 +597,7 @@ namespace Planilla.Formularios
             }
         }
 
-        private void frmAreaLaboral_KeyUp(object sender, KeyEventArgs e)
+        private void frmMunicipio_KeyUp(object sender, KeyEventArgs e)
         {
             if (Convert.ToInt32(e.KeyData) == Convert.ToInt32(Keys.F2) && cmNuevo.Enabled == true)
             {
@@ -685,30 +653,30 @@ namespace Planilla.Formularios
 
         private void cmNuevo_Click(object sender, EventArgs e)
         {
-            MostrarFormularioSegunOpeacion("Nuevo");
+            MostrarFormularioParaOperacion("Nuevo");
         }
 
         private void cmActualizar_Click(object sender, EventArgs e)
         {
-            AsiganarLlavePrimaria();
-            MostrarFormularioSegunOpeacion("Modificar");
+            AsignarLalvePrimaria();
+            MostrarFormularioParaOperacion("Modificar");
         }
 
         private void cmEliminar_Click(object sender, EventArgs e)
         {
-            AsiganarLlavePrimaria();
-            MostrarFormularioSegunOpeacion("Eliminar");
+            AsignarLalvePrimaria();
+            MostrarFormularioParaOperacion("Eliminar");
         }
 
         private void cmVisualizar_Click(object sender, EventArgs e)
         {
-            AsiganarLlavePrimaria();
-            MostrarFormularioSegunOpeacion("Consultar");
+            AsignarLalvePrimaria();
+            MostrarFormularioParaOperacion("Consultar");
         }
 
         private void mcsMenu_Opened(object sender, EventArgs e)
         {
-            if(dgvLista.DataSource == null || dgvLista.Rows.Count <= 0 || dgvLista.SelectedRows.Count <= 0)
+            if (dgvLista.DataSource == null || dgvLista.Rows.Count <= 0 || dgvLista.SelectedRows.Count <= 0)
             {
                 cmEliminar.Enabled = false;
                 cmActualizar.Enabled = false;
@@ -717,7 +685,8 @@ namespace Planilla.Formularios
             }
             else
             {
-                CargarPrivilegios();
+                CargarPrivilegiosUsuario();
+
             }
         }
 
@@ -735,15 +704,15 @@ namespace Planilla.Formularios
             }
         }
 
-        private void txtArea_KeyUp(object sender, KeyEventArgs e)
+        private void txtMunicipio_KeyUp(object sender, KeyEventArgs e)
         {
-            if (Controles.IsNullOEmptyElControl(txtArea))
+            if (Controles.IsNullOEmptyElControl(txtMunicipio))
             {
-                chkArea.CheckState = CheckState.Unchecked;
+                chkMunicipio.CheckState = CheckState.Unchecked;
             }
-            else { chkArea.CheckState = CheckState.Checked; }
+            else { chkMunicipio.CheckState = CheckState.Checked; }
 
-            if (chkArea.CheckState == CheckState.Checked && tsbFiltroAutomatico.CheckState == CheckState.Checked)
+            if (chkMunicipio.CheckState == CheckState.Checked && tsbFiltroAutomatico.CheckState == CheckState.Checked)
             {
                 LlenarListado();
             }
@@ -754,9 +723,23 @@ namespace Planilla.Formularios
             LlenarListado();
         }
 
+        private void tsbFiltroAutomatico_Click(object sender, EventArgs e)
+        {
+            tsbFiltroAutomatico.Checked = !tsbFiltroAutomatico.Checked;
+
+            if (tsbFiltroAutomatico.Checked == true)
+            {
+                tsbFiltroAutomatico.Image = Properties.Resources.unchecked16x16;
+            }
+            else
+            {
+                tsbFiltroAutomatico.Image = Properties.Resources.checked16x16;
+            }
+        }
+
         private void tsbNuevo_Click(object sender, EventArgs e)
         {
-            MostrarFormularioSegunOpeacion("Nuevo");
+            MostrarFormularioParaOperacion("Nuevo");
         }
     }
 }

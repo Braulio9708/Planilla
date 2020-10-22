@@ -9,7 +9,7 @@ using Entidad;
 
 namespace Acceso
 {
-    public class MunicipoAD
+    public class CiudadAD
     {
 
         public string Error { set; get; }
@@ -21,7 +21,7 @@ namespace Acceso
         string DescripcionDeOperacion;
         private DataTable DT { set; get; }
 
-        public MunicipoAD()
+        public CiudadAD()
         {
 
             oTransaccionesAD = new TransaccionesAD();
@@ -35,33 +35,33 @@ namespace Acceso
 
         #region "Funciones para datos dll"
 
-        public bool Agregar(MunicipioEN oRegistroEN, DatosDeConexionEN oDatos)
+        public bool Agregar(CiudadEN oRegistroEN, DatosDeConexionEN oDatos)
         {
 
             try
             {
-
+                
                 InicialisarVariablesGlovales(oDatos);
-
-                Consultas = @"insert into municipio 
-				                (Municipio) 
+                
+                Consultas = @"insert into ciudad 
+				                (ciudad) 
                                 values 
-                                (@Municipio);
+                                (@ciudad);
                             Select  last_insert_ID() as 'ID';";
 
                 Comando.CommandText = Consultas;
 
-                Comando.Parameters.Add(new MySqlParameter("@Municipio", MySqlDbType.VarChar, oRegistroEN.Municipio.Trim().Length)).Value = oRegistroEN.Municipio.Trim();
+                Comando.Parameters.Add(new MySqlParameter("@Ciudad", MySqlDbType.VarChar, oRegistroEN.Ciudad.Trim().Length)).Value = oRegistroEN.Ciudad.Trim();
 
                 InicialisarAdaptador();
-
-                oRegistroEN.IdMunicipio = Convert.ToInt32(DT.Rows[0].ItemArray[0].ToString());
-
+                
+                oRegistroEN.IdCiudad = Convert.ToInt32(DT.Rows[0].ItemArray[0].ToString());
+                
                 DescripcionDeOperacion = string.Format("El registro fue Insertado Correctamente. {0} {1}", Environment.NewLine, InformacionDelRegistro(oRegistroEN));
 
-                TransaccionesEN oTransacciones = InformacionDelaTransaccion(oRegistroEN, "Agregar", "Agregar Nuevo Registro", "CORRECTO");
-                oTransaccionesAD.Agregar(oTransacciones, oDatos);
-
+                /*TransaccionesEN oTransacciones = InformacionDelaTransaccion(oRegistroEN, "Agregar", "Agregar Nuevo Registro", "CORRECTO");
+                oTransaccionesAD.Agregar(oTransacciones, oDatos);*/
+                
                 return true;
 
             }
@@ -70,20 +70,17 @@ namespace Acceso
                 this.Error = ex.Message;
 
                 DescripcionDeOperacion = string.Format("Se produjo el seguiente error: '{2}' al insertar el registro. {0} {1} ", Environment.NewLine, InformacionDelRegistro(oRegistroEN), ex.Message);
-                TransaccionesEN oTransacciones = InformacionDelaTransaccion(oRegistroEN, "Agregar", "Agregar Nuevo Registro", "CORRECTO");
-                oTransaccionesAD.Agregar(oTransacciones, oDatos);
-
+                
                 return false;
             }
             finally
             {
                 FinalizarConexion();
-                oTransaccionesAD = null;
             }
-
+            
         }
 
-        public bool Actualizar(MunicipioEN oRegistroEN, DatosDeConexionEN oDatos)
+        public bool Actualizar(CiudadEN oRegistroEN, DatosDeConexionEN oDatos)
         {
 
             try
@@ -91,21 +88,19 @@ namespace Acceso
 
                 InicialisarVariablesGlovales(oDatos);
 
-                Consultas = @"UPDATE municipio set
-	                            Municipio = @Municipio
-                            where IdMunicipio = @IdMunicipio;";
+                Consultas = @"UPDATE ciudad set
+	                            Ciudad = @Ciudad
+                            where IdCiudad = @IdCiudad;";
 
                 Comando.CommandText = Consultas;
 
-                Comando.Parameters.Add(new MySqlParameter("@IdMunicipio", MySqlDbType.Int32)).Value = oRegistroEN.IdMunicipio;
-                Comando.Parameters.Add(new MySqlParameter("@Municipio", MySqlDbType.VarChar, oRegistroEN.Municipio.Trim().Length)).Value = oRegistroEN.Municipio.Trim();
+                Comando.Parameters.Add(new MySqlParameter("@IdCiudad", MySqlDbType.Int32)).Value = oRegistroEN.IdCiudad;
+                Comando.Parameters.Add(new MySqlParameter("@Ciudad", MySqlDbType.VarChar, oRegistroEN.Ciudad.Trim().Length)).Value = oRegistroEN.Ciudad.Trim();
                 
                 Comando.ExecuteNonQuery();
 
                 DescripcionDeOperacion = string.Format("El registro fue Actualizado Correctamente. {0} {1}", Environment.NewLine, InformacionDelRegistro(oRegistroEN));
 
-                TransaccionesEN oTransacciones = InformacionDelaTransaccion(oRegistroEN, "Agregar", "Agregar Nuevo Registro", "CORRECTO");
-                oTransaccionesAD.Agregar(oTransacciones, oDatos);
 
                 return true;
 
@@ -115,20 +110,17 @@ namespace Acceso
                 this.Error = ex.Message;
 
                 DescripcionDeOperacion = string.Format("Se produjo el seguiente error: '{2}' al actualizar el registro. {0} {1} ", Environment.NewLine, InformacionDelRegistro(oRegistroEN), ex.Message);
-                TransaccionesEN oTransacciones = InformacionDelaTransaccion(oRegistroEN, "Agregar", "Agregar Nuevo Registro", "CORRECTO");
-                oTransaccionesAD.Agregar(oTransacciones, oDatos);
 
                 return false;
             }
             finally
             {
                 FinalizarConexion();
-                oTransaccionesAD = null;
             }
 
         }
 
-        public bool Eliminar(MunicipioEN oRegistroEN, DatosDeConexionEN oDatos)
+        public bool Eliminar(CiudadEN oRegistroEN, DatosDeConexionEN oDatos)
         {
 
             try
@@ -136,17 +128,15 @@ namespace Acceso
 
                 InicialisarVariablesGlovales(oDatos);
 
-                Consultas = @"DELETE FROM municipio WHERE IdMunicipio = @IdMunicipio;";
+                Consultas = @"DELETE FROM Ciudad WHERE IdCiudad = @IdCiudad;";
                 Comando.CommandText = Consultas;
 
-                Comando.Parameters.Add(new MySqlParameter("@IdMunicipio", MySqlDbType.Int32)).Value = oRegistroEN.IdMunicipio;
+                Comando.Parameters.Add(new MySqlParameter("@IdCiudad", MySqlDbType.Int32)).Value = oRegistroEN.IdCiudad;
 
                 Comando.ExecuteNonQuery();
 
                 DescripcionDeOperacion = string.Format("El registro fue Eliminado Correctamente. {0} {1}", Environment.NewLine, InformacionDelRegistro(oRegistroEN));
 
-                TransaccionesEN oTransacciones = InformacionDelaTransaccion(oRegistroEN, "Agregar", "Agregar Nuevo Registro", "CORRECTO");
-                oTransaccionesAD.Agregar(oTransacciones, oDatos);
 
                 return true;
 
@@ -156,8 +146,6 @@ namespace Acceso
                 this.Error = ex.Message;
 
                 DescripcionDeOperacion = string.Format("Se produjo el seguiente error: '{2}' al eliminar el registro. {0} {1} ", Environment.NewLine, InformacionDelRegistro(oRegistroEN), ex.Message);
-                TransaccionesEN oTransacciones = InformacionDelaTransaccion(oRegistroEN, "Agregar", "Agregar Nuevo Registro", "CORRECTO");
-                oTransaccionesAD.Agregar(oTransacciones, oDatos);
 
                 return false;
             }
@@ -168,7 +156,7 @@ namespace Acceso
 
         }
 
-        public bool Listado(MunicipioEN oRegistroEN, DatosDeConexionEN oDatos)
+        public bool Listado(CiudadEN oRegistroEN, DatosDeConexionEN oDatos)
         {
 
             try
@@ -176,7 +164,7 @@ namespace Acceso
 
                 InicialisarVariablesGlovales(oDatos);
 
-                Consultas = string.Format(@"Select IdMunicipio, Municipio from municipio where IdMunicipio > 0 {0} {1} ", oRegistroEN.Where, oRegistroEN.OrderBy);
+                Consultas = string.Format(@"Select IdCiudad, Ciudad from ciudad where IdCiudad > 0 {0} {1} ", oRegistroEN.Where, oRegistroEN.OrderBy);
                 Comando.CommandText = Consultas;
 
                 InicialisarAdaptador();
@@ -199,7 +187,7 @@ namespace Acceso
 
         }
                 
-        public bool ListadoPorIdentificador(MunicipioEN oRegistroEN, DatosDeConexionEN oDatos)
+        public bool ListadoPorIdentificador(CiudadEN oRegistroEN, DatosDeConexionEN oDatos)
         {
 
             try
@@ -207,7 +195,40 @@ namespace Acceso
 
                 InicialisarVariablesGlovales(oDatos);
 
-                Consultas = string.Format(@"Select IdMunicipio, Municipio from municipio where IdMunicipio > 0{0} ", oRegistroEN.IdMunicipio);
+                Consultas = string.Format(@"Select IdCiudad, Ciudad from ciudad where IdCiudad = @IdCiudad", oRegistroEN.IdCiudad);
+                Comando.CommandText = Consultas;
+
+                Comando.Parameters.Add(new MySqlParameter("@IdCiudad", MySqlDbType.Int32)).Value = oRegistroEN.IdCiudad;
+
+                InicialisarAdaptador();
+
+                return true;
+
+            }
+            catch (Exception ex)
+            {
+                this.Error = ex.Message;
+
+                return false;
+            }
+            finally
+            {
+
+                FinalizarConexion();
+
+            }
+
+        }
+
+        public bool ListadoParaCombos(CiudadEN oRegistroEN, DatosDeConexionEN oDatos)
+        {
+
+            try
+            {
+
+                InicialisarVariablesGlovales(oDatos);
+
+                Consultas = string.Format(@"Select IdCiudad, Ciudad from ciudad where IdCiudad > 0 {0} {1}; ", oRegistroEN.Where, oRegistroEN.OrderBy);
                 Comando.CommandText = Consultas;
 
                 InicialisarAdaptador();
@@ -230,7 +251,7 @@ namespace Acceso
 
         }
 
-        public bool ListadoParaCombos(MunicipioEN oRegistroEN, DatosDeConexionEN oDatos)
+        public bool ListadoParaReportes(CiudadEN oRegistroEN, DatosDeConexionEN oDatos)
         {
 
             try
@@ -238,38 +259,7 @@ namespace Acceso
 
                 InicialisarVariablesGlovales(oDatos);
 
-                Consultas = string.Format(@"Select IdMunicipio, Municipio from municipio where IdMunicipio > 0 {0} {1}; ", oRegistroEN.Where, oRegistroEN.OrderBy);
-                Comando.CommandText = Consultas;
-
-                InicialisarAdaptador();
-
-                return true;
-
-            }
-            catch (Exception ex)
-            {
-                this.Error = ex.Message;
-
-                return false;
-            }
-            finally
-            {
-
-                FinalizarConexion();
-
-            }
-
-        }
-
-        public bool ListadoParaReportes(MunicipioEN oRegistroEN, DatosDeConexionEN oDatos)
-        {
-
-            try
-            {
-
-                InicialisarVariablesGlovales(oDatos);
-
-                Consultas = string.Format(@"Select IdMunicipio, Municipio from municipio where IdMunicipio > 0 {0} {1} ", oRegistroEN.Where, oRegistroEN.OrderBy);
+                Consultas = string.Format(@"Select IdCiudad, Ciudad from municipio where IdCiudad > 0 {0} {1} ", oRegistroEN.Where, oRegistroEN.OrderBy);
                 Comando.CommandText = Consultas;
 
                 InicialisarAdaptador();
@@ -290,7 +280,7 @@ namespace Acceso
 
         }
 
-        public bool ValidarRegistroDuplicado(MunicipioEN oRegistroEN, DatosDeConexionEN oDatos, string TipoDeOperacion)
+        public bool ValidarRegistroDuplicado(CiudadEN oRegistroEN, DatosDeConexionEN oDatos, string TipoDeOperacion)
         {
             oTransaccionesAD = new TransaccionesAD();
 
@@ -304,16 +294,16 @@ namespace Acceso
 
                     case "AGREGAR":
 
-                        Consultas = @"SELECT CASE WHEN EXISTS(Select IdMunicipio from Municipio where upper(trim(Municipio)) = upper(trim(@Municipio))) THEN 1 ELSE 0 END AS 'RES'";
-                        Comando.Parameters.Add(new MySqlParameter("@Municipio", MySqlDbType.VarChar, oRegistroEN.Municipio.Trim().Length)).Value = oRegistroEN.Municipio.Trim();
+                        Consultas = @"SELECT CASE WHEN EXISTS(Select IdCiudad from Ciudad where upper(trim(Ciudad)) = upper(trim(@Ciudad))) THEN 1 ELSE 0 END AS 'RES'";
+                        Comando.Parameters.Add(new MySqlParameter("@Ciudad", MySqlDbType.VarChar, oRegistroEN.Ciudad.Trim().Length)).Value = oRegistroEN.Ciudad.Trim();
 
                         break;
 
                     case "ACTUALIZAR":
 
-                        Consultas = @"SELECT CASE WHEN EXISTS(Select IdMunicipio from Municipio where upper(trim(Municipio)) = upper(trim(@Municipio)) and IdMunicipio <> @IdMunicipio) THEN 1 ELSE 0 END AS 'RES'";
-                        Comando.Parameters.Add(new MySqlParameter("@Municipio", MySqlDbType.VarChar, oRegistroEN.Municipio.Trim().Length)).Value = oRegistroEN.Municipio.Trim();
-                        Comando.Parameters.Add(new MySqlParameter("@IdMunicipio", MySqlDbType.Int32)).Value = oRegistroEN.IdMunicipio;
+                        Consultas = @"SELECT CASE WHEN EXISTS(Select IdCiudad from Ciudad where upper(trim(Ciudad)) = upper(trim(@Ciudad)) and IdCiudad <> @IdCiudad) THEN 1 ELSE 0 END AS 'RES'";
+                        Comando.Parameters.Add(new MySqlParameter("@Ciudad", MySqlDbType.VarChar, oRegistroEN.Ciudad.Trim().Length)).Value = oRegistroEN.Ciudad.Trim();
+                        Comando.Parameters.Add(new MySqlParameter("@IdCiudad", MySqlDbType.Int32)).Value = oRegistroEN.IdCiudad;
 
                         break;
 
@@ -360,7 +350,7 @@ namespace Acceso
 
         }
 
-        public bool ValidarSiElRegistroEstaVinculado(MunicipioEN oRegistroEN, DatosDeConexionEN oDatos, string TipoDeOperacion)
+        public bool ValidarSiElRegistroEstaVinculado(CiudadEN oRegistroEN, DatosDeConexionEN oDatos, string TipoDeOperacion)
         {
             oTransaccionesAD = new TransaccionesAD();
 
@@ -369,8 +359,8 @@ namespace Acceso
 
                 InicialisarVariablesGlobalesProcedure(oDatos);
 
-                Comando.Parameters.Add(new MySqlParameter("@CampoABuscar_", MySqlDbType.VarChar, 200)).Value = "IdMunicipio";
-                Comando.Parameters.Add(new MySqlParameter("@ValorCampoABuscar", MySqlDbType.Int32)).Value = oRegistroEN.IdMunicipio;
+                Comando.Parameters.Add(new MySqlParameter("@CampoABuscar_", MySqlDbType.VarChar, 200)).Value = "IdCiudad";
+                Comando.Parameters.Add(new MySqlParameter("@ValorCampoABuscar", MySqlDbType.Int32)).Value = oRegistroEN.IdCiudad;
                 Comando.Parameters.Add(new MySqlParameter("@ExcluirTabla_", MySqlDbType.VarChar, 200)).Value = string.Empty;
 
                 InicialisarAdaptador();
@@ -417,14 +407,14 @@ namespace Acceso
         #endregion
 
         #region "Funciones Para Retornar Informacion Y Llamados"
-        private TransaccionesEN InformacionDelaTransaccion(MunicipioEN oMunicipio, String TipoDeOperacion, String Descripcion, String Estado)
+        private TransaccionesEN InformacionDelaTransaccion(CiudadEN oMunicipio, String TipoDeOperacion, String Descripcion, String Estado)
         {
             TransaccionesEN oRegistroEN = new TransaccionesEN();
 
-            oRegistroEN.IdRegistro = oMunicipio.IdMunicipio;
-            oRegistroEN.Modelo = "MunicipioAD";
+            oRegistroEN.IdRegistro = oMunicipio.IdCiudad;
+            oRegistroEN.Modelo = "CiudadAD";
             oRegistroEN.Modulo = "General";
-            oRegistroEN.Tabla = "Municipio";
+            oRegistroEN.Tabla = "Ciudad";
             oRegistroEN.TipoDeOperacion = TipoDeOperacion;
             oRegistroEN.Estado = Estado;
             oRegistroEN.IP = oMunicipio.oLoginEN.NumeroIP;
@@ -485,10 +475,10 @@ namespace Acceso
         {
             return DT;
         }
-        private string InformacionDelRegistro(MunicipioEN oRegistroEN)
+        private string InformacionDelRegistro(CiudadEN oRegistroEN)
         {
-            string Cadena = @"IdMunicipio: {0}, Municipio: {1}";
-            Cadena = string.Format(Cadena, oRegistroEN.IdMunicipio, oRegistroEN.Municipio);
+            string Cadena = @"IdCiudad: {0}, Ciudad: {1}";
+            Cadena = string.Format(Cadena, oRegistroEN.IdCiudad, oRegistroEN.Ciudad);
             Cadena = Cadena.Replace(",", Environment.NewLine);
             return Cadena;
         }

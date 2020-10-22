@@ -22,6 +22,7 @@ namespace Planilla.Formularios
         frmCargo ofrmCargo = null;
         frmEmpleados ofrmEmpleados = null;
         frmAreaLaboral ofrmAreaLaboral = null;
+        frmCiudad ofrmMunicipio = null;
 
         public Principal()
         {
@@ -379,8 +380,9 @@ namespace Planilla.Formularios
             btnContrato.Enabled = true;
             btnAreaLaboral.Enabled = true;
             btnCargo.Enabled = true;
+            btnCiudad.Enabled = true;
             OcultarControlesDentroDelPanel();
-            string MostrarControles = "btnCargo, btnContrato, btnAreaLaboral, btnEmpleado2";
+            string MostrarControles = "btnCargo, btnContrato, btnAreaLaboral, btnEmpleado2, btnCiudad";
             VisualizarControlesDentroDelPanel(MostrarControles);
         }
 
@@ -437,6 +439,25 @@ namespace Planilla.Formularios
             else
             {
                 ofrmAreaLaboral.BringToFront();
+            }
+            this.Cursor = Cursors.Default;
+        }
+
+        private void btnCiudad_Click(object sender, EventArgs e)
+        {
+            this.Cursor = Cursors.WaitCursor;
+
+            if (ofrmMunicipio == null || ofrmMunicipio.IsDisposed)
+            {
+                ofrmMunicipio = new frmCiudad();
+                ofrmMunicipio.MdiParent = this;
+                ofrmMunicipio.StartPosition = FormStartPosition.CenterScreen;
+                ofrmMunicipio.WindowState = FormWindowState.Maximized;
+                ofrmMunicipio.Show();
+            }
+            else
+            {
+                ofrmMunicipio.BringToFront();
             }
             this.Cursor = Cursors.Default;
         }

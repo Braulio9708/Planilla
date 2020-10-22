@@ -32,11 +32,13 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.cmbMunicipio = new System.Windows.Forms.ComboBox();
             this.lbCelular = new System.Windows.Forms.Label();
             this.lbNoInss = new System.Windows.Forms.Label();
             this.txtNoINSS = new System.Windows.Forms.TextBox();
             this.txtCelular = new System.Windows.Forms.TextBox();
             this.txtTelefono = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.lbTelefono = new System.Windows.Forms.Label();
             this.txtDireccion = new System.Windows.Forms.TextBox();
             this.lbDireccion = new System.Windows.Forms.Label();
@@ -51,12 +53,10 @@
             this.lbNombre = new System.Windows.Forms.Label();
             this.lbIdentificador = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.cmbMunicipio = new System.Windows.Forms.ComboBox();
             this.cmbAreaLaboral = new System.Windows.Forms.ComboBox();
             this.cmbCargo = new System.Windows.Forms.ComboBox();
             this.lbCargo = new System.Windows.Forms.Label();
             this.lbAreaLaboral = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
             this.InformacionEntidadOperacion = new System.Windows.Forms.Label();
             this.EP = new System.Windows.Forms.ErrorProvider(this.components);
             this.chkCerrarVentana = new System.Windows.Forms.CheckBox();
@@ -96,11 +96,13 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.cmbMunicipio);
             this.groupBox1.Controls.Add(this.lbCelular);
             this.groupBox1.Controls.Add(this.lbNoInss);
             this.groupBox1.Controls.Add(this.txtNoINSS);
             this.groupBox1.Controls.Add(this.txtCelular);
             this.groupBox1.Controls.Add(this.txtTelefono);
+            this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Controls.Add(this.lbTelefono);
             this.groupBox1.Controls.Add(this.txtDireccion);
             this.groupBox1.Controls.Add(this.lbDireccion);
@@ -117,10 +119,18 @@
             this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox1.Location = new System.Drawing.Point(3, 3);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(1105, 328);
+            this.groupBox1.Size = new System.Drawing.Size(1105, 341);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Datos del empleado";
+            // 
+            // cmbMunicipio
+            // 
+            this.cmbMunicipio.FormattingEnabled = true;
+            this.cmbMunicipio.Location = new System.Drawing.Point(390, 309);
+            this.cmbMunicipio.Name = "cmbMunicipio";
+            this.cmbMunicipio.Size = new System.Drawing.Size(209, 24);
+            this.cmbMunicipio.TabIndex = 19;
             // 
             // lbCelular
             // 
@@ -160,6 +170,15 @@
             this.txtTelefono.Name = "txtTelefono";
             this.txtTelefono.Size = new System.Drawing.Size(612, 22);
             this.txtTelefono.TabIndex = 10;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(117, 312);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(114, 16);
+            this.label1.TabIndex = 14;
+            this.label1.Text = "Ciudad de origen:";
             // 
             // lbTelefono
             // 
@@ -268,48 +287,38 @@
             // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.cmbMunicipio);
             this.groupBox2.Controls.Add(this.cmbAreaLaboral);
             this.groupBox2.Controls.Add(this.cmbCargo);
             this.groupBox2.Controls.Add(this.lbCargo);
             this.groupBox2.Controls.Add(this.lbAreaLaboral);
-            this.groupBox2.Controls.Add(this.label1);
             this.groupBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox2.Location = new System.Drawing.Point(3, 337);
+            this.groupBox2.Location = new System.Drawing.Point(3, 350);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(1105, 99);
+            this.groupBox2.Size = new System.Drawing.Size(1105, 85);
             this.groupBox2.TabIndex = 1;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "groupBox2";
             // 
-            // cmbMunicipio
-            // 
-            this.cmbMunicipio.FormattingEnabled = true;
-            this.cmbMunicipio.Location = new System.Drawing.Point(879, 43);
-            this.cmbMunicipio.Name = "cmbMunicipio";
-            this.cmbMunicipio.Size = new System.Drawing.Size(209, 24);
-            this.cmbMunicipio.TabIndex = 19;
-            // 
             // cmbAreaLaboral
             // 
             this.cmbAreaLaboral.FormattingEnabled = true;
-            this.cmbAreaLaboral.Location = new System.Drawing.Point(500, 43);
+            this.cmbAreaLaboral.Location = new System.Drawing.Point(758, 38);
             this.cmbAreaLaboral.Name = "cmbAreaLaboral";
-            this.cmbAreaLaboral.Size = new System.Drawing.Size(209, 24);
+            this.cmbAreaLaboral.Size = new System.Drawing.Size(262, 24);
             this.cmbAreaLaboral.TabIndex = 18;
             // 
             // cmbCargo
             // 
             this.cmbCargo.FormattingEnabled = true;
-            this.cmbCargo.Location = new System.Drawing.Point(99, 43);
+            this.cmbCargo.Location = new System.Drawing.Point(129, 38);
             this.cmbCargo.Name = "cmbCargo";
-            this.cmbCargo.Size = new System.Drawing.Size(209, 24);
+            this.cmbCargo.Size = new System.Drawing.Size(262, 24);
             this.cmbCargo.TabIndex = 17;
             // 
             // lbCargo
             // 
             this.lbCargo.AutoSize = true;
-            this.lbCargo.Location = new System.Drawing.Point(14, 46);
+            this.lbCargo.Location = new System.Drawing.Point(60, 41);
             this.lbCargo.Name = "lbCargo";
             this.lbCargo.Size = new System.Drawing.Size(54, 16);
             this.lbCargo.TabIndex = 16;
@@ -318,20 +327,11 @@
             // lbAreaLaboral
             // 
             this.lbAreaLaboral.AutoSize = true;
-            this.lbAreaLaboral.Location = new System.Drawing.Point(375, 46);
+            this.lbAreaLaboral.Location = new System.Drawing.Point(625, 41);
             this.lbAreaLaboral.Name = "lbAreaLaboral";
             this.lbAreaLaboral.Size = new System.Drawing.Size(102, 16);
             this.lbAreaLaboral.TabIndex = 15;
             this.lbAreaLaboral.Text = "Area Laboral:";
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(779, 46);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(78, 16);
-            this.label1.TabIndex = 14;
-            this.label1.Text = "Municipio:";
             // 
             // InformacionEntidadOperacion
             // 

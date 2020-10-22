@@ -434,8 +434,8 @@ namespace Planilla.Formularios
             oRegistroEN.oAreaLaboralEN.Area = cmbAreaLaboral.Text.Trim();
             oRegistroEN.oCargoEN.IdCargo = Convert.ToInt32(cmbCargo.SelectedValue);
             oRegistroEN.oCargoEN.Cargo = cmbCargo.Text.Trim();
-            oRegistroEN.oMunicipioEN.IdMunicipio = Convert.ToInt32(cmbMunicipio.SelectedValue);
-            oRegistroEN.oMunicipioEN.Municipio = cmbMunicipio.Text.Trim();
+            oRegistroEN.oCiudad.IdCiudad = Convert.ToInt32(cmbMunicipio.SelectedValue);
+            oRegistroEN.oCiudad.Ciudad = cmbMunicipio.Text.Trim();
 
             return oRegistroEN;
         }
@@ -484,7 +484,7 @@ namespace Planilla.Formularios
                 if (oRegistroLN.Listado(oRegistroEN, Program.oDatosDeConexioEN))
                 {
                     cmbAreaLaboral.DataSource = oRegistroLN.TraerDatos();
-                    cmbAreaLaboral.DisplayMember = "Area";
+                    cmbAreaLaboral.DisplayMember = "Area Laboral";
                     cmbAreaLaboral.ValueMember = "IdAreaLaboral";
                     cmbAreaLaboral.SelectedIndex = -1;
                 }
@@ -506,16 +506,16 @@ namespace Planilla.Formularios
             {
                 this.Cursor = Cursors.WaitCursor;
 
-                MunicipioEN oRegistroEN = new MunicipioEN();
-                MunicipioLN oRegistroLN = new MunicipioLN();
+                CiudadEN oRegistroEN = new CiudadEN();
+                CiudadLN oRegistroLN = new CiudadLN();
                 oRegistroEN.Where = "";
                 oRegistroEN.OrderBy = "";
 
                 if (oRegistroLN.Listado(oRegistroEN, Program.oDatosDeConexioEN))
                 {
                     cmbMunicipio.DataSource = oRegistroLN.TraerDatos();
-                    cmbMunicipio.DisplayMember = "Municipio";
-                    cmbMunicipio.ValueMember = "IdMunicipio";
+                    cmbMunicipio.DisplayMember = "Ciudad";
+                    cmbMunicipio.ValueMember = "IdCiudad";
                     cmbMunicipio.SelectedIndex = -1;
                 }
                 else { throw new ArgumentException(oRegistroLN.Error); }
@@ -771,6 +771,7 @@ namespace Planilla.Formularios
                 this.Cursor = Cursors.Default;
             }
         }
+
         
     }
 }

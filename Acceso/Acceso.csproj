@@ -60,7 +60,7 @@
     <Compile Include="ConfiguracionAD.cs" />
     <Compile Include="EmpleadoAD.cs" />
     <Compile Include="LoginAD.cs" />
-    <Compile Include="MunicipoAD.cs" />
+    <Compile Include="CiudadAD.cs" />
     <Compile Include="PaisAD.cs" />
     <Compile Include="PlanillaAD.cs" />
     <Compile Include="PrestacionesAD.cs" />
