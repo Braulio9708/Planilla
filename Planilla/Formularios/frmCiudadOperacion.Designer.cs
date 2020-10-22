@@ -30,6 +30,7 @@
         {
             this.components = new System.ComponentModel.Container();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.InformacionEntidadOperacion = new System.Windows.Forms.Label();
             this.chkCerrarVentana = new System.Windows.Forms.CheckBox();
             this.panel2 = new System.Windows.Forms.Panel();
             this.label3 = new System.Windows.Forms.Label();
@@ -47,7 +48,6 @@
             this.tsbImprimir = new System.Windows.Forms.ToolStripButton();
             this.tsbAplicarCambio = new System.Windows.Forms.ToolStripButton();
             this.EP = new System.Windows.Forms.ErrorProvider(this.components);
-            this.InformacionEntidadOperacion = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.toolStrip1.SuspendLayout();
@@ -66,6 +66,16 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(746, 377);
             this.panel1.TabIndex = 2;
+            // 
+            // InformacionEntidadOperacion
+            // 
+            this.InformacionEntidadOperacion.AutoSize = true;
+            this.InformacionEntidadOperacion.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.InformacionEntidadOperacion.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
+            this.InformacionEntidadOperacion.Location = new System.Drawing.Point(47, 9);
+            this.InformacionEntidadOperacion.Name = "InformacionEntidadOperacion";
+            this.InformacionEntidadOperacion.Size = new System.Drawing.Size(0, 16);
+            this.InformacionEntidadOperacion.TabIndex = 5;
             // 
             // chkCerrarVentana
             // 
@@ -220,6 +230,7 @@
             this.tsbCerrarVentana.Size = new System.Drawing.Size(52, 68);
             this.tsbCerrarVentana.Text = "Salir";
             this.tsbCerrarVentana.ToolTipText = "Cerrar la ventana y retornar";
+            this.tsbCerrarVentana.Click += new System.EventHandler(this.tsbCerrarVentana_Click);
             // 
             // tsbRecarRegistro
             // 
@@ -263,23 +274,13 @@
             // 
             this.EP.ContainerControl = this;
             // 
-            // InformacionEntidadOperacion
-            // 
-            this.InformacionEntidadOperacion.AutoSize = true;
-            this.InformacionEntidadOperacion.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.InformacionEntidadOperacion.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
-            this.InformacionEntidadOperacion.Location = new System.Drawing.Point(47, 9);
-            this.InformacionEntidadOperacion.Name = "InformacionEntidadOperacion";
-            this.InformacionEntidadOperacion.Size = new System.Drawing.Size(0, 16);
-            this.InformacionEntidadOperacion.TabIndex = 5;
-            // 
-            // frmMunicipioOperacion
+            // frmCiudadOperacion
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(746, 377);
             this.Controls.Add(this.panel1);
-            this.Name = "frmMunicipioOperacion";
+            this.Name = "frmCiudadOperacion";
             this.Text = "frmMunicipioOperacion";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmMunicipioOperacion_FormClosing);
             this.Shown += new System.EventHandler(this.frmMunicipioOperacion_Shown);

@@ -321,7 +321,7 @@ namespace Planilla.Formularios
 
             if (Controles.IsNullOEmptyElControl(chkEstado) == false && Controles.IsNullOEmptyElControl(cmbEstado) == false)
             {
-                Where += string.Format(" and upper( u.Estado ) = {0} ", cmbEstado.Text);
+                Where += string.Format(" and u.Estado = {0} ", cmbEstado.Text);
             }
 
             return Where;
@@ -366,18 +366,15 @@ namespace Planilla.Formularios
 
         private void LLenarListado()
         {
-
             try
             {
-
                 this.Cursor = Cursors.WaitCursor;
 
                 UsuarioEN oRegistrosEN = new UsuarioEN();
                 UsuarioLN oRegistrosLN = new UsuarioLN();
 
                 oRegistrosEN.Where = WhereDinamico();
-                
-                
+                                
                 if (oRegistrosLN.Listado(oRegistrosEN, Program.oDatosDeConexioEN))
                 {                    
                     dgvListar.Columns.Clear();
@@ -413,7 +410,6 @@ namespace Planilla.Formularios
             {
                 this.Cursor = Cursors.Default;
             }
-
         }
 
         private void FormatearDGV()
@@ -542,6 +538,8 @@ namespace Planilla.Formularios
 
                     tsbImprimir.Enabled = oRegistroLN.VerificarSiTengoAcceso("Imprimir");
                     tsbNuevo.Enabled = oRegistroLN.VerificarSiTengoAcceso("Nuevo");
+                    cmImprimir.Enabled = false;
+                    cmVisualizar.Enabled = oRegistroLN.VerificarSiTengoAcceso("Visualizar");
 
                 }
                 else
@@ -587,6 +585,37 @@ namespace Planilla.Formularios
             this.ValorDeLaLlavePrimariaEntidad = Convert.ToInt32(this.dgvListar.Rows[this.IndiceSelecionado].Cells[this.Nombre_Llave_Primaria].Value);
         }
 
+        private void LlenarInformacionDelEstado()
+        {
+            try
+            {
+                this.Cursor = Cursors.WaitCursor;
+
+                UsuarioEN oRegistroEN = new UsuarioEN();
+                UsuarioLN oRegistroLN = new UsuarioLN();
+                oRegistroEN.Where = "";
+                oRegistroEN.OrderBy = "";
+
+                if (oRegistroLN.Listado(oRegistroEN, Program.oDatosDeConexioEN))
+                {
+                    cmbEstado.DataSource = oRegistroLN.TraerDatos();
+                    cmbEstado.DisplayMember = "Estado";
+                    cmbEstado.ValueMember = "IdUsuario";
+                    cmbEstado.SelectedIndex = -1;
+                }
+                else { throw new ArgumentException(oRegistroLN.Error); }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Información de los tipos de cuentas", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                this.Cursor = Cursors.Default;
+            }
+        }
+
+
         #endregion
 
         private void frmUsuario_Shown(object sender, EventArgs e)
@@ -594,6 +623,7 @@ namespace Planilla.Formularios
             dgvListar.ContextMenuStrip = cmMenu;
             CargarPrivilegiosDelUsuario();
             LLenarGrupoDeCuentas();
+            LlenarInformacionDelEstado();
             ActivarFiltrosDelaBusqueda();
             tsbFiltroAutomatico_Click(null, null);
         }

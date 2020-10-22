@@ -179,21 +179,17 @@ namespace Acceso
                 InicialisarVariablesGlovales(oDatos);
                 
                 Consultas = string.Format(@"SELECT u.IdUsuario, u.IdRol, u.Nombre as 'Usuario', u.Login, u.Contrasena, u.Email, r.Nombre as 'TipoDeCuenta', u.Estado  FROM usuario as u
-                                            inner join rol as r on r.idRol = u.idRol
-                                            where u.idUsuario > 0 {0} {1} ", oRegistroEN.Where, oRegistroEN.OrderBy);
+                                            inner join rol as r on r.IdRol = u.IdRol
+                                            where IdUsuario > 0 {0} {1} ", oRegistroEN.Where, oRegistroEN.OrderBy);
                 Comando.CommandText = Consultas;
 
-             
-                Adaptador = new MySqlDataAdapter();
-                DT = new DataTable();
 
-                Adaptador.SelectCommand = Comando;
-                Adaptador.Fill(DT);
-
+                InicialisarAdaptador();
+                
                 return true;
             }
             catch (Exception ex)
-            {
+            {                
                 this.Error = ex.Message;
 
                 return false;
@@ -211,7 +207,7 @@ namespace Acceso
                 InicialisarVariablesGlovales(oDatos);
 
                 Consultas = string.Format(@"SELECT u.IdUsuario, u.IdRol, u.Nombre as 'Usuario', u.Login, u.Contrasena, u.Email, r.Nombre as 'TipoDeCuenta', u.Estado  FROM usuario as u
-                inner join rol as r on r.IdRol = u.IdRol where u.IdUsuario = {0} ", oRegistroEN.IdUsuario);
+                inner join rol as r on r.IdRol = u.IdRol where IdUsuario = @IdUsuario ", oRegistroEN.IdUsuario);
 
                 Comando.CommandText = Consultas;
 

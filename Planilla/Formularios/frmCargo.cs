@@ -406,7 +406,7 @@ namespace Planilla.Formularios
                     cmActualizar.Enabled = oRegistroLN.VerificarSiTengoAcceso("Actualizar");
                     cmEliminar.Enabled = oRegistroLN.VerificarSiTengoAcceso("Eliminar");
                     cmVisualizar.Enabled = oRegistroLN.VerificarSiTengoAcceso("Visualizar");
-                    //cmImprimir.Enabled = oRegistroLN.VerificarSiTengoAcceso("Imprimir");
+                    cmImprimir.Enabled = false;
                 }
                 else
                 {

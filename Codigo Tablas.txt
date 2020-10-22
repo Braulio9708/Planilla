@@ -8,7 +8,7 @@ RutaDeRespaldo varchar (2000) default null,
 RutaDeRespaldoDeEcxel varchar (2000) default null,
 PathMySqlDump varchar (2000) default null,
 PathMySql varchar (2000) default null,
-NombreDelSistema varchar (500) not null,
+NombreDelSistema varchar (500) default null,
 TiempoDeRespaldo int (11) default null,
 ImpuestoDeValorAgregado decimal (18,2) default null,
 CorreoDelRemitente varchar (2000) default null,
@@ -41,8 +41,8 @@ FechaDeModificacion datetime default null
 
 create table ModuloInterfaz (
 IdModuloInterfaz int (11) not null auto_increment primary key,
-IdModulo int (11) not null,
-IdInterfaz int (11) not null,
+IdModulo int (11) default null,
+IdInterfaz int (11) default null,
 IdUsuarioDeCreacion int (11) default null,
 FechaDeCreacion datetime default null,
 IdUsuarioDeModificacion int (11) default null,
@@ -71,7 +71,7 @@ create table Usuario (
 IdUsuario int (11) not null auto_increment primary key,
 Nombre varchar (200)default null,
 Login varchar (200) default null,
-Contrasena varchar (500) not null,
+Contrasena varchar (500) default null,
 Email varchar (5000) default null,
 Estado varchar (50) default null,
 IdUsuarioDeCreacion int (11) default null,
@@ -88,7 +88,7 @@ Select 0, 'Administrador', 'Administrador', 'admin', '','ACTIVO',1, current_time
 
 create table Privilegio (
 IdPrivilegio int (11) not null auto_increment primary key,
-IdModuloInterfaz int (11) not null,
+IdModuloInterfaz int (11) default null,
 Nombre varchar (200) default null,
 IdUsuarioDeCreacion int (11) default null,
 FechaDeCreacion datetime default null,
@@ -100,8 +100,8 @@ constraint PrivilegioModuloInterfaz foreign key (IdModuloInterfaz) references Mo
 
 create table ModuloInterfazRol (
 IdModuloInterfazRol int (11) not null auto_increment primary key,
-IdPrivilegio int (11) not null,
-IdRol int (11) not null,
+IdPrivilegio int (11) default null,
+IdRol int (11) default null,
 Acceso int (2) default null,
 IdUsuarioDeCreacion int (11) default null,
 FechaDeCreacion datetime default null,
@@ -144,15 +144,15 @@ Celular Varchar (50) default null,
 Email varchar (200) default null,
 SitioWeb Varchar (200) default null,
 Descripcion Varchar (200) default null,
-IdUsuario int (11) not null,
+IdUsuario int (11) default null,
 key EmpresaUsuario_Idx (IdUsuario),
 constraint EmpresaUsuario foreign key (IdUsuario) references Usuario (IdUsuario) on delete no action on update no action
 )engine = InnoDB auto_increment = 1 default charset = utf8 comment='';
 
 create table AreaLaboral (
 IdAreaLaboral int (11) not null auto_increment primary key,
-Area varchar (100) not null,
-IdEmpresa int (11) not null,
+Area varchar (100) default null,
+IdEmpresa int (11) default null,
 key AreaLaboralEmpresa_Idx (IdEmpresa),
 constraint AreaLaboralEmpresa foreign key (IdEmpresa) references Empresa (IdEmpresa) on delete no action on update no action
 )engine = InnoDB auto_increment = 1 default charset = utf8 comment='';
@@ -165,17 +165,17 @@ Pais varchar (100) default null
 create table Departamento (
 IdDepartamento int (11) not null auto_increment primary key,
 Departamento varchar (100) default null,
-IdPais int (11) not null,
+IdPais int (11) default null,
 key  DepartamentoPais_Idx (IdPais),
 constraint DepartamentoPais foreign key (IdPais) references Pais (IdPais) on delete no action on update no action
 )engine = InnoDB auto_increment = 1 default charset = utf8 comment='';
 
-create table Municipio(
-IdMunicipio int (11) not null auto_increment primary key,
-Municipio varchar (100) default null,
-IdDepartamento int (11) not null,
+create table Ciudad(
+IdCiudad int (11) not null auto_increment primary key,
+Ciudad varchar (100) default null
+/*IdDepartamento int (11) not null
 key  MunicipioDepartamento_Idx (IdDepartamento),
-constraint MunicipioDepartamento foreign key (IdDepartamento) references Departamento (IdDepartamento) on delete no action on update no action
+constraint MunicipioDepartamento foreign key (IdDepartamento) references Departamento (IdDepartamento) on delete no action on update no action*/
 )engine = InnoDB auto_increment = 1 default charset = utf8 comment='';
 
 create table Empleado (
@@ -189,12 +189,12 @@ Celular varchar (100) default null,
 Correo varchar (500) default null,
 NoINSS varchar (100) default null,
 IdCargo int (11) default null,
-IdMunicipio int (11) default null,
+IdCiudad int (11) default null,
 IdAreaLaboral int (11) default null,
 key EmpleadoCargo_Idx (IdCargo),
 constraint EmpleadoCargo foreign key (IdCargo) references Cargo (IdCargo) on delete no action on update no action,
-key EmpleadoMunicipio_Idx (IdMunicipio),
-constraint EmpleadoMunicipio foreign key (IdMunicipio) references Municipio (IdMunicipio) on delete no action on update no action,
+key EmpleadoCiudad_Idx (IdCiudad),
+constraint EmpleadoCiudad foreign key (IdCiudad) references Ciudad (IdCiudad) on delete no action on update no action,
 key EmpleadoAreaLaboral_Idx (IdAreaLaboral),
 constraint EmpleadoAreaLaboral foreign key (IdAreaLaboral) references AreaLaboral (IdAreaLaboral) on delete no action on update no action
 )engine = InnoDB auto_increment = 1 default charset = utf8 comment='';
@@ -203,18 +203,18 @@ create table Horario(
 IdHorario int (11) not null auto_increment primary key,
 HoraDeEntrada datetime default null,
 HoraDeSalida datetime default null,
-IdEmpleado int (11) not null,
+IdEmpleado int (11) default null,
 key HorarioEmpleado_Idx (IdEmpleado),
 constraint HorarioEmpleado foreign key (IdEmpleado) references Empleado (IdEmpleado) on delete no action on update no action
 )engine = InnoDB auto_increment = 1 default charset = utf8 comment='';
 
 create table Contrato(
 IdContrato int (11) not null auto_increment primary key,
-TipoDeContrato varchar (500) not null,
-FechaDeInicio datetime not null,
-FechaDeFin datetime not null,
-NumeroDeContrato int (11) not null,
-IdEmpleado int (11) not null,
+TipoDeContrato varchar (500) default null,
+FechaDeInicio datetime default null,
+FechaDeFin datetime default null,
+NumeroDeContrato int (11) default null,
+IdEmpleado int (11) default null,
 key ContratoEmpleado_Idx (IdEmpleado),
 constraint ContratoEmpleado foreign key (IdEmpleado) references Empleado (IdEmpleado) on delete no action on update no action
 )engine = InnoDB auto_increment = 1 default charset = utf8 comment='';
@@ -228,7 +228,7 @@ create table DetalleDeDeducciones(
 IdDetalleDeDeducciones int (11) not null auto_increment primary key,
 Cuotas int (11) default null,
 MontoPorCuota decimal (18,2) default null,
-IdConceptoDeDeduccion int (11) not null,
+IdConceptoDeDeduccion int (11) default null,
 key DetalleDeDeduccionesConceptoDeDeduccion_Idx (IdConceptoDeDeduccion),
 constraint DetalleDeDeduccionesConceptoDeDeduccion foreign key (IdConceptoDeDeduccion) references ConceptoDeDeduccion (IdConceptoDeDeduccion) on delete no action on update no action
 )engine = InnoDB auto_increment = 1 default charset = utf8 comment='';
@@ -239,19 +239,19 @@ INSS decimal (18,2) default null,
 IR decimal (18,2) default null,
 Prestamos decimal (18,2) default null,
 TotalDeduccines decimal (18,2) default null,
-IdDetalleDeDeducciones int (11) not null,
+IdDetalleDeDeducciones int (11) default null,
 key DeduccionesDetalleDeDeducciones_Idx (IdDetalleDeDeducciones),
 constraint DeduccionesDetalleDeDeducciones foreign key (IdDetalleDeDeducciones) references DetalleDeDeducciones (IdDetalleDeDeducciones) on delete no action on update no action
 )engine = InnoDB auto_increment = 1 default charset = utf8 comment='';
 
 create table Planilla(
 IdPlanilla int (11) not null auto_increment primary key,
-SalarioBase decimal(18,2) not null,
+SalarioBase decimal(18,2) default null,
 Antiguedad decimal (18,2) default null,
 PagoHorasExtras decimal(18,2) default null,
 Comicion decimal(18,2) default null,
-IdEmpleado int (11) not null,
-IdDeducciones int (11) not null,
+IdEmpleado int (11) default null,
+IdDeducciones int (11) default null,
 key PlanillaEmpleado_Idx (IdEmpleado),
 constraint PlanillaEmpleado foreign key (IdEmpleado) references Empleado (IdEmpleado) on delete no action on update no action,
 key PlanillaDeducciones_Idx (IdDeducciones),
@@ -261,7 +261,7 @@ constraint PlanillaDeducciones foreign key (IdDeducciones) references Deduccione
 create table Faltas (
 IdFaltas int (11) not null auto_increment primary key,
 Fecha varchar (5000) default null,
-IdEmpleado int (11) not null,
+IdEmpleado int (11) default null,
 key FaltasEmpleado_Idx (IdEmpleado),
 constraint FaltasEmpleado foreign key (IdEmpleado) references Empleado (IdEmpleado) on delete no action on update no action
 )engine = InnoDB auto_increment = 1 default charset = utf8 comment='';
@@ -336,11 +336,6 @@ select 0, @idModuloInterfaz, 'Acceso', @IdUsuarioDeCreacion, current_timestamp()
 
 insert into privilegio
 select 0, @idModuloInterfaz, 'Actualizar', @IdUsuarioDeCreacion, current_timestamp(), @IdUsuarioDeModificacion, current_timestamp();
-
-/**privilegios para el empleado**/
-##insertamos el registro de la interfaz;
-insert into interfaz
-Select 0,'Empleado', 'Interfaz para la información del empleado', 'Empleado', 1, current_timestamp(), 1, current_timestamp();
 
 insert into privilegio
 select 0, @idModuloInterfaz, 'Eliminar', @IdUsuarioDeCreacion, current_timestamp(), @IdUsuarioDeModificacion, current_timestamp();
@@ -422,6 +417,121 @@ select 0, @idModuloInterfaz, 'Acceso', @IdUsuarioDeCreacion, current_timestamp()
 insert into privilegio
 select 0, @idModuloInterfaz, 'Actualizar', @IdUsuarioDeCreacion, current_timestamp(), @IdUsuarioDeModificacion, current_timestamp();
 
+/**privilegios para el Area Laboral**/
+##insertamos el registro de la interfaz;
+insert into interfaz
+Select 0,'Area Laboral', 'Interfaz para la información del Area Laboral', 'Area Laboral', 1, current_timestamp(), 1, current_timestamp();
+
+#insertamos el registro del modulo interfaz
+insert into modulointerfaz
+select 0, @idModulo, last_insert_id(), @IdUsuarioDeCreacion, current_timestamp(), @IdUsuarioDeModificacion, current_timestamp();
+
+set @idModuloInterfaz = last_insert_id();
+
+insert into privilegio
+select 0, @idModuloInterfaz, 'Acceso', @IdUsuarioDeCreacion, current_timestamp(), @IdUsuarioDeModificacion, current_timestamp();
+
+insert into privilegio
+select 0, @idModuloInterfaz, 'Actualizar', @IdUsuarioDeCreacion, current_timestamp(), @IdUsuarioDeModificacion, current_timestamp();
+
+insert into privilegio
+select 0, @idModuloInterfaz, 'Eliminar', @IdUsuarioDeCreacion, current_timestamp(), @IdUsuarioDeModificacion, current_timestamp();
+
+insert into privilegio
+select 0, @idModuloInterfaz, 'Visualizar', @IdUsuarioDeCreacion, current_timestamp(), @IdUsuarioDeModificacion, current_timestamp();
+
+insert into privilegio
+select 0, @idModuloInterfaz, 'Imprimir', @IdUsuarioDeCreacion, current_timestamp(), @IdUsuarioDeModificacion, current_timestamp();
+
+insert into privilegio
+select 0, @idModuloInterfaz, 'Nuevo', @IdUsuarioDeCreacion, current_timestamp(), @IdUsuarioDeModificacion, current_timestamp();
+
+/**privilegios para el Empleado**/
+##insertamos el registro de la interfaz;
+insert into interfaz
+Select 0,'Empleado', 'Interfaz para la información del Empleado', 'Empleado', 1, current_timestamp(), 1, current_timestamp();
+
+#insertamos el registro del modulo interfaz
+insert into modulointerfaz
+select 0, @idModulo, last_insert_id(), @IdUsuarioDeCreacion, current_timestamp(), @IdUsuarioDeModificacion, current_timestamp();
+
+set @idModuloInterfaz = last_insert_id();
+
+insert into privilegio
+select 0, @idModuloInterfaz, 'Acceso', @IdUsuarioDeCreacion, current_timestamp(), @IdUsuarioDeModificacion, current_timestamp();
+
+insert into privilegio
+select 0, @idModuloInterfaz, 'Actualizar', @IdUsuarioDeCreacion, current_timestamp(), @IdUsuarioDeModificacion, current_timestamp();
+
+insert into privilegio
+select 0, @idModuloInterfaz, 'Eliminar', @IdUsuarioDeCreacion, current_timestamp(), @IdUsuarioDeModificacion, current_timestamp();
+
+insert into privilegio
+select 0, @idModuloInterfaz, 'Visualizar', @IdUsuarioDeCreacion, current_timestamp(), @IdUsuarioDeModificacion, current_timestamp();
+
+insert into privilegio
+select 0, @idModuloInterfaz, 'Imprimir', @IdUsuarioDeCreacion, current_timestamp(), @IdUsuarioDeModificacion, current_timestamp();
+
+insert into privilegio
+select 0, @idModuloInterfaz, 'Nuevo', @IdUsuarioDeCreacion, current_timestamp(), @IdUsuarioDeModificacion, current_timestamp();
+
+/**privilegios para el Cargo**/
+##insertamos el registro de la interfaz;
+insert into interfaz
+Select 0,'Cargo', 'Interfaz para la información del Cargo', 'Cargo', 1, current_timestamp(), 1, current_timestamp();
+
+#insertamos el registro del modulo interfaz
+insert into modulointerfaz
+select 0, @idModulo, last_insert_id(), @IdUsuarioDeCreacion, current_timestamp(), @IdUsuarioDeModificacion, current_timestamp();
+
+set @idModuloInterfaz = last_insert_id();
+
+insert into privilegio
+select 0, @idModuloInterfaz, 'Acceso', @IdUsuarioDeCreacion, current_timestamp(), @IdUsuarioDeModificacion, current_timestamp();
+
+insert into privilegio
+select 0, @idModuloInterfaz, 'Actualizar', @IdUsuarioDeCreacion, current_timestamp(), @IdUsuarioDeModificacion, current_timestamp();
+
+insert into privilegio
+select 0, @idModuloInterfaz, 'Eliminar', @IdUsuarioDeCreacion, current_timestamp(), @IdUsuarioDeModificacion, current_timestamp();
+
+insert into privilegio
+select 0, @idModuloInterfaz, 'Visualizar', @IdUsuarioDeCreacion, current_timestamp(), @IdUsuarioDeModificacion, current_timestamp();
+
+insert into privilegio
+select 0, @idModuloInterfaz, 'Imprimir', @IdUsuarioDeCreacion, current_timestamp(), @IdUsuarioDeModificacion, current_timestamp();
+
+insert into privilegio
+select 0, @idModuloInterfaz, 'Nuevo', @IdUsuarioDeCreacion, current_timestamp(), @IdUsuarioDeModificacion, current_timestamp();
+
+/**privilegios para el Ciudad**/
+##insertamos el registro de la interfaz;
+insert into interfaz
+Select 0,'Ciudad', 'Interfaz para la información del Ciudad', 'Ciudad', 1, current_timestamp(), 1, current_timestamp();
+
+#insertamos el registro del modulo interfaz
+insert into modulointerfaz
+select 0, @idModulo, last_insert_id(), @IdUsuarioDeCreacion, current_timestamp(), @IdUsuarioDeModificacion, current_timestamp();
+
+set @idModuloInterfaz = last_insert_id();
+
+insert into privilegio
+select 0, @idModuloInterfaz, 'Acceso', @IdUsuarioDeCreacion, current_timestamp(), @IdUsuarioDeModificacion, current_timestamp();
+
+insert into privilegio
+select 0, @idModuloInterfaz, 'Actualizar', @IdUsuarioDeCreacion, current_timestamp(), @IdUsuarioDeModificacion, current_timestamp();
+
+insert into privilegio
+select 0, @idModuloInterfaz, 'Eliminar', @IdUsuarioDeCreacion, current_timestamp(), @IdUsuarioDeModificacion, current_timestamp();
+
+insert into privilegio
+select 0, @idModuloInterfaz, 'Visualizar', @IdUsuarioDeCreacion, current_timestamp(), @IdUsuarioDeModificacion, current_timestamp();
+
+insert into privilegio
+select 0, @idModuloInterfaz, 'Imprimir', @IdUsuarioDeCreacion, current_timestamp(), @IdUsuarioDeModificacion, current_timestamp();
+
+insert into privilegio
+select 0, @idModuloInterfaz, 'Nuevo', @IdUsuarioDeCreacion, current_timestamp(), @IdUsuarioDeModificacion, current_timestamp();
 
 #insertamos privilegios en el modulo interfaz usuario y van activados para el idusuario 1.. que es el super usuario...
 insert into modulointerfazusuario

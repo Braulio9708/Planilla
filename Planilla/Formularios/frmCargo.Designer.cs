@@ -74,14 +74,14 @@
             this.cmVisualizar,
             this.cmImprimir});
             this.mcsMenu.Name = "mcsMenu";
-            this.mcsMenu.Size = new System.Drawing.Size(153, 136);
+            this.mcsMenu.Size = new System.Drawing.Size(127, 114);
             this.mcsMenu.Opened += new System.EventHandler(this.mcsMenu_Opened);
             // 
             // cmNuevo
             // 
             this.cmNuevo.Image = global::Planilla.Properties.Resources.New16x16;
             this.cmNuevo.Name = "cmNuevo";
-            this.cmNuevo.Size = new System.Drawing.Size(152, 22);
+            this.cmNuevo.Size = new System.Drawing.Size(126, 22);
             this.cmNuevo.Text = "Nuevo";
             this.cmNuevo.Click += new System.EventHandler(this.cmNuevo_Click);
             // 
@@ -89,7 +89,7 @@
             // 
             this.cmActualizar.Image = global::Planilla.Properties.Resources.Edit16x16;
             this.cmActualizar.Name = "cmActualizar";
-            this.cmActualizar.Size = new System.Drawing.Size(152, 22);
+            this.cmActualizar.Size = new System.Drawing.Size(126, 22);
             this.cmActualizar.Text = "Actualizar";
             this.cmActualizar.Click += new System.EventHandler(this.cmActualizar_Click);
             // 
@@ -97,7 +97,7 @@
             // 
             this.cmEliminar.Image = global::Planilla.Properties.Resources.Eliminar16x16;
             this.cmEliminar.Name = "cmEliminar";
-            this.cmEliminar.Size = new System.Drawing.Size(152, 22);
+            this.cmEliminar.Size = new System.Drawing.Size(126, 22);
             this.cmEliminar.Text = "Eliminar";
             this.cmEliminar.Click += new System.EventHandler(this.cmEliminar_Click);
             // 
@@ -105,7 +105,7 @@
             // 
             this.cmVisualizar.Image = global::Planilla.Properties.Resources.if_old_edit_find_23490__1_;
             this.cmVisualizar.Name = "cmVisualizar";
-            this.cmVisualizar.Size = new System.Drawing.Size(152, 22);
+            this.cmVisualizar.Size = new System.Drawing.Size(126, 22);
             this.cmVisualizar.Text = "Visualizar";
             this.cmVisualizar.Click += new System.EventHandler(this.cmVisualizar_Click);
             // 
@@ -113,7 +113,7 @@
             // 
             this.cmImprimir.Image = global::Planilla.Properties.Resources.iconfinder_preferences_desktop_printer_8803;
             this.cmImprimir.Name = "cmImprimir";
-            this.cmImprimir.Size = new System.Drawing.Size(152, 22);
+            this.cmImprimir.Size = new System.Drawing.Size(126, 22);
             this.cmImprimir.Text = "Imprimir";
             // 
             // dgvLista
@@ -147,7 +147,7 @@
             dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dgvLista.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
-            this.dgvLista.Size = new System.Drawing.Size(613, 194);
+            this.dgvLista.Size = new System.Drawing.Size(613, 168);
             this.dgvLista.TabIndex = 0;
             this.dgvLista.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvLista_CellContentClick);
             this.dgvLista.CellContextMenuStripNeeded += new System.Windows.Forms.DataGridViewCellContextMenuStripNeededEventHandler(this.dgvLista_CellContextMenuStripNeeded);
@@ -237,8 +237,8 @@
             // 
             // splitContainer1.Panel2
             // 
-            this.splitContainer1.Panel2.Controls.Add(this.statusStrip1);
             this.splitContainer1.Panel2.Controls.Add(this.dgvLista);
+            this.splitContainer1.Panel2.Controls.Add(this.statusStrip1);
             this.splitContainer1.Size = new System.Drawing.Size(613, 378);
             this.splitContainer1.SplitterDistance = 180;
             this.splitContainer1.TabIndex = 0;

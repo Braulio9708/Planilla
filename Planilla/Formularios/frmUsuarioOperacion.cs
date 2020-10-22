@@ -31,6 +31,7 @@ namespace Planilla.Formularios
         {
             ObtenerValoresDeConfiguracion();
             LLenarInformacionDelTipoDeCuenta();
+            //LlenarInformacionDelEstado();
             LLenarInformacionDelModulo();
             LLenarInformacionDeLaInterfaz();
             LlamarMetodoSegunOperacion();
@@ -40,6 +41,36 @@ namespace Planilla.Formularios
         }
 
         #region "Funciones"
+
+        private void LlenarInformacionDelEstado()
+        {
+            try
+            {
+                this.Cursor = Cursors.WaitCursor;
+
+                UsuarioEN oRegistroEN = new UsuarioEN();
+                UsuarioLN oRegistroLN = new UsuarioLN();
+                oRegistroEN.Where = "";
+                oRegistroEN.OrderBy = "";
+
+                if (oRegistroLN.Listado(oRegistroEN, Program.oDatosDeConexioEN))
+                {
+                    cmbEstado.DataSource = oRegistroLN.TraerDatos();
+                    cmbEstado.DisplayMember = "Estado";
+                    cmbEstado.ValueMember = "IdUsuario";
+                    cmbEstado.SelectedIndex = -1;
+                }
+                else { throw new ArgumentException(oRegistroLN.Error); }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Información de los tipos de cuentas", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                this.Cursor = Cursors.Default;
+            }
+        }
 
         private void LLenarInformacionDelTipoDeCuenta()
         {

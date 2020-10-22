@@ -662,5 +662,10 @@ namespace Planilla.Formularios
         {
             GuardarValoresDeConfiguracion();
         }
+
+        private void tsbCerrarVentana_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }
