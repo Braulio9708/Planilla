@@ -538,7 +538,7 @@ namespace Planilla.Formularios
 
                 dgvLista.CurrentRow.Cells["Seleccionar"].Value = true;
 
-                foreach (DataGridViewRow Fila in dgvLista.Rows)
+                foreach(DataGridViewRow Fila in dgvLista.Rows)
                 {
                     if (Convert.ToBoolean(Fila.Cells["Seleccionar"].Value) == true)
                     {
@@ -567,7 +567,6 @@ namespace Planilla.Formularios
                 {
                     dgvLista.CurrentCell = dgvLista.Rows[Hitest.RowIndex].Cells[Hitest.ColumnIndex];
                 }
-
             }
         }
 

@@ -23,6 +23,7 @@ namespace Planilla.Formularios
         frmEmpleados ofrmEmpleados = null;
         frmAreaLaboral ofrmAreaLaboral = null;
         frmCiudad ofrmMunicipio = null;
+        frmContrato ofrmContrato = null;
 
         public Principal()
         {
@@ -458,6 +459,25 @@ namespace Planilla.Formularios
             else
             {
                 ofrmMunicipio.BringToFront();
+            }
+            this.Cursor = Cursors.Default;
+        }
+
+        private void btnContrato_Click(object sender, EventArgs e)
+        {
+            this.Cursor = Cursors.WaitCursor;
+
+            if (ofrmContrato == null || ofrmContrato.IsDisposed)
+            {
+                ofrmContrato = new frmContrato();
+                ofrmContrato.MdiParent = this;
+                ofrmContrato.StartPosition = FormStartPosition.CenterScreen;
+                ofrmContrato.WindowState = FormWindowState.Maximized;
+                ofrmContrato.Show();
+            }
+            else
+            {
+                ofrmContrato.BringToFront();
             }
             this.Cursor = Cursors.Default;
         }

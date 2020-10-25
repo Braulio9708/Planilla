@@ -174,7 +174,9 @@ namespace Acceso
             {
                 InicialisarVariablesGlovales(oDatos);
 
-                Consultas = string.Format(@"Select IdContrato, TipoDeContrato, FechaDeInicio, FechaDeFin, NumeroDeContrato from contrato where IdContrato > 0 {0} {1}", oRegistroEN.Where, oRegistroEN.OrderBy);
+                Consultas = string.Format(@"Select ctt.IdContrato, ctt.TipoDeContrato as 'Tipo De Contrato', ctt.FechaDeInicio, ctt.FechaDeFin, ctt.NumeroDeContrato as 'Numero De Contrato', ctt.IdEmpleado, emp.Nombre as 'Empleado' from contrato as ctt
+									        inner join empleado as emp on emp.IdEmpleado = ctt.IdEmpleado
+                                            where IdContrato > 0 {0} {1}", oRegistroEN.Where, oRegistroEN.OrderBy);
 
                 Comando.CommandText = Consultas;
 
@@ -200,7 +202,9 @@ namespace Acceso
             {
                 InicialisarVariablesGlovales(oDatos);
 
-                Consultas = string.Format(@"Select IdContrato, TipoDeContrato, FechaDeInicio, FechaDeFin, NumeroDeContrato from contrato where IdContrato = {0} ", oRegistroEN.IdContrato);
+                Consultas = string.Format(@"Select ctt.IdContrato, ctt.TipoDeContrato as 'Tipo De Contrato', ctt.FechaDeInicio, ctt.FechaDeFin, ctt.NumeroDeContrato as 'Numero De Contrato', ctt.IdEmpleado, emp.Nombre as 'Empleado' from contrato as ctt
+									inner join empleado as emp on emp.IdEmpleado = ctt.IdEmpleado
+                                    where IdContrato > @IdContrato ", oRegistroEN.IdContrato);
                 Comando.CommandText = Consultas;
 
                 InicialisarAdaptador();

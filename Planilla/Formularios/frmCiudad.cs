@@ -221,11 +221,11 @@ namespace Planilla.Formularios
 
             if (Controles.IsNullOEmptyElControl(chkIdentificador) == false && Controles.IsNullOEmptyElControl(txtIdentificador) == false)
             {
-                Where += string.Format(" and IdMunicipio like '%{0}%' ", txtIdentificador.Text.Trim());
+                Where += string.Format(" and IdCiudad like '%{0}%' ", txtIdentificador.Text.Trim());
             }
             if (Controles.IsNullOEmptyElControl(chkMunicipio) == false && Controles.IsNullOEmptyElControl(txtMunicipio) == false)
             {
-                Where += string.Format(" and Municipio like '%{0}%' ", txtMunicipio.Text.Trim());
+                Where += string.Format(" and Ciudad like '%{0}%' ", txtMunicipio.Text.Trim());
             }
 
             return Where;
@@ -403,6 +403,8 @@ namespace Planilla.Formularios
                     cmEliminar.Enabled = oRegistroLN.VerificarSiTengoAcceso("Eliminar");
                     cmVisualizar.Enabled = oRegistroLN.VerificarSiTengoAcceso("Visualizar");
                     cmImprimir.Enabled = false;
+                    tsbMarcarTodos.Visible = false;
+                    tsbSeleccionarTodos.Visible = false;
                 }
                 else
                 {

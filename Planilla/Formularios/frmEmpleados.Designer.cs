@@ -49,9 +49,9 @@
             this.chkMunicipio = new System.Windows.Forms.CheckBox();
             this.chkCargo = new System.Windows.Forms.CheckBox();
             this.chkAreaLaboral = new System.Windows.Forms.CheckBox();
+            this.dgvLista = new System.Windows.Forms.DataGridView();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.tsbNoRegistros = new System.Windows.Forms.ToolStripStatusLabel();
-            this.dgvLista = new System.Windows.Forms.DataGridView();
             this.tsMenu = new System.Windows.Forms.ToolStrip();
             this.tsbFiltrar = new System.Windows.Forms.ToolStripButton();
             this.tsbNuevoRegistro = new System.Windows.Forms.ToolStripButton();
@@ -73,8 +73,8 @@
             this.flowLayoutPanel1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
-            this.statusStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvLista)).BeginInit();
+            this.statusStrip1.SuspendLayout();
             this.tsMenu.SuspendLayout();
             this.mcsMenu.SuspendLayout();
             this.SuspendLayout();
@@ -299,6 +299,21 @@
             this.chkAreaLaboral.Text = "Area Laboral:";
             this.chkAreaLaboral.UseVisualStyleBackColor = true;
             // 
+            // dgvLista
+            // 
+            this.dgvLista.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.dgvLista.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvLista.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgvLista.Location = new System.Drawing.Point(0, 39);
+            this.dgvLista.Name = "dgvLista";
+            this.dgvLista.Size = new System.Drawing.Size(1115, 383);
+            this.dgvLista.TabIndex = 1;
+            this.dgvLista.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvLista_CellContentClick);
+            this.dgvLista.CellContextMenuStripNeeded += new System.Windows.Forms.DataGridViewCellContextMenuStripNeededEventHandler(this.dgvLista_CellContextMenuStripNeeded);
+            this.dgvLista.CurrentCellDirtyStateChanged += new System.EventHandler(this.dgvLista_CurrentCellDirtyStateChanged);
+            this.dgvLista.DoubleClick += new System.EventHandler(this.dgvLista_DoubleClick);
+            this.dgvLista.MouseDown += new System.Windows.Forms.MouseEventHandler(this.dgvLista_MouseDown);
+            // 
             // statusStrip1
             // 
             this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -315,21 +330,6 @@
             this.tsbNoRegistros.Size = new System.Drawing.Size(105, 17);
             this.tsbNoRegistros.Tag = "No Registros";
             this.tsbNoRegistros.Text = "No. de Registros: 0";
-            // 
-            // dgvLista
-            // 
-            this.dgvLista.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.dgvLista.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvLista.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgvLista.Location = new System.Drawing.Point(0, 39);
-            this.dgvLista.Name = "dgvLista";
-            this.dgvLista.Size = new System.Drawing.Size(1115, 383);
-            this.dgvLista.TabIndex = 1;
-            this.dgvLista.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvLista_CellContentClick);
-            this.dgvLista.CellContextMenuStripNeeded += new System.Windows.Forms.DataGridViewCellContextMenuStripNeededEventHandler(this.dgvLista_CellContextMenuStripNeeded);
-            this.dgvLista.CurrentCellDirtyStateChanged += new System.EventHandler(this.dgvLista_CurrentCellDirtyStateChanged);
-            this.dgvLista.DoubleClick += new System.EventHandler(this.dgvLista_DoubleClick);
-            this.dgvLista.MouseDown += new System.Windows.Forms.MouseEventHandler(this.dgvLista_MouseDown);
             // 
             // tsMenu
             // 
@@ -484,9 +484,9 @@
             this.groupBox2.PerformLayout();
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvLista)).EndInit();
             this.statusStrip1.ResumeLayout(false);
             this.statusStrip1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvLista)).EndInit();
             this.tsMenu.ResumeLayout(false);
             this.tsMenu.PerformLayout();
             this.mcsMenu.ResumeLayout(false);

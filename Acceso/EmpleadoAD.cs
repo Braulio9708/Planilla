@@ -36,11 +36,10 @@ namespace Acceso
 
         public bool Agregar(EmpleadoEN oRegistroEN, DatosDeConexionEN oDatos)
         {
-            oTransaccionesAD = new TransaccionesAD();
             try
             {
                 InicialisarVariablesGlovales(oDatos);
-
+                
                 Consultas = @"insert into empleado
                             (Nombre, Apellidos, Cedula, Direccion, Telefono, 
                             Celular, Correo, IdCargo, IdCiudad, IdAreaLaboral, NoINSS)
@@ -49,9 +48,9 @@ namespace Acceso
                             @Celular, @Correo, @IdCargo, @IdCiudad, @IdAreaLaboral, @NoINSS);
 
                             select last_insert_id() as 'ID';";
-
+                
                 Comando.CommandText = Consultas;
-
+                
                 Comando.Parameters.Add(new MySqlParameter("@Nombre", MySqlDbType.VarChar, oRegistroEN.Nombre.Trim().Length)).Value = oRegistroEN.Nombre.Trim();
                 Comando.Parameters.Add(new MySqlParameter("@Apellidos", MySqlDbType.VarChar, oRegistroEN.Apellidos.Trim().Length)).Value = oRegistroEN.Apellidos.Trim();
                 Comando.Parameters.Add(new MySqlParameter("@Cedula", MySqlDbType.VarChar, oRegistroEN.Cedula.Trim().Length)).Value = oRegistroEN.Cedula.Trim();
@@ -61,36 +60,24 @@ namespace Acceso
                 Comando.Parameters.Add(new MySqlParameter("@Correo", MySqlDbType.VarChar, oRegistroEN.Correo.Trim().Length)).Value = oRegistroEN.Correo.Trim();
                 Comando.Parameters.Add(new MySqlParameter("@NoINSS", MySqlDbType.VarChar, oRegistroEN.NoINSS.Trim().Length)).Value = oRegistroEN.NoINSS.Trim();
                 Comando.Parameters.Add(new MySqlParameter("@IdCargo", MySqlDbType.Int32)).Value = oRegistroEN.oCargoEN.IdCargo;
-                Comando.Parameters.Add(new MySqlParameter("@IdCiudad", MySqlDbType.Int32)).Value = oRegistroEN.oCiudad.IdCiudad;
+                Comando.Parameters.Add(new MySqlParameter("@IdCiudad", MySqlDbType.Int32)).Value = oRegistroEN.oCiudadEN.IdCiudad;
                 Comando.Parameters.Add(new MySqlParameter("@IdAreaLaboral", MySqlDbType.Int32)).Value = oRegistroEN.oAreaLaboralEN.IdAreaLaboral;
-
+                
                 InicialisarAdaptador();
-
+                
                 oRegistroEN.IdEmpleado = Convert.ToInt32(DT.Rows[0].ItemArray[0].ToString());
-
-                DescripcionDeLaOperacion = string.Format("El registro fue Insertado Correctamente. {0} {1}", Environment.NewLine, InformacionDelRegistro(oRegistroEN));
-
-                //agregamos la transaccion
-                TransaccionesEN oTransacciones = InformacionDeLaTransaccion(oRegistroEN, "Agregar", "Agregar Nuevo Registro", "CORRECTO");
-                oTransaccionesAD.Agregar(oTransacciones, oDatos);
-
+                
                 return true;
             }
             catch(Exception ex)
             {
                 this.Error = ex.Message;
-                DescripcionDeLaOperacion = string.Format("Se produjo el seguiente error: '{2}' al insertar el registro. {0} {1} ", Environment.NewLine, InformacionDelRegistro(oRegistroEN), ex.Message);
-
-                //Agregamos la Transacción....
-                TransaccionesEN oTransacciones = InformacionDeLaTransaccion(oRegistroEN, "Agregar", "Agregar Nuevo Registro", "ERROR");
-                oTransaccionesAD.Agregar(oTransacciones, oDatos);
 
                 return false;
             }
             finally
             {
                 FinalizarConexion();
-                oTransaccionesAD = null;
             }
         }
 
@@ -117,6 +104,7 @@ namespace Acceso
                             where IdEmpleado = @IdEmpleado;";
 
                 Comando.CommandText = Consultas;
+                Comando.Parameters.Add(new MySqlParameter("@IdEmpleado", MySqlDbType.Int32)).Value = oRegistroEN.IdEmpleado;
 
                 Comando.Parameters.Add(new MySqlParameter("@Nombre", MySqlDbType.VarChar, oRegistroEN.Nombre.Trim().Length)).Value = oRegistroEN.Nombre.Trim();
                 Comando.Parameters.Add(new MySqlParameter("@Apellidos", MySqlDbType.VarChar, oRegistroEN.Apellidos.Trim().Length)).Value = oRegistroEN.Apellidos.Trim();
@@ -127,16 +115,10 @@ namespace Acceso
                 Comando.Parameters.Add(new MySqlParameter("@Correo", MySqlDbType.VarChar, oRegistroEN.Correo.Trim().Length)).Value = oRegistroEN.Correo.Trim();
                 Comando.Parameters.Add(new MySqlParameter("@NoINSS", MySqlDbType.VarChar, oRegistroEN.NoINSS.Trim().Length)).Value = oRegistroEN.NoINSS.Trim();
                 Comando.Parameters.Add(new MySqlParameter("@IdCargo", MySqlDbType.Int32)).Value = oRegistroEN.oCargoEN.IdCargo;
-                Comando.Parameters.Add(new MySqlParameter("@IdCiudad", MySqlDbType.Int32)).Value = oRegistroEN.oCiudad.IdCiudad;
+                Comando.Parameters.Add(new MySqlParameter("@IdCiudad", MySqlDbType.Int32)).Value = oRegistroEN.oCiudadEN.IdCiudad;
                 Comando.Parameters.Add(new MySqlParameter("@IdAreaLaboral", MySqlDbType.Int32)).Value = oRegistroEN.oAreaLaboralEN.IdAreaLaboral;
 
                 Comando.ExecuteNonQuery();
-
-                DescripcionDeLaOperacion = string.Format("El registro fue Actualizado Correctamente. {0} {1}", Environment.NewLine, InformacionDelRegistro(oRegistroEN));
-
-                //Agregamos la Transacción....
-                TransaccionesEN oTransacciones = InformacionDeLaTransaccion(oRegistroEN, "Actualizar", "Actualizar Registro", "CORRECTO");
-                oTransaccionesAD.Agregar(oTransacciones, oDatos);
 
                 return true;
 
@@ -144,65 +126,45 @@ namespace Acceso
             catch (Exception ex)
             {
                 this.Error = ex.Message;
-
-                DescripcionDeLaOperacion = string.Format("Se produjo el seguiente error: '{2}' al actualizar el registro. {0} {1} ", Environment.NewLine, InformacionDelRegistro(oRegistroEN), ex.Message);
-
-                //Agregamos la Transacción....
-                TransaccionesEN oTransacciones = InformacionDeLaTransaccion(oRegistroEN, "Actualizar", "Actualizar Registro", "ERROR");
-                oTransaccionesAD.Agregar(oTransacciones, oDatos);
-
+                
                 return false;
             }
             finally
             {
                 FinalizarConexion();
-                oTransaccionesAD = null;
             }
         }
 
         public bool Eliminar(EmpleadoEN oRegistroEN, DatosDeConexionEN oDatos)
         {
-            oTransaccionesAD = new TransaccionesAD();
 
             try
             {
-
+                
                 InicialisarVariablesGlovales(oDatos);
-
-                Consultas = @"Delete from Empleado where IdEmpleado = @IdEmpleado;";
+                
+                Consultas = @"Delete from Empleado where IdEmpleado = @IdEmpleado";
                 Comando.CommandText = Consultas;
-
+                
                 Comando.Parameters.Add(new MySqlParameter("@IdEmpleado", MySqlDbType.Int32)).Value = oRegistroEN.IdEmpleado;
-
+                
                 Comando.ExecuteNonQuery();
 
-                DescripcionDeLaOperacion = string.Format("El registro fue Eliminado Correctamente. {0} {1}", Environment.NewLine, InformacionDelRegistro(oRegistroEN));
-
-                //Agregamos la Transacción....
-                TransaccionesEN oTransacciones = InformacionDeLaTransaccion(oRegistroEN, "Eliminar", "Elminar Registro", "CORRECTO");
-                oTransaccionesAD.Agregar(oTransacciones, oDatos);
-
+                InicialisarAdaptador();
+                
                 return true;
-
+                
             }
             catch (Exception ex)
             {
                 this.Error = ex.Message;
-
-                DescripcionDeLaOperacion = string.Format("Se produjo el seguiente error: '{2}' al eliminar el registro. {0} {1} ", Environment.NewLine, InformacionDelRegistro(oRegistroEN), ex.Message);
-
-                //Agregamos la Transacción....
-                TransaccionesEN oTransacciones = InformacionDeLaTransaccion(oRegistroEN, "Eliminar", "Eliminar Registro", "ERROR");
-                oTransaccionesAD.Agregar(oTransacciones, oDatos);
-
+                
                 return false;
             }
             finally
-            {
+            {    
                 FinalizarConexion();
-                oTransaccionesAD = null;
             }
-
         }
 
         public bool Listado(EmpleadoEN oRegistroEN, DatosDeConexionEN oDatos)
@@ -211,18 +173,18 @@ namespace Acceso
             {
                 InicialisarVariablesGlovales(oDatos);
                 
-                Consultas = string.Format(@"select emp.Nombre, emp.Apellidos, emp.Cedula, emp.Direccion, emp.Telefono, emp.Celular, emp.Correo, emp.NoINSS,
-								al.Area as 'AreaLaboral', co.Cargo as 'Cargo', cdd.Ciudad 
+                Consultas = string.Format(@"select emp.IdEmpleado, emp.Nombre, emp.Apellidos, emp.Cedula, emp.Direccion, emp.Telefono, emp.Celular, emp.Correo, emp.NoINSS,
+								emp.IdCargo, emp.IdCiudad, emp.IdAreaLaboral, al.Area as 'AreaLaboral', co.Cargo as 'Cargo', cdd.Ciudad
                                 from empleado as emp
                                 inner join cargo as co on emp.IdCargo = co.IdCargo
                                 inner join arealaboral as al on emp.IdAreaLaboral = al.IdAreaLaboral
-                                inner join ciudad as cdd on cdd.IdCiudad = cdd.IdCiudad
+                                inner join ciudad as cdd on cdd.IdCiudad = emp.IdCiudad
                                 where emp.IdEmpleado > 0 {0} {1} ", oRegistroEN.Where, oRegistroEN.OrderBy);
 
                 Comando.CommandText = Consultas;
-
+                
                 InicialisarAdaptador();
-
+                //Console.WriteLine("Buscar Error");
                 return true;
             }
             catch(Exception ex)
@@ -243,15 +205,17 @@ namespace Acceso
             {
                 InicialisarVariablesGlovales(oDatos);
 
-                Consultas = string.Format(@"select emp.Idempleado, emp.Nombre, emp.Apellidos, emp.Cedula, emp.Direccion, emp.Telefono, emp.Celular, emp.Correo, emp.NoINSS,
+                Consultas = string.Format(@"select emp.IdEmpleado, emp.Nombre, emp.Apellidos, emp.Cedula, emp.Direccion, emp.Telefono, emp.Celular, emp.Correo, emp.NoINSS,
 								emp.IdCargo, emp.IdCiudad, emp.IdAreaLaboral, al.Area as 'AreaLaboral', co.Cargo as 'Cargo', cdd.Ciudad
                                 from empleado as emp
                                 inner join cargo as co on emp.IdCargo = co.IdCargo
                                 inner join arealaboral as al on emp.IdAreaLaboral = al.IdAreaLaboral
-                                inner join ciudad as cdd on cdd.IdCiudad = cdd.IdCiudad
-                                where emp.idEmpleado > {0}", oRegistroEN.IdEmpleado);
+                                inner join ciudad as cdd on cdd.IdCiudad = emp.IdCiudad
+                                where emp.IdEmpleado > @IdEmpleado", oRegistroEN.IdEmpleado);
 
                 Comando.CommandText = Consultas;
+
+                Comando.Parameters.Add(new MySqlParameter("@IdEmpleado", MySqlDbType.Int32)).Value = oRegistroEN.IdEmpleado;
 
                 InicialisarAdaptador();
 
@@ -271,10 +235,8 @@ namespace Acceso
 
         public bool ListadoParaCombos(EmpleadoEN oRegistroEN, DatosDeConexionEN oDatos)
         {
-
             try
             {
-
                 InicialisarVariablesGlovales(oDatos);
 
                 Consultas = string.Format(@"select emp.Idempleado, emp.Nombre, emp.Apellidos, emp.Cedula, emp.Direccion, emp.Telefono, emp.Celular, emp.Correo, emp.NoINSS,
@@ -282,7 +244,7 @@ namespace Acceso
                                 from empleado as emp
                                 inner join cargo as co on emp.IdCargo = co.IdCargo
                                 inner join arealaboral as al on emp.IdAreaLaboral = al.IdAreaLaboral
-                                inner join ciudad as cdd on cdd.IdCiudad = cdd.IdCiudad
+                                inner join ciudad as cdd on cdd.IdCiudad = emp.IdCiudad
                                 where emp.idEmpleado > 0 {0} {1}; ", oRegistroEN.Where, oRegistroEN.OrderBy);
                 Comando.CommandText = Consultas;
 
@@ -299,9 +261,7 @@ namespace Acceso
             }
             finally
             {
-
                 FinalizarConexion();
-
             }
 
         }
@@ -363,12 +323,14 @@ namespace Acceso
         }
         public void InicialisarAdaptador()
         {
+            Console.WriteLine("BUSCAR ERROR");
             Adaptador = new MySqlDataAdapter();
             DT = new DataTable();
 
             Adaptador.SelectCommand = Comando;
             Adaptador.Fill(DT);
         }
+
         private void FinalizarConexion()
         {
             if (Cnn != null)
@@ -405,8 +367,8 @@ namespace Acceso
         private string InformacionDelRegistro(EmpleadoEN oRegistroEN)
         {
             string Cadena= @"IdEmpleado={0}, Nombre={2}, Apellidos={3}, Cedula={4}, Direccion={5}, Telefono={6}, Celular={7}, Correo={8}, NoINSS={9}, IdCargo={10}, IdCiudad={11}, IdAreaLaboral={12}, Area={13}, Cargo={14}, Municipio{15}";
-            Cadena = string.Format(Cadena, oRegistroEN.IdEmpleado, oRegistroEN.Nombre, oRegistroEN.Apellidos, oRegistroEN.Cedula, oRegistroEN.Direccion, oRegistroEN.Telefono, oRegistroEN.Celular, oRegistroEN.Correo, oRegistroEN.NoINSS, oRegistroEN.oCargoEN.IdCargo, oRegistroEN.oCiudad.IdCiudad,
-                oRegistroEN.oAreaLaboralEN.IdAreaLaboral, oRegistroEN.oAreaLaboralEN.Area, oRegistroEN.oCargoEN.Cargo, oRegistroEN.oCiudad.Ciudad);
+            Cadena = string.Format(Cadena, oRegistroEN.IdEmpleado, oRegistroEN.Nombre, oRegistroEN.Apellidos, oRegistroEN.Cedula, oRegistroEN.Direccion, oRegistroEN.Telefono, oRegistroEN.Celular, oRegistroEN.Correo, oRegistroEN.NoINSS, oRegistroEN.oCargoEN.IdCargo, oRegistroEN.oCiudadEN.IdCiudad,
+                oRegistroEN.oAreaLaboralEN.IdAreaLaboral, oRegistroEN.oAreaLaboralEN.Area, oRegistroEN.oCargoEN.Cargo, oRegistroEN.oCiudadEN.Ciudad);
             Cadena = Cadena.Replace(",", Environment.NewLine);
             return Cadena;
         }
@@ -428,47 +390,28 @@ namespace Acceso
 
         public bool ValidarRegistroDuplicado(EmpleadoEN oRegistroEN, DatosDeConexionEN oDatos, string TipoDeOperacion)
         {
-            oTransaccionesAD = new TransaccionesAD();
-
             try
             {
-
+                
                 InicialisarVariablesGlovales(oDatos);
 
                 switch (TipoDeOperacion.Trim().ToUpper())
                 {
-
                     case "AGREGAR":
 
-                        Consultas = @"SELECT CASE WHEN EXISTS(Select IdEmpleado from empleado where IdAreaLaboral = @IdAreaLaboral and  IdCargo = @IdCargo and  IdMunicipio = @IdMunicipio and upper(trim(Nombre)) = upper(trim( @Nombre)) and upper(trim(Apellidos)) = upper(trim(@Apellidos)) and upper(trim(Cedula)) = upper(trim(@Cedula)) and upper(trim(Direccion)) = upper(trim(@Direccion)) and upper(trim(Telefono)) = upper(trim(@Telefono)) and upper(trim(Celular)) = upper(trim(@Celular)) and upper(trim(Correo)) = upper(trim(@Correo)) and upper(trim(NoINSS)) = upper(trim(@NoINSS))) THEN 1 ELSE 0 END AS 'RES'";
+                        Consultas = @"SELECT CASE WHEN EXISTS(Select IdEmpleado from empleado where upper(trim(Nombre)) = upper(trim(@Nombre)) and IdCiudad = @IdCiudad and IdAreaLaboral = @IdAreaLaboral and IdCargo = @IdCargo) THEN 1 ELSE 0 END AS 'RES'";
+                        Comando.Parameters.Add(new MySqlParameter("@Nombre", MySqlDbType.VarChar, oRegistroEN.Nombre.Trim().Length)).Value = oRegistroEN.Nombre.Trim();
+                        Comando.Parameters.Add(new MySqlParameter("@IdCiudad", MySqlDbType.Int32)).Value = oRegistroEN.oCiudadEN.IdCiudad;
                         Comando.Parameters.Add(new MySqlParameter("@IdAreaLaboral", MySqlDbType.Int32)).Value = oRegistroEN.oAreaLaboralEN.IdAreaLaboral;
                         Comando.Parameters.Add(new MySqlParameter("@IdCargo", MySqlDbType.Int32)).Value = oRegistroEN.oCargoEN.IdCargo;
-                        Comando.Parameters.Add(new MySqlParameter("@IdCiudad", MySqlDbType.Int32)).Value = oRegistroEN.oCiudad.IdCiudad;
-                        Comando.Parameters.Add(new MySqlParameter("@Nombre", MySqlDbType.VarChar, oRegistroEN.Nombre.Trim().Length)).Value = oRegistroEN.Nombre.Trim();
-                        Comando.Parameters.Add(new MySqlParameter("@Apellidos", MySqlDbType.VarChar, oRegistroEN.Apellidos.Trim().Length)).Value = oRegistroEN.Apellidos.Trim();
-                        Comando.Parameters.Add(new MySqlParameter("@Cedula", MySqlDbType.VarChar, oRegistroEN.Cedula.Trim().Length)).Value = oRegistroEN.Cedula.Trim();
-                        Comando.Parameters.Add(new MySqlParameter("@Direccion", MySqlDbType.VarChar, oRegistroEN.Direccion.Trim().Length)).Value = oRegistroEN.Direccion.Trim();
-                        Comando.Parameters.Add(new MySqlParameter("@Telefono", MySqlDbType.VarChar, oRegistroEN.Telefono.Trim().Length)).Value = oRegistroEN.Telefono.Trim();
-                        Comando.Parameters.Add(new MySqlParameter("@Celular", MySqlDbType.VarChar, oRegistroEN.Celular.Trim().Length)).Value = oRegistroEN.Celular.Trim();
-                        Comando.Parameters.Add(new MySqlParameter("@Correo", MySqlDbType.VarChar, oRegistroEN.Correo.Trim().Length)).Value = oRegistroEN.Correo.Trim();
-                        Comando.Parameters.Add(new MySqlParameter("@NoINSS", MySqlDbType.VarChar, oRegistroEN.NoINSS.Trim().Length)).Value = oRegistroEN.NoINSS.Trim();
+
                         break;
 
                     case "ACTUALIZAR":
 
-                        Consultas = @"SELECT CASE WHEN EXISTS(Select IdEmpleado from empleado where IdAreaLaboral = @IdAreaLaboral and  IdCargo = @IdCargo and  IdMunicipio = @IdMunicipio and upper(trim(Nombre)) = upper(trim( @Nombre)) and upper(trim(Apellidos)) = upper(trim(@Apellidos)) and upper(trim(Cedula)) = upper(trim(@Cedula)) and IdEmpleado <> @IdEmpleado) THEN 1 ELSE 0 END AS 'RES'";
-                        Comando.Parameters.Add(new MySqlParameter("@IdEmpleado", MySqlDbType.Int32)).Value = oRegistroEN.IdEmpleado;
-                        Comando.Parameters.Add(new MySqlParameter("@IdAreaLaboral", MySqlDbType.Int32)).Value = oRegistroEN.oAreaLaboralEN.IdAreaLaboral;
-                        Comando.Parameters.Add(new MySqlParameter("@IdCargo", MySqlDbType.Int32)).Value = oRegistroEN.oCargoEN.IdCargo;
-                        Comando.Parameters.Add(new MySqlParameter("@IdCiudad", MySqlDbType.Int32)).Value = oRegistroEN.oCiudad.IdCiudad;
+                        Consultas = @"SELECT CASE WHEN EXISTS(Select IdEmpleado from empleado where upper(trim(Nombre)) = upper(trim(Nombre)) and IdEmpleado <> @IdEmpleado) THEN 1 ELSE 0 END AS 'RES'";
                         Comando.Parameters.Add(new MySqlParameter("@Nombre", MySqlDbType.VarChar, oRegistroEN.Nombre.Trim().Length)).Value = oRegistroEN.Nombre.Trim();
-                        Comando.Parameters.Add(new MySqlParameter("@Apellidos", MySqlDbType.VarChar, oRegistroEN.Apellidos.Trim().Length)).Value = oRegistroEN.Apellidos.Trim();
-                        Comando.Parameters.Add(new MySqlParameter("@Cedula", MySqlDbType.VarChar, oRegistroEN.Cedula.Trim().Length)).Value = oRegistroEN.Cedula.Trim();
-                        Comando.Parameters.Add(new MySqlParameter("@Direccion", MySqlDbType.VarChar, oRegistroEN.Direccion.Trim().Length)).Value = oRegistroEN.Direccion.Trim();
-                        Comando.Parameters.Add(new MySqlParameter("@Telefono", MySqlDbType.VarChar, oRegistroEN.Telefono.Trim().Length)).Value = oRegistroEN.Telefono.Trim();
-                        Comando.Parameters.Add(new MySqlParameter("@Celular", MySqlDbType.VarChar, oRegistroEN.Celular.Trim().Length)).Value = oRegistroEN.Celular.Trim();
-                        Comando.Parameters.Add(new MySqlParameter("@Correo", MySqlDbType.VarChar, oRegistroEN.Correo.Trim().Length)).Value = oRegistroEN.Correo.Trim();
-                        Comando.Parameters.Add(new MySqlParameter("@NoINSS", MySqlDbType.VarChar, oRegistroEN.NoINSS.Trim().Length)).Value = oRegistroEN.NoINSS.Trim();
+                        Comando.Parameters.Add(new MySqlParameter("@IdEmpleado", MySqlDbType.Int32)).Value = oRegistroEN.IdEmpleado;
 
                         break;
 
@@ -484,8 +427,6 @@ namespace Acceso
                 if (Convert.ToInt32(DT.Rows[0]["RES"].ToString()) > 0)
                 {
 
-                    DescripcionDeLaOperacion = string.Format("Ya existe información del Registro dentro de nuestro sistema: {0} {1}", Environment.NewLine, InformacionDelRegistro(oRegistroEN));
-                    this.Error = DescripcionDeLaOperacion;
                     return true;
 
                 }
@@ -497,11 +438,7 @@ namespace Acceso
             {
                 this.Error = ex.Message;
 
-                DescripcionDeLaOperacion = string.Format("Se produjo el seguiente error: '{2}' al validar el registro. {0} {1} ", Environment.NewLine, InformacionDelRegistro(oRegistroEN), ex.Message);
 
-                //Agregamos la Transacción....
-                TransaccionesEN oTransaccion = InformacionDeLaTransaccion(oRegistroEN, "VALIDAR", "REGISTRO DUPLICADO DENTRO DE LA BASE DE DATOS", "ERROR");
-                oTransaccionesAD.Agregar(oTransaccion, oDatos);
 
                 return false;
             }
@@ -509,7 +446,6 @@ namespace Acceso
             {
 
                 FinalizarConexion();
-                oTransaccionesAD = null;
 
             }
 
@@ -538,13 +474,6 @@ namespace Acceso
                 else
                 {
 
-                    this.Error = String.Format("La Operación: '{1}', {0} no se puede completar por que el registro: {0} '{2}', {0} se encuentra asociado con: {0} {3}", Environment.NewLine, TipoDeOperacion, InformacionDelRegistro(oRegistroEN));
-                    DescripcionDeLaOperacion = this.Error;
-
-                    //Agregamos la Transacción....
-                    TransaccionesEN oTransacciones = InformacionDeLaTransaccion(oRegistroEN, "VALIDAR", "VALIDAR SI EL REGISTRO ESTA VINCULADO", "CORRECTO");
-                    oTransaccionesAD.Agregar(oTransacciones, oDatos);
-
                     return true;
                 }
 
@@ -552,19 +481,12 @@ namespace Acceso
             catch (Exception ex)
             {
                 this.Error = ex.Message;
-                DescripcionDeLaOperacion = string.Format("Se produjo el seguiente error: '{2}' al validar el registro. {0} {1} ", Environment.NewLine, InformacionDelRegistro(oRegistroEN), ex.Message);
-
-                //Agregamos la Transacción....
-                TransaccionesEN oTransacciones = InformacionDeLaTransaccion(oRegistroEN, "VALIDAR", "VALIDAR SI EL REGISTRO ESTA VINCULADO", "ERROR");
-                oTransaccionesAD.Agregar(oTransacciones, oDatos);
-
                 return false;
             }
             finally
             {
 
                 FinalizarConexion();
-                oTransaccionesAD = null;
 
             }
 

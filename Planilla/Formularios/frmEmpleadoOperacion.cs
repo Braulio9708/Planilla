@@ -318,9 +318,10 @@ namespace Planilla.Formularios
             EmpleadoLN oRegistrosLN = new EmpleadoLN();
 
             oRegistrosEN.IdEmpleado = ValorLlavePrimariaEntidad;
-
+            
             if (oRegistrosLN.ListadoPorIdentificador(oRegistrosEN, Program.oDatosDeConexioEN))
             {
+                
                 if (oRegistrosLN.TraerDatos().Rows.Count > 0)
                 {
 
@@ -336,7 +337,7 @@ namespace Planilla.Formularios
 
                     cmbAreaLaboral.SelectedValue = Convert.ToInt32(Fila["IdAreaLaboral"].ToString());
                     cmbCargo.SelectedValue = Convert.ToInt32(Fila["IdCargo"].ToString());
-                    cmbMunicipio.SelectedValue = Convert.ToInt32(Fila["IdMunicipio"].ToString());
+                    cmbMunicipio.SelectedValue = Convert.ToInt32(Fila["IdCiudad"].ToString());
                     oRegistrosEN = null;
                     oRegistrosLN = null;
 
@@ -434,9 +435,9 @@ namespace Planilla.Formularios
             oRegistroEN.oAreaLaboralEN.Area = cmbAreaLaboral.Text.Trim();
             oRegistroEN.oCargoEN.IdCargo = Convert.ToInt32(cmbCargo.SelectedValue);
             oRegistroEN.oCargoEN.Cargo = cmbCargo.Text.Trim();
-            oRegistroEN.oCiudad.IdCiudad = Convert.ToInt32(cmbMunicipio.SelectedValue);
-            oRegistroEN.oCiudad.Ciudad = cmbMunicipio.Text.Trim();
-
+            oRegistroEN.oCiudadEN.IdCiudad = Convert.ToInt32(cmbMunicipio.SelectedValue);
+            oRegistroEN.oCiudadEN.Ciudad = cmbMunicipio.Text.Trim();
+            
             return oRegistroEN;
         }
 
@@ -664,6 +665,7 @@ namespace Planilla.Formularios
 
                     if (oRegistroLN.ValidarSiElRegistroEstaVinculado(oRegistroEN, Program.oDatosDeConexioEN, "ELIMINAR"))
                     {
+                        MessageBox.Show("Buscar Error");
                         this.Cursor = Cursors.Default;
                         MessageBox.Show(oRegistroLN.Error, this.OperacionARealizar, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                         return;
@@ -671,7 +673,7 @@ namespace Planilla.Formularios
 
                     if (oRegistroLN.Eliminar(oRegistroEN, Program.oDatosDeConexioEN))
                     {
-
+                        
                         txtIdentificador.Text = oRegistroEN.IdEmpleado.ToString();
                         ValorLlavePrimariaEntidad = oRegistroEN.IdEmpleado;
 
@@ -712,20 +714,21 @@ namespace Planilla.Formularios
             try
             {
                 this.Cursor = Cursors.WaitCursor;
-
+                
                 if (LosDatosIngresadosSonCorrectos())
                 {
-
                     EmpleadoEN oRegistroEN = InformacionDelRegistro();
                     EmpleadoLN oRegistroLN = new EmpleadoLN();
 
                     if (oRegistroLN.ValidarRegistroDuplicado(oRegistroEN, Program.oDatosDeConexioEN, "AGREGAR"))
                     {
-
+                        
                         MessageBox.Show(oRegistroLN.Error, "Guardar información", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         return;
 
                     }
+
+                    
 
                     if (oRegistroLN.Agregar(oRegistroEN, Program.oDatosDeConexioEN))
                     {
