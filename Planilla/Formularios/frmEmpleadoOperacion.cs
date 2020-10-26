@@ -323,8 +323,7 @@ namespace Planilla.Formularios
             {
                 
                 if (oRegistrosLN.TraerDatos().Rows.Count > 0)
-                {
-
+                {                    
                     DataRow Fila = oRegistrosLN.TraerDatos().Rows[0];
                     txtNombre.Text = Fila["Nombre"].ToString();
                     txtApellidos.Text = Fila["Apellidos"].ToString();

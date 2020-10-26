@@ -17,7 +17,6 @@ namespace Acceso
         private MySqlDataAdapter Adaptador = null;
         private TransaccionesAD oTransaccionesAD = null;
         string Consultas;
-        string DescripcionDeLaOperacion;
         private DataTable DT { set; get; }
 
         public EmpleadoAD()
@@ -184,7 +183,7 @@ namespace Acceso
                 Comando.CommandText = Consultas;
                 
                 InicialisarAdaptador();
-                //Console.WriteLine("Buscar Error");
+                
                 return true;
             }
             catch(Exception ex)
@@ -290,11 +289,8 @@ namespace Acceso
             }
             finally
             {
-
                 FinalizarConexion();
-
             }
-
         }
 
 
@@ -323,7 +319,6 @@ namespace Acceso
         }
         public void InicialisarAdaptador()
         {
-            Console.WriteLine("BUSCAR ERROR");
             Adaptador = new MySqlDataAdapter();
             DT = new DataTable();
 
@@ -357,7 +352,6 @@ namespace Acceso
             oRegistroEN.IP = oEmpleadoEN.oLoginEN.NumeroIP;
             oRegistroEN.IdUsuario = oEmpleadoEN.oLoginEN.IdUsuario;
             oRegistroEN.IdUsuarioAPrueva = oEmpleadoEN.oLoginEN.IdUsuario;
-            oRegistroEN.DescripcionDelUsuario = DescripcionDeLaOperacion;
             oRegistroEN.DescripcionInterna = Descripcion;
             oRegistroEN.nombredelequipo = oEmpleadoEN.oLoginEN.NombreDelEquipo;
 

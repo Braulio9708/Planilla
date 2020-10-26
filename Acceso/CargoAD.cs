@@ -347,6 +347,7 @@ namespace Acceso
             Comando.Connection = Cnn;
             Comando.CommandType = CommandType.StoredProcedure;
         }
+
         public void InicialisarAdaptador()
         {
             Adaptador = new MySqlDataAdapter();
@@ -355,6 +356,7 @@ namespace Acceso
             Adaptador.SelectCommand = Comando;
             Adaptador.Fill(DT);
         }
+
         private void FinalizarConexion()
         {
             if (Cnn != null)
@@ -368,10 +370,12 @@ namespace Acceso
             Comando = null;
             Adaptador = null;
         }
+
         public DataTable TraerDatos()
         {
             return DT;           
         }
+
         private string InformacionDelRegistro(CargoEN oRegistroEN)
         {
             string Cadena = @"IdCargo: {0}, Cargo: {1}";

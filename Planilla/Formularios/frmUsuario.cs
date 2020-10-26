@@ -623,7 +623,7 @@ namespace Planilla.Formularios
             dgvListar.ContextMenuStrip = cmMenu;
             CargarPrivilegiosDelUsuario();
             LLenarGrupoDeCuentas();
-            LlenarInformacionDelEstado();
+            //LlenarInformacionDelEstado();
             ActivarFiltrosDelaBusqueda();
             tsbFiltroAutomatico_Click(null, null);
         }

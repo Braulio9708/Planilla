@@ -311,15 +311,12 @@ namespace Planilla.Formularios
 
             if (oRegistrosLN.ListadoPorIdentificador(oRegistrosEN, Program.oDatosDeConexioEN))
             {
-                
                 if (oRegistrosLN.TraerDatos().Rows.Count > 0)
                 {
-
                     DataRow Fila = oRegistrosLN.TraerDatos().Rows[0];
                     txtNombre.Text = Fila["Cargo"].ToString();
                     oRegistrosEN = null;
                     oRegistrosLN = null;
-                    
 
                 }
                 else
