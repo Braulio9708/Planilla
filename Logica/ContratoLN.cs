@@ -136,6 +136,38 @@ namespace Logica
 
         }
 
+        public bool ValidarRegistroDuplicado(ContratoEN oREgistroEN, DatosDeConexionEN oDatos, string TipoDeOperacion)
+        {
+
+            if (oContratoAD.ValidarRegistroDuplicado(oREgistroEN, oDatos, TipoDeOperacion))
+            {
+                Error = oContratoAD.Error;
+                return true;
+            }
+            else
+            {
+                Error = string.Empty;
+                return false;
+            }
+
+        }
+
+        public bool ValidarSiElRegistroEstaVinculado(ContratoEN oRegistroEN, DatosDeConexionEN oDatos, string TipoDeOperacion)
+        {
+
+            if(oContratoAD.ValidarSiElRegistroEstaVinculado(oRegistroEN, oDatos, TipoDeOperacion))
+            {
+                Error = oContratoAD.Error;
+                return true;
+            }
+            else
+            {
+                Error = string.Empty;
+                return false;
+            }
+
+        }
+
         public DataTable TraerDatos()
         {
             return oContratoAD.TraerDatos();

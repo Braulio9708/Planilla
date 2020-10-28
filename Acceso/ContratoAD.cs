@@ -35,7 +35,6 @@ namespace Acceso
         #region "Funciones dll"
         public bool Agregar(ContratoEN oRegistroEN, DatosDeConexionEN oDatos)
         {
-            oTransaccionesAD = new TransaccionesAD();
             try
             {
                 InicialisarVariablesGlovales(oDatos);
@@ -44,6 +43,8 @@ namespace Acceso
                         values
                         (@TipoDeContrato, @FechaDeInicio, @FechaDeFin, @NumeroDeContrato, @IdEmpleado);
                         Select  last_insert_ID() as 'ID';";
+
+                Comando.CommandText = Consultas;
 
                 Comando.Parameters.Add(new MySqlParameter("@TipoDeContrato", MySqlDbType.VarChar, oRegistroEN.TipoDeContrato.Trim().Length)).Value = oRegistroEN.TipoDeContrato.Trim();
                 Comando.Parameters.Add(new MySqlParameter("@FechaDeInicio", MySqlDbType.Date)).Value = oRegistroEN.FechaDeInicio;
@@ -55,10 +56,6 @@ namespace Acceso
 
                 oRegistroEN.IdContrato = Convert.ToInt32(DT.Rows[0].ItemArray[0].ToString());
 
-                DescripcionDeLaOperacion = string.Format("El registro se ha insertado correctamente. {0} {1}", Environment.NewLine, InformacionDelRegistro(oRegistroEN));
-
-                TransaccionesEN oTransacciones = InformacionDelaTransaccion(oRegistroEN, "Agregar", "Agregar Nuevo Registro", "CORRECTO");
-                oTransaccionesAD.Agregar(oTransacciones, oDatos);
 
                 return true;
             }
@@ -66,23 +63,17 @@ namespace Acceso
             {
                 this.Error = ex.Message;
 
-                DescripcionDeLaOperacion = string.Format("Se produjo el seguiente error: '{2}' al insertar el registro. {0} {1} ", Environment.NewLine, InformacionDelRegistro(oRegistroEN), ex.Message);
-
-                TransaccionesEN oTransacciones = InformacionDelaTransaccion(oRegistroEN, "Agregar", "Agregar Nuevo Registro", "ERROR");
-                oTransaccionesAD.Agregar(oTransacciones, oDatos);
 
                 return false;
             }
             finally
             {
                 FinalizarConexion();
-                oTransaccionesAD = null;
             }
         }
 
         public bool Actualizar(ContratoEN oRegistroEN, DatosDeConexionEN oDatos)
         {
-            oTransaccionesAD = new TransaccionesAD();
             try
             {
                 InicialisarVariablesGlovales(oDatos);
@@ -97,74 +88,55 @@ namespace Acceso
     
                             where IdContrato = @IdContrato;";
 
+                Comando.CommandText = Consultas;
+
                 Comando.Parameters.Add(new MySqlParameter("@IdContrato", MySqlDbType.Int32)).Value = oRegistroEN.IdContrato;
                 Comando.Parameters.Add(new MySqlParameter("@TipoDeContrato", MySqlDbType.VarChar, oRegistroEN.TipoDeContrato.Trim().Length)).Value = oRegistroEN.TipoDeContrato.Trim();
                 Comando.Parameters.Add(new MySqlParameter("@FechaDeInicio", MySqlDbType.Date)).Value = oRegistroEN.FechaDeInicio;
                 Comando.Parameters.Add(new MySqlParameter("@FechaDeFin", MySqlDbType.Date)).Value = oRegistroEN.FechaDeFin;
                 Comando.Parameters.Add(new MySqlParameter("@NumeroDeContrato", MySqlDbType.Int32)).Value = oRegistroEN.NumeroDeContrato;
+                Comando.Parameters.Add(new MySqlParameter("@IdEmpleado", MySqlDbType.Int32)).Value = oRegistroEN.oEmpladoEN.IdEmpleado;
 
                 Comando.ExecuteNonQuery();
-
-                DescripcionDeLaOperacion = string.Format("El registro fue Actualizado correctamente. {0} {1}", Environment.NewLine, InformacionDelRegistro(oRegistroEN));
-
-                TransaccionesEN oTransacciones = InformacionDelaTransaccion(oRegistroEN, "Actualizar", "Actualizar Registro", "CORRECTO");
-                oTransaccionesAD.Agregar(oTransacciones, oDatos);
 
                 return true;
             }
             catch(Exception ex)
             {
                 this.Error = ex.Message;
-
-                DescripcionDeLaOperacion = string.Format("Se produjo el siguiente error: {2} al actualizar el registro {0} {1}", Environment.NewLine, InformacionDelRegistro(oRegistroEN), ex.Message);
-
-                TransaccionesEN oTransacciones = InformacionDelaTransaccion(oRegistroEN, "Actualizar", "Actualizar Registro", "ERROR");
-                oTransaccionesAD.Agregar(oTransacciones, oDatos);
-
+                
                 return false;
             }
             finally
             {
                 FinalizarConexion();
-                oTransaccionesAD = null;
             }
         }
 
         public bool Eliminar (ContratoEN oRegistroEN, DatosDeConexionEN oDatos)
         {
-            oTransaccionesAD = new TransaccionesAD();
-
             try
             {
                 InicialisarVariablesGlovales(oDatos);
 
-                Consultas = @"delete from contrato where IdContrato = @IdContrato;";
+                Consultas = @"delete from contrato where IdContrato = @IdContrato";
+
+                Comando.CommandText = Consultas;
 
                 Comando.Parameters.Add(new MySqlParameter("@IdContrato", MySqlDbType.Int32)).Value = oRegistroEN.IdContrato;
 
                 Comando.ExecuteNonQuery();
 
-                DescripcionDeLaOperacion = string.Format("El registro fue eliminado correctamente. {0} {1}", Environment.NewLine, InformacionDelRegistro(oRegistroEN));
-
-                //Agregamos la transaccion...
-                TransaccionesEN oTransacciones = InformacionDelaTransaccion(oRegistroEN, "Eliminar", "Elminar Registro", "CORRECTO");
-                oTransaccionesAD.Agregar(oTransacciones, oDatos);
-
                 return true;
             }
             catch(Exception ex)
             {
-                DescripcionDeLaOperacion = string.Format("Se produjo el siguiente error: {2} al eliminar el registro. {0} {1}", Environment.NewLine, InformacionDelRegistro(oRegistroEN), ex.Message);
-
-                TransaccionesEN oTransacciones = InformacionDelaTransaccion(oRegistroEN, "Eliminar", "Eliminar Registro", "ERROR");
-                oTransaccionesAD.Agregar(oTransacciones, oDatos);
-
+                this.Error = ex.Message;
                 return false;
             }
             finally
             {
                 FinalizarConexion();
-                oTransaccionesAD = null;
             }
         }
 
@@ -201,10 +173,13 @@ namespace Acceso
             try
             {
                 InicialisarVariablesGlovales(oDatos);
-
+                
                 Consultas = string.Format(@"Select ctt.IdContrato, ctt.TipoDeContrato as 'Tipo De Contrato', ctt.FechaDeInicio, ctt.FechaDeFin, ctt.NumeroDeContrato as 'Numero De Contrato', ctt.IdEmpleado, emp.Nombre as 'Empleado' from contrato as ctt
 									inner join empleado as emp on emp.IdEmpleado = ctt.IdEmpleado
                                     where IdContrato > @IdContrato ", oRegistroEN.IdContrato);
+
+                Comando.Parameters.Add(new MySqlParameter("@IdContrato", MySqlDbType.Int32)).Value = oRegistroEN.IdContrato;
+
                 Comando.CommandText = Consultas;
 
                 InicialisarAdaptador();
@@ -364,5 +339,105 @@ namespace Acceso
             return Cadena;
         }
         #endregion
+
+        #region "Funciones de Validación"
+
+        public bool ValidarSiElRegistroEstaVinculado(ContratoEN oRegistroEN, DatosDeConexionEN oDatos, string TipoDeOperacion)
+        {
+
+            oTransaccionesAD = new TransaccionesAD();
+
+            try
+            {
+
+                InicialisarVariablesGlobalesProcedure(oDatos);
+
+                Comando.Parameters.Add(new MySqlParameter("@CampoABuscar_", MySqlDbType.VarChar, 200)).Value = "IdContrato";
+                Comando.Parameters.Add(new MySqlParameter("@ValorCampoABuscar", MySqlDbType.Int32)).Value = oRegistroEN.IdContrato;
+                Comando.Parameters.Add(new MySqlParameter("@ExcluirTabla_", MySqlDbType.VarChar, 200)).Value = string.Empty;
+
+                InicialisarAdaptador();
+
+                if (DT.Rows[0].ItemArray[0].ToString().ToUpper() == "NINGUNA".ToUpper())
+                {
+                    return false;
+                }
+                else
+                {                    
+                    return true;
+                }
+
+            }
+            catch (Exception ex)
+            {
+                this.Error = ex.Message;
+                
+                return false;
+            }
+            finally
+            {
+                FinalizarConexion(); 
+            }
+
+        }
+
+        public bool ValidarRegistroDuplicado(ContratoEN oRegistroEN, DatosDeConexionEN oDatos, string TipoDeOperacion)
+        {
+
+            try
+            {
+
+                InicialisarVariablesGlovales(oDatos);
+                
+                switch (TipoDeOperacion.Trim().ToUpper())
+                {
+
+                    case "AGREGAR":
+
+                        Consultas = @"SELECT CASE WHEN EXISTS(Select IdContrato from contrato where upper(trim(NumeroDeContrato)) = upper(trim(@NumeroDeContrato))) THEN 1 ELSE 0 END AS 'RES'";
+                        Comando.Parameters.Add(new MySqlParameter("@NumeroDeContrato", MySqlDbType.Int32)).Value = oRegistroEN.NumeroDeContrato;
+                        
+                        break;
+
+                    case "ACTUALIZAR":
+
+                        Consultas = @"SELECT CASE WHEN EXISTS(Select IdContrato from contrato where upper(trim(NumeroDeContrato)) = upper(trim(@NumeroDeContrato)) and IdContrato <> @IdContrato) THEN 1 ELSE 0 END AS 'RES'";
+                        Comando.Parameters.Add(new MySqlParameter("@NumeroDeContrato", MySqlDbType.Int32)).Value = oRegistroEN.NumeroDeContrato;
+                        Comando.Parameters.Add(new MySqlParameter("@IdContrato", MySqlDbType.Int32)).Value = oRegistroEN.IdContrato;
+
+                        break;
+
+                    default:
+                        throw new ArgumentException("La aperación solicitada no esta disponible");
+
+                }
+                
+                Comando.CommandText = Consultas;
+
+                InicialisarAdaptador();
+                
+                if (Convert.ToInt32(DT.Rows[0]["RES"].ToString()) > 0)
+                {                    
+                    return true;
+                }
+                
+                return false;
+
+            }
+            catch (Exception ex)
+            {
+                this.Error = ex.Message;
+                
+                return false;
+            }
+            finally
+            {
+                FinalizarConexion();
+            }
+
+        }
+
+        #endregion
+
     }
 }
