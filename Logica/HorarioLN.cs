@@ -9,7 +9,7 @@ using System.Data;
 
 namespace Logica
 {
-    class HorarioLN
+    public class HorarioLN
     {
 
         public string Error { set; get; }
@@ -120,6 +120,34 @@ namespace Logica
             else
             {
                 Error = oHorarioAD.Error;
+                return false;
+            }
+        }
+
+        public bool ValidarSiElRegistroEstaVinculado(HorarioEN oRegistroEN, DatosDeConexionEN oDatos, string TipoDeOperacion)
+        {
+            if(oHorarioAD.ValidarSiElRegistroEstaVinculado(oRegistroEN, oDatos, TipoDeOperacion))
+            {
+                Error = oHorarioAD.Error;
+                return true;
+            }
+            else
+            {
+                Error = string.Empty;
+                return false;
+            }
+        }
+
+        public bool ValidarRegistroDuplicado(HorarioEN oRegistroEN, DatosDeConexionEN oDatos, string TipoDeOperacion)
+        {
+            if(oHorarioAD.ValidarRegistroDuplicado(oRegistroEN, oDatos, TipoDeOperacion))
+            {
+                Error = oHorarioAD.Error;
+                return true;
+            }
+            else
+            {
+                Error = string.Empty;
                 return false;
             }
         }

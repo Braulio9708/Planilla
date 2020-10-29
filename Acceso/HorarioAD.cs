@@ -18,7 +18,6 @@ namespace Acceso
         private MySqlDataAdapter Adaptador = null;
         private TransaccionesAD oTransaccionesAD = null;
         string Consultas;
-        string DescripcionDeLaOperacion;
         private DataTable DT { set; get; }
 
         public HorarioAD()
@@ -142,13 +141,15 @@ namespace Acceso
             try
             {
                 InicialisarVariablesGlovales(oDatos);
-
-                Consultas = string.Format(@"Select IdHorario, HoraDeEntrada, HoraDeSalida, IdEmpleado from horario where IdHorario = 0 {0} {1}", oRegistroEN.Where, oRegistroEN.OrderBy);
+                
+                Consultas = string.Format(@"Select hio.IdHorario, hio.HoraDeEntrada, hio.HoraDeSalida, hio.IdEmpleado, emp.Nombre as 'Empleado' from horario as hio
+						                    inner join empleado as emp on emp.IdEmpleado = hio.IdEmpleado
+                                            where IdHorario > 0 {0} {1}", oRegistroEN.Where, oRegistroEN.OrderBy);
 
                 Comando.CommandText = Consultas;
 
                 InicialisarAdaptador();
-
+                
                 return true;
             }
             catch (Exception ex)
@@ -169,7 +170,10 @@ namespace Acceso
             {
                 InicialisarVariablesGlovales(oDatos);
 
-                Consultas = string.Format(@"Select IdHorario, HoraDeEntrada, HoraDeSalida, IdEmpleado from horario where IdHorario = {0} ", oRegistroEN.IdHorario);
+                Consultas = string.Format(@"Select hio.IdHorario, hio.HoraDeEntrada, hio.HoraDeSalida, hio.IdEmpleado, emp.Nombre as 'Empleado' from horario as hio
+						                    inner join empleado as emp on emp.IdEmpleado = hio.IdEmpleado
+                                            where IdHorario > @IdHorario ", oRegistroEN.IdHorario);
+
                 Comando.CommandText = Consultas;
 
                 InicialisarAdaptador();
@@ -196,7 +200,9 @@ namespace Acceso
 
                 InicialisarVariablesGlovales(oDatos);
 
-                Consultas = string.Format(@"select IdHorario, HoraDeEntrada, HoraDeSalida, IdEmpleado from horario where IdHorario > 0 {0} {1}; ", oRegistroEN.Where, oRegistroEN.OrderBy);
+                Consultas = string.Format(@"Select hio.IdHorario, hio.HoraDeEntrada, hio.HoraDeSalida, hio.IdEmpleado, emp.Nombre as 'Empleado' from horario as hio
+						                    inner join empleado as emp on emp.IdEmpleado = hio.IdEmpleado
+                                            where IdHorario > 0 {0} {1}; ", oRegistroEN.Where, oRegistroEN.OrderBy);
                 Comando.CommandText = Consultas;
 
                 InicialisarAdaptador();
@@ -223,7 +229,9 @@ namespace Acceso
             {
                 InicialisarVariablesGlovales(oDatos);
 
-                Consultas = string.Format(@"select IdHorario, HoraDeEntrada, HoraDeSalida, IdEmpleado from horario where IdHorario > 0 {0} {1} ", oRegistroEN.Where, oRegistroEN.OrderBy);
+                Consultas = string.Format(@"Select hio.IdHorario, hio.HoraDeEntrada, hio.HoraDeSalida, hio.IdEmpleado, emp.Nombre as 'Empleado' from horario as hio
+						                    inner join empleado as emp on emp.IdEmpleado = hio.IdEmpleado
+                                            where IdHorario > 0 {0} {1} ", oRegistroEN.Where, oRegistroEN.OrderBy);
 
                 Comando.CommandText = Consultas;
 
@@ -260,7 +268,6 @@ namespace Acceso
             oRegistroEN.IP = oHorario.oLoginEN.NumeroIP;
             oRegistroEN.IdUsuario = oHorario.oLoginEN.IdUsuario;
             oRegistroEN.IdUsuarioAPrueva = oHorario.oLoginEN.IdUsuario;
-            oRegistroEN.DescripcionDelUsuario = DescripcionDeLaOperacion;
             oRegistroEN.DescripcionInterna = Descripcion;
             oRegistroEN.nombredelequipo = oHorario.oLoginEN.NombreDelEquipo;
 
@@ -297,6 +304,7 @@ namespace Acceso
 
             Adaptador.SelectCommand = Comando;
             Adaptador.Fill(DT);
+            Console.WriteLine("Buscar Error");
         }
         private void FinalizarConexion()
         {

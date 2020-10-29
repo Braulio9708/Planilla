@@ -63,6 +63,7 @@
             this.toolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.statusStrip = new System.Windows.Forms.StatusStrip();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this.btnHorario = new System.Windows.Forms.Button();
             this.menuStrip.SuspendLayout();
             this.statusStrip.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
@@ -428,6 +429,7 @@
             // splitContainer1.Panel2
             // 
             this.splitContainer1.Panel2.AutoScroll = true;
+            this.splitContainer1.Panel2.Controls.Add(this.btnHorario);
             this.splitContainer1.Panel2.Controls.Add(this.btnCiudad);
             this.splitContainer1.Panel2.Controls.Add(this.btnEmpleado2);
             this.splitContainer1.Panel2.Controls.Add(this.btnPrestaciones);
@@ -441,6 +443,20 @@
             this.splitContainer1.Size = new System.Drawing.Size(178, 491);
             this.splitContainer1.SplitterDistance = 211;
             this.splitContainer1.TabIndex = 4;
+            // 
+            // btnHorario
+            // 
+            this.btnHorario.BackColor = System.Drawing.Color.Transparent;
+            this.btnHorario.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnHorario.Location = new System.Drawing.Point(0, 350);
+            this.btnHorario.Name = "btnHorario";
+            this.btnHorario.Size = new System.Drawing.Size(157, 35);
+            this.btnHorario.TabIndex = 12;
+            this.btnHorario.Tag = "Horario";
+            this.btnHorario.Text = "Horario";
+            this.toolTip.SetToolTip(this.btnHorario, "\r\n");
+            this.btnHorario.UseVisualStyleBackColor = false;
+            this.btnHorario.Click += new System.EventHandler(this.btnHorario_Click);
             // 
             // Principal
             // 
@@ -502,6 +518,7 @@
         private System.Windows.Forms.Button btnContrato;
         private System.Windows.Forms.Button btnEmpleado2;
         private System.Windows.Forms.Button btnCiudad;
+        private System.Windows.Forms.Button btnHorario;
     }
 }
 

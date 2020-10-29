@@ -24,6 +24,7 @@ namespace Planilla.Formularios
         frmAreaLaboral ofrmAreaLaboral = null;
         frmCiudad ofrmMunicipio = null;
         frmContrato ofrmContrato = null;
+        frmHorario ofrmHorario = null;
 
         public Principal()
         {
@@ -382,8 +383,9 @@ namespace Planilla.Formularios
             btnAreaLaboral.Enabled = true;
             btnCargo.Enabled = true;
             btnCiudad.Enabled = true;
+            btnHorario.Enabled = true;
             OcultarControlesDentroDelPanel();
-            string MostrarControles = "btnCargo, btnContrato, btnAreaLaboral, btnEmpleado2, btnCiudad";
+            string MostrarControles = "btnCargo, btnContrato, btnAreaLaboral, btnEmpleado2, btnCiudad, btnHorario";
             VisualizarControlesDentroDelPanel(MostrarControles);
         }
 
@@ -478,6 +480,25 @@ namespace Planilla.Formularios
             else
             {
                 ofrmContrato.BringToFront();
+            }
+            this.Cursor = Cursors.Default;
+        }
+
+        private void btnHorario_Click(object sender, EventArgs e)
+        {
+            this.Cursor = Cursors.WaitCursor;
+
+            if (ofrmHorario == null || ofrmHorario.IsDisposed)
+            {
+                ofrmHorario = new frmHorario();
+                ofrmHorario.MdiParent = this;
+                ofrmHorario.StartPosition = FormStartPosition.CenterScreen;
+                ofrmHorario.WindowState = FormWindowState.Maximized;
+                ofrmHorario.Show();
+            }
+            else
+            {
+                ofrmHorario.BringToFront();
             }
             this.Cursor = Cursors.Default;
         }
