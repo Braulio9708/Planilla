@@ -309,17 +309,17 @@ namespace Planilla.Formularios
             HorarioLN oRegistrosLN = new HorarioLN();
 
             oRegistrosEN.IdHorario = ValorLlavePrimariaEntidad;
-
+            
             if (oRegistrosLN.ListadoPorIdentificador(oRegistrosEN, Program.oDatosDeConexioEN))
             {
+                
                 if (oRegistrosLN.TraerDatos().Rows.Count > 0)
                 {
-                    DataRow Fila = oRegistrosLN.TraerDatos().Rows[0];
-                    
+                    DataRow Fila = oRegistrosLN.TraerDatos().Rows[0];                    
                     dtpHoraEntrada.Value = Convert.ToDateTime(Fila["HoraDeEntrada"].ToString());
                     dtpHoraSalida.Value = Convert.ToDateTime(Fila["HoraDeSalida"].ToString());
-                    
-                    cmbEmpleado.SelectedValue = Convert.ToInt32(Fila["IdEmpleado"].ToString());
+
+                    cmbEmpleado.SelectedValue = Convert.ToInt32(Fila["Idempleado"].ToString());
                     cmbEmpleado.Text = Fila["Empleado"].ToString();
 
                     oRegistrosEN = null;
@@ -362,7 +362,7 @@ namespace Planilla.Formularios
 
         private void LimpiarCampos()
         {
-            //txtIdentificador.Text = string.Empty;
+            txtIdentificador.Text = string.Empty;
             cmbEmpleado.SelectedValue = -1;
         }
 
@@ -462,17 +462,14 @@ namespace Planilla.Formularios
                     HorarioEN oRegistroEN = InformacionDelRegistro();
                     HorarioLN oRegistroLN = new HorarioLN();
 
-                    if (oRegistroLN.ValidarRegistroDuplicado(oRegistroEN, Program.oDatosDeConexioEN, "AGREGAR"))
+                    /*if (oRegistroLN.ValidarRegistroDuplicado(oRegistroEN, Program.oDatosDeConexioEN, "AGREGAR"))
                     {
-                        MessageBox.Show("Buscar Error");
                         MessageBox.Show(oRegistroLN.Error, "Guardar información", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         return;
-
-                    }
-                    //MessageBox.Show("Buscar Error");
+                    }*/
+                    
                     if (oRegistroLN.Agregar(oRegistroEN, Program.oDatosDeConexioEN))
                     {
-
                         txtIdentificador.Text = oRegistroEN.IdHorario.ToString();
                         ValorLlavePrimariaEntidad = oRegistroEN.IdHorario;
 
@@ -540,7 +537,7 @@ namespace Planilla.Formularios
 
                     if (oRegistroLN.ValidarSiElRegistroEstaVinculado(oRegistroEN, Program.oDatosDeConexioEN, "ACTUALIZAR"))
                     {
-                        MessageBox.Show("Buscar el error");
+                        
                         if (PermitirCambiarRegistroAunqueEstenVinculados == true && AplicarCambio == true)
                         {
                             if (MessageBox.Show(string.Format("Está seguro que desea actualizar los cambios en el registro seleccionado ya que este se encuentra asociado a otras Entidades de manera interna? {0} {1}", Environment.NewLine, oRegistroLN.Error), "Confirmación de Actualización", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.OK)
@@ -557,14 +554,14 @@ namespace Planilla.Formularios
                         }
                     }
 
-                    if (oRegistroLN.ValidarRegistroDuplicado(oRegistroEN, Program.oDatosDeConexioEN, "ACTUALIZAR"))
+                    /*if (oRegistroLN.ValidarRegistroDuplicado(oRegistroEN, Program.oDatosDeConexioEN, "ACTUALIZAR"))
                     {
                         this.Cursor = Cursors.Default;
                         MessageBox.Show(oRegistroLN.Error, "Actualizar la información", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         return;
 
-                    }
-
+                    }*/
+                    
                     if (oRegistroLN.Actualizar(oRegistroEN, Program.oDatosDeConexioEN))
                     {
 

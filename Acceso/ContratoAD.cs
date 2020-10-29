@@ -47,8 +47,8 @@ namespace Acceso
                 Comando.CommandText = Consultas;
 
                 Comando.Parameters.Add(new MySqlParameter("@TipoDeContrato", MySqlDbType.VarChar, oRegistroEN.TipoDeContrato.Trim().Length)).Value = oRegistroEN.TipoDeContrato.Trim();
-                Comando.Parameters.Add(new MySqlParameter("@FechaDeInicio", MySqlDbType.Date)).Value = oRegistroEN.FechaDeInicio;
-                Comando.Parameters.Add(new MySqlParameter("@FechaDeFin", MySqlDbType.Date)).Value = oRegistroEN.FechaDeFin;
+                Comando.Parameters.Add(new MySqlParameter("@FechaDeInicio", MySqlDbType.Datetime)).Value = oRegistroEN.FechaDeInicio;
+                Comando.Parameters.Add(new MySqlParameter("@FechaDeFin", MySqlDbType.Datetime)).Value = oRegistroEN.FechaDeFin;
                 Comando.Parameters.Add(new MySqlParameter("@NumeroDeContrato", MySqlDbType.Int32)).Value = oRegistroEN.NumeroDeContrato;
                 Comando.Parameters.Add(new MySqlParameter("@IdEmpleado", MySqlDbType.Int32)).Value = oRegistroEN.oEmpladoEN.IdEmpleado;
 
@@ -179,12 +179,13 @@ namespace Acceso
                 InicialisarVariablesGlovales(oDatos);
                 
                 Consultas = string.Format(@"Select ctt.IdContrato, ctt.TipoDeContrato as 'Tipo De Contrato', ctt.FechaDeInicio, ctt.FechaDeFin, ctt.NumeroDeContrato as 'Numero De Contrato', ctt.IdEmpleado, emp.Nombre as 'Empleado' from contrato as ctt
-									inner join empleado as emp on emp.IdEmpleado = ctt.IdEmpleado
-                                    where IdContrato > @IdContrato ", oRegistroEN.IdContrato);
+									        inner join empleado as emp on emp.IdEmpleado = ctt.IdEmpleado
+                                            where IdContrato > @IdContrato ", oRegistroEN.IdContrato);
+
+                Comando.CommandText = Consultas;
 
                 Comando.Parameters.Add(new MySqlParameter("@IdContrato", MySqlDbType.Int32)).Value = oRegistroEN.IdContrato;
 
-                Comando.CommandText = Consultas;
 
                 InicialisarAdaptador();
 
@@ -337,8 +338,8 @@ namespace Acceso
         }
         private string InformacionDelRegistro(ContratoEN oRegistroEN)
         {
-            string Cadena = @"IdContrato: {0}, Contrato: {1}";
-            Cadena = string.Format(Cadena, oRegistroEN.IdContrato, oRegistroEN.NumeroDeContrato);
+            string Cadena = @"IdContrato: {0}, TipoDeContrato: {1}, FechaDeInicio: {2}, FechaDeFin: {3}, NumeroDeContrato: {4}, IdEmpleado: {5}";
+            Cadena = string.Format(Cadena, oRegistroEN.IdContrato, oRegistroEN.TipoDeContrato, oRegistroEN.FechaDeInicio, oRegistroEN.FechaDeFin, oRegistroEN.NumeroDeContrato, oRegistroEN.oEmpladoEN.IdEmpleado);
             Cadena = Cadena.Replace(",", Environment.NewLine);
             return Cadena;
         }
@@ -349,7 +350,6 @@ namespace Acceso
         public bool ValidarSiElRegistroEstaVinculado(ContratoEN oRegistroEN, DatosDeConexionEN oDatos, string TipoDeOperacion)
         {
 
-            oTransaccionesAD = new TransaccionesAD();
 
             try
             {
@@ -398,15 +398,15 @@ namespace Acceso
 
                     case "AGREGAR":
 
-                        Consultas = @"SELECT CASE WHEN EXISTS(Select IdContrato from contrato where upper(trim(NumeroDeContrato)) = upper(trim(@NumeroDeContrato))) THEN 1 ELSE 0 END AS 'RES'";
-                        Comando.Parameters.Add(new MySqlParameter("@NumeroDeContrato", MySqlDbType.Int32)).Value = oRegistroEN.NumeroDeContrato;
+                        Consultas = @"SELECT CASE WHEN EXISTS(Select IdContrato from contrato where IdEmpleado = @IdEmpleado) THEN 1 ELSE 0 END AS 'RES'";
+                        Comando.Parameters.Add(new MySqlParameter("@IdEmpleado", MySqlDbType.Int32)).Value = oRegistroEN.oEmpladoEN.IdEmpleado;
                         
                         break;
 
                     case "ACTUALIZAR":
 
-                        Consultas = @"SELECT CASE WHEN EXISTS(Select IdContrato from contrato where upper(trim(NumeroDeContrato)) = upper(trim(@NumeroDeContrato)) and IdContrato <> @IdContrato) THEN 1 ELSE 0 END AS 'RES'";
-                        Comando.Parameters.Add(new MySqlParameter("@NumeroDeContrato", MySqlDbType.Int32)).Value = oRegistroEN.NumeroDeContrato;
+                        Consultas = @"SELECT CASE WHEN EXISTS(Select IdContrato from contrato where IdEmpleado = @IdEmpleado and IdContrato <> @IdContrato) THEN 1 ELSE 0 END AS 'RES'";
+                        Comando.Parameters.Add(new MySqlParameter("@IdEmpleado", MySqlDbType.Int32)).Value = oRegistroEN.oEmpladoEN.IdEmpleado;
                         Comando.Parameters.Add(new MySqlParameter("@IdContrato", MySqlDbType.Int32)).Value = oRegistroEN.IdContrato;
 
                         break;
@@ -415,9 +415,9 @@ namespace Acceso
                         throw new ArgumentException("La aperación solicitada no esta disponible");
 
                 }
-                
+                Console.WriteLine("bUSCAR");
                 Comando.CommandText = Consultas;
-
+                
                 InicialisarAdaptador();
                 
                 if (Convert.ToInt32(DT.Rows[0]["RES"].ToString()) > 0)

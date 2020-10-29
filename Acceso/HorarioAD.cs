@@ -18,6 +18,7 @@ namespace Acceso
         private MySqlDataAdapter Adaptador = null;
         private TransaccionesAD oTransaccionesAD = null;
         string Consultas;
+
         private DataTable DT { set; get; }
 
         public HorarioAD()
@@ -39,6 +40,7 @@ namespace Acceso
             try
             {
                 InicialisarVariablesGlovales(oDatos);
+
                 Consultas = @"insert into horario 
 				                (HoraDeEntrada, HoraDeSalida, IdEmpleado) 
                                 values 
@@ -47,18 +49,19 @@ namespace Acceso
 
                 Comando.CommandText = Consultas;
 
-                Comando.Parameters.Add(new MySqlParameter("@HoraDeEntrada", MySqlDbType.Time)).Value = oRegistroEN.HoraDeEntrada;
-                Comando.Parameters.Add(new MySqlParameter("@HoraDeSalida", MySqlDbType.Time)).Value = oRegistroEN.HoraDeSalida;
+                Comando.Parameters.Add(new MySqlParameter("@HoraDeEntrada", MySqlDbType.Datetime)).Value = oRegistroEN.HoraDeEntrada;
+                Comando.Parameters.Add(new MySqlParameter("@HoraDeSalida", MySqlDbType.Datetime)).Value = oRegistroEN.HoraDeSalida;
                 Comando.Parameters.Add(new MySqlParameter("@IdEmpleado", MySqlDbType.Int32)).Value = oRegistroEN.oEmpleadoEN.IdEmpleado;
-                
+                                                
                 InicialisarAdaptador();
                 
                 oRegistroEN.IdHorario = Convert.ToInt32(DT.Rows[0].ItemArray[0].ToString());
-
+                
                 return true;
             }
             catch (Exception ex)
             {
+                
                 this.Error = ex.Message;
 
                 return false;
@@ -84,12 +87,12 @@ namespace Acceso
                 Comando.CommandText = Consultas;
 
                 Comando.Parameters.Add(new MySqlParameter("@IdHorario", MySqlDbType.Int32)).Value = oRegistroEN.IdHorario;
-                Comando.Parameters.Add(new MySqlParameter("@HoraDeEntrada", MySqlDbType.Time)).Value = oRegistroEN.HoraDeEntrada;
-                Comando.Parameters.Add(new MySqlParameter("@HoraDeSalida", MySqlDbType.Time)).Value = oRegistroEN.HoraDeSalida;
+                Comando.Parameters.Add(new MySqlParameter("@HoraDeEntrada", MySqlDbType.Datetime)).Value = oRegistroEN.HoraDeEntrada;
+                Comando.Parameters.Add(new MySqlParameter("@HoraDeSalida", MySqlDbType.Datetime)).Value = oRegistroEN.HoraDeSalida;
                 Comando.Parameters.Add(new MySqlParameter("@IdEmpleado", MySqlDbType.Int32)).Value = oRegistroEN.oEmpleadoEN.IdEmpleado;
 
                 Comando.ExecuteNonQuery();
-
+                
                 InicialisarAdaptador();
 
                 return true;
@@ -177,6 +180,8 @@ namespace Acceso
                 Consultas = string.Format(@"Select hio.IdHorario, hio.HoraDeEntrada, hio.HoraDeSalida, hio.IdEmpleado, emp.Nombre as 'Empleado' from horario as hio
 						                    inner join empleado as emp on emp.IdEmpleado = hio.IdEmpleado
                                             where IdHorario > @IdHorario ", oRegistroEN.IdHorario);
+
+                Comando.Parameters.Add(new MySqlParameter("@IdHorario", MySqlDbType.Int32)).Value = oRegistroEN.IdHorario;
 
                 Comando.CommandText = Consultas;
 
@@ -305,10 +310,13 @@ namespace Acceso
         {
             Adaptador = new MySqlDataAdapter();
             DT = new DataTable();
-
-            Adaptador.SelectCommand = Comando;            
-            Adaptador.Fill(DT);            
+            
+            Adaptador.SelectCommand = Comando;
+            
+            Adaptador.Fill(DT);
+            
         }
+
         private void FinalizarConexion()
         {
             if (Cnn != null)
@@ -385,7 +393,7 @@ namespace Acceso
                     case "AGREGAR":
 
                         Consultas = @"SELECT CASE WHEN EXISTS(Select IdHorario from horario where IdEmpleado = @IdEmpleado) THEN 1 ELSE 0 END AS 'RES'";
-                        Comando.Parameters.Add(new MySqlParameter("@IdHorario", MySqlDbType.Int32)).Value = oRegistroEN.IdHorario;
+                        Comando.Parameters.Add(new MySqlParameter("@IdEmpleado", MySqlDbType.Int32)).Value = oRegistroEN.oEmpleadoEN.IdEmpleado;
 
                         break;
 
@@ -401,9 +409,9 @@ namespace Acceso
                         throw new ArgumentException("La aperación solicitada no esta disponible");
 
                 }
-
+                
                 Comando.CommandText = Consultas;
-
+                //Console.WriteLine("BUSCAR EL ERROR");
                 InicialisarAdaptador();
 
                 if (Convert.ToInt32(DT.Rows[0]["RES"].ToString()) > 0)

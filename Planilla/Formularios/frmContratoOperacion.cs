@@ -320,7 +320,7 @@ namespace Planilla.Formularios
                     dtpFechaDeFin.Value = Convert.ToDateTime(Fila["FechaDeFin"].ToString());
                     txtNumeroDeContrato.Text = Fila["Numero De Contrato"].ToString();
                     cmbEmpleado.SelectedValue = Convert.ToInt32(Fila["IdEmpleado"].ToString());
-                    cmbEmpleado.Text = Fila["Nombre"].ToString();
+                    cmbEmpleado.Text = Fila["Empleado"].ToString();
 
                     oRegistrosEN = null;
                     oRegistrosLN = null;
@@ -469,17 +469,16 @@ namespace Planilla.Formularios
                     ContratoEN oRegistroEN = InformacionDelRegistro();                    
                     ContratoLN oRegistroLN = new ContratoLN();
                     
-                    if (oRegistroLN.ValidarRegistroDuplicado(oRegistroEN, Program.oDatosDeConexioEN, "AGREGAR"))
+                    /*if (oRegistroLN.ValidarRegistroDuplicado(oRegistroEN, Program.oDatosDeConexioEN, "AGREGAR"))
                     {
-                        MessageBox.Show("Buscar Error");
+                        
                         MessageBox.Show(oRegistroLN.Error, "Guardar información", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         return;
 
-                    }
+                    }*/
                     
                     if (oRegistroLN.Agregar(oRegistroEN, Program.oDatosDeConexioEN))
                     {
-                        
                         txtIdentificador.Text = oRegistroEN.IdContrato.ToString();
                         ValorLlavePrimariaEntidad = oRegistroEN.IdContrato;
 
@@ -547,7 +546,7 @@ namespace Planilla.Formularios
                     
                     if (oRegistroLN.ValidarSiElRegistroEstaVinculado(oRegistroEN, Program.oDatosDeConexioEN, "ACTUALIZAR"))
                     {
-                        MessageBox.Show("Buscar el error");
+                        
                         if (PermitirCambiarRegistroAunqueEstenVinculados == true && AplicarCambio == true)
                         {
                             if (MessageBox.Show(string.Format("Está seguro que desea actualizar los cambios en el registro seleccionado ya que este se encuentra asociado a otras Entidades de manera interna? {0} {1}", Environment.NewLine, oRegistroLN.Error), "Confirmación de Actualización", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.OK)
@@ -563,15 +562,15 @@ namespace Planilla.Formularios
                             return;
                         }
                     }
-
-                    if (oRegistroLN.ValidarRegistroDuplicado(oRegistroEN, Program.oDatosDeConexioEN, "ACTUALIZAR"))
+                    
+                    /*if (oRegistroLN.ValidarRegistroDuplicado(oRegistroEN, Program.oDatosDeConexioEN, "ACTUALIZAR"))
                     {
                         this.Cursor = Cursors.Default;
                         MessageBox.Show(oRegistroLN.Error, "Actualizar la información", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         return;
 
-                    }
-
+                    }*/
+                    
                     if (oRegistroLN.Actualizar(oRegistroEN, Program.oDatosDeConexioEN))
                     {
 

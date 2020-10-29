@@ -229,7 +229,7 @@ namespace Planilla.Formularios
             }
             if (Controles.IsNullOEmptyElControl(chkEmpleado) == false && Controles.IsNullOEmptyElControl(cmbEmpleado) == false)
             {
-                Where += string.Format(" and hio.IdEmpleado like = {0}", cmbEmpleado.SelectedValue);
+                Where += string.Format(" and hio.IdEmpleado like {0}", cmbEmpleado.SelectedValue);
             }
 
             return Where;
