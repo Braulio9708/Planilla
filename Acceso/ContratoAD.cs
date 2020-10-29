@@ -99,6 +99,8 @@ namespace Acceso
 
                 Comando.ExecuteNonQuery();
 
+                InicialisarAdaptador();
+
                 return true;
             }
             catch(Exception ex)
@@ -126,6 +128,8 @@ namespace Acceso
                 Comando.Parameters.Add(new MySqlParameter("@IdContrato", MySqlDbType.Int32)).Value = oRegistroEN.IdContrato;
 
                 Comando.ExecuteNonQuery();
+
+                InicialisarAdaptador();
 
                 return true;
             }

@@ -432,13 +432,13 @@ namespace Planilla.Formularios
 
         private void MostrarFormularioParaOperacion(string OperacionARealizar)
         {
-            /*frmCargoOperacion ofrmCargoOperacion = new frmCargoOperacion();
-            ofrmCargoOperacion.OperacionARealizar = OperacionARealizar;
-            ofrmCargoOperacion.Nombre_Entidad_Privilegio = Nombre_Entidad_Privilegio;
-            ofrmCargoOperacion.Nombre_Entidad = Nombre_Entidad;
-            ofrmCargoOperacion.ValorLlavePrimariaEntidad = this.ValorLlavePrimariaEntidad;
-            ofrmCargoOperacion.MdiParent = this.ParentForm;
-            ofrmCargoOperacion.Show();*/
+            frmHorarioOperacion ofrmHorarioOperacion = new frmHorarioOperacion();
+            ofrmHorarioOperacion.OperacionARealizar = OperacionARealizar;
+            ofrmHorarioOperacion.Nombre_Entidad_Privilegio = Nombre_Entidad_Privilegio;
+            ofrmHorarioOperacion.Nombre_Entidad = Nombre_Entidad;
+            ofrmHorarioOperacion.ValorLlavePrimariaEntidad = this.ValorLlavePrimariaEntidad;
+            ofrmHorarioOperacion.MdiParent = this.ParentForm;
+            ofrmHorarioOperacion.Show();
         }
 
         private void AsignarLalvePrimaria()
@@ -586,6 +586,7 @@ namespace Planilla.Formularios
                         oHorarioEN[a - 1].HoraDeEntrada = Convert.ToDateTime(Fila.Cells["HoraDeEntrada"].Value.ToString());
                         oHorarioEN[a - 1].HoraDeSalida = Convert.ToDateTime(Fila.Cells["HoraDeSalida"].Value.ToString());
 
+                        oHorarioEN[a - 1].oEmpleadoEN.IdEmpleado = Convert.ToInt32(Fila.Cells["IdEmpleado"].Value);
                         oHorarioEN[a - 1].oEmpleadoEN.Nombre = Fila.Cells["Empleado"].Value.ToString();
 
                     }

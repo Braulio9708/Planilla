@@ -106,6 +106,12 @@
     <Compile Include="Formularios\frmHorario.Designer.cs">
       <DependentUpon>frmHorario.cs</DependentUpon>
     </Compile>
+    <Compile Include="Formularios\frmHorarioOperacion.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\frmHorarioOperacion.Designer.cs">
+      <DependentUpon>frmHorarioOperacion.cs</DependentUpon>
+    </Compile>
     <Compile Include="Formularios\frmLoginMySql1.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -193,6 +199,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios\frmHorario.resx">
       <DependentUpon>frmHorario.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\frmHorarioOperacion.resx">
+      <DependentUpon>frmHorarioOperacion.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios\frmUsuario.resx">
       <DependentUpon>frmUsuario.cs</DependentUpon>

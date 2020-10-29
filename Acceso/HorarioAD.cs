@@ -50,9 +50,9 @@ namespace Acceso
                 Comando.Parameters.Add(new MySqlParameter("@HoraDeEntrada", MySqlDbType.Time)).Value = oRegistroEN.HoraDeEntrada;
                 Comando.Parameters.Add(new MySqlParameter("@HoraDeSalida", MySqlDbType.Time)).Value = oRegistroEN.HoraDeSalida;
                 Comando.Parameters.Add(new MySqlParameter("@IdEmpleado", MySqlDbType.Int32)).Value = oRegistroEN.oEmpleadoEN.IdEmpleado;
-
+                
                 InicialisarAdaptador();
-
+                
                 oRegistroEN.IdHorario = Convert.ToInt32(DT.Rows[0].ItemArray[0].ToString());
 
                 return true;
@@ -90,6 +90,8 @@ namespace Acceso
 
                 Comando.ExecuteNonQuery();
 
+                InicialisarAdaptador();
+
                 return true;
 
             }
@@ -120,6 +122,8 @@ namespace Acceso
                 Comando.Parameters.Add(new MySqlParameter("@IdHorario", MySqlDbType.Int32)).Value = oRegistroEN.IdHorario;
 
                 Comando.ExecuteNonQuery();
+
+                InicialisarAdaptador();
 
                 return true;
 
@@ -302,9 +306,8 @@ namespace Acceso
             Adaptador = new MySqlDataAdapter();
             DT = new DataTable();
 
-            Adaptador.SelectCommand = Comando;
-            Adaptador.Fill(DT);
-            Console.WriteLine("Buscar Error");
+            Adaptador.SelectCommand = Comando;            
+            Adaptador.Fill(DT);            
         }
         private void FinalizarConexion()
         {

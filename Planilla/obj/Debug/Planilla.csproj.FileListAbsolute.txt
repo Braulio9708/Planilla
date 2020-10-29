@@ -104,29 +104,7 @@ C:\Users\Inspiron i5\Source\Repos\Planilla\Planilla\obj\Debug\Planilla.frmLogin.
 C:\Users\Inspiron i5\Source\Repos\Planilla\Planilla\obj\Debug\Planilla.Formularios.Principal.resources
 C:\Users\Inspiron i5\Source\Repos\Planilla\Planilla\obj\Debug\Planilla.Properties.Resources.resources
 C:\Users\Inspiron i5\Source\Repos\Planilla\Planilla\obj\Debug\Planilla.csproj.GenerateResource.Cache
-C:\Users\JUSET\Source\Repos\Braulio9708\Planilla\Planilla\bin\Debug\Planilla.exe.config
 C:\Users\JUSET\Source\Repos\Braulio9708\Planilla\Planilla\obj\Debug\Planilla.exe
-C:\Users\JUSET\Source\Repos\Braulio9708\Planilla\Planilla\obj\Debug\Planilla.pdb
-C:\Users\JUSET\Source\Repos\Braulio9708\Planilla\Planilla\bin\Debug\Planilla.exe
-C:\Users\JUSET\Source\Repos\Braulio9708\Planilla\Planilla\bin\Debug\Planilla.pdb
-C:\Users\JUSET\Source\Repos\Braulio9708\Planilla\Planilla\bin\Debug\Entidad.dll
-C:\Users\JUSET\Source\Repos\Braulio9708\Planilla\Planilla\bin\Debug\Funciones.dll
-C:\Users\JUSET\Source\Repos\Braulio9708\Planilla\Planilla\bin\Debug\Logica.dll
-C:\Users\JUSET\Source\Repos\Braulio9708\Planilla\Planilla\bin\Debug\MySql.Data.dll
-C:\Users\JUSET\Source\Repos\Braulio9708\Planilla\Planilla\bin\Debug\Acceso.dll
-C:\Users\JUSET\Source\Repos\Braulio9708\Planilla\Planilla\bin\Debug\Entidad.pdb
-C:\Users\JUSET\Source\Repos\Braulio9708\Planilla\Planilla\bin\Debug\Logica.pdb
-C:\Users\JUSET\Source\Repos\Braulio9708\Planilla\Planilla\bin\Debug\MySql.Data.xml
-C:\Users\JUSET\Source\Repos\Braulio9708\Planilla\Planilla\bin\Debug\Acceso.pdb
-C:\Users\JUSET\Source\Repos\Braulio9708\Planilla\Planilla\obj\Debug\Planilla.csprojResolveAssemblyReference.cache
-C:\Users\JUSET\Source\Repos\Braulio9708\Planilla\Planilla\obj\Debug\Planilla.Formularios.frmCargo.resources
-C:\Users\JUSET\Source\Repos\Braulio9708\Planilla\Planilla\obj\Debug\Planilla.Formularios.frmUsuario.resources
-C:\Users\JUSET\Source\Repos\Braulio9708\Planilla\Planilla\obj\Debug\Planilla.Formularios.frmConfiguracion.resources
-C:\Users\JUSET\Source\Repos\Braulio9708\Planilla\Planilla\obj\Debug\Planilla.frmLoginMySql.resources
-C:\Users\JUSET\Source\Repos\Braulio9708\Planilla\Planilla\obj\Debug\Planilla.frmLogin.resources
-C:\Users\JUSET\Source\Repos\Braulio9708\Planilla\Planilla\obj\Debug\Planilla.Formularios.Principal.resources
-C:\Users\JUSET\Source\Repos\Braulio9708\Planilla\Planilla\obj\Debug\Planilla.Properties.Resources.resources
-C:\Users\JUSET\Source\Repos\Braulio9708\Planilla\Planilla\obj\Debug\Planilla.csproj.GenerateResource.Cache
 C:\Users\Inspiron i5\Source\Repos\Braulio9708\Planilla\Planilla\bin\Debug\Planilla.exe.config
 C:\Users\Inspiron i5\Source\Repos\Braulio9708\Planilla\Planilla\obj\Debug\Planilla.exe
 C:\Users\Inspiron i5\Source\Repos\Braulio9708\Planilla\Planilla\obj\Debug\Planilla.pdb
@@ -183,14 +161,37 @@ C:\Users\JUSET\Source\Repos\Braulio9708\Planilla\Planilla\Planilla\obj\Debug\Pla
 C:\Users\JUSET\Source\Repos\Braulio9708\Planilla\Planilla\Planilla\obj\Debug\Planilla.Formularios.frmAreaLaboralOperacion.resources
 C:\Users\JUSET\Source\Repos\Braulio9708\Planilla\Planilla\Planilla\obj\Debug\Planilla.Formularios.frmCiudad.resources
 C:\Users\JUSET\Source\Repos\Braulio9708\Planilla\Planilla\Planilla\obj\Debug\Planilla.Formularios.frmCiudadOperacion.resources
+C:\Users\JUSET\Source\Repos\Braulio9708\Planilla\Planilla\bin\Debug\Planilla.exe.config
+C:\Users\JUSET\Source\Repos\Braulio9708\Planilla\Planilla\bin\Debug\Planilla.exe
+C:\Users\JUSET\Source\Repos\Braulio9708\Planilla\Planilla\bin\Debug\Planilla.pdb
+C:\Users\JUSET\Source\Repos\Braulio9708\Planilla\Planilla\bin\Debug\Entidad.dll
+C:\Users\JUSET\Source\Repos\Braulio9708\Planilla\Planilla\bin\Debug\Funciones.dll
+C:\Users\JUSET\Source\Repos\Braulio9708\Planilla\Planilla\bin\Debug\Logica.dll
+C:\Users\JUSET\Source\Repos\Braulio9708\Planilla\Planilla\bin\Debug\MySql.Data.dll
+C:\Users\JUSET\Source\Repos\Braulio9708\Planilla\Planilla\bin\Debug\Acceso.dll
+C:\Users\JUSET\Source\Repos\Braulio9708\Planilla\Planilla\bin\Debug\Entidad.pdb
+C:\Users\JUSET\Source\Repos\Braulio9708\Planilla\Planilla\bin\Debug\Logica.pdb
+C:\Users\JUSET\Source\Repos\Braulio9708\Planilla\Planilla\bin\Debug\MySql.Data.xml
+C:\Users\JUSET\Source\Repos\Braulio9708\Planilla\Planilla\bin\Debug\Acceso.pdb
+C:\Users\JUSET\Source\Repos\Braulio9708\Planilla\Planilla\obj\Debug\Planilla.csprojResolveAssemblyReference.cache
 C:\Users\JUSET\Source\Repos\Braulio9708\Planilla\Planilla\obj\Debug\Planilla.Formularios.frmAreaLaboral.resources
 C:\Users\JUSET\Source\Repos\Braulio9708\Planilla\Planilla\obj\Debug\Planilla.Formularios.frmAreaLaboralOperacion.resources
+C:\Users\JUSET\Source\Repos\Braulio9708\Planilla\Planilla\obj\Debug\Planilla.Formularios.frmCargo.resources
 C:\Users\JUSET\Source\Repos\Braulio9708\Planilla\Planilla\obj\Debug\Planilla.Formularios.frmCargoOperacion.resources
 C:\Users\JUSET\Source\Repos\Braulio9708\Planilla\Planilla\obj\Debug\Planilla.Formularios.frmContrato.resources
+C:\Users\JUSET\Source\Repos\Braulio9708\Planilla\Planilla\obj\Debug\Planilla.Formularios.frmContratoOperacion.resources
 C:\Users\JUSET\Source\Repos\Braulio9708\Planilla\Planilla\obj\Debug\Planilla.Formularios.frmEmpleadoOperacion.resources
 C:\Users\JUSET\Source\Repos\Braulio9708\Planilla\Planilla\obj\Debug\Planilla.Formularios.frmEmpleados.resources
 C:\Users\JUSET\Source\Repos\Braulio9708\Planilla\Planilla\obj\Debug\Planilla.Formularios.frmCiudad.resources
 C:\Users\JUSET\Source\Repos\Braulio9708\Planilla\Planilla\obj\Debug\Planilla.Formularios.frmCiudadOperacion.resources
-C:\Users\JUSET\Source\Repos\Braulio9708\Planilla\Planilla\obj\Debug\Planilla.Formularios.frmUsuarioOperacion.resources
-C:\Users\JUSET\Source\Repos\Braulio9708\Planilla\Planilla\obj\Debug\Planilla.Formularios.frmContratoOperacion.resources
 C:\Users\JUSET\Source\Repos\Braulio9708\Planilla\Planilla\obj\Debug\Planilla.Formularios.frmHorario.resources
+C:\Users\JUSET\Source\Repos\Braulio9708\Planilla\Planilla\obj\Debug\Planilla.Formularios.frmUsuario.resources
+C:\Users\JUSET\Source\Repos\Braulio9708\Planilla\Planilla\obj\Debug\Planilla.Formularios.frmConfiguracion.resources
+C:\Users\JUSET\Source\Repos\Braulio9708\Planilla\Planilla\obj\Debug\Planilla.frmLoginMySql.resources
+C:\Users\JUSET\Source\Repos\Braulio9708\Planilla\Planilla\obj\Debug\Planilla.frmLogin.resources
+C:\Users\JUSET\Source\Repos\Braulio9708\Planilla\Planilla\obj\Debug\Planilla.Formularios.frmUsuarioOperacion.resources
+C:\Users\JUSET\Source\Repos\Braulio9708\Planilla\Planilla\obj\Debug\Planilla.Formularios.Principal.resources
+C:\Users\JUSET\Source\Repos\Braulio9708\Planilla\Planilla\obj\Debug\Planilla.Properties.Resources.resources
+C:\Users\JUSET\Source\Repos\Braulio9708\Planilla\Planilla\obj\Debug\Planilla.csproj.GenerateResource.Cache
+C:\Users\JUSET\Source\Repos\Braulio9708\Planilla\Planilla\obj\Debug\Planilla.pdb
+C:\Users\JUSET\Source\Repos\Braulio9708\Planilla\Planilla\obj\Debug\Planilla.Formularios.frmHorarioOperacion.resources
