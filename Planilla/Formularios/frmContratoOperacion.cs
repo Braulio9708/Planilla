@@ -320,6 +320,7 @@ namespace Planilla.Formularios
                     dtpFechaDeFin.Value = Convert.ToDateTime(Fila["FechaDeFin"].ToString());
                     txtNumeroDeContrato.Text = Fila["Numero De Contrato"].ToString();
                     cmbEmpleado.SelectedValue = Convert.ToInt32(Fila["IdEmpleado"].ToString());
+                    cmbEmpleado.Text = Fila["Nombre"].ToString();
 
                     oRegistrosEN = null;
                     oRegistrosLN = null;

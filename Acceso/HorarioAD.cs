@@ -9,7 +9,7 @@ using System.Data;
 
 namespace Acceso
 {
-    class HorarioAD
+    public class HorarioAD
     {
 
         public string Error { set; get; }
@@ -37,7 +37,6 @@ namespace Acceso
 
         public bool Agregar(HorarioEN oRegistroEN, DatosDeConexionEN oDatos)
         {
-            oTransaccionesAD = new TransaccionesAD();
             try
             {
                 InicialisarVariablesGlovales(oDatos);
@@ -47,18 +46,15 @@ namespace Acceso
                                 (@HoraDeEntrada, @HoraDeSalida, @IdEmpleado);
                             Select  last_insert_ID() as 'ID';";
 
-                Comando.Parameters.Add(new MySqlParameter("@HoraDeEntrada", MySqlDbType.DateTime)).Value = oRegistroEN.HoraDeEntrada;
-                Comando.Parameters.Add(new MySqlParameter("@HoraDeSalida", MySqlDbType.DateTime)).Value = oRegistroEN.HoraDeSalida;
+                Comando.CommandText = Consultas;
+
+                Comando.Parameters.Add(new MySqlParameter("@HoraDeEntrada", MySqlDbType.Time)).Value = oRegistroEN.HoraDeEntrada;
+                Comando.Parameters.Add(new MySqlParameter("@HoraDeSalida", MySqlDbType.Time)).Value = oRegistroEN.HoraDeSalida;
                 Comando.Parameters.Add(new MySqlParameter("@IdEmpleado", MySqlDbType.Int32)).Value = oRegistroEN.oEmpleadoEN.IdEmpleado;
 
                 InicialisarAdaptador();
 
                 oRegistroEN.IdHorario = Convert.ToInt32(DT.Rows[0].ItemArray[0].ToString());
-
-                DescripcionDeLaOperacion = string.Format("El registro se ha insertado correctamente. {0} {1}", Environment.NewLine, InformacionDelRegistro(oRegistroEN));
-
-                TransaccionesEN oTransacciones = InformacionDelaTransaccion(oRegistroEN, "Agregar", "Agregar Nuevo Registro", "CORRECTO");
-                oTransaccionesAD.Agregar(oTransacciones, oDatos);
 
                 return true;
             }
@@ -66,23 +62,16 @@ namespace Acceso
             {
                 this.Error = ex.Message;
 
-                DescripcionDeLaOperacion = string.Format("Se produjo el seguiente error: '{2}' al insertar el registro. {0} {1} ", Environment.NewLine, InformacionDelRegistro(oRegistroEN), ex.Message);
-
-                TransaccionesEN oTransacciones = InformacionDelaTransaccion(oRegistroEN, "Agregar", "Agregar Nuevo Registro", "ERROR");
-                oTransaccionesAD.Agregar(oTransacciones, oDatos);
-
                 return false;
             }
             finally
             {
                 FinalizarConexion();
-                oTransaccionesAD = null;
             }
         }
 
         public bool Actualizar(HorarioEN oRegistroEN, DatosDeConexionEN oDatos)
         {
-            oTransaccionesAD = new TransaccionesAD();
             try
             {
                 InicialisarVariablesGlovales(oDatos);
@@ -93,17 +82,14 @@ namespace Acceso
                                 IdEmpleado = @IdEmpleado                    
                             where IdHorario = @IdHorario;";
 
+                Comando.CommandText = Consultas;
+
                 Comando.Parameters.Add(new MySqlParameter("@IdHorario", MySqlDbType.Int32)).Value = oRegistroEN.IdHorario;
-                Comando.Parameters.Add(new MySqlParameter("@HoraDeEntrada", MySqlDbType.DateTime)).Value = oRegistroEN.HoraDeEntrada;
-                Comando.Parameters.Add(new MySqlParameter("@HoraDeSalida", MySqlDbType.DateTime)).Value = oRegistroEN.HoraDeSalida;
+                Comando.Parameters.Add(new MySqlParameter("@HoraDeEntrada", MySqlDbType.Time)).Value = oRegistroEN.HoraDeEntrada;
+                Comando.Parameters.Add(new MySqlParameter("@HoraDeSalida", MySqlDbType.Time)).Value = oRegistroEN.HoraDeSalida;
                 Comando.Parameters.Add(new MySqlParameter("@IdEmpleado", MySqlDbType.Int32)).Value = oRegistroEN.oEmpleadoEN.IdEmpleado;
 
                 Comando.ExecuteNonQuery();
-
-                DescripcionDeLaOperacion = string.Format("El registro fue Actualizado correctamente. {0} {1}", Environment.NewLine, InformacionDelRegistro(oRegistroEN));
-
-                TransaccionesEN oTransacciones = InformacionDelaTransaccion(oRegistroEN, "Actualizar", "Actualizar Registro", "CORRECTO");
-                oTransaccionesAD.Agregar(oTransacciones, oDatos);
 
                 return true;
 
@@ -113,56 +99,41 @@ namespace Acceso
 
                 this.Error = ex.Message;
 
-                DescripcionDeLaOperacion = string.Format("Se produjo el siguiente error: {2} al actualizar el registro {0} {1}", Environment.NewLine, InformacionDelRegistro(oRegistroEN), ex.Message);
-
-                TransaccionesEN oTransacciones = InformacionDelaTransaccion(oRegistroEN, "Actualizar", "Actualizar Registro", "ERROR");
-                oTransaccionesAD.Agregar(oTransacciones, oDatos);
-
                 return false;
 
             }
             finally
             {
                 FinalizarConexion();
-                oTransaccionesAD = null;
             }
         }
 
         public bool Eliminar(HorarioEN oRegistroEN, DatosDeConexionEN oDatos)
         {
-            oTransaccionesAD = new TransaccionesAD();
             try
             {
                 InicialisarVariablesGlovales(oDatos);
 
                 Consultas = @"delete from horario where IdHorario = @IdHorario;";
+                
+                Comando.CommandText = Consultas;
 
                 Comando.Parameters.Add(new MySqlParameter("@IdHorario", MySqlDbType.Int32)).Value = oRegistroEN.IdHorario;
 
                 Comando.ExecuteNonQuery();
-
-                DescripcionDeLaOperacion = string.Format("El registro fue eliminado correctamente. {0} {1}", Environment.NewLine, InformacionDelRegistro(oRegistroEN));
-
-                //Agregamos la transaccion...
-                TransaccionesEN oTransacciones = InformacionDelaTransaccion(oRegistroEN, "Eliminar", "Elminar Registro", "CORRECTO");
-                oTransaccionesAD.Agregar(oTransacciones, oDatos);
 
                 return true;
 
             }
             catch (Exception ex)
             {
-                DescripcionDeLaOperacion = string.Format("Se produjo el siguiente error: {2} al eliminar el registro. {0} {1}", Environment.NewLine, InformacionDelRegistro(oRegistroEN), ex.Message);
-
-                TransaccionesEN oTransacciones = InformacionDelaTransaccion(oRegistroEN, "Eliminar", "Eliminar Registro", "ERROR");
-                oTransaccionesAD.Agregar(oTransacciones, oDatos);
+                this.Error = ex.Message;
 
                 return false;
             }
             finally
             {
                 FinalizarConexion();
-                oTransaccionesAD = null;
             }
         }
 
@@ -241,22 +212,19 @@ namespace Acceso
             }
             finally
             {
-
                 FinalizarConexion();
-
             }
 
         }
 
         public bool ListadoParaReportes(HorarioEN oRegistroEN, DatosDeConexionEN oDatos)
         {
-
             try
             {
-
                 InicialisarVariablesGlovales(oDatos);
 
                 Consultas = string.Format(@"select IdHorario, HoraDeEntrada, HoraDeSalida, IdEmpleado from horario where IdHorario > 0 {0} {1} ", oRegistroEN.Where, oRegistroEN.OrderBy);
+
                 Comando.CommandText = Consultas;
 
                 InicialisarAdaptador();
@@ -272,11 +240,8 @@ namespace Acceso
             }
             finally
             {
-
                 FinalizarConexion();
-
             }
-
         }
 
         #endregion
@@ -357,6 +322,100 @@ namespace Acceso
             Cadena = Cadena.Replace(",", Environment.NewLine);
             return Cadena;
         }
+        #endregion
+
+        #region "Funciones de Validación"
+
+        public bool ValidarSiElRegistroEstaVinculado(HorarioEN oRegistroEN, DatosDeConexionEN oDatos, string TipoDeOperacion)
+        {
+            try
+            {
+
+                InicialisarVariablesGlobalesProcedure(oDatos);
+
+                Comando.Parameters.Add(new MySqlParameter("@CampoABuscar_", MySqlDbType.VarChar, 200)).Value = "IdHorario";
+                Comando.Parameters.Add(new MySqlParameter("@ValorCampoABuscar", MySqlDbType.Int32)).Value = oRegistroEN.IdHorario;
+                Comando.Parameters.Add(new MySqlParameter("@ExcluirTabla_", MySqlDbType.VarChar, 200)).Value = string.Empty;
+
+                InicialisarAdaptador();
+
+                if (DT.Rows[0].ItemArray[0].ToString().ToUpper() == "NINGUNA".ToUpper())
+                {
+                    return false;
+                }
+                else
+                {
+                    return true;
+                }
+
+            }
+            catch (Exception ex)
+            {
+                this.Error = ex.Message;
+
+                return false;
+            }
+            finally
+            {
+                FinalizarConexion();
+            }
+
+        }
+
+        public bool ValidarRegistroDuplicado(HorarioEN oRegistroEN, DatosDeConexionEN oDatos, string TipoDeOperacion)
+        {
+            try
+            {
+                InicialisarVariablesGlovales(oDatos);
+
+                switch (TipoDeOperacion.Trim().ToUpper())
+                {
+
+                    case "AGREGAR":
+
+                        Consultas = @"SELECT CASE WHEN EXISTS(Select IdHorario from horario where IdEmpleado = @IdEmpleado) THEN 1 ELSE 0 END AS 'RES'";
+                        Comando.Parameters.Add(new MySqlParameter("@IdHorario", MySqlDbType.Int32)).Value = oRegistroEN.IdHorario;
+
+                        break;
+
+                    case "ACTUALIZAR":
+
+                        Consultas = @"SELECT CASE WHEN EXISTS(Select IdHorario from horario where IdEmpleado = @IdEmpleado and IdHorario <> @IdHorario) THEN 1 ELSE 0 END AS 'RES'";
+                        Comando.Parameters.Add(new MySqlParameter("@IdHorario", MySqlDbType.Int32)).Value = oRegistroEN.IdHorario;
+                        Comando.Parameters.Add(new MySqlParameter("@IdEmpleado", MySqlDbType.Int32)).Value = oRegistroEN.oEmpleadoEN.IdEmpleado;
+
+                        break;
+
+                    default:
+                        throw new ArgumentException("La aperación solicitada no esta disponible");
+
+                }
+
+                Comando.CommandText = Consultas;
+
+                InicialisarAdaptador();
+
+                if (Convert.ToInt32(DT.Rows[0]["RES"].ToString()) > 0)
+                {
+                    return true;
+                }
+
+                return false;
+
+            }
+            catch (Exception ex)
+            {
+                this.Error = ex.Message;
+
+                return false;
+            }
+            finally
+            {
+                FinalizarConexion();
+            }
+
+        }
+
         #endregion
 
     }
