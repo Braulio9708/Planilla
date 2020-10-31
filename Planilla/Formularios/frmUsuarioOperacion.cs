@@ -1516,7 +1516,7 @@ namespace Planilla.Formularios
                             }
                             else
                             {
-                                OperacionARealizar = "MODIFICAR";
+                                OperacionARealizar = "GUARDAR";
                                 ObtenerValoresDeConfiguracion();
                                 LlamarMetodoSegunOperacion();
                                 EstablecerTituloDeVentana();

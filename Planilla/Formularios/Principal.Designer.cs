@@ -47,6 +47,7 @@
             this.btnEmpleado2 = new System.Windows.Forms.Button();
             this.btnCiudad = new System.Windows.Forms.Button();
             this.btnHorario = new System.Windows.Forms.Button();
+            this.btnFaltas = new System.Windows.Forms.Button();
             this.toolsMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.tsRespaldar = new System.Windows.Forms.ToolStripMenuItem();
             this.restaurarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -64,7 +65,9 @@
             this.toolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.statusStrip = new System.Windows.Forms.StatusStrip();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
-            this.btnFaltas = new System.Windows.Forms.Button();
+            this.HoraFecha = new System.Windows.Forms.Timer(this.components);
+            this.btnConcepto = new System.Windows.Forms.Button();
+            this.btnPlanilla = new System.Windows.Forms.Button();
             this.menuStrip.SuspendLayout();
             this.statusStrip.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
@@ -104,7 +107,7 @@
             this.menuconfiguracion.Dock = System.Windows.Forms.DockStyle.Top;
             this.menuconfiguracion.Location = new System.Drawing.Point(0, 83);
             this.menuconfiguracion.Name = "menuconfiguracion";
-            this.menuconfiguracion.Size = new System.Drawing.Size(174, 35);
+            this.menuconfiguracion.Size = new System.Drawing.Size(157, 35);
             this.menuconfiguracion.TabIndex = 2;
             this.menuconfiguracion.Tag = "Configuración";
             this.menuconfiguracion.Text = "Configuracion";
@@ -128,7 +131,7 @@
             this.btmGenerales.Dock = System.Windows.Forms.DockStyle.Top;
             this.btmGenerales.Location = new System.Drawing.Point(0, 118);
             this.btmGenerales.Name = "btmGenerales";
-            this.btmGenerales.Size = new System.Drawing.Size(174, 35);
+            this.btmGenerales.Size = new System.Drawing.Size(157, 35);
             this.btmGenerales.TabIndex = 3;
             this.btmGenerales.Tag = "General";
             this.btmGenerales.Text = "General";
@@ -170,7 +173,7 @@
             this.MenuHerramientas.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.MenuHerramientas.Location = new System.Drawing.Point(0, 38);
             this.MenuHerramientas.Name = "MenuHerramientas";
-            this.MenuHerramientas.Size = new System.Drawing.Size(174, 45);
+            this.MenuHerramientas.Size = new System.Drawing.Size(157, 45);
             this.MenuHerramientas.TabIndex = 1;
             this.MenuHerramientas.Tag = "Herramientas";
             this.MenuHerramientas.Text = "Herramientas";
@@ -186,7 +189,7 @@
             this.msMenu.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.msMenu.Location = new System.Drawing.Point(0, 0);
             this.msMenu.Name = "msMenu";
-            this.msMenu.Size = new System.Drawing.Size(174, 38);
+            this.msMenu.Size = new System.Drawing.Size(157, 38);
             this.msMenu.TabIndex = 0;
             this.msMenu.Tag = "Mostrar";
             this.msMenu.Text = "Menus";
@@ -202,7 +205,7 @@
             this.btnEmpleado.Dock = System.Windows.Forms.DockStyle.Top;
             this.btnEmpleado.Location = new System.Drawing.Point(0, 153);
             this.btnEmpleado.Name = "btnEmpleado";
-            this.btnEmpleado.Size = new System.Drawing.Size(174, 35);
+            this.btnEmpleado.Size = new System.Drawing.Size(157, 35);
             this.btnEmpleado.TabIndex = 4;
             this.btnEmpleado.Tag = "Empleado";
             this.btnEmpleado.Text = "Empleado";
@@ -292,6 +295,20 @@
             this.toolTip.SetToolTip(this.btnHorario, "\r\n");
             this.btnHorario.UseVisualStyleBackColor = false;
             this.btnHorario.Click += new System.EventHandler(this.btnHorario_Click);
+            // 
+            // btnFaltas
+            // 
+            this.btnFaltas.BackColor = System.Drawing.Color.Transparent;
+            this.btnFaltas.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnFaltas.Location = new System.Drawing.Point(0, 385);
+            this.btnFaltas.Name = "btnFaltas";
+            this.btnFaltas.Size = new System.Drawing.Size(157, 35);
+            this.btnFaltas.TabIndex = 13;
+            this.btnFaltas.Tag = "Horario";
+            this.btnFaltas.Text = "Faltas";
+            this.toolTip.SetToolTip(this.btnFaltas, "\r\n");
+            this.btnFaltas.UseVisualStyleBackColor = false;
+            this.btnFaltas.Click += new System.EventHandler(this.btnFaltas_Click);
             // 
             // toolsMenu
             // 
@@ -435,6 +452,7 @@
             // splitContainer1.Panel1
             // 
             this.splitContainer1.Panel1.AutoScroll = true;
+            this.splitContainer1.Panel1.Controls.Add(this.btnPlanilla);
             this.splitContainer1.Panel1.Controls.Add(this.btnEmpleado);
             this.splitContainer1.Panel1.Controls.Add(this.btmGenerales);
             this.splitContainer1.Panel1.Controls.Add(this.menuconfiguracion);
@@ -444,6 +462,7 @@
             // splitContainer1.Panel2
             // 
             this.splitContainer1.Panel2.AutoScroll = true;
+            this.splitContainer1.Panel2.Controls.Add(this.btnConcepto);
             this.splitContainer1.Panel2.Controls.Add(this.btnFaltas);
             this.splitContainer1.Panel2.Controls.Add(this.btnHorario);
             this.splitContainer1.Panel2.Controls.Add(this.btnCiudad);
@@ -460,19 +479,38 @@
             this.splitContainer1.SplitterDistance = 211;
             this.splitContainer1.TabIndex = 4;
             // 
-            // btnFaltas
+            // HoraFecha
             // 
-            this.btnFaltas.BackColor = System.Drawing.Color.Transparent;
-            this.btnFaltas.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnFaltas.Location = new System.Drawing.Point(0, 385);
-            this.btnFaltas.Name = "btnFaltas";
-            this.btnFaltas.Size = new System.Drawing.Size(157, 35);
-            this.btnFaltas.TabIndex = 13;
-            this.btnFaltas.Tag = "Horario";
-            this.btnFaltas.Text = "Faltas";
-            this.toolTip.SetToolTip(this.btnFaltas, "\r\n");
-            this.btnFaltas.UseVisualStyleBackColor = false;
-            this.btnFaltas.Click += new System.EventHandler(this.btnFaltas_Click);
+            this.HoraFecha.Enabled = true;
+            this.HoraFecha.Tick += new System.EventHandler(this.HoraFecha_Tick);
+            // 
+            // btnConcepto
+            // 
+            this.btnConcepto.BackColor = System.Drawing.Color.Transparent;
+            this.btnConcepto.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnConcepto.Location = new System.Drawing.Point(0, 420);
+            this.btnConcepto.Name = "btnConcepto";
+            this.btnConcepto.Size = new System.Drawing.Size(157, 35);
+            this.btnConcepto.TabIndex = 14;
+            this.btnConcepto.Tag = "Horario";
+            this.btnConcepto.Text = "Concepto Deducciones";
+            this.toolTip.SetToolTip(this.btnConcepto, "\r\n");
+            this.btnConcepto.UseVisualStyleBackColor = false;
+            this.btnConcepto.Click += new System.EventHandler(this.btnConcepto_Click);
+            // 
+            // btnPlanilla
+            // 
+            this.btnPlanilla.BackColor = System.Drawing.Color.Transparent;
+            this.btnPlanilla.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnPlanilla.Location = new System.Drawing.Point(0, 188);
+            this.btnPlanilla.Name = "btnPlanilla";
+            this.btnPlanilla.Size = new System.Drawing.Size(157, 35);
+            this.btnPlanilla.TabIndex = 5;
+            this.btnPlanilla.Tag = "Planilla";
+            this.btnPlanilla.Text = "Planilla";
+            this.toolTip.SetToolTip(this.btnPlanilla, "Informacion del empleado");
+            this.btnPlanilla.UseVisualStyleBackColor = false;
+            this.btnPlanilla.Click += new System.EventHandler(this.btnPlanilla_Click);
             // 
             // Principal
             // 
@@ -536,6 +574,9 @@
         private System.Windows.Forms.Button btnCiudad;
         private System.Windows.Forms.Button btnHorario;
         private System.Windows.Forms.Button btnFaltas;
+        private System.Windows.Forms.Timer HoraFecha;
+        private System.Windows.Forms.Button btnPlanilla;
+        private System.Windows.Forms.Button btnConcepto;
     }
 }
 

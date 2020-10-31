@@ -337,6 +337,7 @@ namespace Planilla.Formularios
 
         private void LimpiarCampos()
         {
+            txtIdentificador.Text = string.Empty;
             txtArea.Text = string.Empty;
         }
 
@@ -462,7 +463,7 @@ namespace Planilla.Formularios
                         }
                         else
                         {
-                            OperacionARealizar = "Modificar";
+                            OperacionARealizar = "GUARDAR";
                             ObtenerValoresDeLaConfiguracion();
                             LlamarMetodoSegunOperacion();
                             EstablecerTituloDeVentana();

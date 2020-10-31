@@ -26,6 +26,7 @@ namespace Planilla.Formularios
         frmContrato ofrmContrato = null;
         frmHorario ofrmHorario = null;
         frmFaltas ofrmFaltas = null;
+        frmConceptoDeDeducciones ofrmConcepto = null;
 
         public Principal()
         {
@@ -520,6 +521,39 @@ namespace Planilla.Formularios
             else
             {
                 ofrmFaltas.BringToFront();
+            }
+            this.Cursor = Cursors.Default;
+        }
+
+        private void HoraFecha_Tick(object sender, EventArgs e)
+        {
+            //lbFecha.Text = DateTime.Now.ToLongDateString();
+            //lbHora.Text = DateTime.Now.ToLongTimeString();
+        }
+
+        private void btnPlanilla_Click(object sender, EventArgs e)
+        {
+            btnConcepto.Enabled = true;
+            OcultarControlesDentroDelPanel();
+            string MostrarControles = "btnConcepto";
+            VisualizarControlesDentroDelPanel(MostrarControles);
+        }
+
+        private void btnConcepto_Click(object sender, EventArgs e)
+        {
+            this.Cursor = Cursors.WaitCursor;
+
+            if (ofrmConcepto == null || ofrmConcepto.IsDisposed)
+            {
+                ofrmConcepto = new frmConceptoDeDeducciones();
+                ofrmConcepto.MdiParent = this;
+                ofrmConcepto.StartPosition = FormStartPosition.CenterScreen;
+                ofrmConcepto.WindowState = FormWindowState.Maximized;
+                ofrmConcepto.Show();
+            }
+            else
+            {
+                ofrmConcepto.BringToFront();
             }
             this.Cursor = Cursors.Default;
         }

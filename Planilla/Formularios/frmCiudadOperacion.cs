@@ -361,7 +361,7 @@ namespace Planilla.Formularios
 
         private void LimpiarCampos()
         {
-            //txtIdentificador.Text = string.Empty;
+            txtIdentificador.Text = string.Empty;
             txtCiudad.Text = string.Empty;
 
         }
@@ -446,7 +446,7 @@ namespace Planilla.Formularios
 
                         else
                         {                            
-                            OperacionARealizar = "Modificar";
+                            OperacionARealizar = "GUARDAR";
                             ObtenerValoresDeConfiguracion();
                             LlamarMetodoSegunOperacion();
                             EstablecerTituloDeVentana();
@@ -652,11 +652,7 @@ namespace Planilla.Formularios
         {
             this.CerrarVentana = (chkCerrarVentana.CheckState == CheckState.Checked ? true : false);
         }
-
-        private void chkCerrarVentana_Click(object sender, EventArgs e)
-        {
-            this.Close();
-        }
+        
 
         private void frmMunicipioOperacion_FormClosing(object sender, FormClosingEventArgs e)
         {

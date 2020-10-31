@@ -90,7 +90,6 @@
             this.chkCerrarVentana.Text = "Cerrar ventana de manera automatica";
             this.chkCerrarVentana.UseVisualStyleBackColor = true;
             this.chkCerrarVentana.CheckedChanged += new System.EventHandler(this.chkCerrarVentana_CheckedChanged);
-            this.chkCerrarVentana.Click += new System.EventHandler(this.chkCerrarVentana_Click);
             // 
             // panel2
             // 

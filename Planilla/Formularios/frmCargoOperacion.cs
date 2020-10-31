@@ -355,7 +355,7 @@ namespace Planilla.Formularios
 
         private void LimpiarCampos()
         {
-            //txtIdentificador.Text = string.Empty;
+            txtIdentificador.Text = string.Empty;
             txtNombre.Text = string.Empty;
 
         }
@@ -445,7 +445,7 @@ namespace Planilla.Formularios
                         }
                         else
                         {
-                            OperacionARealizar = "Modificar";
+                            OperacionARealizar = "GUARDAR";
                             ObtenerValoresDeConfiguracion();
                             LlamarMetodoSegunOperacion();
                             EstablecerTituloDeVentana();

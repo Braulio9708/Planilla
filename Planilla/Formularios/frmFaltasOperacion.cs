@@ -360,7 +360,7 @@ namespace Planilla.Formularios
 
         private void LimpiarCampos()
         {
-            //txtIdentificador.Text = string.Empty;
+            txtIdentificador.Text = string.Empty;
             dtpFecha.Text = string.Empty;
             cmbEmpleado.SelectedValue = -1;
         }
@@ -484,7 +484,7 @@ namespace Planilla.Formularios
                         }
                         else
                         {
-                            OperacionARealizar = "Modificar";
+                            OperacionARealizar = "GUARDAR";
                             ObtenerValoresDeConfiguracion();
                             LlamarMetodoSegunOperacion();
                             EstablecerTituloDeVentana();
