@@ -82,6 +82,12 @@
     <Compile Include="Formularios\frmConceptoDeDeducciones.Designer.cs">
       <DependentUpon>frmConceptoDeDeducciones.cs</DependentUpon>
     </Compile>
+    <Compile Include="Formularios\frmConceptoDeduccionOperacion.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\frmConceptoDeduccionOperacion.Designer.cs">
+      <DependentUpon>frmConceptoDeduccionOperacion.cs</DependentUpon>
+    </Compile>
     <Compile Include="Formularios\frmContrato.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -199,6 +205,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios\frmConceptoDeDeducciones.resx">
       <DependentUpon>frmConceptoDeDeducciones.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\frmConceptoDeduccionOperacion.resx">
+      <DependentUpon>frmConceptoDeduccionOperacion.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios\frmContrato.resx">
       <DependentUpon>frmContrato.cs</DependentUpon>

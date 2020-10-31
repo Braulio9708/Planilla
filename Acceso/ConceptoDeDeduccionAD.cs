@@ -96,7 +96,7 @@ namespace Acceso
                 Comando.CommandText = Consultas;
 
                 Comando.Parameters.Add(new MySqlParameter("@IdConceptoDeDeduccion", MySqlDbType.Int32)).Value = oRegistroEN.IdConceptoDeDeduccion;
-                Comando.Parameters.Add(new MySqlParameter("@@ConceptoDeDeduccion", MySqlDbType.VarChar, oRegistroEN.ConceptoDeDeduccion.Trim().Length)).Value = oRegistroEN.ConceptoDeDeduccion.Trim();
+                Comando.Parameters.Add(new MySqlParameter("@ConceptoDeDeduccion", MySqlDbType.VarChar, oRegistroEN.ConceptoDeDeduccion.Trim().Length)).Value = oRegistroEN.ConceptoDeDeduccion.Trim();
 
                 Comando.ExecuteNonQuery();
 
@@ -201,7 +201,10 @@ namespace Acceso
             {
                 InicializarVariablesGlovales(oDatos);
 
-                Consultas = string.Format(@"Select IdConceptoDeDeduccion, ConceptoDeDeduccion from conceptodededuccion where IdConceptoDeDeduccion > {0} ", oRegistroEN.IdConceptoDeDeduccion);
+                Consultas = string.Format(@"Select IdConceptoDeDeduccion, ConceptoDeDeduccion from conceptodededuccion where IdConceptoDeDeduccion = @IdConceptoDeDeduccion ", oRegistroEN.IdConceptoDeDeduccion);
+
+                Comando.Parameters.Add(new MySqlParameter("@IdConceptoDeDeduccion", MySqlDbType.Int32)).Value = oRegistroEN.IdConceptoDeDeduccion;
+
                 Comando.CommandText = Consultas;
 
                 InicializarAdaptador();
@@ -351,6 +354,49 @@ namespace Acceso
             Comando = null;
             Adaptador = null;
         }
+        #endregion
+
+
+        #region "Funciones del programador"
+
+        public bool ValidarSiElRegistroEstaVinculado(ConceptoDeDeduccionEN oRegistroEN, DatosDeConexionEN oDatos, string TipoDeOperacion)
+        {
+
+
+            try
+            {
+
+                InicializarVariablesGlovales(oDatos);
+
+                Comando.Parameters.Add(new MySqlParameter("@CampoABuscar_", MySqlDbType.VarChar, 200)).Value = "IdConceptoDeDeduccion";
+                Comando.Parameters.Add(new MySqlParameter("@ValorCampoABuscar", MySqlDbType.Int32)).Value = oRegistroEN.IdConceptoDeDeduccion;
+                Comando.Parameters.Add(new MySqlParameter("@ExcluirTabla_", MySqlDbType.VarChar, 200)).Value = string.Empty;
+
+                InicializarAdaptador();
+
+                if (DT.Rows[0].ItemArray[0].ToString().ToUpper() == "NINGUNA".ToUpper())
+                {
+                    return false;
+                }
+                else
+                {
+                    return true;
+                }
+
+            }
+            catch (Exception ex)
+            {
+                this.Error = ex.Message;
+
+                return false;
+            }
+            finally
+            {
+                FinalizarConexion();
+            }
+
+        }
+
         #endregion
 
     }

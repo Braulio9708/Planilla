@@ -136,6 +136,20 @@ namespace Logica
 
         }
 
+        public bool ValidarSiElRegistroEstaVinculado(ConceptoDeDeduccionEN oRegistroEN, DatosDeConexionEN oDatos, string TipoDeOperacion)
+        {
+            if(oConceptoDeDeduccionAD.ValidarSiElRegistroEstaVinculado(oRegistroEN, oDatos, TipoDeOperacion))
+            {
+                Error = oConceptoDeDeduccionAD.Error;
+                return true;
+            }
+            else
+            {
+                Error = string.Empty;
+                return false;
+            }
+        }
+
         public DataTable TraerDatos()
         {
             return oConceptoDeDeduccionAD.TraerDatos();

@@ -20,9 +20,9 @@ namespace Planilla.Formularios
             InitializeComponent();
         }
 
-        private string Nombre_Entidad_Privilegio = "Faltas";
-        private string Nombre_Entidad = "Administrador de Faltas";
-        private string Nombre_Llave_Primaria = "IdFaltas";
+        private string Nombre_Entidad_Privilegio = "ConceptoDeDeduccion";
+        private string Nombre_Entidad = "Administrador de conceptos de las deducciones";
+        private string Nombre_Llave_Primaria = "IdConceptoDeDeduccion";
         private int ValorLlavePrimariaEntidad;
         private int IndiceSeleccionado;
 
@@ -431,28 +431,29 @@ namespace Planilla.Formularios
 
         private void MostrarFormularioParaOperacion(string OperacionARealizar)
         {
-            /*frmFaltasOperacion ofrmFaltasOperacion = new frmFaltasOperacion();
-            ofrmFaltasOperacion.OperacionARealizar = OperacionARealizar;
-            ofrmFaltasOperacion.Nombre_Entidad_Privilegio = Nombre_Entidad_Privilegio;
-            ofrmFaltasOperacion.Nombre_Entidad = Nombre_Entidad;
-            ofrmFaltasOperacion.ValorLlavePrimariaEntidad = this.ValorLlavePrimariaEntidad;
-            ofrmFaltasOperacion.MdiParent = this.ParentForm;
-            ofrmFaltasOperacion.Show();*/
+            frmConceptoDeduccionOperacion ofrmConceptoDeduccionOperacion = new frmConceptoDeduccionOperacion();
+            ofrmConceptoDeduccionOperacion.OperacionARealizar = OperacionARealizar;
+            ofrmConceptoDeduccionOperacion.Nombre_Entidad_Privilegio = Nombre_Entidad_Privilegio;
+            ofrmConceptoDeduccionOperacion.Nombre_Entidad = Nombre_Entidad;
+            ofrmConceptoDeduccionOperacion.ValorLlavePrimariaEntidad = this.ValorLlavePrimariaEntidad;
+            ofrmConceptoDeduccionOperacion.MdiParent = this.ParentForm;
+            ofrmConceptoDeduccionOperacion.Show();
         }
 
         private void AsignarLalvePrimaria()
         {
             this.ValorLlavePrimariaEntidad = Convert.ToInt32(this.dgvLista.Rows[this.IndiceSeleccionado].Cells[this.Nombre_Llave_Primaria].Value);
         }
-
-
-
-
+                
         #endregion
 
         private void frmConceptoDeDeducciones_Shown(object sender, EventArgs e)
         {
-
+            dgvLista.ContextMenuStrip = mcsMenu;
+            CargarPrivilegiosUsuario();
+            
+            ActivarFiltrosDeBusqueda();
+            tsbFiltroAutomatico_Click(null, null);
         }
 
         private void tsbSeleccionarTodos_Click(object sender, EventArgs e)
