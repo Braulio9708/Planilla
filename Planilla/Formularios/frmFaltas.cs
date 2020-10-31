@@ -431,13 +431,13 @@ namespace Planilla.Formularios
 
         private void MostrarFormularioParaOperacion(string OperacionARealizar)
         {
-            /*frmContratoOperacion ofrmContratoOperacion = new frmContratoOperacion();
-            ofrmContratoOperacion.OperacionARealizar = OperacionARealizar;
-            ofrmContratoOperacion.Nombre_Entidad_Privilegio = Nombre_Entidad_Privilegio;
-            ofrmContratoOperacion.Nombre_Entidad = Nombre_Entidad;
-            ofrmContratoOperacion.ValorLlavePrimariaEntidad = this.ValorLlavePrimariaEntidad;
-            ofrmContratoOperacion.MdiParent = this.ParentForm;
-            ofrmContratoOperacion.Show();*/
+            frmFaltasOperacion ofrmFaltasOperacion = new frmFaltasOperacion();
+            ofrmFaltasOperacion.OperacionARealizar = OperacionARealizar;
+            ofrmFaltasOperacion.Nombre_Entidad_Privilegio = Nombre_Entidad_Privilegio;
+            ofrmFaltasOperacion.Nombre_Entidad = Nombre_Entidad;
+            ofrmFaltasOperacion.ValorLlavePrimariaEntidad = this.ValorLlavePrimariaEntidad;
+            ofrmFaltasOperacion.MdiParent = this.ParentForm;
+            ofrmFaltasOperacion.Show();
         }
 
         private void AsignarLalvePrimaria()

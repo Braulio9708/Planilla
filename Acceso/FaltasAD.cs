@@ -37,7 +37,6 @@ namespace Acceso
 
         public bool Agregar(FaltasEN oRegistroEN, DatosDeConexionEN oDatos)
         {
-            oTransaccionesAD = new TransaccionesAD();
             try
             {
                 InicialisarVariablesGlovales(oDatos);
@@ -47,17 +46,14 @@ namespace Acceso
                                 (@Fecha, @IdEmpleado);
                             Select  last_insert_ID() as 'ID';";
 
-                Comando.Parameters.Add(new MySqlParameter("@Fecha", MySqlDbType.Date)).Value = oRegistroEN.Fecha;
+                Comando.CommandText = Consultas;
+
+                Comando.Parameters.Add(new MySqlParameter("@Fecha", MySqlDbType.Datetime)).Value = oRegistroEN.Fecha;
                 Comando.Parameters.Add(new MySqlParameter("@IdEmpleado", MySqlDbType.Int32)).Value = oRegistroEN.oEmpleadoEN.IdEmpleado;
 
                 InicialisarAdaptador();
 
                 oRegistroEN.IdFaltas = Convert.ToInt32(DT.Rows[0].ItemArray[0].ToString());
-
-                DescripcionDeLaOperacion = string.Format("El registro se ha insertado correctamente. {0} {1}", Environment.NewLine, InformacionDelRegistro(oRegistroEN));
-
-                TransaccionesEN oTransacciones = InformacionDelaTransaccion(oRegistroEN, "Agregar", "Agregar Nuevo Registro", "CORRECTO");
-                oTransaccionesAD.Agregar(oTransacciones, oDatos);
 
                 return true;
             }
@@ -65,23 +61,16 @@ namespace Acceso
             {
                 this.Error = ex.Message;
 
-                DescripcionDeLaOperacion = string.Format("Se produjo el seguiente error: '{2}' al insertar el registro. {0} {1} ", Environment.NewLine, InformacionDelRegistro(oRegistroEN), ex.Message);
-
-                TransaccionesEN oTransacciones = InformacionDelaTransaccion(oRegistroEN, "Agregar", "Agregar Nuevo Registro", "ERROR");
-                oTransaccionesAD.Agregar(oTransacciones, oDatos);
-
                 return false;
             }
             finally
             {
                 FinalizarConexion();
-                oTransaccionesAD = null;
             }
         }
 
         public bool Actualizar(FaltasEN oRegistroEN, DatosDeConexionEN oDatos)
         {
-            oTransaccionesAD = new TransaccionesAD();
             try
             {
                 InicialisarVariablesGlovales(oDatos);
@@ -91,29 +80,22 @@ namespace Acceso
                                 IdEmpleado = @IdEmpleado                    
                             where IdFaltas = @IdFaltas;";
 
+                Comando.CommandText = Consultas;
+
                 Comando.Parameters.Add(new MySqlParameter("@IdFaltas", MySqlDbType.Int32)).Value = oRegistroEN.IdFaltas;
                 Comando.Parameters.Add(new MySqlParameter("@Fecha", MySqlDbType.Date)).Value = oRegistroEN.Fecha;
                 Comando.Parameters.Add(new MySqlParameter("@IdEmpleado", MySqlDbType.Int32)).Value = oRegistroEN.oEmpleadoEN.IdEmpleado;
 
                 Comando.ExecuteNonQuery();
 
-                DescripcionDeLaOperacion = string.Format("El registro fue Actualizado correctamente. {0} {1}", Environment.NewLine, InformacionDelRegistro(oRegistroEN));
-
-                TransaccionesEN oTransacciones = InformacionDelaTransaccion(oRegistroEN, "Actualizar", "Actualizar Registro", "CORRECTO");
-                oTransaccionesAD.Agregar(oTransacciones, oDatos);
+                InicialisarAdaptador();
 
                 return true;
 
             }
             catch (Exception ex)
             {
-
                 this.Error = ex.Message;
-
-                DescripcionDeLaOperacion = string.Format("Se produjo el siguiente error: {2} al actualizar el registro {0} {1}", Environment.NewLine, InformacionDelRegistro(oRegistroEN), ex.Message);
-
-                TransaccionesEN oTransacciones = InformacionDelaTransaccion(oRegistroEN, "Actualizar", "Actualizar Registro", "ERROR");
-                oTransaccionesAD.Agregar(oTransacciones, oDatos);
 
                 return false;
 
@@ -121,45 +103,37 @@ namespace Acceso
             finally
             {
                 FinalizarConexion();
-                oTransaccionesAD = null;
             }
         }
 
         public bool Eliminar(FaltasEN oRegistroEN, DatosDeConexionEN oDatos)
         {
-            oTransaccionesAD = new TransaccionesAD();
             try
             {
                 InicialisarVariablesGlovales(oDatos);
 
                 Consultas = @"delete from faltas where IdFaltas = @IdFaltas;";
 
+                Comando.CommandText = Consultas;
+
                 Comando.Parameters.Add(new MySqlParameter("@IdFaltas", MySqlDbType.Int32)).Value = oRegistroEN.IdFaltas;
 
                 Comando.ExecuteNonQuery();
 
-                DescripcionDeLaOperacion = string.Format("El registro fue eliminado correctamente. {0} {1}", Environment.NewLine, InformacionDelRegistro(oRegistroEN));
-
-                //Agregamos la transaccion...
-                TransaccionesEN oTransacciones = InformacionDelaTransaccion(oRegistroEN, "Eliminar", "Elminar Registro", "CORRECTO");
-                oTransaccionesAD.Agregar(oTransacciones, oDatos);
+                InicialisarAdaptador();
 
                 return true;
 
             }
             catch (Exception ex)
             {
-                DescripcionDeLaOperacion = string.Format("Se produjo el siguiente error: {2} al eliminar el registro. {0} {1}", Environment.NewLine, InformacionDelRegistro(oRegistroEN), ex.Message);
-
-                TransaccionesEN oTransacciones = InformacionDelaTransaccion(oRegistroEN, "Eliminar", "Eliminar Registro", "ERROR");
-                oTransaccionesAD.Agregar(oTransacciones, oDatos);
+                this.Error = ex.Message;
 
                 return false;
             }
             finally
             {
                 FinalizarConexion();
-                oTransaccionesAD = null;
             }
         }
 
@@ -197,11 +171,16 @@ namespace Acceso
             {
                 InicialisarVariablesGlovales(oDatos);
 
-                Consultas = string.Format(@"Select IdFaltas, Fecha, IdEmpleado from faltas where IdFaltas = {0} ", oRegistroEN.IdFaltas);
+                Consultas = string.Format(@"Select IdFaltas, Fecha, emp.IdEmpleado, emp.Nombre as 'Empleado' from faltas as fts
+                                            inner join empleado as emp on emp.IdEmpleado = fts.IdEmpleado
+                                            where IdFaltas = @IdFaltas", oRegistroEN.IdFaltas);
+
+                Comando.Parameters.Add(new MySqlParameter("@IdFaltas", MySqlDbType.Int32)).Value = oRegistroEN.IdFaltas;
+
                 Comando.CommandText = Consultas;
-
+                
                 InicialisarAdaptador();
-
+                
                 return true;
             }
             catch (Exception ex)
@@ -224,7 +203,9 @@ namespace Acceso
 
                 InicialisarVariablesGlovales(oDatos);
 
-                Consultas = string.Format(@"select IdFaltas, Fecha, IdEmpleado from faltas where IdFaltas > 0 {0} {1}; ", oRegistroEN.Where, oRegistroEN.OrderBy);
+                Consultas = string.Format(@"Select IdFaltas, Fecha, emp.IdEmpleado, emp.Nombre as 'Empleado' from faltas as fts
+                                            inner join empleado as emp on emp.IdEmpleado = fts.IdEmpleado
+                                            where IdFaltas > 0 {0} {1}; ", oRegistroEN.Where, oRegistroEN.OrderBy);
                 Comando.CommandText = Consultas;
 
                 InicialisarAdaptador();
@@ -255,7 +236,10 @@ namespace Acceso
 
                 InicialisarVariablesGlovales(oDatos);
 
-                Consultas = string.Format(@"select IdFaltas, Fecha, IdEmpleado from faltas where IdFaltas > 0 {0} {1} ", oRegistroEN.Where, oRegistroEN.OrderBy);
+                Consultas = string.Format(@"Select IdFaltas, Fecha, emp.IdEmpleado, emp.Nombre as 'Empleado' from faltas as fts
+                                            inner join empleado as emp on emp.IdEmpleado = fts.IdEmpleado
+                                            where IdFaltas > 0 {0} {1} ", oRegistroEN.Where, oRegistroEN.OrderBy);
+
                 Comando.CommandText = Consultas;
 
                 InicialisarAdaptador();
@@ -278,6 +262,44 @@ namespace Acceso
 
         }
 
+        public bool ValidarSiElRegistroEstaVinculado(FaltasEN oRegistroEN, DatosDeConexionEN oDatos, string TipoDeOperacion)
+        {
+
+
+            try
+            {
+
+                InicialisarVariablesGlobalesProcedure(oDatos);
+
+                Comando.Parameters.Add(new MySqlParameter("@CampoABuscar_", MySqlDbType.VarChar, 200)).Value = "IdFaltas";
+                Comando.Parameters.Add(new MySqlParameter("@ValorCampoABuscar", MySqlDbType.Int32)).Value = oRegistroEN.IdFaltas;
+                Comando.Parameters.Add(new MySqlParameter("@ExcluirTabla_", MySqlDbType.VarChar, 200)).Value = string.Empty;
+
+                InicialisarAdaptador();
+
+                if (DT.Rows[0].ItemArray[0].ToString().ToUpper() == "NINGUNA".ToUpper())
+                {
+                    return false;
+                }
+                else
+                {
+                    return true;
+                }
+
+            }
+            catch (Exception ex)
+            {
+                this.Error = ex.Message;
+
+                return false;
+            }
+            finally
+            {
+                FinalizarConexion();
+            }
+
+        }
+
         #endregion
 
         #region "Funciones Para Retornar Informacion Y Llamados"
@@ -287,7 +309,7 @@ namespace Acceso
 
             oRegistroEN.IdRegistro = oFaltas.IdFaltas;
             oRegistroEN.Modelo = "FaltasAD";
-            //oRegistroEN.Modulo = "Clientes";
+            oRegistroEN.Modulo = "General";
             oRegistroEN.Tabla = "Faltas";
             oRegistroEN.TipoDeOperacion = TipoDeOperacion;
             oRegistroEN.Estado = Estado;
@@ -329,8 +351,9 @@ namespace Acceso
             Adaptador = new MySqlDataAdapter();
             DT = new DataTable();
 
-            Adaptador.SelectCommand = Comando;
+            Adaptador.SelectCommand = Comando;            
             Adaptador.Fill(DT);
+            Console.WriteLine("Buscar Error");
         }
         private void FinalizarConexion()
         {

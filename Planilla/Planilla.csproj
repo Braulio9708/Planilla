@@ -106,6 +106,12 @@
     <Compile Include="Formularios\frmFaltas.Designer.cs">
       <DependentUpon>frmFaltas.cs</DependentUpon>
     </Compile>
+    <Compile Include="Formularios\frmFaltasOperacion.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\frmFaltasOperacion.Designer.cs">
+      <DependentUpon>frmFaltasOperacion.cs</DependentUpon>
+    </Compile>
     <Compile Include="Formularios\frmHorario.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -205,6 +211,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios\frmFaltas.resx">
       <DependentUpon>frmFaltas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\frmFaltasOperacion.resx">
+      <DependentUpon>frmFaltasOperacion.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios\frmHorario.resx">
       <DependentUpon>frmHorario.cs</DependentUpon>

@@ -13,9 +13,9 @@ using Funciones;
 
 namespace Planilla.Formularios
 {
-    public partial class frmContratoOperacion : Form
+    public partial class frmFaltasOperacion : Form
     {
-        public frmContratoOperacion()
+        public frmFaltasOperacion()
         {
             InitializeComponent();
         }
@@ -30,7 +30,7 @@ namespace Planilla.Formularios
         private bool PermitirCambiarRegistroAunqueEstenVinculados = false;
         private bool AplicarCambio = false;
 
-        private void frmContratoOperacion_Shown(object sender, EventArgs e)
+        private void frmFaltasOperacion_Shown(object sender, EventArgs e)
         {
             ObtenerValoresDeConfiguracion();
             LlamarMetodoSegunOperacion();
@@ -48,7 +48,7 @@ namespace Planilla.Formularios
             CargarPrivilegiosDelUsuarioPermitirCambiar();
         }
 
-        #region "Funciones"
+        #region "Funciones del programador"
 
         private void EvaluarErrorParaMensajeAPantalla(String Error, string TipoOperacion)
         {
@@ -305,20 +305,18 @@ namespace Planilla.Formularios
         {
             this.Cursor = Cursors.WaitCursor;
 
-            ContratoEN oRegistrosEN = new ContratoEN();
-            ContratoLN oRegistrosLN = new ContratoLN();
+            FaltasEN oRegistrosEN = new FaltasEN();
+            FaltasLN oRegistrosLN = new FaltasLN();
 
-            oRegistrosEN.IdContrato = ValorLlavePrimariaEntidad;
+            oRegistrosEN.IdFaltas = ValorLlavePrimariaEntidad;
             
-            if (oRegistrosLN.ListadoPorID(oRegistrosEN, Program.oDatosDeConexioEN))
-            {
+            if (oRegistrosLN.ListadoPorIdentificador(oRegistrosEN, Program.oDatosDeConexioEN))
+            {                
                 if (oRegistrosLN.TraerDatos().Rows.Count > 0)
                 {
                     DataRow Fila = oRegistrosLN.TraerDatos().Rows[0];
-                    txtTipoDeContrato.Text = Fila["Tipo De Contrato"].ToString();
-                    dtpFechaDeInicio.Value = Convert.ToDateTime(Fila["FechaDeInicio"].ToString());
-                    dtpFechaDeFin.Value = Convert.ToDateTime(Fila["FechaDeFin"].ToString());
-                    txtNumeroDeContrato.Text = Fila["Numero De Contrato"].ToString();
+                    
+                    dtpFecha.Value = Convert.ToDateTime(Fila["Fecha"].ToString());
                     cmbEmpleado.SelectedValue = Convert.ToInt32(Fila["IdEmpleado"].ToString());
                     cmbEmpleado.Text = Fila["Empleado"].ToString();
 
@@ -363,8 +361,8 @@ namespace Planilla.Formularios
         private void LimpiarCampos()
         {
             //txtIdentificador.Text = string.Empty;
-            txtTipoDeContrato.Text = string.Empty;
-            txtNumeroDeContrato.Text = string.Empty;
+            dtpFecha.Text = string.Empty;
+            cmbEmpleado.SelectedValue = -1;
         }
 
         private void GuardarValoresDeConfiguracion()
@@ -382,17 +380,10 @@ namespace Planilla.Formularios
         {
             LimpiarEP();
 
-            if (Controles.IsNullOEmptyElControl(txtTipoDeContrato))
+            if (Controles.IsNullOEmptyElControl(cmbEmpleado))
             {
-                EP.SetError(txtTipoDeContrato, "Este campo no puede quedar vacío");
-                txtTipoDeContrato.Focus();
-                return false;
-            }
-
-            if (Controles.IsNullOEmptyElControl(txtNumeroDeContrato))
-            {
-                EP.SetError(txtNumeroDeContrato, "Este campo no puede quedar vacío");
-                txtNumeroDeContrato.Focus();
+                EP.SetError(cmbEmpleado, "Este campo no puede quedar vacío");
+                cmbEmpleado.Focus();
                 return false;
             }
 
@@ -400,23 +391,20 @@ namespace Planilla.Formularios
 
         }
 
-        private ContratoEN InformacionDelRegistro()
+        private FaltasEN InformacionDelRegistro()
         {
 
-            ContratoEN oRegistroEN = new ContratoEN();
-            
-            oRegistroEN.IdContrato = Convert.ToInt32((txtIdentificador.Text.Length > 0 ? txtIdentificador.Text : "0"));
-            oRegistroEN.TipoDeContrato = txtTipoDeContrato.Text.Trim();
-            oRegistroEN.FechaDeInicio = dtpFechaDeInicio.Value;
-            oRegistroEN.FechaDeFin = dtpFechaDeFin.Value;            
-            oRegistroEN.NumeroDeContrato = Convert.ToInt32(txtNumeroDeContrato.Text);
-            
-            oRegistroEN.oEmpladoEN.IdEmpleado = Convert.ToInt32(cmbEmpleado.SelectedValue);
-            oRegistroEN.oEmpladoEN.Nombre = cmbEmpleado.Text.Trim();
+            FaltasEN oRegistroEN = new FaltasEN();
+
+            oRegistroEN.IdFaltas = Convert.ToInt32((txtIdentificador.Text.Length > 0 ? txtIdentificador.Text : "0"));
+            oRegistroEN.Fecha = dtpFecha.Value;
+
+            oRegistroEN.oEmpleadoEN.IdEmpleado = Convert.ToInt32(cmbEmpleado.SelectedValue);
+            oRegistroEN.oEmpleadoEN.Nombre = cmbEmpleado.Text.Trim();
 
             //partes generales.            
             oRegistroEN.oLoginEN = Program.oLoginEN;
-            
+
             return oRegistroEN;
 
         }
@@ -452,7 +440,9 @@ namespace Planilla.Formularios
                 this.Cursor = Cursors.Default;
             }
         }
-        
+
+
+
         #endregion
 
         private void tsbGuardar_Click(object sender, EventArgs e)
@@ -460,13 +450,13 @@ namespace Planilla.Formularios
             try
             {
                 this.Cursor = Cursors.WaitCursor;
-                
+
                 if (LosDatosIngresadosSonCorrectos())
                 {
-                    
-                    ContratoEN oRegistroEN = InformacionDelRegistro();                    
-                    ContratoLN oRegistroLN = new ContratoLN();
-                    
+
+                    FaltasEN oRegistroEN = InformacionDelRegistro();
+                    FaltasLN oRegistroLN = new FaltasLN();
+
                     /*if (oRegistroLN.ValidarRegistroDuplicado(oRegistroEN, Program.oDatosDeConexioEN, "AGREGAR"))
                     {
                         
@@ -477,8 +467,9 @@ namespace Planilla.Formularios
                     
                     if (oRegistroLN.Agregar(oRegistroEN, Program.oDatosDeConexioEN))
                     {
-                        txtIdentificador.Text = oRegistroEN.IdContrato.ToString();
-                        ValorLlavePrimariaEntidad = oRegistroEN.IdContrato;
+                        
+                        txtIdentificador.Text = oRegistroEN.IdFaltas.ToString();
+                        ValorLlavePrimariaEntidad = oRegistroEN.IdFaltas;
 
                         EvaluarErrorParaMensajeAPantalla(oRegistroLN.Error, "GUARDAR");
 
@@ -539,12 +530,12 @@ namespace Planilla.Formularios
                         return;
                     }
 
-                    ContratoEN oRegistroEN = InformacionDelRegistro();
-                    ContratoLN oRegistroLN = new ContratoLN();
-                    
+                    FaltasEN oRegistroEN = InformacionDelRegistro();
+                    FaltasLN oRegistroLN = new FaltasLN();
+
                     if (oRegistroLN.ValidarSiElRegistroEstaVinculado(oRegistroEN, Program.oDatosDeConexioEN, "ACTUALIZAR"))
                     {
-                        
+
                         if (PermitirCambiarRegistroAunqueEstenVinculados == true && AplicarCambio == true)
                         {
                             if (MessageBox.Show(string.Format("Está seguro que desea actualizar los cambios en el registro seleccionado ya que este se encuentra asociado a otras Entidades de manera interna? {0} {1}", Environment.NewLine, oRegistroLN.Error), "Confirmación de Actualización", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.OK)
@@ -560,7 +551,7 @@ namespace Planilla.Formularios
                             return;
                         }
                     }
-                    
+
                     /*if (oRegistroLN.ValidarRegistroDuplicado(oRegistroEN, Program.oDatosDeConexioEN, "ACTUALIZAR"))
                     {
                         this.Cursor = Cursors.Default;
@@ -571,9 +562,8 @@ namespace Planilla.Formularios
                     
                     if (oRegistroLN.Actualizar(oRegistroEN, Program.oDatosDeConexioEN))
                     {
-
-                        txtIdentificador.Text = oRegistroEN.IdContrato.ToString();
-                        ValorLlavePrimariaEntidad = oRegistroEN.IdContrato;
+                        txtIdentificador.Text = oRegistroEN.IdFaltas.ToString();
+                        ValorLlavePrimariaEntidad = oRegistroEN.IdFaltas;
 
                         EvaluarErrorParaMensajeAPantalla(oRegistroLN.Error, "ACTUALIZAR");
 
@@ -599,7 +589,7 @@ namespace Planilla.Formularios
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message, "Actualizar la información del registro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+               MessageBox.Show(ex.Message, "Actualizar la información del registro", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             finally
             {
@@ -627,8 +617,8 @@ namespace Planilla.Formularios
                         return;
                     }
 
-                    ContratoEN oRegistroEN = InformacionDelRegistro();
-                    ContratoLN oRegistroLN = new ContratoLN();
+                    FaltasEN oRegistroEN = InformacionDelRegistro();
+                    FaltasLN oRegistroLN = new FaltasLN();
 
                     if (oRegistroLN.ValidarSiElRegistroEstaVinculado(oRegistroEN, Program.oDatosDeConexioEN, "ELIMINAR"))
                     {
@@ -640,8 +630,8 @@ namespace Planilla.Formularios
                     if (oRegistroLN.Eliminar(oRegistroEN, Program.oDatosDeConexioEN))
                     {
 
-                        txtIdentificador.Text = oRegistroEN.IdContrato.ToString();
-                        ValorLlavePrimariaEntidad = oRegistroEN.IdContrato;
+                        txtIdentificador.Text = oRegistroEN.IdFaltas.ToString();
+                        ValorLlavePrimariaEntidad = oRegistroEN.IdFaltas;
 
                         EvaluarErrorParaMensajeAPantalla(oRegistroLN.Error, "ELIMINAR");
 
@@ -704,7 +694,7 @@ namespace Planilla.Formularios
             this.CerrarVentana = (chkCerrarVentana.CheckState == CheckState.Checked ? true : false);
         }
 
-        private void frmContratoOperacion_FormClosing(object sender, FormClosingEventArgs e)
+        private void frmFaltasOperacion_FormClosing(object sender, FormClosingEventArgs e)
         {
             GuardarValoresDeConfiguracion();
         }

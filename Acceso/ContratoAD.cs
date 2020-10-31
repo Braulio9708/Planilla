@@ -180,7 +180,7 @@ namespace Acceso
                 
                 Consultas = string.Format(@"Select ctt.IdContrato, ctt.TipoDeContrato as 'Tipo De Contrato', ctt.FechaDeInicio, ctt.FechaDeFin, ctt.NumeroDeContrato as 'Numero De Contrato', ctt.IdEmpleado, emp.Nombre as 'Empleado' from contrato as ctt
 									        inner join empleado as emp on emp.IdEmpleado = ctt.IdEmpleado
-                                            where IdContrato > @IdContrato ", oRegistroEN.IdContrato);
+                                            where IdContrato = @IdContrato ", oRegistroEN.IdContrato);
 
                 Comando.CommandText = Consultas;
 

@@ -37,6 +37,11 @@ namespace Logica
                 this.Error = @"Se debe seleccionar un elemneto de la lista.";
                 return false;
             }
+            if(oFaltasAD.Actualizar(oRegistroEN, oDatos))
+            {
+                Error = string.Empty;
+                return true;
+            }
             else
             {
                 Error = oFaltasAD.Error;
@@ -110,6 +115,20 @@ namespace Logica
             else
             {
                 Error = oFaltasAD.Error;
+                return false;
+            }
+        }
+
+        public bool ValidarSiElRegistroEstaVinculado(FaltasEN oRegistroEN, DatosDeConexionEN oDatos, string TipoDeOperacion)
+        {
+            if(oFaltasAD.ValidarSiElRegistroEstaVinculado(oRegistroEN, oDatos, TipoDeOperacion))
+            {
+                Error = oFaltasAD.Error;
+                return true;
+            }
+            else
+            {
+                Error = string.Empty;
                 return false;
             }
         }
