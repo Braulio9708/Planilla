@@ -169,7 +169,9 @@ namespace Acceso
             {
                 InicialisarVariablesGlovales(oDatos);
 
-                Consultas = string.Format(@"Select IdFaltas, Fecha, IdEmpleado from faltas where IdFaltas = 0 {0} {1}", oRegistroEN.Where, oRegistroEN.OrderBy);
+                Consultas = string.Format(@"Select IdFaltas, Fecha, emp.IdEmpleado, emp.Nombre as 'Empleado' from faltas as fts
+                                            inner join empleado as emp on emp.IdEmpleado = fts.IdEmpleado
+                                            where IdFaltas > 0 {0} {1}", oRegistroEN.Where, oRegistroEN.OrderBy);
 
                 Comando.CommandText = Consultas;
 

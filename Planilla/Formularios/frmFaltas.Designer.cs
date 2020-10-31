@@ -29,9 +29,9 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle28 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle29 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle30 = new System.Windows.Forms.DataGridViewCellStyle();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.tsMenu = new System.Windows.Forms.ToolStrip();
             this.tsbFiltrar = new System.Windows.Forms.ToolStripButton();
@@ -111,6 +111,7 @@
             this.tsbFiltrar.Size = new System.Drawing.Size(73, 36);
             this.tsbFiltrar.Text = "Filtrar";
             this.tsbFiltrar.ToolTipText = "Filtrar (F5)";
+            this.tsbFiltrar.Click += new System.EventHandler(this.tsbFiltrar_Click);
             // 
             // tsbNuevo
             // 
@@ -120,6 +121,7 @@
             this.tsbNuevo.Size = new System.Drawing.Size(78, 36);
             this.tsbNuevo.Text = "Nuevo";
             this.tsbNuevo.ToolTipText = "Nuevo (F2)";
+            this.tsbNuevo.Click += new System.EventHandler(this.tsbNuevo_Click);
             // 
             // tsbImprimir
             // 
@@ -159,6 +161,7 @@
             this.tsbFiltroAutomatico.Name = "tsbFiltroAutomatico";
             this.tsbFiltroAutomatico.Size = new System.Drawing.Size(120, 36);
             this.tsbFiltroAutomatico.Text = "Filtro Automatico";
+            this.tsbFiltroAutomatico.Click += new System.EventHandler(this.tsbFiltroAutomatico_Click);
             // 
             // groupBox1
             // 
@@ -180,6 +183,7 @@
             this.cmbEmpleado.Name = "cmbEmpleado";
             this.cmbEmpleado.Size = new System.Drawing.Size(323, 21);
             this.cmbEmpleado.TabIndex = 3;
+            this.cmbEmpleado.SelectionChangeCommitted += new System.EventHandler(this.cmbEmpleado_SelectionChangeCommitted);
             // 
             // txtIdentificador
             // 
@@ -187,6 +191,7 @@
             this.txtIdentificador.Name = "txtIdentificador";
             this.txtIdentificador.Size = new System.Drawing.Size(323, 20);
             this.txtIdentificador.TabIndex = 2;
+            this.txtIdentificador.KeyUp += new System.Windows.Forms.KeyEventHandler(this.txtIdentificador_KeyUp);
             // 
             // chkEmpleado
             // 
@@ -213,34 +218,34 @@
             // dgvLista
             // 
             this.dgvLista.BackgroundColor = System.Drawing.Color.Azure;
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle7.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvLista.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle28.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle28.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle28.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle28.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle28.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle28.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle28.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvLista.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle28;
             this.dgvLista.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle8.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvLista.DefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle29.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle29.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle29.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle29.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle29.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle29.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle29.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvLista.DefaultCellStyle = dataGridViewCellStyle29;
             this.dgvLista.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvLista.Location = new System.Drawing.Point(0, 0);
             this.dgvLista.Name = "dgvLista";
-            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle9.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle9.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle9.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvLista.RowHeadersDefaultCellStyle = dataGridViewCellStyle9;
+            dataGridViewCellStyle30.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle30.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle30.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle30.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle30.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle30.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle30.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvLista.RowHeadersDefaultCellStyle = dataGridViewCellStyle30;
             this.dgvLista.Size = new System.Drawing.Size(613, 192);
             this.dgvLista.TabIndex = 5;
             this.dgvLista.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvLista_CellContentClick);
@@ -276,40 +281,45 @@
             this.cmImprimir});
             this.mcsMenu.Name = "mcsMenu";
             this.mcsMenu.Size = new System.Drawing.Size(127, 114);
+            this.mcsMenu.Opened += new System.EventHandler(this.mcsMenu_Opened);
             // 
             // cmNuevo
             // 
             this.cmNuevo.Image = global::Planilla.Properties.Resources.New16x16;
             this.cmNuevo.Name = "cmNuevo";
-            this.cmNuevo.Size = new System.Drawing.Size(126, 22);
+            this.cmNuevo.Size = new System.Drawing.Size(152, 22);
             this.cmNuevo.Text = "Nuevo";
+            this.cmNuevo.Click += new System.EventHandler(this.cmNuevo_Click);
             // 
             // cmActualizar
             // 
             this.cmActualizar.Image = global::Planilla.Properties.Resources.Edit16x16;
             this.cmActualizar.Name = "cmActualizar";
-            this.cmActualizar.Size = new System.Drawing.Size(126, 22);
+            this.cmActualizar.Size = new System.Drawing.Size(152, 22);
             this.cmActualizar.Text = "Actualizar";
+            this.cmActualizar.Click += new System.EventHandler(this.cmActualizar_Click);
             // 
             // cmEliminar
             // 
             this.cmEliminar.Image = global::Planilla.Properties.Resources.Eliminar16x16;
             this.cmEliminar.Name = "cmEliminar";
-            this.cmEliminar.Size = new System.Drawing.Size(126, 22);
+            this.cmEliminar.Size = new System.Drawing.Size(152, 22);
             this.cmEliminar.Text = "Eliminar";
+            this.cmEliminar.Click += new System.EventHandler(this.cmEliminar_Click);
             // 
             // cmVisualizar
             // 
             this.cmVisualizar.Image = global::Planilla.Properties.Resources.if_old_edit_find_23490__1_;
             this.cmVisualizar.Name = "cmVisualizar";
-            this.cmVisualizar.Size = new System.Drawing.Size(126, 22);
+            this.cmVisualizar.Size = new System.Drawing.Size(152, 22);
             this.cmVisualizar.Text = "Visualizar";
+            this.cmVisualizar.Click += new System.EventHandler(this.cmVisualizar_Click);
             // 
             // cmImprimir
             // 
             this.cmImprimir.Image = global::Planilla.Properties.Resources.iconfinder_preferences_desktop_printer_8803;
             this.cmImprimir.Name = "cmImprimir";
-            this.cmImprimir.Size = new System.Drawing.Size(126, 22);
+            this.cmImprimir.Size = new System.Drawing.Size(152, 22);
             this.cmImprimir.Text = "Imprimir";
             // 
             // frmFaltas

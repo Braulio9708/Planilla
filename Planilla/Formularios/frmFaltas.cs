@@ -228,7 +228,7 @@ namespace Planilla.Formularios
             }
             if (Controles.IsNullOEmptyElControl(chkEmpleado) == false && Controles.IsNullOEmptyElControl(cmbEmpleado) == false)
             {
-                Where += string.Format(" and fts.IdEmpleado like = {0} ", cmbEmpleado.SelectedValue);
+                Where += string.Format(" and emp.IdEmpleado like {0} ", cmbEmpleado.SelectedValue);
             }
             
             return Where;
@@ -445,13 +445,47 @@ namespace Planilla.Formularios
             this.ValorLlavePrimariaEntidad = Convert.ToInt32(this.dgvLista.Rows[this.IndiceSeleccionado].Cells[this.Nombre_Llave_Primaria].Value);
         }
 
+        private void LlenarEmpleado()
+        {
+            try
+            {
+                this.Cursor = Cursors.WaitCursor;
 
+                EmpleadoEN oRegistroEN = new EmpleadoEN();
+                EmpleadoLN oRegistroLN = new EmpleadoLN();
+                oRegistroEN.Where = "";
+                oRegistroEN.OrderBy = "";
 
+                if (oRegistroLN.ListadoParaCombos(oRegistroEN, Program.oDatosDeConexioEN))
+                {
+                    cmbEmpleado.DataSource = oRegistroLN.TraerDatos();
+                    cmbEmpleado.DisplayMember = "Nombre";
+                    cmbEmpleado.ValueMember = "IdEmpleado";
+                    cmbEmpleado.SelectedIndex = -1;
+                }
+
+                else { throw new ArgumentException(oRegistroLN.Error); }
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Información del tipo de cuentas", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                this.Cursor = Cursors.Default;
+            }
+        }
         #endregion
 
         private void frmFaltas_Shown(object sender, EventArgs e)
         {
+            dgvLista.ContextMenuStrip = mcsMenu;
+            CargarPrivilegiosUsuario();
 
+            LlenarEmpleado();
+            ActivarFiltrosDeBusqueda();
+            tsbFiltroAutomatico_Click(null, null);
         }
 
         private void tsbSeleccionarTodos_Click(object sender, EventArgs e)
@@ -608,7 +642,144 @@ namespace Planilla.Formularios
 
         private void frmFaltas_KeyUp(object sender, KeyEventArgs e)
         {
+            if(Convert.ToInt32(e.KeyData) == Convert.ToInt32(Keys.F2) && cmNuevo.Enabled == true)
+            {
+                cmNuevo_Click(null, null);
+            }
+            if(Convert.ToInt32(e.KeyData) == Convert.ToInt32(Keys.F3) && cmActualizar.Enabled == true)
+            {
+                if(dgvLista.SelectedRows.Count > 0)
+                {
+                    IndiceSeleccionado = dgvLista.CurrentRow.Index;
+                    cmActualizar_Click(null, null);
+                }
+                else
+                {
+                    MessageBox.Show("Se debe de seleccionar un registro de la lista", "Actualizar Registro ", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
 
+            if(Convert.ToInt32(e.KeyData) == Convert.ToInt32(Keys.F4) && cmEliminar.Enabled == true)
+            {
+                if(dgvLista.SelectedRows.Count > 0)
+                {
+                    IndiceSeleccionado = dgvLista.CurrentRow.Index;
+                    cmActualizar_Click(null, null);
+                }
+                else
+                {
+                    MessageBox.Show("Se debe seleccionar un elemento de la lista", "Actualizar Registro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+
+            if(Convert.ToInt32(e.KeyData) == Convert.ToInt32(Keys.F5))
+            {
+                tsbFiltrar_Click(null, null);
+            }
+
+            if(Convert.ToInt32(e.KeyData) == Convert.ToInt32(Keys.F6))
+            {
+                if (dgvLista.SelectedRows.Count > 0)
+                {
+                    IndiceSeleccionado = dgvLista.CurrentRow.Index;
+                    cmVisualizar_Click(null, null);
+                }
+                else
+                {
+                    MessageBox.Show("Se debe de seleccionar un registro de la lista", "Consultar Registro ", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
+
+        private void cmNuevo_Click(object sender, EventArgs e)
+        {
+            MostrarFormularioParaOperacion("Nuevo");
+        }
+
+        private void cmActualizar_Click(object sender, EventArgs e)
+        {
+            AsignarLalvePrimaria();
+            MostrarFormularioParaOperacion("Modificar");
+        }
+
+        private void cmEliminar_Click(object sender, EventArgs e)
+        {
+            AsignarLalvePrimaria();
+            MostrarFormularioParaOperacion("Eliminar");
+        }
+
+        private void cmVisualizar_Click(object sender, EventArgs e)
+        {
+            AsignarLalvePrimaria();
+            MostrarFormularioParaOperacion("Consultar");
+        }
+
+        private void tsbFiltrar_Click(object sender, EventArgs e)
+        {
+            LlenarListado();
+        }
+
+        private void mcsMenu_Opened(object sender, EventArgs e)
+        {
+            if (dgvLista.DataSource == null || dgvLista.Rows.Count <= 0 || dgvLista.SelectedRows.Count <= 0)
+            {
+                cmEliminar.Enabled = false;
+                cmActualizar.Enabled = false;
+                cmVisualizar.Enabled = false;
+                cmImprimir.Enabled = false;
+            }
+            else
+            {
+                CargarPrivilegiosUsuario();
+
+            }
+        }
+
+        private void txtIdentificador_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (Controles.IsNullOEmptyElControl(txtIdentificador))
+            {
+                chkIdentificador.CheckState = CheckState.Unchecked;
+            }
+            else { chkIdentificador.CheckState = CheckState.Checked; }
+
+            if (chkIdentificador.CheckState == CheckState.Checked && tsbFiltroAutomatico.CheckState == CheckState.Checked)
+            {
+                LlenarListado();
+            }
+        }
+
+        private void tsbFiltroAutomatico_Click(object sender, EventArgs e)
+        {
+            tsbFiltroAutomatico.Checked = !tsbFiltroAutomatico.Checked;
+
+            if (tsbFiltroAutomatico.Checked == true)
+            {
+                tsbFiltroAutomatico.Image = Properties.Resources.unchecked16x16;
+            }
+            else
+            {
+                tsbFiltroAutomatico.Image = Properties.Resources.checked16x16;
+            }
+        }
+
+        private void tsbNuevo_Click(object sender, EventArgs e)
+        {
+            MostrarFormularioParaOperacion("Nuevo");
+        }
+
+        private void cmbEmpleado_SelectionChangeCommitted(object sender, EventArgs e)
+        {
+            if (Controles.IsNullOEmptyElControl(cmbEmpleado))
+            {
+                chkEmpleado.CheckState = CheckState.Unchecked;
+            }
+            else { chkEmpleado.CheckState = CheckState.Checked; }
+
+            if (chkEmpleado.CheckState == CheckState.Checked && tsbFiltroAutomatico.CheckState == CheckState.Checked)
+            {
+                LlenarListado();
+            }
         }
     }
 }

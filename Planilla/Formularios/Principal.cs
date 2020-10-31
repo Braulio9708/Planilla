@@ -25,6 +25,7 @@ namespace Planilla.Formularios
         frmCiudad ofrmMunicipio = null;
         frmContrato ofrmContrato = null;
         frmHorario ofrmHorario = null;
+        frmFaltas ofrmFaltas = null;
 
         public Principal()
         {
@@ -384,8 +385,9 @@ namespace Planilla.Formularios
             btnCargo.Enabled = true;
             btnCiudad.Enabled = true;
             btnHorario.Enabled = true;
+            btnFaltas.Enabled = true;
             OcultarControlesDentroDelPanel();
-            string MostrarControles = "btnCargo, btnContrato, btnAreaLaboral, btnEmpleado2, btnCiudad, btnHorario";
+            string MostrarControles = "btnCargo, btnContrato, btnAreaLaboral, btnEmpleado2, btnCiudad, btnHorario, btnFaltas";
             VisualizarControlesDentroDelPanel(MostrarControles);
         }
 
@@ -499,6 +501,25 @@ namespace Planilla.Formularios
             else
             {
                 ofrmHorario.BringToFront();
+            }
+            this.Cursor = Cursors.Default;
+        }
+
+        private void btnFaltas_Click(object sender, EventArgs e)
+        {
+            this.Cursor = Cursors.WaitCursor;
+
+            if (ofrmFaltas == null || ofrmFaltas.IsDisposed)
+            {
+                ofrmFaltas = new frmFaltas();
+                ofrmFaltas.MdiParent = this;
+                ofrmFaltas.StartPosition = FormStartPosition.CenterScreen;
+                ofrmFaltas.WindowState = FormWindowState.Maximized;
+                ofrmFaltas.Show();
+            }
+            else
+            {
+                ofrmFaltas.BringToFront();
             }
             this.Cursor = Cursors.Default;
         }
